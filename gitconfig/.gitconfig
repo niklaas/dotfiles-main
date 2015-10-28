@@ -1,0 +1,19 @@
+[user]
+	name = Niklaas Baudet von Gersdorff
+	email = niklaas@kulturflatrate.net
+[credential]
+	helper = cache
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	last = log -1 HEAD
+[push]
+	default = current
+[http]
+	sslverify = false
