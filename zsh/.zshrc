@@ -46,7 +46,9 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git mercurial extract)
+plugins=(git mercurial extract sprunge autojump aws catimg sudo svn urltools web-search)
+
+# chucknorris common-aliases compleat dircycle dirhistory encode64 fasd nanoc wd
 
 DISABLE_AUTO_UPDATE="true"
 
