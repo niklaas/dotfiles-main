@@ -1,30 +1,22 @@
 typeset -U path
 path=(~/bin $path)
 
-alias mpvdw="mpv --playlist=http://www.dradio.de/streaming/dradiowissen_hq_ogg.m3u"
+alias aria2cd="aria2c --enable-rpc --rpc-listen-all"
+alias ejal="ezjail-admin list"
+alias ejall="ezjail-admin list | grep -e '^ZR' -e '^ZSN' -e '^ZS' | awk '{ print \$3\"\\t\"\$1\"\\t\"\$4 }' | sort -u"
+alias gsp="git submodule foreach git pull origin master"
+alias kccfct="keychain -q --eval tank.financecomm.com-root"
+alias kcgpg="keychain -q --eval 1C62D5F3"
 alias mpvdf="mpv --playlist=http://www.dradio.de/streaming/dlf_hq_ogg.m3u"
 alias mpvdk="mpv --playlist=http://www.dradio.de/streaming/dkultur_hq_ogg.m3u"
-
-alias remw="rem -c+ -m"
-alias remm="rem -c -m"
-
-alias L="less"
-
+alias mpvdw="mpv --playlist=http://www.dradio.de/streaming/dradiowissen_hq_ogg.m3u"
 alias ra="rsync -a"
+alias remm="rem -c -m"
+alias remw="rem -c+ -m"
 alias rs="rsync"
-
+alias tree="tree --charset=ascii"
 alias vv="vim -MR -c 'file [stdin]' -"
-
-alias gsu="git submodule foreach git pull origin master"
-
-#alias rem="rem -q"
-
-alias aria2cd="aria2c --enable-rpc --rpc-listen-all"
-
-alias telegram="~/bin/Telegram/Telegram &"
-
-alias ejall="ezjail-admin list | grep -e '^ZR' -e '^ZSN' -e '^ZS' | awk '{ print \$3\"\\t\"\$1\"\\t\"\$4 }' | sort -u"
-alias ejal="ezjail-admin list"
+alias xclip="xclip -selection c"
 
 uname | grep -i linux >/dev/null
 if [ $? -eq 0 ]
@@ -35,25 +27,13 @@ then
     alias remtd="rem -g -q"
 fi
 
-alias xclip="xclip -selection c"
-alias tree="tree --charset=ascii"
-
-export PYTHONPATH=/usr/lib/python2.7/site-packages
-
+export EDITOR=vim
+export GIT_SSL_NO_VERIFY=true
+export HOSTNAME=$(hostname)
+export MOSH_TITLE_NOPREFIX="YES"
 export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 
-export GIT_SSL_NO_VERIFY=true
-
-export HOSTNAME=$(hostname)
-
-export EDITOR=vim
-
-export MOSH_TITLE_NOPREFIX="YES"
-
 command -v keychain >/dev/null 2>&1 && eval $(keychain -q --eval id_rsa)
-
-alias kcgpg="keychain -q --eval 1C62D5F3"
-alias kccfct="keychain -q --eval tank.financecomm.com-root"
 
 function pdfpextr()
 {
