@@ -18,6 +18,8 @@ alias tree="tree --charset=ascii"
 alias vv="vim -MR -c 'file [stdin]' -"
 alias xclip="xclip -selection c"
 
+alias S="curl -F 'sprunge=<-' http://sprunge.us"
+
 uname | grep -i linux >/dev/null
 if [ $? -eq 0 ]
 then
