@@ -20,6 +20,9 @@ alias xclip="xclip -selection c"
 
 alias S="curl -F 'sprunge=<-' http://sprunge.us"
 
+ezjdir=/usr/local/jails/ezjails
+pdrdir=/usr/local/etc/poudriere.d
+
 uname | grep -i linux >/dev/null
 if [ $? -eq 0 ]
 then
