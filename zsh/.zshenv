@@ -3,7 +3,7 @@ path=(~/bin $path)
 
 alias aria2cd="aria2c --enable-rpc --rpc-listen-all"
 alias ejal="ezjail-admin list"
-alias ejall="ezjail-admin list | grep -e '^ZR' -e '^ZSN' -e '^ZS' | awk '{ print \$3\"\\t\"\$1\"\\t\"\$4 }' | sort -u"
+alias ejall="ezjail-admin list | grep -e '^ZR' -e '^ZSN' -e '^ZS' | awk '{ print \$3\"\\t\\t\"\$1\"\\t\"\$4 }' | sort -u"
 alias gsp="git submodule foreach git pull origin master"
 alias kccfct="keychain -q --eval tank.financecomm.com-root"
 alias kcgpg="keychain -q --eval 1C62D5F3"
@@ -22,6 +22,7 @@ alias S="curl -F 'sprunge=<-' http://sprunge.us"
 
 ezjdir=/usr/local/jails/ezjails
 pdrdir=/usr/local/etc/poudriere.d
+letc=/usr/local/etc
 
 uname | grep -i linux >/dev/null
 if [ $? -eq 0 ]
