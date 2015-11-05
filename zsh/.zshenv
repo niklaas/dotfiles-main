@@ -34,7 +34,6 @@ then
 fi
 
 export EDITOR=vim
-export GIT_SSL_NO_VERIFY=true
 export HOSTNAME=$(hostname)
 export MOSH_TITLE_NOPREFIX="YES"
 export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
