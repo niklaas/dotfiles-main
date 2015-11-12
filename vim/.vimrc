@@ -141,16 +141,6 @@ endif
 " setting grep to always generate a file-name
 set grepprg=grep\ -nH\ $*
 
-" if it's a tex-file always set the filetype to be latex
-let g:tex_flavor = "latex"
-
-" allow inserting e-acute again
-" ref: http://vim-latex.sourceforge.net/index.php?subject=faq#faq-e-acute
-imap <buffer> <leader>it <Plug>Tex_InsertItemOnThisLine
-
-"" do not replace quotes automatically
-let g:Tex_SmartKeyQuote = 0
-
 "" to use label completion with <C-n>
 set iskeyword+=:
 
