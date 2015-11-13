@@ -15,6 +15,7 @@ alias remm="rem -c -m"
 alias remw="rem -c+ -m"
 alias rs="rsync"
 alias tree="tree --charset=ascii"
+alias v="vim --servername vim"
 alias vv="vim -MR -c 'file [stdin]' -"
 alias xclip="xclip -selection c"
 
