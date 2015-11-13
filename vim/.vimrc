@@ -1,5 +1,3 @@
-let mapleader = ","
-
 call pathogen#infect() 
 
 " allows displaying of man pages with :Man <program>
