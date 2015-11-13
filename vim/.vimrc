@@ -150,5 +150,7 @@ set iskeyword+=:
 " change modifier for vim-move
 "let g:move_key_modifier = 'C'
 
+let g:tex_favour = 'latex'
+
 filetype plugin indent on
 syntax on
