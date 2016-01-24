@@ -34,6 +34,8 @@ set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 
 "set statusline=%{fugitive#statusline()}
 
+set laststatus=2
+
 set encoding=utf-8
 set fileencoding=utf-8
 
@@ -98,6 +100,13 @@ if has("unix")
     cmap w!! w !sudo tee >/dev/null %
 endif
 
+if exists(":Tabularize")
+    nmap <Leader>a= :Tabularize /=<CR>
+    vmap <Leader>a= :Tabularize /=<CR>
+    nmap <Leader>a: :Tabularize /:\zs<CR>
+    vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
 " mintty setup
 "let &t_ti.="\e[1 q"
 "let &t_SI.="\e[5 q"
@@ -134,13 +143,6 @@ if has('gui_running')
         set guifont=Liberation_Mono:h11:cANSI
     endif
 endif
-
-" this is for the vim-latex plugin (http://vim-latex.sourceforge.net)
-" setting grep to always generate a file-name
-set grepprg=grep\ -nH\ $*
-
-"" to use label completion with <C-n>
-set iskeyword+=:
 
 " speed up vim-pandoc
 "let g:pandoc_no_empty_implicits = 1
