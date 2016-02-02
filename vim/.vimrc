@@ -129,10 +129,10 @@ let base16colorspace=256
 
 if has('gui_running')
     colorscheme base16-brewer
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions-=r
-    set guioptions+=R
+    set guioptions-=m   " menu bar
+    set guioptions-=T   " toolbar
+    set guioptions-=r   " right-hand scrollbar
+"   set guioptions+=R   "   only when split window
     set lines=32
     set columns=82
     if has("gui_gtk2")
