@@ -132,7 +132,9 @@ if has('gui_running')
     set guioptions-=m   " menu bar
     set guioptions-=T   " toolbar
     set guioptions-=r   " right-hand scrollbar
-"   set guioptions+=R   "   only when split window
+    set guioptions-=R   "   only when split window
+    set guioptions-=l   " left-hand scrollbar
+    set guioptions-=L   "   only when split window
     set lines=32
     set columns=82
     if has("gui_gtk2")
