@@ -136,7 +136,7 @@ if has('gui_running')
     set lines=32
     set columns=82
     if has("gui_gtk2")
-        set guifont=Monospace\ 9
+        set guifont=Monospace\ 11
         set background=dark
     endif
     if has("gui_win32")
