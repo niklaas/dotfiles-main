@@ -1,6 +1,8 @@
 typeset -U path
 path=(~/bin $path)
 
+export LC_COLLATE=C
+
 alias aria2cd="aria2c --enable-rpc --rpc-listen-all"
 alias ejal="ezjail-admin list"
 alias ejall="ezjail-admin list | grep -e '^ZR' -e '^ZSN' -e '^ZS' | awk '{ print \$3\"\\t\\t\"\$1\"\\t\"\$4 }' | sort -u"
