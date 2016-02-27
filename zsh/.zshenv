@@ -23,6 +23,7 @@ alias xclip="xclip -selection c"
 
 alias S="curl -F 'sprunge=<-' http://sprunge.us"
 
+jails=/usr/local/jails
 ezjdir=/usr/local/jails/ezjails
 pdrdir=/usr/local/etc/poudriere.d
 letc=/usr/local/etc
