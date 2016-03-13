@@ -5,6 +5,8 @@ runtime! ftplugin/man.vim
 
 scriptencoding utf-8
 
+let mapleader = " "
+
 set nocompatible
 set cpo+=$
 set showmatch
@@ -49,7 +51,6 @@ set formatoptions=croq
 
 set spelllang=de_20,en_gb
 set spellfile=~/.vim/spell/de.utf-8.add
-map <leader>s :setlocal spell!<CR>
 
 " printing
 set pdev=PDF
