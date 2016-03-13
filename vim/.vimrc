@@ -65,11 +65,42 @@ autocmd BufEnter * silent! lcd %:p:h
 
 autocmd BufNewFile,BufRead *.adoc set filetype=asciidoc
 
-autocmd FileType tex  setlocal number fo+=t tw=80 spell
-autocmd FileType text setlocal fo+=ant tw=80 spell
-autocmd FileType mail setlocal fo+=n spell formatprg=par\ qer
-autocmd FileType asciidoc setlocal number wrap spell
-autocmd FileType rmd setlocal spell
+augroup pencil
+    autocmd!
+    autocmd FileType markdown,mkd call pencil#init()
+    autocmd FileType text         call pencil#init()
+    autocmd FileType mail         call pencil#init()
+augroup END
+
+function! s:goyo_enter()
+    "silent !tmux set status off
+    set noshowmode
+    set noshowcmd
+    set scrolloff=999
+    Limelight
+endfunction
+
+function! s:goyo_leave()
+    "silent !tmux set status on
+    set showmode
+    set showcmd
+    set scrolloff=5
+    Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+augroup lexical
+    autocmd!
+    autocmd FileType markdown,mkd call lexical#init()
+    autocmd FileType text         call lexical#init()
+    autocmd FileType mail         call lexical#init()
+augroup END
+
+let g:lexical#spell_key = '<leader>s'
+let g:lexical#thesaurus_key = '<leader>t'
+let g:lexical#dictionary_key = '<leader>k'
 
 "iab YDATE <C-R>=strftime("%a %b %d %T %Z %Y")<CR>
 "map ,L  1G/Latest change:\s*/e+1<CR>CYDATE<ESC>
@@ -82,16 +113,16 @@ autocmd FileType rmd setlocal spell
 "vmap ;tr :s/\s\+$//
 
 " http://vimcasts.org/episodes/soft-wrapping-text/
-vmap <C-j> gj
-vmap <C-k> gk
-vmap <C-4> g$
-vmap <C-6> g^
-vmap <C-0> g^
-nmap <C-j> gj
-nmap <C-k> gk
-nmap <C-4> g$
-nmap <C-6> g^
-nmap <C-0> g^
+"vmap <C-j> gj
+"vmap <C-k> gk
+"vmap <C-4> g$
+"vmap <C-6> g^
+"vmap <C-0> g^
+"nmap <C-j> gj
+"nmap <C-k> gk
+"nmap <C-4> g$
+"nmap <C-6> g^
+"nmap <C-0> g^
 
 ":imap <S-Space> <Esc>
 
