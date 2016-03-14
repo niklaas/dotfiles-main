@@ -66,6 +66,9 @@ autocmd BufEnter * silent! lcd %:p:h
 
 autocmd BufNewFile,BufRead *.adoc set filetype=asciidoc
 
+let &t_SI = "\<Esc>[6 q"
+let &t_EI = "\<Esc>[2 q"
+
 augroup pencil
     autocmd!
     autocmd FileType markdown,mkd call pencil#init()
