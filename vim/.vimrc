@@ -71,7 +71,6 @@ let &t_EI = "\<Esc>[2 q"
 
 augroup pencil
     autocmd!
-    autocmd FileType markdown,mkd call pencil#init()
     autocmd FileType text         call pencil#init()
     autocmd FileType mail         call pencil#init()
 augroup END
@@ -188,6 +187,8 @@ endif
 
 " change modifier for vim-move
 "let g:move_key_modifier = 'C'
+
+let g:pandoc#formatting#mode = 'hA'
 
 let g:tex_favour = 'latex'
 
