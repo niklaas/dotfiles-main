@@ -1,3 +1,8 @@
+let g:pathogen_disabled = []
+
+" disable some plugins
+call add(g:pathogen_disabled, 'vim-pandoc')
+
 call pathogen#infect() 
 
 " allows displaying of man pages with :Man <program>
@@ -71,8 +76,9 @@ let &t_EI = "\<Esc>[2 q"
 
 augroup pencil
     autocmd!
-    autocmd FileType text         call pencil#init()
-    autocmd FileType mail         call pencil#init()
+    autocmd FileType text               call pencil#init()
+    autocmd FileType mail               call pencil#init()
+    autocmd FileType markdown.pandoc    call pencil#init()
 augroup END
 
 function! s:goyo_enter()
@@ -104,6 +110,13 @@ augroup END
 let g:lexical#spell_key = '<leader>s'
 let g:lexical#thesaurus_key = '<leader>t'
 let g:lexical#dictionary_key = '<leader>k'
+
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePRe,BufRead *.mkd set filetype=markdown.pandoc
+augroup END
+
+let g:voom_tree_placement = "top"
+let g:voom_tree_height = 5
 
 "iab YDATE <C-R>=strftime("%a %b %d %T %Z %Y")<CR>
 "map ,L  1G/Latest change:\s*/e+1<CR>CYDATE<ESC>
