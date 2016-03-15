@@ -157,12 +157,11 @@ function! Gfast()
 endfunction
 command! Gfast call Gfast()
 
-colorscheme base16-brewer
-set background=dark
 let base16colorspace=256
+colorscheme base16-default
+set background=dark
 
 if has('gui_running')
-    colorscheme base16-brewer
     set guioptions-=m   " menu bar
     set guioptions-=T   " toolbar
     set guioptions-=r   " right-hand scrollbar
