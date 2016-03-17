@@ -86,6 +86,7 @@ function! s:goyo_enter()
     set noshowmode
     set noshowcmd
     set scrolloff=999
+    set spell
     Limelight
 endfunction
 
