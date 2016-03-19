@@ -74,6 +74,13 @@ autocmd BufNewFile,BufRead *.adoc set filetype=asciidoc
 let &t_SI = "\<Esc>[6 q"
 let &t_EI = "\<Esc>[2 q"
 
+let g:sprunge_map = "<leader><leader>s"
+let g:sprunge_open_browser = 1
+
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePRe,BufRead *.mkd set filetype=markdown.pandoc
+augroup END
+
 augroup pencil
     autocmd!
     autocmd FileType text               call pencil#init()
@@ -103,18 +110,14 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 augroup lexical
     autocmd!
-    autocmd FileType markdown,mkd call lexical#init()
-    autocmd FileType text         call lexical#init()
-    autocmd FileType mail         call lexical#init()
+    autocmd FileType markdown.pandoc call lexical#init()
+    autocmd FileType text            call lexical#init()
+    autocmd FileType mail            call lexical#init()
 augroup END
 
 let g:lexical#spell_key = '<leader>s'
 let g:lexical#thesaurus_key = '<leader>t'
 let g:lexical#dictionary_key = '<leader>k'
-
-augroup pandoc_syntax
-    au! BufNewFile,BufFilePRe,BufRead *.mkd set filetype=markdown.pandoc
-augroup END
 
 let g:voom_tree_placement = "top"
 let g:voom_tree_height = 5
@@ -201,8 +204,6 @@ endif
 
 " change modifier for vim-move
 "let g:move_key_modifier = 'C'
-
-let g:pandoc#formatting#mode = 'hA'
 
 let g:tex_favour = 'latex'
 
