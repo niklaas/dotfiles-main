@@ -3,7 +3,9 @@ let g:pathogen_disabled = []
 " disable some plugins
 call add(g:pathogen_disabled, 'vim-pandoc')
 
-call pathogen#infect() 
+execute pathogen#infect() 
+filetype plugin indent on
+syntax on
 
 " allows displaying of man pages with :Man <program>
 runtime! ftplugin/man.vim
@@ -152,10 +154,10 @@ if has("unix")
 endif
 
 if exists(":Tabularize")
-    nmap <Leader>a= :Tabularize /=<CR>
-    vmap <Leader>a= :Tabularize /=<CR>
-    nmap <Leader>a: :Tabularize /:\zs<CR>
-    vmap <Leader>a: :Tabularize /:\zs<CR>
+    nmap <leader>a= :Tabularize /=<CR>
+    vmap <leader>a= :Tabularize /=<CR>
+    nmap <leader>a: :Tabularize /:\zs<CR>
+    vmap <leader>a: :Tabularize /:\zs<CR>
 endif
 
 " mintty setup
@@ -207,5 +209,3 @@ endif
 
 let g:tex_favour = 'latex'
 
-filetype plugin indent on
-syntax on
