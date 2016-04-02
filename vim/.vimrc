@@ -94,6 +94,10 @@ function! s:goyo_enter()
     set noshowcmd
     set scrolloff=999
     set spell
+    if has('gui_running')
+        set guifont=Monospace\ 12
+        set linespace=4
+    endif
     Limelight
 endfunction
 
@@ -102,6 +106,10 @@ function! s:goyo_leave()
     set showmode
     set showcmd
     set scrolloff=5
+    if has('gui_running')
+        set guifont=Monospace\ 11
+        set linespace=0
+    endif
     Limelight!
 endfunction
 
