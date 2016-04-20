@@ -83,6 +83,8 @@ augroup pandoc_syntax
     au! BufNewFile,BufFilePRe,BufRead *.mkd set filetype=markdown.pandoc
 augroup END
 
+let g:pencil#wrapModeDefault = 'hard'
+
 augroup pencil
     autocmd!
     autocmd FileType text               call pencil#init()
