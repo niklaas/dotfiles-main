@@ -2,6 +2,7 @@ let g:pathogen_disabled = []
 
 " disable some plugins
 call add(g:pathogen_disabled, 'vim-pandoc')
+call add(g:pathogen_disabled, 'supertab')
 
 execute pathogen#infect() 
 filetype plugin indent on
