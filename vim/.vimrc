@@ -90,7 +90,7 @@ augroup pencil
     autocmd!
     autocmd FileType text               call pencil#init()
     autocmd FileType mail               call pencil#init()
-    autocmd FileType markdown.pandoc    call pencil#init()
+    autocmd FileType pandoc.markdown    call pencil#init()
 augroup END
 
 function! s:goyo_enter()
@@ -123,7 +123,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 augroup lexical
     autocmd!
-    autocmd FileType markdown.pandoc call lexical#init()
+    autocmd FileType pandoc.mardown call lexical#init()
     autocmd FileType text            call lexical#init()
     autocmd FileType mail            call lexical#init()
 augroup END
