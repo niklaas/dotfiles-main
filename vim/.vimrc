@@ -60,39 +60,40 @@ set formatoptions=croq
 set spelllang=de_20,en_gb
 set spellfile=~/.vim/spell/de.utf-8.add
 
+let &t_SI = "\<Esc>[6 q"
+let &t_EI = "\<Esc>[2 q"
+
 " printing
-set pdev=PDF
-set printoptions=paper:A4,syntax:y,wrap:y,duplex:long
-map <leader>hb :setlocal printoptions=paper:A4,syntax:n,wrap:y,duplex:long<CR>:ha<CR>
-map <leader>hc :setlocal printoptions=paper:A4,syntax:y,wrap:y,duplex:long<CR>:ha<CR>
+"set pdev=PDF
+"set printoptions=paper:A4,syntax:y,wrap:y,duplex:long
+"map <leader>hb :setlocal printoptions=paper:A4,syntax:n,wrap:y,duplex:long<CR>:ha<CR>
+"map <leader>hc :setlocal printoptions=paper:A4,syntax:y,wrap:y,duplex:long<CR>:ha<CR>
 
 " opens file at the line that was edited last
-autocmd BufReadPost * if line("'\"") && line("'\"") <= line("$") | exe "normal `\"" | endif
+"autocmd BufReadPost * if line("'\"") && line("'\"") <= line("$") | exe "normal `\"" | endif
 
 " always cd to the dir of the file we're editing
 autocmd BufEnter * silent! lcd %:p:h
 
-autocmd BufNewFile,BufRead *.adoc set filetype=asciidoc
-
-let &t_SI = "\<Esc>[6 q"
-let &t_EI = "\<Esc>[2 q"
-
 let g:sprunge_map = "<leader><leader>s"
 let g:sprunge_open_browser = 1
 
-augroup pandoc_syntax
-    au! BufNewFile,BufFilePRe,BufRead *.mkd set filetype=markdown.pandoc
-augroup END
+let g:voom_tree_placement = "top"
+let g:voom_tree_height = 5
 
-let g:pencil#wrapModeDefault = 'hard'
+let g:lexical#spell_key = '<leader>s'
+let g:lexical#thesaurus_key = '<leader>t'
+let g:lexical#dictionary_key = '<leader>k'
 
+" pencil
 augroup pencil
     autocmd!
-    autocmd FileType text               call pencil#init()
-    autocmd FileType mail               call pencil#init()
-    autocmd FileType markdown.pandoc    call pencil#init()
+    autocmd FileType text     call pencil#init()
+    autocmd FileType mail     call pencil#init()
+    autocmd FileType markdown call pencil#init()
 augroup END
 
+" Goyo
 function! s:goyo_enter()
     "silent !tmux set status off
     set noshowmode
@@ -100,7 +101,6 @@ function! s:goyo_enter()
     set scrolloff=999
     set spell
     if has('gui_running')
-        set guifont=Monospace\ 12
         set linespace=4
     endif
     Limelight
@@ -112,7 +112,6 @@ function! s:goyo_leave()
     set showcmd
     set scrolloff=5
     if has('gui_running')
-        set guifont=Monospace\ 11
         set linespace=0
     endif
     Limelight!
@@ -120,20 +119,6 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-augroup lexical
-    autocmd!
-    autocmd FileType markdown.pandoc call lexical#init()
-    autocmd FileType text            call lexical#init()
-    autocmd FileType mail            call lexical#init()
-augroup END
-
-let g:lexical#spell_key = '<leader>s'
-let g:lexical#thesaurus_key = '<leader>t'
-let g:lexical#dictionary_key = '<leader>k'
-
-let g:voom_tree_placement = "top"
-let g:voom_tree_height = 5
 
 "iab YDATE <C-R>=strftime("%a %b %d %T %Z %Y")<CR>
 "map ,L  1G/Latest change:\s*/e+1<CR>CYDATE<ESC>
@@ -145,21 +130,7 @@ let g:voom_tree_height = 5
 "nmap ;tr :%s/\s\+$//
 "vmap ;tr :s/\s\+$//
 
-" http://vimcasts.org/episodes/soft-wrapping-text/
-"vmap <C-j> gj
-"vmap <C-k> gk
-"vmap <C-4> g$
-"vmap <C-6> g^
-"vmap <C-0> g^
-"nmap <C-j> gj
-"nmap <C-k> gk
-"nmap <C-4> g$
-"nmap <C-6> g^
-"nmap <C-0> g^
-
-":imap <S-Space> <Esc>
-
-" simply type w!! to save as root
+" type w!! to save as root
 if has("unix")
     cmap w!! w !sudo tee >/dev/null %
 endif
@@ -177,28 +148,18 @@ endif
 "let &t_EI.="\e[1 q"
 "let &t_te.="\e[0 q"
 
-
-" saves the file and silently commits and pushes to git repo
-" this needs vim-fugitive
-function! Gfast()
-    execute ":Gwrite"
-    execute ":Gcommit -m 'fast commit'"
-    execute ":Gpush"
-endfunction
-command! Gfast call Gfast()
-
 set t_Co=256
 let base16colorspace=256
 colorscheme base16-default
 set background=dark
 
 if has('gui_running')
-    set guioptions-=m   " menu bar
-    set guioptions-=T   " toolbar
-    set guioptions-=r   " right-hand scrollbar
-    set guioptions-=R   "   only when split window
-    set guioptions-=l   " left-hand scrollbar
-    set guioptions-=L   "   only when split window
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=R
+    set guioptions-=l
+    set guioptions-=L
     set lines=32
     set columns=82
     if has("gui_gtk2")
@@ -209,14 +170,6 @@ if has('gui_running')
         set guifont=Liberation_Mono:h11:cANSI
     endif
 endif
-
-" speed up vim-pandoc
-"let g:pandoc_no_empty_implicits = 1
-"let g:pandoc_no_spans = 1
-"let g:pandoc_no_folding = 1
-
-" change modifier for vim-move
-"let g:move_key_modifier = 'C'
 
 let g:tex_favour = 'latex'
 
