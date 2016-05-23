@@ -89,8 +89,11 @@ let g:lexical#dictionary_key = '<leader>k'
 augroup pencil
     autocmd!
     autocmd FileType text     call pencil#init()
+                \ | setl spell
     autocmd FileType mail     call pencil#init()
+                \ | setl spell
     autocmd FileType markdown call pencil#init()
+                \ | setl spell
 augroup END
 
 " Goyo
