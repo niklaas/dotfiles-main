@@ -20,7 +20,6 @@ alias rs="rsync"
 alias tree="tree --charset=ascii"
 alias v="vim --servername vim"
 alias vv="vim -MR -c 'file [stdin]' -"
-alias xclip="xclip -selection c"
 alias mcssh="cssh -C .clusterssh/config_mosh"
 
 alias S="curl -F 'sprunge=<-' http://sprunge.us"
