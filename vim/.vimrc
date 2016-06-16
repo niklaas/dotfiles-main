@@ -13,7 +13,7 @@ runtime! ftplugin/man.vim
 
 scriptencoding utf-8
 
-let mapleader = " "
+let mapleader = ","
 
 set nocompatible
 set cpo+=$
