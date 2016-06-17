@@ -1,6 +1,8 @@
 typeset -U path
 path=(~/bin $path)
 
+autoload -U zmv         # loads zmv for bulk renaming
+
 export LC_COLLATE=C
 
 alias a="aptitude"
