@@ -26,8 +26,12 @@ alias mcssh="cssh -C .clusterssh/config_mosh"
 
 alias S="curl -F 'sprunge=<-' http://sprunge.us"
 
+if [ -f "/usr/local/bin/lesspipe.sh" ]
+then
+    LESSOPEN="|/usr/local/bin/lesspipe.sh %s"; export LESSOPEN
+fi
+
 jails=/usr/local/jails
-ezjdir=/usr/local/jails/ezjails
 pdrdir=/usr/local/etc/poudriere.d
 letc=/usr/local/etc
 
