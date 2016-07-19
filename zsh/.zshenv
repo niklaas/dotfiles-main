@@ -21,6 +21,7 @@ alias remm="rem -c -m"
 alias remw="rem -c+ -m"
 alias rs="rsync"
 alias rsync.net="ssh -t 16264@ch-s010.rsync.net"
+alias sudo="sudo " # makes aliases pass from local user to root
 alias tree="tree --charset=ascii"
 alias v="vim --servername vim"
 alias vv="vim -MR -c 'file [stdin]' -"
