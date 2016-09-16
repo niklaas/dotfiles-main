@@ -4,6 +4,10 @@ path=(~/bin $path)
 autoload -U zmv         # loads zmv for bulk renaming
 
 export LC_COLLATE=C
+export EDITOR=vim
+export HOSTNAME=$(hostname)
+export MOSH_TITLE_NOPREFIX="YES"
+export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 
 alias a="aptitude"
 alias aria2cd="aria2c --enable-rpc --rpc-listen-all"
@@ -21,10 +25,32 @@ alias remm="rem -c -m"
 alias remw="rem -c+ -m"
 alias rs="rsync"
 alias rsync.net="ssh 16264@ch-s010.rsync.net"
-alias sudo="sudo " # makes aliases pass from local user to root
 alias tree="tree --charset=ascii"
 alias v="vim --servername vim"
 alias vv="vim -MR -c 'file [stdin]' -"
+
+if echo "$HOSTNAME" | grep -q 'niklaas.eu'
+then
+    alias cs="sudo csync2 -N $(hostname -s).klaas -xv"
+    alias csw="sudo csync2 -N $(hostname -s).klaas -C /usr/local/etc/csync2-www.cfg -xv"
+fi
+
+alias sudo="my_sudo " # makes aliases pass from local user to root
+
+function my_sudo {
+    while [[ $# > 0 ]]; do
+        case "$1" in
+        command) shift ; break ;;
+        nocorrect|noglob) shift ;;
+        *) break ;;
+        esac
+    done
+    if [[ $# = 0 ]]; then
+        command sudo zsh
+    else
+        noglob command sudo $@
+    fi
+}
 
 alias S="curl -F 'sprunge=<-' http://sprunge.us"
 
@@ -45,11 +71,6 @@ then
     alias remtm="rem -g -q $(date  +%d\ %b\ %Y --date='tomorrow')"
     alias remtd="rem -g -q"
 fi
-
-export EDITOR=vim
-export HOSTNAME=$(hostname)
-export MOSH_TITLE_NOPREFIX="YES"
-export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 
 command -v keychain >/dev/null 2>&1 && eval $(keychain -q --eval id_rsa)
 
