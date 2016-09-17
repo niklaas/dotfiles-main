@@ -31,8 +31,7 @@ alias vv="vim -MR -c 'file [stdin]' -"
 
 if echo "$HOSTNAME" | grep -q 'niklaas.eu'
 then
-    alias cs="sudo csync2 -N $(hostname -s).klaas -xv"
-    alias csw="sudo csync2 -N $(hostname -s).klaas -C /usr/local/etc/csync2-www.cfg -xv"
+    alias cs="sudo csync2 -N $(hostname -s).klaas"
 fi
 
 alias sudo="my_sudo " # makes aliases pass from local user to root
