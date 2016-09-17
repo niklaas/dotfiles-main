@@ -28,6 +28,7 @@ alias rsync.net="ssh 16264@ch-s010.rsync.net"
 alias tree="tree --charset=ascii"
 alias v="vim --servername vim"
 alias vv="vim -MR -c 'file [stdin]' -"
+alias lsj="jls | cut -f 2 -w | tail +2"
 
 if echo "$HOSTNAME" | grep -q 'niklaas.eu'
 then
