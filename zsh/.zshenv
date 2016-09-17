@@ -35,8 +35,6 @@ then
     alias cs="sudo csync2 -N $(hostname -s).klaas"
 fi
 
-alias sudo="my_sudo " # makes aliases pass from local user to root
-
 function my_sudo {
     while [[ $# > 0 ]]; do
         case "$1" in
@@ -51,6 +49,9 @@ function my_sudo {
         noglob command sudo $@
     fi
 }
+
+alias sudo="my_sudo " # makes aliases pass from local user to root
+
 
 alias S="curl -F 'sprunge=<-' http://sprunge.us"
 
