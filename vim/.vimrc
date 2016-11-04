@@ -63,6 +63,11 @@ set spellfile=~/.vim/spell/de.utf-8.add
 let &t_SI = "\<Esc>[6 q"
 let &t_EI = "\<Esc>[2 q"
 
+" keymaps
+
+nmap <leader>ms :1,7s/<.*@niklaas.eu/<stdin@niklaas.eu<CR><C-o>
+nmap <leader>mm :1,7s/<.*@niklaas.eu/<me@niklaas.eu<CR><C-o>
+
 " printing
 "set pdev=PDF
 "set printoptions=paper:A4,syntax:y,wrap:y,duplex:long
