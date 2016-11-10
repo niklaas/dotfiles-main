@@ -152,9 +152,11 @@ endif
 "let &t_te.="\e[0 q"
 
 set t_Co=256
-let base16colorspace=256
-colorscheme base16-default
-set background=dark
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 if has('gui_running')
     set guioptions-=m
