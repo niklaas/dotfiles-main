@@ -14,6 +14,8 @@ alias aria2cd="aria2c --enable-rpc --rpc-listen-all"
 alias ejal="ezjail-admin list"
 alias ejall="ezjail-admin list | grep -e '^ZR' -e '^ZSN' -e '^ZS' | awk '{ print \$3\"\\t\\t\"\$1\"\\t\"\$4 }' | sort -u"
 alias gsp="git submodule foreach git pull"
+alias je="sudo jexec"
+alias jl="jls | cut -f 2 -w | tail +2"
 alias kccfct="keychain -q --eval tank.financecomm.com-root"
 alias kcgpg="keychain -q --eval 1C62D5F3"
 alias mcssh="cssh -C .clusterssh/config_mosh"
@@ -28,7 +30,6 @@ alias rsync.net="ssh 16264@ch-s010.rsync.net"
 alias tree="tree --charset=ascii"
 alias v="vim --servername vim"
 alias vv="vim -MR -c 'file [stdin]' -"
-alias lsj="jls | cut -f 2 -w | tail +2"
 
 if echo "$HOSTNAME" | grep -q 'niklaas.eu'
 then
