@@ -3,9 +3,10 @@ path=(~/bin $path)
 
 autoload -U zmv         # loads zmv for bulk renaming
 
-export LC_COLLATE=C
 export EDITOR=vim
 export HOSTNAME=$(hostname)
+export LANG=en_GB.UTF-8
+export LC_COLLATE=C
 export MOSH_TITLE_NOPREFIX="YES"
 export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 
