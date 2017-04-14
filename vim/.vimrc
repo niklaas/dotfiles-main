@@ -1,10 +1,33 @@
-let g:pathogen_disabled = []
+set nocompatible
+filetype off
 
-" disable some plugins
-call add(g:pathogen_disabled, 'vim-pandoc')
-call add(g:pathogen_disabled, 'supertab')
+" Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'jalvesaq/Nvim-R'
+Plugin 'vim-scripts/VOoM'
+Plugin 'chriskempson/base16-vim'
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'tommcdo/vim-exchange'
+Plugin 'jamessan/vim-gnupg'
+Plugin 'reedes/vim-lexical'
+Plugin 'matze/vim-move'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'reedes/vim-pencil'
+Plugin 'tpope/vim-sensible'
+Plugin 'chilicuil/vim-sprunge'
+Plugin 'tpope/vim-surround'
+Plugin 'hashivim/vim-terraform'
+Plugin 'reedes/vim-thematic'
+Plugin 'vimoutliner/vimoutliner'
+Plugin 'lervag/vimtex'
+"Plugin 'ervandrew/supertab'
+call vundle#end()
 
-execute pathogen#infect() 
 filetype plugin indent on
 syntax on
 
@@ -15,7 +38,6 @@ scriptencoding utf-8
 
 let mapleader = ","
 
-set nocompatible
 set cpo+=$
 set showmatch
 set ruler
