@@ -184,3 +184,5 @@ endif
 
 let g:tex_favour = 'latex'
 
+let R_in_buffer = 0
+let R_term = 'xterm'
