@@ -15,7 +15,8 @@ alias aria2cd="aria2c --enable-rpc --rpc-listen-all"
 alias gsu="git submodule update --recursive --remote"
 alias je="sudo jexec"
 alias jl="jls | cut -f 2 -w | tail +2"
-alias kcgpg="keychain -q --eval 1C62D5F3"
+alias kcgpg="keychain -q --eval 1C62D5F3 >/dev/null"
+alias kcrs="keychain -q --eval rsync.net >/dev/null"
 alias mcssh="cssh -C .clusterssh/config_mosh"
 alias mpvdf="mpv --playlist=http://www.dradio.de/streaming/dlf_hq_ogg.m3u"
 alias mpvdk="mpv --playlist=http://www.dradio.de/streaming/dkultur_hq_ogg.m3u"
@@ -71,7 +72,10 @@ then
     alias remtd="rem -g -q"
 fi
 
-command -v keychain >/dev/null 2>&1 && eval $(keychain -q --eval id_rsa)
+#if command -v keychain >/dev/null 2>&1
+#then
+#    eval $(keychain -q --eval id_rsa rsync.net)
+#fi
 
 function pdfpextr()
 {
