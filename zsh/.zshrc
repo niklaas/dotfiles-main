@@ -13,4 +13,5 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 # Enables vim mode
 bindkey -v
 
-bindkey '^ ' autosuggest-accept
+bindkey '^a' autosuggest-accept
+bindkey '^e' autosuggest-execute
