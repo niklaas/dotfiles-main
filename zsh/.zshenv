@@ -1,8 +1,16 @@
+# PATH
 typeset -U path
 path=(~/bin $path)
 
+# ZSH modules
 autoload -U zmv         # loads zmv for bulk renaming
 
+# Variables
+jails=/usr/local/jails
+pdir=/usr/local/etc/poudriere.d
+letc=/usr/local/etc
+
+# Exports
 export EDITOR=vim
 export HOSTNAME=$(hostname)
 export LANG=en_GB.UTF-8
@@ -10,6 +18,7 @@ export LC_COLLATE=C
 export MOSH_TITLE_NOPREFIX="YES"
 export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 
+# Normal aliases
 alias a="aptitude"
 alias aria2cd="aria2c --enable-rpc --rpc-listen-all"
 alias gsu="git submodule update --recursive --remote"
@@ -30,6 +39,10 @@ alias tree="tree --charset=ascii"
 alias v="vim --servername vim"
 alias vv="vim -MR -c 'file [stdin]' -"
 
+# Global aliases
+alias -g S="| curl -F 'sprunge=<-' http://sprunge.us"
+
+# Special aliases
 if echo "$HOSTNAME" | grep -q 'niklaas.eu'
 then
     alias cs="sudo csync2 -N $(hostname -s).klaas"
@@ -49,20 +62,13 @@ function my_sudo {
         noglob command sudo $@
     fi
 }
-
 alias sudo="my_sudo " # makes aliases pass from local user to root
 
-
-alias S="curl -F 'sprunge=<-' http://sprunge.us"
 
 if [ -f "/usr/local/bin/lesspipe.sh" ]
 then
     LESSOPEN="|/usr/local/bin/lesspipe.sh %s"; export LESSOPEN
 fi
-
-jails=/usr/local/jails
-pdrdir=/usr/local/etc/poudriere.d
-letc=/usr/local/etc
 
 uname | grep -i linux >/dev/null
 if [ $? -eq 0 ]
@@ -73,11 +79,7 @@ then
     alias remtd="rem -g -q"
 fi
 
-#if command -v keychain >/dev/null 2>&1
-#then
-#    eval $(keychain -q --eval id_rsa rsync.net)
-#fi
-
+# Functions
 function pdfpextr()
 {
     # this function uses 3 arguments:
