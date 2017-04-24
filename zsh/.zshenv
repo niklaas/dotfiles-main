@@ -9,6 +9,7 @@ autoload -U zmv         # loads zmv for bulk renaming
 jails=/usr/local/jails
 pdir=/usr/local/etc/poudriere.d
 letc=/usr/local/etc
+DT=$(date +%Y%m%d_%H%M%S)
 
 # Exports
 export EDITOR=vim
