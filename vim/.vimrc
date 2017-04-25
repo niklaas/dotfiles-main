@@ -4,6 +4,8 @@ filetype off
 " Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
+"Plugin 'ervandrew/supertab'
 Plugin 'LucHermitte/lh-vim-lib'
 Plugin 'LucHermitte/local_vimrc'
 Plugin 'VundleVim/Vundle.vim'
@@ -17,6 +19,7 @@ Plugin 'jamessan/vim-gnupg'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'lervag/vimtex'
+Plugin 'mattn/emmet-vim'
 Plugin 'matze/vim-move'
 Plugin 'reedes/vim-lexical'
 Plugin 'reedes/vim-pencil'
@@ -28,7 +31,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-scripts/VOoM'
 Plugin 'vimoutliner/vimoutliner'
-"Plugin 'ervandrew/supertab'
+
 call vundle#end()
 
 filetype plugin indent on
@@ -181,12 +184,6 @@ if exists(":Tabularize")
     nmap <leader>a: :Tabularize /:\zs<CR>
     vmap <leader>a: :Tabularize /:\zs<CR>
 endif
-
-" mintty setup
-"let &t_ti.="\e[1 q"
-"let &t_SI.="\e[5 q"
-"let &t_EI.="\e[1 q"
-"let &t_te.="\e[0 q"
 
 set t_Co=256
 
