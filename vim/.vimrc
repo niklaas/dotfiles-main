@@ -9,6 +9,7 @@ call vundle#begin()
 Plugin 'LucHermitte/lh-vim-lib'
 Plugin 'LucHermitte/local_vimrc'
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'blindFS/vim-reveal'
 Plugin 'chilicuil/vim-sprunge'
 Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-tmux-navigator'
