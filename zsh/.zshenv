@@ -9,7 +9,6 @@ autoload -U zmv         # loads zmv for bulk renaming
 jails=/usr/local/jails
 pdir=/usr/local/etc/poudriere.d
 letc=/usr/local/etc
-DT=$(date +%Y%m%d_%H%M%S)
 
 # Exports
 export EDITOR=vim
@@ -22,6 +21,8 @@ export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 # Normal aliases
 alias a="aptitude"
 alias aria2cd="aria2c --enable-rpc --rpc-listen-all"
+alias dt="date +%Y%m%d_%H%M%S"
+alias dti="date +%FT%T"
 alias gsu="git submodule update --recursive --remote"
 alias je="sudo jexec"
 alias jl="jls | cut -f 2 -w | tail +2"
