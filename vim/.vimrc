@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
 
-" Vundle
+" VUNDLE =================
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -38,46 +38,51 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
+" EXTENSIONS =============
+
 " allows displaying of man pages with :Man <program>
 runtime! ftplugin/man.vim
 
-scriptencoding utf-8
+" GENERAL ================
 
 let mapleader = ","
 
-set cpo+=$
-set showmatch
-set ruler
-set nojoinspaces
-set modelines=5
-set cryptmethod=blowfish
-set nobackup
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set autowrite
-set hidden
-set wildmenu
-set pastetoggle=<f11>
-set visualbell
 set backspace=indent,eol,start
-set shortmess=at
-set whichwrap=<,>,h,l
-set viminfo=%,'50,\"100,:100,n~/.viminfo,<10,f
-set tags=./tags,./TAGS,tags,TAGS,../tags,../../tags,../../../tags,../../../../tags
-set linebreak
-set ignorecase
-set smartcase
-set incsearch
-set nowrap
-set showbreak=+
+set cpo+=$
+set cryptmethod=blowfish
 set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+set hidden
+set ignorecase
+set incsearch
+set linebreak
+set modelines=5
+set nobackup
+set nojoinspaces
+set nowrap
+set pastetoggle=<f11>
+set ruler
+set shortmess=at
+set showbreak=+
+set showmatch
+set smartcase
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+set tags=./tags,./TAGS,tags,TAGS,../tags,../../tags,../../../tags,../../../../tags
+set viminfo=%,'50,\"100,:100,n~/.viminfo,<10,f
+set visualbell
+set whichwrap=<,>,h,l
+set wildmenu
 
 "set statusline=%{fugitive#statusline()}
 
 set laststatus=2
 
+" encoding
+scriptencoding utf-8
 set encoding=utf-8
 set fileencoding=utf-8
 
+" formatting
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -89,20 +94,12 @@ set formatoptions=croq
 set spelllang=de_20,en_gb
 set spellfile=~/.vim/spell/de.utf-8.add
 
+" changes cursor depending on mode
 let &t_SI = "\<Esc>[6 q"
 let &t_EI = "\<Esc>[2 q"
 
-" keymaps
-
-nmap <leader>ms :1,7s/<.*@niklaas.eu/<stdin@niklaas.eu<CR><C-o>
-nmap <leader>mm :1,7s/<.*@niklaas.eu/<me@niklaas.eu<CR><C-o>
-nmap <leader>mp :1,1s/<.*@\(.*\)>/<postmaster@\1><CR><C-o>
-
-" Eases navigation between splits
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" always cd to the dir of the file we're editing
+autocmd BufEnter * silent! lcd %:p:h
 
 " printing
 "set pdev=PDF
@@ -110,11 +107,36 @@ nnoremap <C-H> <C-W><C-H>
 "map <leader>hb :setlocal printoptions=paper:A4,syntax:n,wrap:y,duplex:long<CR>:ha<CR>
 "map <leader>hc :setlocal printoptions=paper:A4,syntax:y,wrap:y,duplex:long<CR>:ha<CR>
 
-" opens file at the line that was edited last
-"autocmd BufReadPost * if line("'\"") && line("'\"") <= line("$") | exe "normal `\"" | endif
+" MAPS & ABBREVIATIONS ===
 
-" always cd to the dir of the file we're editing
-autocmd BufEnter * silent! lcd %:p:h
+nmap <leader>ms :1,7s/<.*@niklaas.eu/<stdin@niklaas.eu<CR><C-o>
+nmap <leader>mm :1,7s/<.*@niklaas.eu/<me@niklaas.eu<CR><C-o>
+nmap <leader>mp :1,1s/<.*@\(.*\)>/<postmaster@\1><CR><C-o>
+
+"map ,L  1G/Latest change:\s*/e+1<CR>CYDATE<ESC>
+
+" kill quote spaces when quoting a quote
+"map ,kqs mz:%s/^> >/>>/<cr>
+
+" delete trailing white space
+"nmap ;tr :%s/\s\+$//
+"vmap ;tr :s/\s\+$//
+
+" type w!! to save as root
+if has("unix")
+    cmap w!! w !sudo tee >/dev/null %
+endif
+
+" Eases navigation between splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" inserts timestamp (ISO compliant with colon in timezone)
+ia aTS <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
+
+" PLUGINS ================
 
 let g:sprunge_map = "<leader><leader>s"
 let g:sprunge_open_browser = 1
@@ -164,25 +186,6 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-" abbreviations
-
-" inserts timestamp (ISO compliant with colon in timezone)
-ia YDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
-
-"map ,L  1G/Latest change:\s*/e+1<CR>CYDATE<ESC>
-
-" kill quote spaces when quoting a quote
-"map ,kqs mz:%s/^> >/>>/<cr>
-
-" delete trailing white space
-"nmap ;tr :%s/\s\+$//
-"vmap ;tr :s/\s\+$//
-
-" type w!! to save as root
-if has("unix")
-    cmap w!! w !sudo tee >/dev/null %
-endif
-
 if exists(":Tabularize")
     nmap <leader>a= :Tabularize /=<CR>
     vmap <leader>a= :Tabularize /=<CR>
@@ -191,7 +194,6 @@ if exists(":Tabularize")
 endif
 
 set t_Co=256
-
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
