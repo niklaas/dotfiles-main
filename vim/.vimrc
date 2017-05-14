@@ -164,7 +164,11 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
-"iab YDATE <C-R>=strftime("%a %b %d %T %Z %Y")<CR>
+" abbreviations
+
+" inserts timestamp (ISO compliant with colon in timezone)
+ia YDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
+
 "map ,L  1G/Latest change:\s*/e+1<CR>CYDATE<ESC>
 
 " kill quote spaces when quoting a quote
