@@ -134,7 +134,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " inserts timestamp (ISO compliant with colon in timezone)
-ia aTS <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
+ia aDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
 
 " PLUGINS ================
 
