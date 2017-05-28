@@ -74,7 +74,7 @@ set visualbell
 set whichwrap=<,>,h,l
 set wildmenu
 
-"set statusline=%{fugitive#statusline()}
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 set laststatus=2
 
