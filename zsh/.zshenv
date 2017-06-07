@@ -17,6 +17,7 @@ export LANG=en_GB.UTF-8
 export LC_COLLATE=C
 export MOSH_TITLE_NOPREFIX="YES"
 export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
+export TERMINAL="xterm"
 
 # Normal aliases
 alias a="aptitude"
