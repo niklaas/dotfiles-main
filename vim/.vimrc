@@ -8,6 +8,7 @@ call vundle#begin()
 "Plugin 'ervandrew/supertab'
 Plugin 'LucHermitte/lh-vim-lib'
 Plugin 'LucHermitte/local_vimrc'
+Plugin 'Raimondi/delimitMate'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'baskerville/vim-sxhkdrc'
 Plugin 'blindFS/vim-reveal'
