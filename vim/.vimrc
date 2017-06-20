@@ -194,6 +194,11 @@ vmap <leader>a= :Tabularize /=<CR>
 nmap <leader>a: :Tabularize /:\zs<CR>
 vmap <leader>a: :Tabularize /:\zs<CR>
 
+if executable('ag')
+    set grepprg=ag\ --vimgrep\ $*
+    set grepformat=%f:%l:%c:%m
+endif
+
 set t_Co=256
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
