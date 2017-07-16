@@ -3,6 +3,7 @@ source $HOME/.antigen/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zsh-users/zsh-autosuggestions
 antigen theme flazz
 antigen apply
@@ -15,3 +16,6 @@ bindkey -v
 
 bindkey '^a' autosuggest-accept
 bindkey '^e' autosuggest-execute
+
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
