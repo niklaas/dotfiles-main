@@ -4,7 +4,8 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
-antigen theme flazz
+antigen bundle mafredri/zsh-async
+antigen bundle sindresorhus/pure
 antigen apply
 
 BASE16_SHELL=$HOME/.config/base16-shell/
