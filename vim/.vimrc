@@ -227,3 +227,6 @@ let g:tex_favour = 'latex'
 
 let R_in_buffer = 0
 let R_tmux_split = 1
+
+" Nvim-R
+let r_indent_align_args = 0
