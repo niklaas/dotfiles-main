@@ -101,8 +101,11 @@ set spellfile=~/.vim/spell/de.utf-8.add
 let &t_SI = "\<Esc>[6 q"
 let &t_EI = "\<Esc>[2 q"
 
-" always cd to the dir of the file we're editing
-autocmd BufEnter * silent! lcd %:p:h
+" Expands %% to the directory of the current file
+cabbr <expr> %% expand('%:p:h')
+
+" Implements command to quickly swith to directory of current file
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " printing
 "set pdev=PDF
@@ -230,3 +233,4 @@ let R_tmux_split = 1
 
 " Nvim-R
 let r_indent_align_args = 0
+let r_indent_ess_compatible = 1
