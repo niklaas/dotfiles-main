@@ -101,8 +101,11 @@ set spellfile=~/.vim/spell/de.utf-8.add
 let &t_SI = "\<Esc>[6 q"
 let &t_EI = "\<Esc>[2 q"
 
-" always cd to the dir of the file we're editing
-autocmd BufEnter * silent! lcd %:p:h
+" cd to the directory of the file current file
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" Expand %% to the current directory
+cabbr <expr> %% expand('%:p:h')
 
 " printing
 "set pdev=PDF
