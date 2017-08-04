@@ -102,11 +102,14 @@ set spellfile=~/.vim/spell/de.utf-8.add
 let &t_SI = "\<Esc>[6 q"
 let &t_EI = "\<Esc>[2 q"
 
-" Expands %% to the directory of the current file
+" cd to the directory of the file current file
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" Expand %% to the current directory
 cabbr <expr> %% expand('%:p:h')
 
-" Implements command to quickly swith to directory of current file
-nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+" printing
+"set pdev=PDF
 
 " printing
 "set pdev=PDF
@@ -232,6 +235,9 @@ let g:tex_favour = 'latex'
 let R_in_buffer = 0
 let R_tmux_split = 1
 
+
 " Nvim-R
 let r_indent_align_args = 0
 let r_indent_ess_compatible = 1
+let R_nvim_wd = 1
+
