@@ -25,6 +25,7 @@ Plugin 'junegunn/limelight.vim'
 Plugin 'lervag/vimtex'
 Plugin 'mattn/emmet-vim'
 Plugin 'matze/vim-move'
+Plugin 'mllg/vim-devtools-plugin'
 Plugin 'reedes/vim-lexical'
 Plugin 'reedes/vim-pencil'
 Plugin 'reedes/vim-thematic'
@@ -106,6 +107,9 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Expand %% to the current directory
 cabbr <expr> %% expand('%:p:h')
+
+" printing
+"set pdev=PDF
 
 " printing
 "set pdev=PDF
@@ -230,4 +234,10 @@ let g:tex_favour = 'latex'
 
 let R_in_buffer = 0
 let R_tmux_split = 1
+
+
+" Nvim-R
+let r_indent_align_args = 0
+let r_indent_ess_compatible = 1
 let R_nvim_wd = 1
+
