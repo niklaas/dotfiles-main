@@ -230,4 +230,4 @@ let g:tex_favour = 'latex'
 
 let R_in_buffer = 0
 let R_tmux_split = 1
-let R_nvim_wd = -1
+let R_nvim_wd = 1
