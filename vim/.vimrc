@@ -238,3 +238,4 @@ let R_tmux_split = 1
 
 " Nvim-R
 let R_nvim_wd = 1
+let R_assign = 0
