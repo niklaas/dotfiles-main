@@ -2,6 +2,12 @@
 typeset -U path
 path=(~/bin $path)
 
+# Fixes wrong umask when running in WSL
+if uname -a | grep -q Microsoft 
+then
+    umask 022
+fi
+
 # ZSH modules
 autoload -U zmv         # loads zmv for bulk renaming
 
