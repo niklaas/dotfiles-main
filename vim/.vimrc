@@ -38,6 +38,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-scripts/VOoM'
 Plugin 'vimoutliner/vimoutliner'
+Plugin 'gregsexton/gitv'
 
 call vundle#end()
 
