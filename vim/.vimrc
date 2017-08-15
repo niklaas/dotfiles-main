@@ -10,6 +10,7 @@ Plugin 'LucHermitte/lh-vim-lib'
 Plugin 'LucHermitte/local_vimrc'
 Plugin 'Raimondi/delimitMate'
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'baskerville/vim-sxhkdrc'
 Plugin 'blindFS/vim-reveal'
 Plugin 'cespare/vim-toml'
@@ -76,6 +77,7 @@ set viminfo=%,'50,\"100,:100,n~/.viminfo,<10,f
 set visualbell
 set whichwrap=<,>,h,l
 set wildmenu
+set updatetime=250
 
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
