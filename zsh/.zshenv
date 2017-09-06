@@ -13,6 +13,12 @@ then
     eval $(dircolors $HOME/.dir_colors)
 fi
 
+# Ensures that the chosen base16 theme propagates correctly
+if [ ! -f $HOME/.base16_theme ]
+then
+    base16_default-dark
+fi
+
 # ZSH modules
 autoload -U zmv         # loads zmv for bulk renaming
 
