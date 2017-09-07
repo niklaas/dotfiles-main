@@ -228,8 +228,8 @@ if has('gui_running')
     set guioptions-=R
     set guioptions-=l
     set guioptions-=L
-    set lines=32
-    set columns=82
+    set lines=50
+    set columns=120
     if has("gui_gtk2")
         set guifont=Monospace\ 11
         set background=dark
