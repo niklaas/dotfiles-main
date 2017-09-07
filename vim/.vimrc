@@ -2,8 +2,13 @@ set nocompatible
 filetype off
 
 " VUNDLE =================
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+if has("win32")
+    set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
+    call vundle#begin('$HOME/vimfiles/bundle/')
+else
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+endif
 
 "Plugin 'ervandrew/supertab'
 Plugin 'LucHermitte/lh-vim-lib'
