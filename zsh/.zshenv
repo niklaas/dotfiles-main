@@ -30,7 +30,7 @@ letc=/usr/local/etc
 # Exports
 export EDITOR=vim
 export HOSTNAME=$(hostname)
-export LANG=en_GB.UTF-8
+export LANG=en_US.UTF-8
 export LC_COLLATE=C
 export MOSH_TITLE_NOPREFIX="YES"
 export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
