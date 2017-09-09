@@ -104,6 +104,8 @@ set autoindent
 set comments=b:#,:%,fb:-,n:>,n:)
 set formatoptions=croq
 
+autocmd FileType r setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
 set spelllang=de_20,en_gb
 set spellfile=~/.vim/spell/de.utf-8.add
 
