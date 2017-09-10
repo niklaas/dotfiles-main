@@ -10,9 +10,9 @@ else
     call vundle#begin()
 endif
 
+"Plugin 'LucHermitte/lh-vim-lib'
+"Plugin 'LucHermitte/local_vimrc'
 "Plugin 'ervandrew/supertab'
-Plugin 'LucHermitte/lh-vim-lib'
-Plugin 'LucHermitte/local_vimrc'
 Plugin 'Raimondi/delimitMate'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
@@ -22,6 +22,7 @@ Plugin 'cespare/vim-toml'
 Plugin 'chilicuil/vim-sprunge'
 Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'embear/vim-localvimrc'
 Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
 Plugin 'hashivim/vim-terraform'
@@ -103,6 +104,8 @@ set softtabstop=4
 set autoindent
 set comments=b:#,:%,fb:-,n:>,n:)
 set formatoptions=croq
+
+autocmd FileType r setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 set spelllang=de_20,en_gb
 set spellfile=~/.vim/spell/de.utf-8.add
