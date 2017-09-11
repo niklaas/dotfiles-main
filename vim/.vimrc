@@ -242,7 +242,13 @@ if has('gui_running')
     endif
 endif
 
-let g:tex_favour = 'latex'
+" vimtex
+if has("win32")
+    let g:vimtex_view_general_viewer = 'SumatraPDF'
+    let g:vimtex_view_general_options
+        \ = '-reuse-instance -forward-search @tex @line @pdf'
+    let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+endif
 
 " Nvim-R
 let R_in_buffer = 0
