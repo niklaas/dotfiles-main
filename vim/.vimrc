@@ -45,6 +45,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-scripts/VOoM'
 Plugin 'vimoutliner/vimoutliner'
+Plugin 'zhou13/vim-easyescape'
 
 call vundle#end()
 
@@ -154,6 +155,11 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+let g:easyescape_chars = { "j": 1, "k": 1 }
+let g:easyescape_timeout = 2000
+cnoremap jk <ESC>
+cnoremap kj <ESC>
 
 " inserts timestamp (ISO compliant with colon in timezone)
 ia aDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
