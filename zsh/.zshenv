@@ -28,6 +28,7 @@ pdir=/usr/local/etc/poudriere.d
 letc=/usr/local/etc
 
 # Exports
+export SHELL=$(command -v zsh)
 export EDITOR=vim
 export HOSTNAME=$(hostname)
 
