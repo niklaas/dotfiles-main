@@ -90,6 +90,16 @@ set whichwrap=<,>,h,l
 set wildmenu
 set updatetime=250
 
+if(has("win32"))
+    set backupdir=~/vimfiles/backup//
+    set directory=~/vimfiles/swap//,.
+    set undodir=~/vimfiles/undo//
+else
+    set backupdir=~/.vim/backup//
+    set directory=~/.vim/swap//,/var/tmp//,/tmp//,.
+    set undodir=~/.vim/undo//
+endif
+
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 set laststatus=2
