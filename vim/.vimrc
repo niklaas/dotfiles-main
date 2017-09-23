@@ -67,7 +67,6 @@ set autowrite
 set backspace=indent,eol,start
 set cpo+=$
 set cryptmethod=blowfish
-set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 set hidden
 set ignorecase
 set incsearch
@@ -256,8 +255,7 @@ if has('gui_running')
     if has("gui_gtk2")
         set guifont=Monospace\ 11
         set background=dark
-    endif
-    if has("gui_win32")
+    elseif has("gui_win32")
         set guifont=Consolas:h10:cANSI
     endif
 endif
