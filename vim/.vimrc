@@ -176,14 +176,50 @@ cnoremap kj <ESC>
 " inserts timestamp (ISO compliant with colon in timezone)
 ia aDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
 
-" PLUGINS ================
+if executable('ag')
+    set grepprg=ag\ --vimgrep\ $*
+    set grepformat=%f:%l:%c:%m
+endif
 
+set t_Co=256
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" GUI
+
+if has('gui_running')
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=r
+    set guioptions-=R
+    set guioptions-=l
+    set guioptions-=L
+    set lines=50
+    set columns=120
+    if has("gui_gtk2")
+        set guifont=Monospace\ 11
+        set background=dark
+    elseif has("gui_win32")
+        set guifont=Consolas:h10:cANSI
+    endif
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGINS
+
+" Sprunge
 let g:sprunge_map = "<leader><leader>s"
 let g:sprunge_open_browser = 1
 
+" VOom
 let g:voom_tree_placement = "top"
 let g:voom_tree_height = 5
 
+
+" Lexical
 let g:lexical#spell_key = '<leader>s'
 let g:lexical#thesaurus_key = '<leader>t'
 let g:lexical#dictionary_key = '<leader>k'
@@ -216,39 +252,10 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " Tabularize
-
 nmap <leader>a= :Tabularize /=<CR>
 vmap <leader>a= :Tabularize /=<CR>
 nmap <leader>a: :Tabularize /:\zs<CR>
 vmap <leader>a: :Tabularize /:\zs<CR>
-
-if executable('ag')
-    set grepprg=ag\ --vimgrep\ $*
-    set grepformat=%f:%l:%c:%m
-endif
-
-set t_Co=256
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
-if has('gui_running')
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions-=r
-    set guioptions-=R
-    set guioptions-=l
-    set guioptions-=L
-    set lines=50
-    set columns=120
-    if has("gui_gtk2")
-        set guifont=Monospace\ 11
-        set background=dark
-    elseif has("gui_win32")
-        set guifont=Consolas:h10:cANSI
-    endif
-endif
 
 " vimtex
 if has("win32")
