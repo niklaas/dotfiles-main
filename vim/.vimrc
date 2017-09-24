@@ -13,6 +13,7 @@ endif
 "Plugin 'LucHermitte/lh-vim-lib'
 "Plugin 'LucHermitte/local_vimrc'
 "Plugin 'ervandrew/supertab'
+"Plugin 'reedes/vim-pencil'
 "Plugin 'reedes/vim-thematic'
 Plugin 'Raimondi/delimitMate'
 Plugin 'VundleVim/Vundle.vim'
@@ -33,7 +34,6 @@ Plugin 'mattn/emmet-vim'
 Plugin 'matze/vim-move'
 Plugin 'mllg/vim-devtools-plugin'
 Plugin 'reedes/vim-lexical'
-Plugin 'reedes/vim-pencil'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
@@ -47,6 +47,7 @@ Plugin 'zhou13/vim-easyescape'
 Plugin 'baskerville/vim-sxhkdrc'
 Plugin 'blindFS/vim-reveal'
 Plugin 'cespare/vim-toml'
+Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 
 call vundle#end()
@@ -186,17 +187,6 @@ let g:voom_tree_height = 5
 let g:lexical#spell_key = '<leader>s'
 let g:lexical#thesaurus_key = '<leader>t'
 let g:lexical#dictionary_key = '<leader>k'
-
-" pencil
-augroup pencil
-    autocmd!
-    autocmd FileType text     call pencil#init()
-                \ | setl spell
-    autocmd FileType mail     call pencil#init()
-                \ | setl spell
-    autocmd FileType markdown call pencil#init()
-                \ | setl spell
-augroup END
 
 " Goyo
 function! s:goyo_enter()
