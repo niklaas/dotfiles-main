@@ -39,6 +39,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
+Plugin 'vim-pandoc/vim-rmarkdown'
 Plugin 'vim-scripts/VOoM'
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'zhou13/vim-easyescape'
@@ -118,7 +119,8 @@ set autoindent
 set comments=b:#,:%,fb:-,n:>,n:)
 set formatoptions=croq
 
-autocmd FileType r setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType r   setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType rmd setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 set spelllang=de_20,en_gb
 set spellfile=~/.vim/spell/de.utf-8.add
@@ -253,6 +255,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " Pandoc
 let g:pandoc#modules#disabled = ["chdir"]
+"let g:pandoc#formatting#mode = "hA"
 
 " Tabularize
 nmap <leader>a= :Tabularize /=<CR>
