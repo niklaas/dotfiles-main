@@ -23,13 +23,13 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'embear/vim-localvimrc'
-Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
 Plugin 'hashivim/vim-terraform'
 Plugin 'jalvesaq/Nvim-R'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'lervag/vimtex'
 Plugin 'mattn/emmet-vim'
 Plugin 'matze/vim-move'
@@ -37,10 +37,10 @@ Plugin 'mllg/vim-devtools-plugin'
 Plugin 'reedes/vim-lexical'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-vinegar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-pandoc/vim-rmarkdown'
@@ -284,12 +284,6 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " Pandoc
 let g:pandoc#modules#disabled = ["chdir"]
 "let g:pandoc#formatting#mode = "hA"
-
-" Tabularize
-nmap <leader>a= :Tabularize /=<CR>
-vmap <leader>a= :Tabularize /=<CR>
-nmap <leader>a: :Tabularize /:\zs<CR>
-vmap <leader>a: :Tabularize /:\zs<CR>
 
 " vimtex
 if has("win32")
