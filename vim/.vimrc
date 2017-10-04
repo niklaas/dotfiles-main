@@ -228,6 +228,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:syntastic_enable_r_lintr_checker = 1
+let g:syntastic_r_checkers = ['lintr']
+
 " VOom
 let g:voom_tree_placement = "top"
 let g:voom_tree_height = 5
