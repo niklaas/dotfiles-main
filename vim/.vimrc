@@ -77,6 +77,7 @@ set hidden
 set ignorecase
 set incsearch
 set linebreak
+set list
 set modelines=5
 set nobackup
 set nojoinspaces
