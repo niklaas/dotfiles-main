@@ -219,6 +219,15 @@ endif
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+if has("unix")
+    let g:ctrlp_user_command = {
+    \ 'types': {
+      \ 1: ['.git', 'cd %s && git ls-files']
+      \ },
+    \ 'fallback': 'find %s -type f'
+    \ }
+endif
+
 " Sprunge
 let g:sprunge_map = "<leader><leader>s"
 let g:sprunge_open_browser = 1
