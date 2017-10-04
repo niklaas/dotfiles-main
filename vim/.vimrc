@@ -21,6 +21,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'chilicuil/vim-sprunge'
 Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'embear/vim-localvimrc'
 Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
@@ -212,6 +213,10 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS
+
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " Sprunge
 let g:sprunge_map = "<leader><leader>s"
