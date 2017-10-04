@@ -220,7 +220,7 @@ let g:sprunge_open_browser = 1
 let g:voom_tree_placement = "top"
 let g:voom_tree_height = 5
 
-" vim-airline
+" Airline
 let g:airline_theme = 'base16_default'
 
 " Lexical
