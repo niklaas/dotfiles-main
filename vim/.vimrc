@@ -123,6 +123,11 @@ set autoindent
 set comments=b:#,:%,fb:-,n:>,n:)
 set formatoptions=croq
 
+if (exists('+colorcolumn'))
+    set colorcolumn=80
+    highlight ColorColumn ctermbg=18
+endif
+
 autocmd FileType r   setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType rmd setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
