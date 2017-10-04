@@ -39,6 +39,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-pandoc/vim-rmarkdown'
 Plugin 'vim-scripts/VOoM'
 Plugin 'vimoutliner/vimoutliner'
@@ -100,8 +102,6 @@ else
     set directory=~/.vim/swap//,/var/tmp//,/tmp//,.
     set undodir=~/.vim/undo//
 endif
-
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 set laststatus=2
 
@@ -220,6 +220,8 @@ let g:sprunge_open_browser = 1
 let g:voom_tree_placement = "top"
 let g:voom_tree_height = 5
 
+" vim-airline
+let g:airline_theme = 'base16_default'
 
 " Lexical
 let g:lexical#spell_key = '<leader>s'
