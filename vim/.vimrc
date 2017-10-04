@@ -144,29 +144,11 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 " Expand %% to the current directory
 cabbr <expr> %% expand('%:p:h')
 
-" printing
-"set pdev=PDF
-
-" printing
-"set pdev=PDF
-"set printoptions=paper:A4,syntax:y,wrap:y,duplex:long
-"map <leader>hb :setlocal printoptions=paper:A4,syntax:n,wrap:y,duplex:long<CR>:ha<CR>
-"map <leader>hc :setlocal printoptions=paper:A4,syntax:y,wrap:y,duplex:long<CR>:ha<CR>
-
 " MAPS & ABBREVIATIONS ===
 
 nmap <leader>ms :1,7s/<.*@niklaas.eu/<stdin@niklaas.eu<CR><C-o>
 nmap <leader>mm :1,7s/<.*@niklaas.eu/<me@niklaas.eu<CR><C-o>
 nmap <leader>mp :1,1s/<.*@\(.*\)>/<postmaster@\1><CR><C-o>
-
-"map ,L  1G/Latest change:\s*/e+1<CR>CYDATE<ESC>
-
-" kill quote spaces when quoting a quote
-"map ,kqs mz:%s/^> >/>>/<cr>
-
-" delete trailing white space
-"nmap ;tr :%s/\s\+$//
-"vmap ;tr :s/\s\+$//
 
 " type w!! to save as root
 if has("unix")
