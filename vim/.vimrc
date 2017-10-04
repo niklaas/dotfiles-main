@@ -229,6 +229,10 @@ if has("unix")
     \ }
 endif
 
+" vim-easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 " Sprunge
 let g:sprunge_map = "<leader><leader>s"
 let g:sprunge_open_browser = 1
