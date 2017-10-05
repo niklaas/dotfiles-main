@@ -296,3 +296,4 @@ let R_tmux_split = 1
 let R_nvim_wd = 1
 let R_assign = 0
 let r_indent_ess_compatible = 1
+let r_indent_align_args = 0
