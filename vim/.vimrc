@@ -219,7 +219,10 @@ if has("unix")
     \ }
 endif
 
-" vim-easy-align
+" DelimitMate
+let delimitMate_expand_cr = 1
+
+" Easy Align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
