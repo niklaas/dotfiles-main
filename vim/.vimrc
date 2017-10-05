@@ -162,6 +162,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+nnoremap Y y$
+
 let g:easyescape_chars = { "j": 1, "k": 1 }
 let g:easyescape_timeout = 2000
 cnoremap jk <ESC>
