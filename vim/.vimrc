@@ -21,24 +21,30 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'chilicuil/vim-sprunge'
 Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'embear/vim-localvimrc'
-Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
 Plugin 'hashivim/vim-terraform'
 Plugin 'jalvesaq/Nvim-R'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/limelight.vim'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'lervag/vimtex'
 Plugin 'mattn/emmet-vim'
 Plugin 'matze/vim-move'
 Plugin 'mllg/vim-devtools-plugin'
+Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'reedes/vim-lexical'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-vinegar'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-pandoc/vim-rmarkdown'
 Plugin 'vim-scripts/VOoM'
 Plugin 'vimoutliner/vimoutliner'
 Plugin 'zhou13/vim-easyescape'
@@ -49,6 +55,7 @@ Plugin 'blindFS/vim-reveal'
 Plugin 'cespare/vim-toml'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'vim-syntastic/syntastic'
 
 call vundle#end()
 
@@ -72,6 +79,7 @@ set hidden
 set ignorecase
 set incsearch
 set linebreak
+set list
 set modelines=5
 set nobackup
 set nojoinspaces
@@ -84,11 +92,11 @@ set showmatch
 set smartcase
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set tags=./tags,./TAGS,tags,TAGS,../tags,../../tags,../../../tags,../../../../tags
+set updatetime=250
 set viminfo=%,'50,:100,<1000
 set visualbell
 set whichwrap=<,>,h,l
 set wildmenu
-set updatetime=250
 
 if(has("win32"))
     set backupdir=~/vimfiles/backup//
@@ -99,8 +107,6 @@ else
     set directory=~/.vim/swap//,/var/tmp//,/tmp//,.
     set undodir=~/.vim/undo//
 endif
-
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 set laststatus=2
 
@@ -118,7 +124,13 @@ set autoindent
 set comments=b:#,:%,fb:-,n:>,n:)
 set formatoptions=croq
 
-autocmd FileType r setlocal tabstop=2 shiftwidth=2 softtabstop=2
+if (exists('+colorcolumn'))
+    set colorcolumn=80
+    highlight ColorColumn ctermbg=18
+endif
+
+autocmd FileType r   setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType rmd setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 set spelllang=de_20,en_gb
 set spellfile=~/.vim/spell/de.utf-8.add
@@ -133,29 +145,11 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 " Expand %% to the current directory
 cabbr <expr> %% expand('%:p:h')
 
-" printing
-"set pdev=PDF
-
-" printing
-"set pdev=PDF
-"set printoptions=paper:A4,syntax:y,wrap:y,duplex:long
-"map <leader>hb :setlocal printoptions=paper:A4,syntax:n,wrap:y,duplex:long<CR>:ha<CR>
-"map <leader>hc :setlocal printoptions=paper:A4,syntax:y,wrap:y,duplex:long<CR>:ha<CR>
-
 " MAPS & ABBREVIATIONS ===
 
 nmap <leader>ms :1,7s/<.*@niklaas.eu/<stdin@niklaas.eu<CR><C-o>
 nmap <leader>mm :1,7s/<.*@niklaas.eu/<me@niklaas.eu<CR><C-o>
 nmap <leader>mp :1,1s/<.*@\(.*\)>/<postmaster@\1><CR><C-o>
-
-"map ,L  1G/Latest change:\s*/e+1<CR>CYDATE<ESC>
-
-" kill quote spaces when quoting a quote
-"map ,kqs mz:%s/^> >/>>/<cr>
-
-" delete trailing white space
-"nmap ;tr :%s/\s\+$//
-"vmap ;tr :s/\s\+$//
 
 " type w!! to save as root
 if has("unix")
@@ -210,14 +204,42 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS
 
+" CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+if has("unix")
+    let g:ctrlp_user_command = {
+    \ 'types': {
+      \ 1: ['.git', 'cd %s && git ls-files']
+      \ },
+    \ 'fallback': 'find %s -type f'
+    \ }
+endif
+
+" vim-easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 " Sprunge
 let g:sprunge_map = "<leader><leader>s"
 let g:sprunge_open_browser = 1
+
+" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_enable_r_lintr_checker = 1
+let g:syntastic_r_checkers = ['lintr']
 
 " VOom
 let g:voom_tree_placement = "top"
 let g:voom_tree_height = 5
 
+" Airline
+let g:airline_theme = 'base16_default'
 
 " Lexical
 let g:lexical#spell_key = '<leader>s'
@@ -253,12 +275,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " Pandoc
 let g:pandoc#modules#disabled = ["chdir"]
-
-" Tabularize
-nmap <leader>a= :Tabularize /=<CR>
-vmap <leader>a= :Tabularize /=<CR>
-nmap <leader>a: :Tabularize /:\zs<CR>
-vmap <leader>a: :Tabularize /:\zs<CR>
+"let g:pandoc#formatting#mode = "hA"
 
 " vimtex
 if has("win32")
