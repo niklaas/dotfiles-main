@@ -126,6 +126,13 @@ function pdfpextr()
        ${3}
 }
 
+function prepareGitOnWSL()
+{
+    # https://github.com/Microsoft/BashOnWindows/issues/184#issuecomment-287853688
+    git config core.autocrlf true
+    git config core.filemode false
+}
+
 function lprdbl()
 {
     lpr -P PDF \
