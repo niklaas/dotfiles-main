@@ -284,6 +284,9 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 let g:pandoc#modules#disabled = ["chdir"]
 "let g:pandoc#formatting#mode = "hA"
 
+" Scala
+let g:scala_scaladoc_indent = 1
+
 " vimtex
 if has("win32")
     let g:vimtex_view_general_viewer = 'SumatraPDF'
