@@ -6,6 +6,7 @@ if uname -a | grep -q Microsoft
 then
     umask 022
     alias docker="docker.exe"
+    alias java="java.exe"
 fi
 
 if [ -f $HOME/.dir_colors ]
