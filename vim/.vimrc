@@ -71,11 +71,11 @@ runtime! ftplugin/man.vim
 
 let mapleader = ","
 
+"set cursorline
 set autowrite
 set backspace=indent,eol,start
 set cpo+=$
 set cryptmethod=blowfish
-set cursorline
 set hidden
 set ignorecase
 set incsearch
