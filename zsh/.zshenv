@@ -2,10 +2,10 @@
 typeset -U path
 path=(~/bin $path)
 
-# In WSL umask isn't set properly, so this is a workaround
 if uname -a | grep -q Microsoft
 then
     umask 022
+    alias docker="docker.exe"
 fi
 
 if [ -f $HOME/.dir_colors ]
