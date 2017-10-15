@@ -5,8 +5,14 @@ path=(~/bin $path)
 if uname -a | grep -q Microsoft
 then
     umask 022
+
     alias docker="docker.exe"
     alias java="java.exe"
+
+    function pwdd()
+    {
+        pwd -P | sed 's#/mnt/\([a-zA-Z]\)#\U\1:#'
+    }
 fi
 
 if [ -f $HOME/.dir_colors ]
