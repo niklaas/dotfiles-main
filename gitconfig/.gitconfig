@@ -5,6 +5,8 @@
 	helper = cache
 [core]
 	editor = vim
+    autocrlf = false
+    filemode = false
 [merge]
 	tool = vimdiff
 [alias]
@@ -16,4 +18,4 @@
 [push]
 	default = current
 [http]
-	sslverify = false
+	sslverify = true
