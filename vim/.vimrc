@@ -241,6 +241,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:syntastic_ignore_files = ['\m\c.h$', '\m\.sbt$']
+" Only use one of `scalac` or `fsc` for checking syntax in Scala
+let g:syntastic_scala_checkers = ['fsc']
+
 let g:syntastic_enable_r_lintr_checker = 1
 let g:syntastic_r_checkers = ['lintr']
 
