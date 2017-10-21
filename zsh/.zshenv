@@ -9,6 +9,10 @@ then
     alias docker="docker.exe"
     alias java="java.exe"
 
+    # Java environment on Windows
+    export JAVA_HOME="/mnt/c/Program Files/Java/jre1.8.0_151"
+    export JDK_HOME="/mnt/c/Program Files/Java/jdk1.8.0_144"
+
     function pwdd()
     {
         pwd -P | sed 's#/mnt/\([a-zA-Z]\)#\U\1:#'
