@@ -60,6 +60,9 @@ Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-syntastic/syntastic'
 
+" IDE
+Plugin 'ensime/ensime-vim'
+
 call vundle#end()
 
 filetype plugin indent on
@@ -230,6 +233,11 @@ let delimitMate_expand_cr = 1
 " Easy Align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" Scala/ensime
+autocmd FileType scala nnoremap <localleader>df :EnDeclaration>CR>
+autocmd BufWritePost *.scala silent :EnTypeChec
+nnoremap <localleader>t :EnType<CR>
 
 " Sprunge
 let g:sprunge_map = "<leader><leader>s"
