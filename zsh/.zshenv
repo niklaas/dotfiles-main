@@ -46,6 +46,9 @@ export LC_COLLATE=C
 export MOSH_TITLE_NOPREFIX="YES"
 export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 
+# Simplifies prompt symbole for pure prompt
+export PURE_PROMPT_SYMBOL='>'
+
 if command -v uxterm >/dev/null 2>&1
 then
     export TERMINAL="uxterm"
