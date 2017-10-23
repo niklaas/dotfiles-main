@@ -41,6 +41,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -53,6 +54,8 @@ Plugin 'zhou13/vim-easyescape'
 Plugin 'baskerville/vim-sxhkdrc'
 Plugin 'blindFS/vim-reveal'
 Plugin 'cespare/vim-toml'
+Plugin 'derekwyatt/vim-sbt'
+Plugin 'derekwyatt/vim-scala'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-syntastic/syntastic'
@@ -71,10 +74,12 @@ runtime! ftplugin/man.vim
 
 let mapleader = ","
 
+"set cursorline
 set autowrite
 set backspace=indent,eol,start
 set cpo+=$
 set cryptmethod=blowfish
+set fileformat=unix
 set hidden
 set ignorecase
 set incsearch
@@ -281,6 +286,9 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " Pandoc
 let g:pandoc#modules#disabled = ["chdir"]
 "let g:pandoc#formatting#mode = "hA"
+
+" Scala
+let g:scala_scaladoc_indent = 1
 
 " vimtex
 if has("win32")

@@ -1,19 +1,21 @@
 [user]
-	name = Niklaas Baudet von Gersdorff
-	email = stdin@niklaas.eu
+    name = Niklaas Baudet von Gersdorff
+    email = stdin@niklaas.eu
 [credential]
-	helper = cache
+    helper = cache
 [core]
-	editor = vim
+    editor = vim
+    autocrlf = false
+    filemode = false
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-	last = log -1 HEAD
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    last = log -1 HEAD
 [push]
-	default = current
+    default = current
 [http]
-	sslverify = false
+    sslverify = true
