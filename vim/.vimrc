@@ -56,6 +56,7 @@ Plugin 'blindFS/vim-reveal'
 Plugin 'cespare/vim-toml'
 Plugin 'derekwyatt/vim-sbt'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'mrk21/yaml-vim'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-syntastic/syntastic'
@@ -137,8 +138,9 @@ if (exists('+colorcolumn'))
     highlight ColorColumn ctermbg=18
 endif
 
-autocmd FileType r   setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType rmd setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType r    setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType rmd  setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 set spelllang=de_20,en_gb
 set spellfile=~/.vim/spell/de.utf-8.add
