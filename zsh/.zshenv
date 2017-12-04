@@ -1,6 +1,6 @@
 # PATH
 typeset -U path
-path=(~/bin $path)
+path=(~/bin ~/go/bin $path)
 
 if uname -a | grep -q Microsoft
 then
@@ -42,6 +42,8 @@ letc=/usr/local/etc
 export SHELL=$(command -v zsh)
 export EDITOR=vim
 export HOSTNAME=$(hostname)
+
+export GOPATH=$HOME/go
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
