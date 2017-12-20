@@ -84,6 +84,7 @@ set backspace=indent,eol,start
 set cpo+=$
 set cryptmethod=blowfish
 set fileformat=unix
+set fileformats=unix,dos
 set hidden
 set ignorecase
 set incsearch
