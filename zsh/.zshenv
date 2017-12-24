@@ -2,23 +2,6 @@
 typeset -U path
 path=(~/bin ~/go/bin $path)
 
-if uname -a | grep -q Microsoft
-then
-    umask 022
-
-    alias docker="docker.exe"
-    alias java="java.exe"
-
-    # Java environment on Windows
-    export JAVA_HOME="/mnt/c/Program Files/Java/jre1.8.0_151"
-    export JDK_HOME="/mnt/c/Program Files/Java/jdk1.8.0_144"
-
-    function pwdd()
-    {
-        pwd -P | sed 's#/mnt/\([a-zA-Z]\)#\U\1:#'
-    }
-fi
-
 if [ -f $HOME/.dir_colors ]
 then
     eval $(dircolors $HOME/.dir_colors)
@@ -55,6 +38,7 @@ export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 # Simplifies prompt symbole for pure prompt
 export PURE_PROMPT_SYMBOL='>'
 
+# Export default TERMINAL
 if command -v uxterm >/dev/null 2>&1
 then
     export TERMINAL="uxterm"
@@ -125,4 +109,22 @@ then
     alias remmn="rem -c -m $(date  +%b\ %Y --date='next month')"
     alias remtm="rem -g -q $(date  +%d\ %b\ %Y --date='tomorrow')"
     alias remtd="rem -g -q"
+fi
+
+# WSL specific #######################################################
+
+if uname -a | grep -q Microsoft
+then
+    umask 022
+
+    alias docker="docker.exe"
+    alias java="java.exe"
+
+    # Java environment on Windows
+    export JAVA_HOME="/mnt/c/Program Files/Java/jre1.8.0_151"
+    export JDK_HOME="/mnt/c/Program Files/Java/jdk1.8.0_144"
+
+    function pwdd() {
+        pwd -P | sed 's#/mnt/\([a-zA-Z]\)#\U\1:#'
+    }
 fi
