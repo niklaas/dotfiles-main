@@ -120,6 +120,8 @@ then
     alias docker="docker.exe"
     alias java="java.exe"
 
+    export DISPLAY=:0
+
     # Java environment on Windows
     export JAVA_HOME="/mnt/c/Program Files/Java/jre1.8.0_151"
     export JDK_HOME="/mnt/c/Program Files/Java/jdk1.8.0_144"
