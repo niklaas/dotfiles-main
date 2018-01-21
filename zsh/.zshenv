@@ -1,6 +1,6 @@
 # PATH
 typeset -U path
-path=(~/bin ~/go/bin $path)
+path=(~/bin ~/go/bin ~/n/bin $path)
 
 if [ -f $HOME/.dir_colors ]
 then
@@ -27,6 +27,7 @@ export EDITOR=vim
 export HOSTNAME=$(hostname)
 
 export GOPATH=$HOME/go
+export N_PREFIX=$HOME/n
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
