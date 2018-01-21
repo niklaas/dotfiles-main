@@ -62,7 +62,7 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'vim-syntastic/syntastic'
 
 " IDE
-Plugin 'ensime/ensime-vim'
+"Plugin 'ensime/ensime-vim'
 
 call vundle#end()
 
