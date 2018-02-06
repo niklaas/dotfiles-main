@@ -63,6 +63,7 @@ Plugin 'vim-syntastic/syntastic'
 
 " IDE
 "Plugin 'ensime/ensime-vim'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
