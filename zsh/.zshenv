@@ -36,6 +36,8 @@ export LC_COLLATE=C
 export MOSH_TITLE_NOPREFIX="YES"
 export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+
 # Simplifies prompt symbole for pure prompt
 export PURE_PROMPT_SYMBOL='>'
 
