@@ -4,13 +4,13 @@ path=(~/bin ~/go/bin ~/n/bin $path)
 
 if [ -f $HOME/.dir_colors ]
 then
-    eval $(dircolors $HOME/.dir_colors)
+    command -v dircolors >/dev/null && eval $(dircolors $HOME/.dir_colors)
 fi
 
 # Ensures that the chosen base16 theme propagates correctly
 if [ ! -f $HOME/.base16_theme ]
 then
-    base16_default-dark
+    command -v base16_default-dark && base16_default-dark
 fi
 
 # ZSH modules
