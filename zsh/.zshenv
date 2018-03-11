@@ -132,4 +132,6 @@ then
     function pwdd() {
         pwd -P | sed 's#/mnt/\([a-zA-Z]\)#\U\1:#'
     }
+
+    alias -g C="| clip.exe"
 fi
