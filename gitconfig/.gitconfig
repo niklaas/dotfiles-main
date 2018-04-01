@@ -14,8 +14,9 @@
     br = branch
     ci = commit
     st = status
+    su = "git submodule update --recursive --remote"
     last = log -1 HEAD
-	pushall = !git remote | xargs -L1 git push --all
+    pushall = !git remote | xargs -L1 git push --all
 [push]
     default = current
 [http]
