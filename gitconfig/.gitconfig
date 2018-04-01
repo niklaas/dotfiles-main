@@ -10,13 +10,16 @@
 [merge]
     tool = vimdiff
 [alias]
-    co = checkout
+    ad = add
     br = branch
     ci = commit
+    co = checkout
+    di = diff
+    la = log -1 HEAD
+    pa = !git remote | xargs -L1 git push --all
+    pu = push
     st = status
     su = "git submodule update --recursive --remote"
-    last = log -1 HEAD
-    pushall = !git remote | xargs -L1 git push --all
 [push]
     default = current
 [http]
