@@ -19,7 +19,7 @@
     la = log -1 HEAD
     pa = !git remote | xargs -L1 git push --all
     pl = pull
-    pu = push
+    ps = push
     st = status
     su = "git submodule update --recursive --remote"
 [push]
