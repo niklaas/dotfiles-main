@@ -44,6 +44,8 @@ alias g="git"
 alias kcgpg="keychain -q --eval 1C62D5F3 >/dev/null"
 alias kcrn="keychain -q --eval rsync.net >/dev/null"
 
+alias ls="ls --color"
+
 alias mcssh="cssh -C .clusterssh/config_mosh"
 
 alias ra="rsync -a"
