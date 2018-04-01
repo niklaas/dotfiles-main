@@ -2,6 +2,8 @@ typeset -U path
 path=(~/bin ~/go/bin ~/n/bin $path)
 
 autoload -U zmv  # zsh's bulk renaming
+autoload -U is-at-least
+autoload -U compdef
 
 export SHELL=$(command -v zsh)
 export EDITOR=vim
