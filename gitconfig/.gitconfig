@@ -17,6 +17,7 @@
     di = diff
     fe = fetch
     la = log -1 HEAD
+    mg = merge
     pa = !git remote | xargs -L1 git push --all
     pl = pull
     ps = push
