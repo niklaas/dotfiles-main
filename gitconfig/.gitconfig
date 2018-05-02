@@ -12,7 +12,7 @@
 [alias]
     ad = add
     br = branch
-    ci = commit
+    ci = commit -v
     co = checkout
     di = diff
     fe = fetch
