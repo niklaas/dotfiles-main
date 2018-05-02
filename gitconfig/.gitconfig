@@ -10,19 +10,22 @@
 [merge]
     tool = vimdiff
 [alias]
-    ad = add
-    br = branch
-    ci = commit -v
-    co = checkout
-    di = diff
-    fe = fetch
-    la = log -1 HEAD
-    mg = merge
-    pa = !git remote | xargs -L1 git push --all
-    pl = pull
-    ps = push
-    st = status
-    su = submodule update --recursive --remote
+    ad  = add
+    br  = branch
+    ci  = commit -v
+    co  = checkout
+    di  = diff
+    fe  = fetch
+    la  = log -1 HEAD
+    lag = log --all --graph --oneline --decorate
+    lg  = log --graph --oneline --decorate
+    mg  = merge --no-ff
+    pa  = !git remote | xargs -L1 git push --all
+    pl  = pull --rebase
+    ps  = push
+    rb  = rebase
+    st  = status
+    su  = submodule update --recursive --remote
 [push]
     default = current
 [http]
