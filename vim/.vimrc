@@ -1,80 +1,71 @@
-set nocompatible
-filetype off
-
-" VUNDLE =================
+" VIM-PLUG ===============
 if has("win32")
-    set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
-    call vundle#begin('$HOME/vimfiles/bundle/')
+    call plug#begin('$HOME/vimfiles/plugged')
 else
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
+    call plug#begin('$HOME/.vim/plugged')
 endif
 
-"Plugin 'LucHermitte/lh-vim-lib'
-"Plugin 'LucHermitte/local_vimrc'
-"Plugin 'ervandrew/supertab'
-"Plugin 'reedes/vim-pencil'
-"Plugin 'reedes/vim-thematic'
-Plugin 'Raimondi/delimitMate'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'chilicuil/vim-sprunge'
-Plugin 'chriskempson/base16-vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'embear/vim-localvimrc'
-Plugin 'gregsexton/gitv'
-Plugin 'jalvesaq/Nvim-R'
-Plugin 'jamessan/vim-gnupg'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'lervag/vimtex'
-Plugin 'mattn/emmet-vim'
-Plugin 'matze/vim-move'
-Plugin 'mllg/vim-devtools-plugin'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-vinegar'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'zhou13/vim-easyescape'
+"Plug 'LucHermitte/lh-vim-lib'
+"Plug 'LucHermitte/local_vimrc'
+"Plug 'ervandrew/supertab'
+"Plug 'reedes/vim-pencil'
+"Plug 'reedes/vim-thematic'
+Plug 'Raimondi/delimitMate'
+Plug 'airblade/vim-gitgutter'
+Plug 'chilicuil/vim-sprunge'
+Plug 'chriskempson/base16-vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'embear/vim-localvimrc'
+Plug 'gregsexton/gitv'
+Plug 'jalvesaq/Nvim-R'
+Plug 'jamessan/vim-gnupg'
+Plug 'junegunn/vim-easy-align'
+Plug 'lervag/vimtex'
+Plug 'mattn/emmet-vim'
+Plug 'matze/vim-move'
+Plug 'mllg/vim-devtools-plugin'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'zhou13/vim-easyescape'
 
 " Distraction-free writing
-"Plugin 'junegunn/goyo.vim'
-"Plugin 'junegunn/limelight.vim'
+"Plug 'junegunn/goyo.vim'
+"Plug 'junegunn/limelight.vim'
 
 " Prose-writing
-"Plugin 'reedes/vim-lexical'
-"Plugin 'tommcdo/vim-exchange'
+"Plug 'reedes/vim-lexical'
+"Plug 'tommcdo/vim-exchange'
 
 " Syntax
-Plugin 'baskerville/vim-sxhkdrc'
-Plugin 'blindFS/vim-reveal'
-Plugin 'cespare/vim-toml'
-Plugin 'derekwyatt/vim-sbt'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'hashivim/vim-terraform'
-Plugin 'mrk21/yaml-vim'
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
-Plugin 'vim-pandoc/vim-rmarkdown'
-Plugin 'vim-syntastic/syntastic'
+Plug 'baskerville/vim-sxhkdrc'
+Plug 'blindFS/vim-reveal'
+Plug 'cespare/vim-toml'
+Plug 'derekwyatt/vim-sbt'
+Plug 'derekwyatt/vim-scala'
+Plug 'hashivim/vim-terraform'
+Plug 'mrk21/yaml-vim'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
+Plug 'vim-syntastic/syntastic'
 
 " Organisation
-Plugin 'vim-scripts/VOoM'
-Plugin 'vimoutliner/vimoutliner'
+Plug 'vim-scripts/VOoM'
+Plug 'vimoutliner/vimoutliner'
 
 " IDE
-"Plugin 'ensime/ensime-vim'
-Plugin 'fatih/vim-go'
+"Plug 'ensime/ensime-vim'
+Plug 'fatih/vim-go'
 
-call vundle#end()
-
-filetype plugin indent on
-syntax on
+call plug#end()
 
 " EXTENSIONS =============
 
