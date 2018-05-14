@@ -1,0 +1,4 @@
+.vim/plugged
+.vim/swap
+.vim/backup
+.vim/undo
