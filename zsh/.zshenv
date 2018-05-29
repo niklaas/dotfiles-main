@@ -5,6 +5,8 @@ autoload -U zmv  # zsh's bulk renaming
 autoload -U is-at-least
 autoload -U compdef
 
+export ANSIBLE_NOCOWS=1
+
 export SHELL=$(command -v zsh)
 export EDITOR=vim
 export HOSTNAME=$(hostname)
@@ -54,6 +56,8 @@ alias ra="rsync -a"
 alias rs="rsync"
 alias srn="ssh rsync.net"
 alias tree="tree --charset=ascii"
+
+alias tssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 
 alias v="vim --servername vim"
 alias vv="vim -MR -c 'file [stdin]' -"
