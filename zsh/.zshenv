@@ -37,6 +37,8 @@ fi
 
 alias a="apt"
 
+alias d="dirs -v"
+
 alias dt="date +%Y%m%d_%H%M%S"
 alias dti="date +%FT%T"
 alias dts="date +%Y-%m-%d"
