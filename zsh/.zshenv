@@ -59,7 +59,7 @@ alias tree="tree --charset=ascii"
 
 alias tssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=QUIET"
 
-alias v="vim --servername vim"
+alias v="vim"
 alias vv="vim -MR -c 'file [stdin]' -"
 
 alias -g S="| curl -F 'sprunge=<-' http://sprunge.us"
