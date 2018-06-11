@@ -57,7 +57,7 @@ alias rs="rsync"
 alias srn="ssh rsync.net"
 alias tree="tree --charset=ascii"
 
-alias tssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+alias tssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=QUIET"
 
 alias v="vim --servername vim"
 alias vv="vim -MR -c 'file [stdin]' -"
