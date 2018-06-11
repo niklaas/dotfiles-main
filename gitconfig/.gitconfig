@@ -12,8 +12,8 @@
 [alias]
     ad  = add
     br  = branch
-    ci  = commit -v
-    co  = checkout
+    co  = commit -v
+    ch  = checkout
     di  = diff
     fe  = fetch
     la  = log -1 HEAD
