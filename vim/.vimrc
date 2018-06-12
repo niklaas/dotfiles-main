@@ -5,6 +5,14 @@ else
     call plug#begin('$HOME/.vim/plugged')
 endif
 
+" Conditional activation for vim-plug plugins
+" https://github.com/junegunn/vim-plug/wiki/tips#conditional-activation
+
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
 "Plug 'LucHermitte/lh-vim-lib'
 "Plug 'LucHermitte/local_vimrc'
 "Plug 'ervandrew/supertab'
@@ -24,7 +32,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
 Plug 'mattn/emmet-vim'
 Plug 'matze/vim-move'
-Plug 'mllg/vim-devtools-plugin'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
@@ -32,8 +39,8 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline', Cond(!exists('g:gui_oni'))
+Plug 'vim-airline/vim-airline-themes', Cond(!exists('g:gui_oni'))
 Plug 'zhou13/vim-easyescape'
 
 " Distraction-free writing
@@ -52,6 +59,7 @@ Plug 'derekwyatt/vim-sbt'
 Plug 'derekwyatt/vim-scala'
 Plug 'hashivim/vim-terraform'
 Plug 'jalvesaq/Nvim-R'
+Plug 'mllg/vim-devtools-plugin'
 Plug 'mrk21/yaml-vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -81,7 +89,6 @@ let mapleader = ","
 set autowrite
 set backspace=indent,eol,start
 set cpo+=$
-set cryptmethod=blowfish
 set fileformat=unix
 set fileformats=unix,dos
 set hidden
@@ -211,6 +218,37 @@ if has('gui_running')
     elseif has("gui_win32")
         set guifont=Consolas:h10:cANSI
     endif
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NeoVim
+
+if !has('nvim')
+    set cryptmethod=blowfish2
+endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ONI
+
+if exists('g:gui_oni')
+    " Override previous configuration with these setting to suit to Oni.
+    " https://github.com/onivim/oni/wiki/How-To:-Minimal-Oni-Configuration
+
+    " Force loading sensible now to override its setting in the following
+    " lines
+    runtime plugin/sensible.vim
+
+    set number
+    set noswapfile
+    set smartcase
+
+    set noshowmode
+    set noruler
+    set laststatus=0
+    set noshowcmd
+
+    set mouse=a
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
