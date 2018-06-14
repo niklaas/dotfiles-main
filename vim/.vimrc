@@ -97,11 +97,14 @@ let R_nvim_wd = 1
 let R_assign = 0
 let r_indent_ess_compatible = 1
 
-" Syntax and Completion ==============================================
-if has('nvim')
+" Completion =========================================================
+if has('nvim') && !exists('g:gui_oni')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemoteplugins' }
+    let g:deoplete#enable_at_startup = 1
 endif
-let g:deoplete#enable_at_startup = 1
+
+
+" Syntax rules =======================================================
 
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'blindFS/vim-reveal'
