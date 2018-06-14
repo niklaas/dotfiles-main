@@ -1,4 +1,6 @@
-" VIM-PLUG ===============
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM-PLUG
+
 if has("win32")
     call plug#begin('$HOME/vimfiles/plugged')
 else
@@ -12,22 +14,13 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
-"Plug 'LucHermitte/lh-vim-lib'
-"Plug 'LucHermitte/local_vimrc'
-"Plug 'ervandrew/supertab'
-"Plug 'reedes/vim-pencil'
-"Plug 'reedes/vim-thematic'
-Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
-"Plug 'chilicuil/vim-sprunge'
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'embear/vim-localvimrc'
 Plug 'gregsexton/gitv'
-Plug 'idanarye/vim-merginal'
+Plug 'idanarye/vim-merginal'  " for git branching
 Plug 'jamessan/vim-gnupg'
-Plug 'junegunn/vim-easy-align'
 Plug 'mattn/emmet-vim'
 Plug 'matze/vim-move'
 Plug 'ntpeters/vim-better-whitespace'
@@ -37,41 +30,88 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'vim-airline/vim-airline', Cond(!exists('g:gui_oni'))
-Plug 'vim-airline/vim-airline-themes', Cond(!exists('g:gui_oni'))
 Plug 'zhou13/vim-easyescape'
 
-" Distraction-free writing and prose wirting
-"Plug 'junegunn/goyo.vim'
-"Plug 'junegunn/limelight.vim'
-"Plug 'reedes/vim-lexical'
-"Plug 'tommcdo/vim-exchange'
+" Ctrlp ==============================================================
+Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
-" Syntax (and completion)
+if has("unix")
+    let g:ctrlp_user_command = {
+    \ 'types': {
+      \ 1: ['.git', 'cd %s && git ls-files']
+      \ },
+    \ 'fallback': 'find %s -type f'
+    \ }
+endif
+
+" DelimitMate ========================================================
+Plug 'Raimondi/delimitMate'
+let delimitMate_expand_cr = 1
+
+" Easy Align =========================================================
+Plug 'junegunn/vim-easy-align'
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" Scala ==============================================================
+Plug 'derekwyatt/vim-sbt'
+Plug 'derekwyatt/vim-scala'
+autocmd FileType scala nnoremap <localleader>df :EnDeclaration>CR>
+autocmd BufWritePost *.scala silent :EnTypeChec
+nnoremap <localleader>t :EnType<CR>
+let g:scala_scaladoc_indent = 1
+
+" VOom ===============================================================
+Plug 'vim-scripts/VOoM'
+let g:voom_tree_placement = "top"
+let g:voom_tree_height = 5
+
+" Airtline ===========================================================
+Plug 'vim-airline/vim-airline', Cond(!exists('g:gui_oni'))
+Plug 'vim-airline/vim-airline-themes', Cond(!exists('g:gui_oni'))
+let g:airline_theme = 'base16_default'
+
+" Pandoc =============================================================
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
+let g:pandoc#modules#disabled = ["chdir"]
+"let g:pandoc#formatting#mode = "hA"
+
+" Vimtex =============================================================
+Plug 'lervag/vimtex'
+if has("win32")
+    let g:vimtex_view_general_viewer = 'SumatraPDF'
+    let g:vimtex_view_general_options
+        \ = '-reuse-instance -forward-search @tex @line @pdf'
+    let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+endif
+
+" NVim-R =============================================================
+Plug 'jalvesaq/Nvim-R'
+let R_in_buffer = 0
+let R_tmux_split = 1
+let R_nvim_wd = 1
+let R_assign = 0
+let r_indent_ess_compatible = 1
+
+" Syntax and Completion ==============================================
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemoteplugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
 
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'blindFS/vim-reveal'
 Plug 'cespare/vim-toml'
-Plug 'derekwyatt/vim-sbt'
-Plug 'derekwyatt/vim-scala'
 Plug 'fatih/vim-go'
 Plug 'hashivim/vim-terraform'
-Plug 'jalvesaq/Nvim-R'
-Plug 'lervag/vimtex'
 Plug 'mllg/vim-devtools-plugin'
 Plug 'mrk21/yaml-vim'
 Plug 'slashmili/alchemist.vim'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-pandoc/vim-rmarkdown'
+Plug 'elixir-editors/vim-elixir'
 
 " Syntastic or ALE?
 if v:version < 800
@@ -92,9 +132,55 @@ else
     Plug 'w0rp/ale'
 endif
 
-" Organisation
-Plug 'vim-scripts/VOoM'
 Plug 'vimoutliner/vimoutliner'
+
+
+" Lecical ============================================================
+"Plug 'reedes/vim-lexical'
+"let g:lexical#spell_key = '<leader>s'
+"let g:lexical#thesaurus_key = '<leader>t'
+"let g:lexical#dictionary_key = '<leader>k'
+
+" Goyo ===============================================================
+"Plug 'junegunn/goyo.vim'
+"function! s:goyo_enter()
+"    "silent !tmux set status off
+"    set noshowmode
+"    set noshowcmd
+"    set scrolloff=999
+"    set spell
+"    if has('gui_running')
+"        set linespace=4
+"    endif
+"    Limelight
+"endfunction
+"
+"function! s:goyo_leave()
+"    "silent !tmux set status on
+"    set showmode
+"    set showcmd
+"    set scrolloff=5
+"    if has('gui_running')
+"        set linespace=0
+"    endif
+"    Limelight!
+"endfunction
+"
+"autocmd! User GoyoEnter nested call <SID>goyo_enter()
+"autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+" Sprunge ============================================================
+"Plug 'chilicuil/vim-sprunge'
+"let g:sprunge_map = "<leader><leader>s"
+"let g:sprunge_open_browser = 1
+
+"Plug 'LucHermitte/lh-vim-lib'
+"Plug 'LucHermitte/local_vimrc'
+"Plug 'ervandrew/supertab'
+"Plug 'junegunn/limelight.vim'
+"Plug 'reedes/vim-pencil'
+"Plug 'reedes/vim-thematic'
+"Plug 'tommcdo/vim-exchange'
 
 call plug#end()
 
@@ -169,10 +255,12 @@ if (exists('+colorcolumn'))
     highlight ColorColumn ctermbg=18
 endif
 
+" Indenting
 autocmd FileType r    setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType rmd  setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
+" Spelling
 set spelllang=de_20,en_gb
 set spellfile=~/.vim/spell/de.utf-8.add
 
@@ -277,96 +365,3 @@ if exists('g:gui_oni')
 
     set mouse=a
 endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PLUGINS
-
-" CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-if has("unix")
-    let g:ctrlp_user_command = {
-    \ 'types': {
-      \ 1: ['.git', 'cd %s && git ls-files']
-      \ },
-    \ 'fallback': 'find %s -type f'
-    \ }
-endif
-
-" DelimitMate
-let delimitMate_expand_cr = 1
-
-" Easy Align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-" Scala/ensime
-autocmd FileType scala nnoremap <localleader>df :EnDeclaration>CR>
-autocmd BufWritePost *.scala silent :EnTypeChec
-nnoremap <localleader>t :EnType<CR>
-
-" Sprunge
-let g:sprunge_map = "<leader><leader>s"
-let g:sprunge_open_browser = 1
-
-" VOom
-let g:voom_tree_placement = "top"
-let g:voom_tree_height = 5
-
-" Airline
-let g:airline_theme = 'base16_default'
-
-" Lexical
-let g:lexical#spell_key = '<leader>s'
-let g:lexical#thesaurus_key = '<leader>t'
-let g:lexical#dictionary_key = '<leader>k'
-
-" Goyo
-function! s:goyo_enter()
-    "silent !tmux set status off
-    set noshowmode
-    set noshowcmd
-    set scrolloff=999
-    set spell
-    if has('gui_running')
-        set linespace=4
-    endif
-    Limelight
-endfunction
-
-function! s:goyo_leave()
-    "silent !tmux set status on
-    set showmode
-    set showcmd
-    set scrolloff=5
-    if has('gui_running')
-        set linespace=0
-    endif
-    Limelight!
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-" Pandoc
-let g:pandoc#modules#disabled = ["chdir"]
-"let g:pandoc#formatting#mode = "hA"
-
-" Scala
-let g:scala_scaladoc_indent = 1
-
-" vimtex
-if has("win32")
-    let g:vimtex_view_general_viewer = 'SumatraPDF'
-    let g:vimtex_view_general_options
-        \ = '-reuse-instance -forward-search @tex @line @pdf'
-    let g:vimtex_view_general_options_latexmk = '-reuse-instance'
-endif
-
-" Nvim-R
-let R_in_buffer = 0
-let R_tmux_split = 1
-let R_nvim_wd = 1
-let R_assign = 0
-let r_indent_ess_compatible = 1
