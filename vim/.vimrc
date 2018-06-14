@@ -72,7 +72,25 @@ Plug 'slashmili/alchemist.vim'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
-Plug 'vim-syntastic/syntastic'
+
+" Syntastic or ALE?
+if v:version < 800
+    Plug 'vim-syntastic/syntastic'
+
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 0
+    let g:syntastic_check_on_wq = 0
+
+    let g:syntastic_ignore_files = ['\m\c.h$', '\m\.sbt$']
+    " Only use one of `scalac` or `fsc` for checking syntax in Scala
+    let g:syntastic_scala_checkers = ['fsc']
+
+    let g:syntastic_enable_r_lintr_checker = 1
+    let g:syntastic_r_checkers = ['lintr']
+else
+    Plug 'w0rp/ale'
+endif
 
 " Organisation
 Plug 'vim-scripts/VOoM'
@@ -291,19 +309,6 @@ nnoremap <localleader>t :EnType<CR>
 " Sprunge
 let g:sprunge_map = "<leader><leader>s"
 let g:sprunge_open_browser = 1
-
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_ignore_files = ['\m\c.h$', '\m\.sbt$']
-" Only use one of `scalac` or `fsc` for checking syntax in Scala
-let g:syntastic_scala_checkers = ['fsc']
-
-let g:syntastic_enable_r_lintr_checker = 1
-let g:syntastic_r_checkers = ['lintr']
 
 " VOom
 let g:voom_tree_placement = "top"
