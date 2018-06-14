@@ -47,7 +47,16 @@ Plug 'zhou13/vim-easyescape'
 "Plug 'reedes/vim-lexical'
 "Plug 'tommcdo/vim-exchange'
 
-" Syntax
+" Syntax (and completion)
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemoteplugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'blindFS/vim-reveal'
 Plug 'cespare/vim-toml'
