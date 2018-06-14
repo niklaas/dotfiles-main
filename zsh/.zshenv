@@ -7,8 +7,19 @@ autoload -U compdef
 
 export ANSIBLE_NOCOWS=1
 
+# Which vim to choose?
+if command -v nvim > /dev/null
+then
+    VIM=nvim
+elif command -v vim > /dev/null
+then
+    VIM=vim
+else
+    VIM=vi
+fi
+
 export SHELL=$(command -v zsh)
-export EDITOR=vim
+export EDITOR=$VIM
 export HOSTNAME=$(hostname)
 
 export GOPATH=$HOME/go
@@ -61,8 +72,8 @@ alias tree="tree --charset=ascii"
 
 alias tssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=QUIET"
 
-alias v="vim"
-alias vv="vim -MR -c 'file [stdin]' -"
+alias v="$VIM"
+alias vv="$VIM -MR -c 'file [stdin]' -"
 
 alias -g S="| curl -F 'sprunge=<-' http://sprunge.us"
 
