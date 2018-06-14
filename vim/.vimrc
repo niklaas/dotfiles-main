@@ -7,7 +7,6 @@ endif
 
 " Conditional activation for vim-plug plugins
 " https://github.com/junegunn/vim-plug/wiki/tips#conditional-activation
-
 function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
@@ -20,7 +19,7 @@ endfunction
 "Plug 'reedes/vim-thematic'
 Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
-Plug 'chilicuil/vim-sprunge'
+"Plug 'chilicuil/vim-sprunge'
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -29,7 +28,6 @@ Plug 'gregsexton/gitv'
 Plug 'idanarye/vim-merginal'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/vim-easy-align'
-Plug 'lervag/vimtex'
 Plug 'mattn/emmet-vim'
 Plug 'matze/vim-move'
 Plug 'ntpeters/vim-better-whitespace'
@@ -43,11 +41,9 @@ Plug 'vim-airline/vim-airline', Cond(!exists('g:gui_oni'))
 Plug 'vim-airline/vim-airline-themes', Cond(!exists('g:gui_oni'))
 Plug 'zhou13/vim-easyescape'
 
-" Distraction-free writing
+" Distraction-free writing and prose wirting
 "Plug 'junegunn/goyo.vim'
 "Plug 'junegunn/limelight.vim'
-
-" Prose-writing
 "Plug 'reedes/vim-lexical'
 "Plug 'tommcdo/vim-exchange'
 
@@ -57,8 +53,10 @@ Plug 'blindFS/vim-reveal'
 Plug 'cespare/vim-toml'
 Plug 'derekwyatt/vim-sbt'
 Plug 'derekwyatt/vim-scala'
+Plug 'fatih/vim-go'
 Plug 'hashivim/vim-terraform'
 Plug 'jalvesaq/Nvim-R'
+Plug 'lervag/vimtex'
 Plug 'mllg/vim-devtools-plugin'
 Plug 'mrk21/yaml-vim'
 Plug 'vim-pandoc/vim-pandoc'
@@ -69,10 +67,6 @@ Plug 'vim-syntastic/syntastic'
 " Organisation
 Plug 'vim-scripts/VOoM'
 Plug 'vimoutliner/vimoutliner'
-
-" IDE
-"Plug 'ensime/ensime-vim'
-Plug 'fatih/vim-go'
 
 call plug#end()
 
@@ -89,8 +83,6 @@ let mapleader = ","
 set autowrite
 set backspace=indent,eol,start
 set cpo+=$
-set fileformat=unix
-set fileformats=unix,dos
 set hidden
 set ignorecase
 set incsearch
@@ -114,6 +106,7 @@ set visualbell
 set whichwrap=<,>,h,l
 set wildmenu
 
+" Set locations of important directories depending on OS
 if(has("win32"))
     set backupdir=~/vimfiles/backup//
     set directory=~/vimfiles/swap//,.
@@ -124,12 +117,15 @@ else
     set undodir=~/.vim/undo//
 endif
 
+" Always show status line
 set laststatus=2
 
-" encoding
+" Encoding and file format
 scriptencoding utf-8
 set encoding=utf-8
 set fileencoding=utf-8
+set fileformat=unix
+set fileformats=unix,dos
 
 " formatting
 set expandtab
@@ -152,7 +148,7 @@ autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
 set spelllang=de_20,en_gb
 set spellfile=~/.vim/spell/de.utf-8.add
 
-" changes cursor depending on mode
+" Change cursor depending on mode in terminal
 let &t_SI = "\<Esc>[6 q"
 let &t_EI = "\<Esc>[2 q"
 
@@ -164,6 +160,7 @@ cabbr <expr> %% expand('%:p:h')
 
 " MAPS & ABBREVIATIONS ===
 
+" Replace sender in emails
 nmap <leader>ms :1,7s/<.*@niklaas.eu/<stdin@niklaas.eu<CR><C-o>
 nmap <leader>mm :1,7s/<.*@niklaas.eu/<me@niklaas.eu<CR><C-o>
 nmap <leader>mp :1,1s/<.*@\(.*\)>/<postmaster@\1><CR><C-o>
@@ -181,12 +178,13 @@ nnoremap <C-H> <C-W><C-H>
 
 nnoremap Y y$
 
+" Escape with jk
 let g:easyescape_chars = { "j": 1, "k": 1 }
 let g:easyescape_timeout = 2000
 cnoremap jk <ESC>
 cnoremap kj <ESC>
 
-" inserts timestamp (ISO compliant with colon in timezone)
+" Inserts timestamp (ISO compliant with colon in timezone)
 ia aDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
 
 if executable('ag')
@@ -194,6 +192,7 @@ if executable('ag')
     set grepformat=%f:%l:%c:%m
 endif
 
+" Colors
 set t_Co=256
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
