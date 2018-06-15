@@ -100,6 +100,10 @@ let R_assign = 0
 let r_indent_ess_compatible = 1
 
 " Completion =========================================================
+
+" TODO: Configure completion for normal vim. Use case: Use functionality on a
+" remote machine.Problem: All of these gimmicks require python3 and I'm note
+" sure whether I want to install what comes with all of this.
 if has('nvim') && !exists('g:gui_oni')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup = 1
