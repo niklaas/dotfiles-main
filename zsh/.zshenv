@@ -5,8 +5,6 @@ autoload -U zmv  # zsh's bulk renaming
 autoload -U is-at-least
 autoload -U compdef
 
-export ANSIBLE_NOCOWS=1
-
 export SHELL=$(command -v zsh)
 export HOSTNAME=$(hostname)
 
@@ -27,13 +25,18 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_COLLATE=C
 
+# Simplifies prompt symbole for pure prompt
+export PURE_PROMPT_SYMBOL='>'
+
+export GOPATH=$HOME/go
+export N_PREFIX=$HOME/n
+
+export ANSIBLE_NOCOWS=1
+
 export MOSH_TITLE_NOPREFIX="YES"
 export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
-
-# Simplifies prompt symbole for pure prompt
-export PURE_PROMPT_SYMBOL='>'
 
 # Export default TERMINAL
 if command -v uxterm >/dev/null 2>&1
