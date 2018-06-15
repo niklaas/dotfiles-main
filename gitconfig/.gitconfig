@@ -4,7 +4,6 @@
 [credential]
     helper = cache
 [core]
-    editor = vim
     autocrlf = false
     filemode = false
 [merge]

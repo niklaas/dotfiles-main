@@ -8,11 +8,20 @@ autoload -U compdef
 export ANSIBLE_NOCOWS=1
 
 export SHELL=$(command -v zsh)
-export EDITOR=vim
 export HOSTNAME=$(hostname)
 
-export GOPATH=$HOME/go
-export N_PREFIX=$HOME/n
+if command -v nvim > /dev/null 2>&1
+then
+    export EDITOR=nvim
+    alias vim="nvim"
+    alias v="nvim"
+    alias vv="nvim -MR -c 'file [stdin]' -"
+else
+    export EDITOR=vim
+    alias vim="vim"
+    alias v="vim"
+    alias vv="vim -MR -c 'file [stdin]' -"
+fi
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
@@ -60,14 +69,6 @@ alias srn="ssh rsync.net"
 alias tree="tree --charset=ascii"
 
 alias tssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=QUIET"
-
-alias v="vim"
-alias vv="vim -MR -c 'file [stdin]' -"
-
-if command -v nvim > /dev/null
-then
-    alias vim="nvim"
-fi
 
 alias -g S="| curl -F 'sprunge=<-' http://sprunge.us"
 
