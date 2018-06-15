@@ -99,7 +99,7 @@ let r_indent_ess_compatible = 1
 
 " Completion =========================================================
 if has('nvim') && !exists('g:gui_oni')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemoteplugins' }
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup = 1
 endif
 
