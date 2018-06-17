@@ -204,10 +204,11 @@ runtime! ftplugin/man.vim
 
 let mapleader = ","
 
-"set cursorline
+"set cursorcolumn
 set autowrite
 set backspace=indent,eol,start
 set cpo+=$
+set cursorline
 set hidden
 set ignorecase
 set incsearch
