@@ -109,6 +109,8 @@ if has('nvim') && !exists('g:gui_oni')
     let g:deoplete#enable_at_startup = 1
 endif
 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Syntax rules =======================================================
 
