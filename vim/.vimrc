@@ -326,6 +326,15 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
+" Reference: https://jeffkreeftmeijer.com/vim-number/
+set number relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI
 
