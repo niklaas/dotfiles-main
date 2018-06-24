@@ -215,6 +215,7 @@ set incsearch
 set linebreak
 set list
 set modelines=5
+set mouse=a
 set nobackup
 set nojoinspaces
 set nowrap
@@ -361,6 +362,7 @@ endif
 
 if !has('nvim')
     set cryptmethod=blowfish2
+    set ttymouse=xterm2
 endif
 
 
