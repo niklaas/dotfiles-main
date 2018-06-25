@@ -310,6 +310,17 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+if has('nvim')
+    tnoremap <C-H> <c-\><c-n><c-w>h
+    tnoremap <C-J> <c-\><c-n><c-w>j
+    tnoremap <C-K> <c-\><c-n><c-w>k
+    tnoremap <C-L> <c-\><c-n><c-w>l
+
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <C-[> <Esc>
+    tnoremap <C-v><Esc> <Esc>
+endif
+
 nnoremap Y y$
 
 " Escape with jk
