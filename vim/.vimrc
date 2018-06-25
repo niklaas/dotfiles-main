@@ -209,11 +209,9 @@ runtime! ftplugin/man.vim
 
 let mapleader = ","
 
-"set cursorcolumn
 set autowrite
 set backspace=indent,eol,start
 set cpo+=$
-set cursorline
 set hidden
 set ignorecase
 set incsearch
@@ -348,6 +346,12 @@ augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+augroup CursorLine
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline cursorcolumn
+  autocmd WinLeave * setlocal nocursorline nocursorcolumn
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
