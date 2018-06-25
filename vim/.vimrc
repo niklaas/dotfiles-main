@@ -1,7 +1,7 @@
 set nocompatible
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM-PLUG
+" VIM-PlUG
 
 if has("win32")
     call plug#begin('$HOME/vimfiles/plugged')
@@ -26,7 +26,7 @@ Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
 Plug 'matze/vim-move'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
