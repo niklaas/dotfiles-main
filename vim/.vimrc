@@ -24,7 +24,6 @@ Plug 'gregsexton/gitv'
 Plug 'idanarye/vim-merginal'  " for git branching
 Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
-Plug 'matze/vim-move'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-repeat'
