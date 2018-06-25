@@ -260,11 +260,6 @@ set fileformat=unix
 set fileformats=unix,dos
 
 " formatting
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set autoindent
 set comments=b:#,:%,fb:-,n:>,n:)
 set formatoptions=croq
 
@@ -274,6 +269,8 @@ if (exists('+colorcolumn'))
 endif
 
 " Indenting
+set expandtab autoindent
+set tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType r    setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType rmd  setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
