@@ -289,6 +289,8 @@ cabbr <expr> %% expand('%:p:h')
 
 " MAPS & ABBREVIATIONS ===
 
+nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
+
 " Replace sender in emails
 nmap <leader>ms :1,7s/<.*@niklaas.eu/<stdin@niklaas.eu<CR><C-o>
 nmap <leader>mm :1,7s/<.*@niklaas.eu/<me@niklaas.eu<CR><C-o>
@@ -346,12 +348,6 @@ augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
-
-augroup CursorLine
-  autocmd!
-  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline cursorcolumn
-  autocmd WinLeave * setlocal nocursorline nocursorcolumn
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
