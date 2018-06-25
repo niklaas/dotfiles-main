@@ -34,6 +34,12 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'zhou13/vim-easyescape'
 
+" Fugitive ===========================================================
+Plug 'tpope/vim-fugitive'
+
+" Auto-clean fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
 " Ctrlp ==============================================================
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
