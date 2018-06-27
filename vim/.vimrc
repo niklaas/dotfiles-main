@@ -269,9 +269,11 @@ endif
 " Indenting
 set expandtab autoindent
 set tabstop=4 shiftwidth=4 softtabstop=4
-autocmd FileType r    setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType rmd  setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType r         setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType rmd       setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType yaml      setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+autocmd FileType gitcommit setlocal comments+=fb:- fo+=c
 
 " Spelling
 set spelllang=de_20,en_gb
