@@ -144,6 +144,9 @@ function my_sudo {
 }
 alias sudo="my_sudo " # makes aliases pass from local user to root
 
+function take() {
+    mkdir -p $1 && cd $_
+}
 
 if [ -f "/usr/local/bin/lesspipe.sh" ]
 then
