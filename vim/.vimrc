@@ -276,8 +276,23 @@ autocmd FileType yaml      setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType gitcommit setlocal comments+=fb:- fo+=c
 
 " Spelling
-set spelllang=de_20,en_gb
-set spellfile=~/.vim/spell/de.utf-8.add
+set spelllang=en_us,de_20
+set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
+
+" Fix highlighting for spell checks in terminal
+function! s:base16_customize() abort
+  " Colors: https://github.com/chriskempson/base16/blob/master/styling.md
+  " Arguments: group, guifg, guibg, ctermfg, ctermbg, attr, guisp
+  call Base16hi("SpellBad",   "", "", g:base16_cterm08, g:base16_cterm00, "", "")
+  call Base16hi("SpellCap",   "", "", g:base16_cterm0A, g:base16_cterm00, "", "")
+  call Base16hi("SpellLocal", "", "", g:base16_cterm0D, g:base16_cterm00, "", "")
+  call Base16hi("SpellRare",  "", "", g:base16_cterm0B, g:base16_cterm00, "", "")
+endfunction
+
+augroup on_change_colorschema
+  autocmd!
+  autocmd ColorScheme * call s:base16_customize()
+augroup END
 
 " Change cursor depending on mode in terminal
 let &t_SI = "\<Esc>[6 q"
