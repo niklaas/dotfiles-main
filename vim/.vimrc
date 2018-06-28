@@ -159,9 +159,9 @@ Plug 'vimoutliner/vimoutliner'
 "let g:lexical#dictionary_key = '<leader>k'
 
 " Sprunge ============================================================
-"Plug 'chilicuil/vim-sprunge'
-"let g:sprunge_map = "<leader><leader>s"
-"let g:sprunge_open_browser = 1
+Plug 'chilicuil/vim-sprunge'
+let g:sprunge_map = "<leader><leader>s"
+let g:sprunge_open_browser = 1
 
 "Plug 'LucHermitte/lh-vim-lib'
 "Plug 'LucHermitte/local_vimrc'
