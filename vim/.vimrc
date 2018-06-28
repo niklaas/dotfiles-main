@@ -4,9 +4,9 @@ set nocompatible
 " VIM-PlUG
 
 if has("win32")
-    call plug#begin('$HOME/vimfiles/plugged')
+  call plug#begin('$HOME/vimfiles/plugged')
 else
-    call plug#begin('$HOME/.vim/plugged')
+  call plug#begin('$HOME/.vim/plugged')
 endif
 
 " Conditional activation for vim-plug plugins
@@ -46,12 +46,12 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 if has("unix")
-    let g:ctrlp_user_command = {
-    \ 'types': {
-      \ 1: ['.git', 'cd %s && git ls-files']
-      \ },
-    \ 'fallback': 'find %s -type f'
-    \ }
+  let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files']
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
 endif
 
 " DelimitMate ========================================================
@@ -91,10 +91,10 @@ let g:pandoc#modules#disabled = ["chdir"]
 " Vimtex =============================================================
 Plug 'lervag/vimtex'
 if has("win32")
-    let g:vimtex_view_general_viewer = 'SumatraPDF'
-    let g:vimtex_view_general_options
-        \ = '-reuse-instance -forward-search @tex @line @pdf'
-    let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+  let g:vimtex_view_general_viewer = 'SumatraPDF'
+  let g:vimtex_view_general_options
+    \ = '-reuse-instance -forward-search @tex @line @pdf'
+  let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 endif
 
 " NVim-R =============================================================
@@ -111,8 +111,8 @@ let r_indent_ess_compatible = 1
 " remote machine.Problem: All of these gimmicks require python3 and I'm note
 " sure whether I want to install what comes with all of this.
 if has('nvim') && !exists('g:gui_oni')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    let g:deoplete#enable_at_startup = 1
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  let g:deoplete#enable_at_startup = 1
 endif
 
 Plug 'SirVer/ultisnips'
@@ -132,21 +132,21 @@ Plug 'elixir-editors/vim-elixir'
 
 " Syntastic or ALE?
 if v:version < 800
-    Plug 'vim-syntastic/syntastic'
+  Plug 'vim-syntastic/syntastic'
 
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 0
-    let g:syntastic_check_on_wq = 0
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 0
+  let g:syntastic_check_on_wq = 0
 
-    let g:syntastic_ignore_files = ['\m\c.h$', '\m\.sbt$']
-    " Only use one of `scalac` or `fsc` for checking syntax in Scala
-    let g:syntastic_scala_checkers = ['fsc']
+  let g:syntastic_ignore_files = ['\m\c.h$', '\m\.sbt$']
+  " Only use one of `scalac` or `fsc` for checking syntax in Scala
+  let g:syntastic_scala_checkers = ['fsc']
 
-    let g:syntastic_enable_r_lintr_checker = 1
-    let g:syntastic_r_checkers = ['lintr']
+  let g:syntastic_enable_r_lintr_checker = 1
+  let g:syntastic_r_checkers = ['lintr']
 else
-    Plug 'w0rp/ale'
+  Plug 'w0rp/ale'
 endif
 
 Plug 'vimoutliner/vimoutliner'
@@ -239,13 +239,13 @@ set wildmenu
 
 " Set locations of important directories depending on OS
 if(has("win32"))
-    set backupdir=~/vimfiles/backup//
-    set directory=~/vimfiles/swap//,.
-    set undodir=~/vimfiles/undo//
+  set backupdir=~/vimfiles/backup//
+  set directory=~/vimfiles/swap//,.
+  set undodir=~/vimfiles/undo//
 else
-    set backupdir=~/.vim/backup//
-    set directory=~/.vim/swap//,/var/tmp//,/tmp//,.
-    set undodir=~/.vim/undo//
+  set backupdir=~/.vim/backup//
+  set directory=~/.vim/swap//,/var/tmp//,/tmp//,.
+  set undodir=~/.vim/undo//
 endif
 
 " Always show status line
@@ -263,8 +263,8 @@ set comments=b:#,:%,fb:-,n:>,n:)
 set formatoptions=croq
 
 if (exists('+colorcolumn'))
-    set colorcolumn=80
-    highlight ColorColumn ctermbg=18
+  set colorcolumn=80
+  highlight ColorColumn ctermbg=18
 endif
 
 " Indenting
@@ -272,6 +272,7 @@ set expandtab autoindent
 set tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType r         setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType rmd       setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType vim       setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType yaml      setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 autocmd FileType gitcommit setlocal comments+=fb:- fo+=c
@@ -318,7 +319,7 @@ nmap <leader>mp :1,1s/<.*@\(.*\)>/<postmaster@\1><CR><C-o>
 
 " type w!! to save as root
 if has("unix")
-    cmap w!! w !sudo tee >/dev/null %
+  cmap w!! w !sudo tee >/dev/null %
 endif
 
 " Eases navigation between splits
@@ -328,14 +329,14 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 if has('nvim')
-    tnoremap <C-H> <c-\><c-n><c-w>h
-    tnoremap <C-J> <c-\><c-n><c-w>j
-    tnoremap <C-K> <c-\><c-n><c-w>k
-    tnoremap <C-L> <c-\><c-n><c-w>l
+  tnoremap <C-H> <c-\><c-n><c-w>h
+  tnoremap <C-J> <c-\><c-n><c-w>j
+  tnoremap <C-K> <c-\><c-n><c-w>k
+  tnoremap <C-L> <c-\><c-n><c-w>l
 
-    tnoremap <Esc> <C-\><C-n>
-    tnoremap <C-[> <Esc>
-    tnoremap <C-v><Esc> <Esc>
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <C-[> <Esc>
+  tnoremap <C-v><Esc> <Esc>
 endif
 
 nnoremap Y y$
@@ -374,28 +375,28 @@ augroup END
 " GUI
 
 if has('gui_running')
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions-=r
-    set guioptions-=R
-    set guioptions-=l
-    set guioptions-=L
-    set lines=50
-    set columns=120
-    if has("gui_gtk2")
-        set guifont=Monospace\ 11
-        set background=dark
-    elseif has("gui_win32")
-        set guifont=Consolas:h10:cANSI
-    endif
+  set guioptions-=m
+  set guioptions-=T
+  set guioptions-=r
+  set guioptions-=R
+  set guioptions-=l
+  set guioptions-=L
+  set lines=50
+  set columns=120
+  if has("gui_gtk2")
+    set guifont=Monospace\ 11
+    set background=dark
+  elseif has("gui_win32")
+    set guifont=Consolas:h10:cANSI
+  endif
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NeoVim
 
 if !has('nvim')
-    set cryptmethod=blowfish2
-    set ttymouse=xterm2
+  set cryptmethod=blowfish2
+  set ttymouse=xterm2
 endif
 
 
@@ -403,21 +404,21 @@ endif
 " ONI
 
 if exists('g:gui_oni')
-    " Override previous configuration with these setting to suit to Oni.
-    " https://github.com/onivim/oni/wiki/How-To:-Minimal-Oni-Configuration
+  " Override previous configuration with these setting to suit to Oni.
+  " https://github.com/onivim/oni/wiki/How-To:-Minimal-Oni-Configuration
 
-    " Force loading sensible now to override its setting in the following
-    " lines
-    runtime plugin/sensible.vim
+  " Force loading sensible now to override its setting in the following
+  " lines
+  runtime plugin/sensible.vim
 
-    set number
-    set noswapfile
-    set smartcase
+  set number
+  set noswapfile
+  set smartcase
 
-    set noshowmode
-    set noruler
-    set laststatus=0
-    set noshowcmd
+  set noshowmode
+  set noruler
+  set laststatus=0
+  set noshowcmd
 
-    set mouse=a
+  set mouse=a
 endif
