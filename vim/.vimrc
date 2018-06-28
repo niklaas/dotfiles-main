@@ -152,7 +152,12 @@ endif
 Plug 'vimoutliner/vimoutliner'
 
 
-" Lecical ============================================================
+" Prose writing ======================================================
+"Plug 'junegunn/limelight.vim'
+"Plug 'reedes/vim-pencil'
+"Plug 'reedes/vim-thematic'
+"Plug 'tommcdo/vim-exchange'
+
 "Plug 'reedes/vim-lexical'
 "let g:lexical#spell_key = '<leader>s'
 "let g:lexical#thesaurus_key = '<leader>t'
@@ -162,14 +167,6 @@ Plug 'vimoutliner/vimoutliner'
 Plug 'chilicuil/vim-sprunge'
 let g:sprunge_map = "<leader><leader>s"
 let g:sprunge_open_browser = 1
-
-"Plug 'LucHermitte/lh-vim-lib'
-"Plug 'LucHermitte/local_vimrc'
-"Plug 'ervandrew/supertab'
-"Plug 'junegunn/limelight.vim'
-"Plug 'reedes/vim-pencil'
-"Plug 'reedes/vim-thematic'
-"Plug 'tommcdo/vim-exchange'
 
 call plug#end()
 
