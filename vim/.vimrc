@@ -279,6 +279,8 @@ autocmd FileType gitcommit setlocal comments+=fb:- fo+=c
 set spelllang=en_us,de_20
 set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
 
+autocmd FileType gitcommit setlocal spell
+
 " Fix highlighting for spell checks in terminal
 function! s:base16_customize() abort
   " Colors: https://github.com/chriskempson/base16/blob/master/styling.md
