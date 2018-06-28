@@ -158,34 +158,6 @@ Plug 'vimoutliner/vimoutliner'
 "let g:lexical#thesaurus_key = '<leader>t'
 "let g:lexical#dictionary_key = '<leader>k'
 
-" Goyo ===============================================================
-"Plug 'junegunn/goyo.vim'
-"function! s:goyo_enter()
-"    "silent !tmux set status off
-"    set noshowmode
-"    set noshowcmd
-"    set scrolloff=999
-"    set spell
-"    if has('gui_running')
-"        set linespace=4
-"    endif
-"    Limelight
-"endfunction
-"
-"function! s:goyo_leave()
-"    "silent !tmux set status on
-"    set showmode
-"    set showcmd
-"    set scrolloff=5
-"    if has('gui_running')
-"        set linespace=0
-"    endif
-"    Limelight!
-"endfunction
-"
-"autocmd! User GoyoEnter nested call <SID>goyo_enter()
-"autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
 " Sprunge ============================================================
 "Plug 'chilicuil/vim-sprunge'
 "let g:sprunge_map = "<leader><leader>s"
