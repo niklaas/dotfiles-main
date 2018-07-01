@@ -39,6 +39,9 @@ Plug 'tpope/vim-fugitive'
 
 " Auto-clean fugitive buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd BufReadPost term://.//*:git* set bufhidden=delete
+
+Plug 'sodapopcan/vim-twiggy'
 
 " Ctrlp ==============================================================
 Plug 'ctrlpvim/ctrlp.vim'
