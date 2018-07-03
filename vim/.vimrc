@@ -108,6 +108,9 @@ let R_nvim_wd = 1
 let R_assign = 0
 let r_indent_ess_compatible = 1
 
+" Typescript =========================================================
+Plug 'leafgarland/typescript-vim'
+
 " Completion =========================================================
 
 " TODO: Configure completion for normal vim. Use case: Use functionality on a
