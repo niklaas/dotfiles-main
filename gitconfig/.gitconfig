@@ -1,6 +1,5 @@
-[user]
-    name = Niklaas Baudet von Gersdorff
-    email = me@niklaas.eu
+[include]
+    path = ~/.gitconfig.local
 [credential]
     helper = cache
 [core]
