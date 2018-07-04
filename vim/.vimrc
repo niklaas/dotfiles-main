@@ -20,7 +20,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'embear/vim-localvimrc'
-Plug 'gregsexton/gitv'
 Plug 'idanarye/vim-merginal'  " for git branching
 Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
@@ -42,6 +41,7 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd BufReadPost term://.//*:git* set bufhidden=delete
 
 Plug 'sodapopcan/vim-twiggy'
+Plug 'junegunn/gv.vim'
 
 " Ctrlp ==============================================================
 Plug 'ctrlpvim/ctrlp.vim'
