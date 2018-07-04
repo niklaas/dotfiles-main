@@ -34,6 +34,12 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'zhou13/vim-easyescape'
 
+" Note taking ========================================================
+Plug 'pedrosans/vim-misc'
+Plug 'pedrosans/vim-notes'
+
+let g:notes_directories = ['~/notes']
+
 " Fugitive ===========================================================
 Plug 'tpope/vim-fugitive'
 
