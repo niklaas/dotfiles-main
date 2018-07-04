@@ -85,6 +85,11 @@ then
     alias remtd="rem -g -q"
 fi
 
+if command -v gopass >/dev/null 2>&1
+then
+    alias pass="gopass"
+fi
+
 # FreeBSD specific ###################################################
 
 if uname -a | grep -q FreeBSD
