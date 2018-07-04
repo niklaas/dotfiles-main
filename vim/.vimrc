@@ -57,7 +57,7 @@ let g:ctrlp_cmd = 'CtrlP'
 if has("unix")
   let g:ctrlp_user_command = {
   \ 'types': {
-    \ 1: ['.git', 'cd %s && git ls-files']
+    \ 1: ['.git', 'cd %s && git ls-files -co --exclude-standard']
     \ },
   \ 'fallback': 'find %s -type f'
   \ }
