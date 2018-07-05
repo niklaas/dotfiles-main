@@ -114,8 +114,9 @@ let R_nvim_wd = 1
 let R_assign = 0
 let r_indent_ess_compatible = 1
 
-" Typescript =========================================================
+" Typescript/Angular =================================================
 Plug 'leafgarland/typescript-vim'
+Plug 'burnettk/vim-angular'
 
 " Completion =========================================================
 
