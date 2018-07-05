@@ -75,6 +75,11 @@ alias tssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o L
 
 alias -g S="| curl -F 'sprunge=<-' http://sprunge.us"
 
+if command -v xclip >/dev/null 2>&1
+then
+    alias -g C="| xclip -sel clip"
+fi
+
 if command -v rem >/dev/null 2>&1
 then
     alias remm="rem -c -m"
