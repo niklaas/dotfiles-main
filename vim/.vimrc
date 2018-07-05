@@ -142,6 +142,7 @@ Plug 'mllg/vim-devtools-plugin'
 Plug 'mrk21/yaml-vim'
 Plug 'slashmili/alchemist.vim'
 Plug 'elixir-editors/vim-elixir'
+Plug 'othree/html5.vim'
 
 " Syntastic or ALE?
 if v:version < 800
@@ -253,7 +254,7 @@ endif
 " Indenting
 set expandtab autoindent
 set tabstop=4 shiftwidth=4 softtabstop=4
-autocmd FileType r,rmd,vim,yaml,typescript,json
+autocmd FileType r,rmd,vim,yaml,typescript,json,html
       \ setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 autocmd FileType gitcommit setlocal comments+=fb:- fo+=c
