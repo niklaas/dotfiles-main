@@ -297,6 +297,9 @@ nmap <leader>ms :1,7s/<.*@niklaas.eu/<stdin@niklaas.eu<CR><C-o>
 nmap <leader>mm :1,7s/<.*@niklaas.eu/<me@niklaas.eu<CR><C-o>
 nmap <leader>mp :1,1s/<.*@\(.*\)>/<postmaster@\1><CR><C-o>
 
+" Switch between files easily
+nmap <leader>a <C-^>
+
 " type w!! to save as root
 if has("unix")
   cmap w!! w !sudo tee >/dev/null %
