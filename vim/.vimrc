@@ -1,4 +1,5 @@
 set nocompatible
+let mapleader = ","
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-PlUG
@@ -196,8 +197,6 @@ call plug#end()
 runtime! ftplugin/man.vim
 
 " GENERAL ================
-
-let mapleader = ","
 
 set autowrite
 set backspace=indent,eol,start
