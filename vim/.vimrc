@@ -35,6 +35,10 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'zhou13/vim-easyescape'
 
+" Includes *multiple* syntax/completion/etc rules
+" This should be includes first to be overridden susequently
+Plug 'sheerun/vim-polyglot'
+
 " Note taking ========================================================
 Plug 'pedrosans/vim-misc'
 Plug 'pedrosans/vim-notes'
