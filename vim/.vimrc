@@ -203,6 +203,7 @@ set modelines=5
 set mouse=a
 set nobackup
 set nojoinspaces
+set nostartofline
 set nowrap
 set pastetoggle=<f11>
 set ruler
