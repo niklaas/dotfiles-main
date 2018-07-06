@@ -171,7 +171,7 @@ else
   Plug 'w0rp/ale'
 
   let g:ale_fix_on_save = 1
-  let g:ale_completion_enabled = 1 " TODO: Breaks permanent :Gstatus view
+  let g:ale_completion_enabled = 0
 
   map gd <Plug>(ale_go_to_definition)
   map gD <Plug>(ale_go_to_definition_in_tab)
