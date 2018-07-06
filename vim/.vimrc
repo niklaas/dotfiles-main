@@ -151,6 +151,7 @@ Plug 'mrk21/yaml-vim'
 Plug 'slashmili/alchemist.vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'othree/html5.vim'
+Plug 'othree/html5-syntax.vim'
 
 " Syntastic or ALE?
 if v:version < 800
