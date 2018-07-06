@@ -125,12 +125,15 @@ Plug 'burnettk/vim-angular'
 
 " Completion =========================================================
 
-" TODO: Configure completion for normal vim. Use case: Use functionality on a
-" remote machine.Problem: All of these gimmicks require python3 and I'm note
-" sure whether I want to install what comes with all of this.
-if has('nvim') && !exists('g:gui_oni')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  let g:deoplete#enable_at_startup = 1
+if !exists('g:gui_oni')
+    if has('nvim')
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+        Plug 'Shougo/deoplete.nvim'
+        Plug 'roxma/nvim-yarp'
+        Plug 'roxma/vim-hug-neovim-rpc'
+    endif
+    let g:deoplete#enable_at_startup = 1
 endif
 
 Plug 'SirVer/ultisnips'
