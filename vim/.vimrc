@@ -22,16 +22,21 @@ Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'embear/vim-localvimrc'
 Plug 'gregsexton/gitv'
-Plug 'idanarye/vim-merginal'  " for git branching
 Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
+Plug 'michaeljsmith/vim-indent-object'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'rhysd/clever-f.vim'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar'  " for better netrw
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'zhou13/vim-easyescape'
 
@@ -56,19 +61,80 @@ autocmd BufReadPost term://.//*:git* set bufhidden=delete
 Plug 'sodapopcan/vim-twiggy'
 Plug 'junegunn/gv.vim'
 
+" Projectionist ======================================================
+Plug 'tpope/vim-projectionist'
+let g:projectionist_heuristics = {
+   \  "config/prod.exs": {
+   \    "web/controllers/*_controller.ex": {
+   \      "type": "controller",
+   \      "alternate": "test/controllers/{}_controller_test.exs",
+   \    },
+   \    "web/models/*.ex": {
+   \      "type": "model",
+   \      "alternate": "test/models/{}_test.exs",
+   \    },
+   \    "web/views/*_view.ex": {
+   \      "type": "view",
+   \      "alternate": "test/views/{}_view_test.exs",
+   \    },
+   \    "web/templates/*.html.eex": {
+   \      "type": "template",
+   \      "alternate": "web/views/{dirname|basename}_view.ex"
+   \    },
+   \    "test/*_test.exs": {
+   \      "type": "test",
+   \      "alternate": "web/{}.ex",
+   \    }
+   \  }
+   \}
+noremap <leader>ec :Econtroller<Space>
+noremap <leader>em :Emodel<Space>
+noremap <leader>et :Etemplate<Space>
+noremap <leader>eT :Etest<Space>
+noremap <leader>ev :Eview<Space>
+noremap <leader>A  :A<CR>
+
 " Ctrlp ==============================================================
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-if has("unix")
-  let g:ctrlp_user_command = {
-  \ 'types': {
-    \ 1: ['.git', 'cd %s && git ls-files -co --exclude-standard']
-    \ },
-  \ 'fallback': 'find %s -type f'
-  \ }
+if has('unix')
+  if executable('fd')
+    let g:ctrlp_user_command = 'fd --type f --colors=never "" %s'
+    let g:ctrlp_use_caching  = 0
+  else
+    let g:ctrlp_user_command = {
+    \ 'types': {
+      \ 1: ['.git', 'cd %s && git ls-files -co --exclude-standard']
+      \ },
+    \ 'fallback': 'find %s -type f'
+    \ }
+  endif
 endif
+
+if filereadable('web/router.ex')
+    " This looks like an Elixir/Phoenix app.
+    noremap <localleader>ec :CtrlP web/controllers<CR>
+    noremap <localleader>em :CtrlP web/models<CR>
+    noremap <localleader>eT :CtrlP test<CR>
+    noremap <localleader>et :CtrlP web/templates<CR>
+    noremap <localleader>ev :CtrlP web/views<CR>
+endif
+
+" Grepper ============================================================
+Plug 'mhinz/vim-grepper'
+let g:grepper = {}
+let g:grepper.tools = ['git', 'ripgrep', 'grep']
+let g:grepper_jump = 1
+
+nmap gs <Plug>(GrepperOperator)
+xmap gs <Plug>(GrepperOperator)
+
+nnoremap <leader>gg :Grepper -tool git<cr>
+nnoremap <leader>gr :Grepper -tool ripgrep<cr>
+nnoremap <leader>gs :Grepper -tool ripgrep -side<cr>
+nnoremap <leader>*  :Grepper -tool ripgrep -cword -noprompt<cr>
 
 " DelimitMate ========================================================
 Plug 'Raimondi/delimitMate'
@@ -352,11 +418,6 @@ cnoremap kj <ESC>
 
 " Inserts timestamp (ISO compliant with colon in timezone)
 ia aDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
-
-if executable('ag')
-    set grepprg=ag\ --vimgrep\ $*
-    set grepformat=%f:%l:%c:%m
-endif
 
 " Colors
 set t_Co=256
