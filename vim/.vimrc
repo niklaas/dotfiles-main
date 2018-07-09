@@ -54,6 +54,7 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd BufReadPost term://.//*:git* set bufhidden=delete
 
 Plug 'sodapopcan/vim-twiggy'
+Plug 'junegunn/gv.vim'
 
 " Ctrlp ==============================================================
 Plug 'ctrlpvim/ctrlp.vim'
