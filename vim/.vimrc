@@ -44,6 +44,7 @@ Plug 'pedrosans/vim-misc'
 Plug 'pedrosans/vim-notes'
 
 let g:notes_directories = ['~/notes']
+let g:notes_suffix = '.txt'
 
 " Fugitive ===========================================================
 Plug 'tpope/vim-fugitive'
