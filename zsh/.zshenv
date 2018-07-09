@@ -63,6 +63,11 @@ alias dts="date +%Y-%m-%d"
 
 alias g="git"
 
+if command -v gpg2 >/dev/null 2>&1
+then
+    alias gpg="gpg2"
+fi
+
 alias kcgpg="keychain -q --eval 1C62D5F3 >/dev/null"
 alias kcrn="keychain -q --eval rsync.net >/dev/null"
 
