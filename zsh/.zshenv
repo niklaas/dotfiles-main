@@ -8,18 +8,12 @@ autoload -U compdef
 export SHELL=$(command -v zsh)
 export HOSTNAME=$(hostname)
 
-if command -v nvim > /dev/null 2>&1
-then
-    export EDITOR=nvim
-    alias vim="nvim"
-    alias v="nvim"
-    alias vv="nvim -MR -c 'file [stdin]' -"
-else
-    export EDITOR=vim
-    alias vim="vim"
-    alias v="vim"
-    alias vv="vim -MR -c 'file [stdin]' -"
-fi
+# EDITOR setup
+export EDITOR=vim
+alias v="vim"
+alias vv="vim -MR -c 'file [stdin]' -"
+alias nv="nvim"
+alias nvv="nvim -MR -c 'file [stdin]' -"
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
