@@ -190,8 +190,8 @@ let r_indent_ess_compatible = 1
 
 " JavaScript/Typescript/Angular ======================================
 Plug 'leafgarland/typescript-vim'
-Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'matthewsimo/angular-vim-snippets'
+Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
 
 " Completion =========================================================
