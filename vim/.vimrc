@@ -106,7 +106,7 @@ let g:ctrlp_cmd = 'CtrlP'
 
 if has('unix')
   if executable('fd')
-    let g:ctrlp_user_command = 'fd --type f --colors=never "" %s'
+    let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
     let g:ctrlp_use_caching  = 0
   else
     let g:ctrlp_user_command = {
