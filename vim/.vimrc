@@ -281,6 +281,7 @@ set autowrite
 set backspace=indent,eol,start
 set cpo+=$
 set hidden
+set hlsearch
 set ignorecase
 set incsearch
 set linebreak
