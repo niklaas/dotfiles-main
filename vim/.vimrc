@@ -59,8 +59,15 @@ Plug 'tpope/vim-fugitive'
 autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd BufReadPost term://.//*:git* set bufhidden=delete
 
+noremap <leader>gc :Gcommit<cr>
+noremap <leader>gs :Gstatus<cr>
+noremap <leader>gw :Gwrite<cr>
+noremap <leader>gb :Gblame<cr>
+
 Plug 'sodapopcan/vim-twiggy'
 Plug 'junegunn/gv.vim'
+
+noremap <leader>gV :GV<cr>
 
 " Projectionist ======================================================
 Plug 'tpope/vim-projectionist'
