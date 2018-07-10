@@ -209,6 +209,14 @@ Plug 'pangloss/vim-javascript'
 
 if !exists('g:gui_oni')
     if has('nvim')
+        Plug 'autozimu/LanguageClient-neovim', {
+                    \ 'branch': 'next',
+                    \ 'do': 'bash install.sh',
+                    \ }
+        let g:LanguageClient_serverCommands = {
+                    \ 'typescript': ['typescript-language-server --stdio']
+                    \ }
+
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     else
         Plug 'Shougo/deoplete.nvim'
