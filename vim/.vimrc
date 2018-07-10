@@ -313,6 +313,7 @@ set viminfo=%,'50,:100,<1000
 set visualbell
 set whichwrap=<,>,h,l
 set wildmenu
+set wildmode=longest,full
 
 " Set locations of important directories depending on OS
 if(has("win32"))
