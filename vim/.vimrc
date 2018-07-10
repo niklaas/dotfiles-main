@@ -31,6 +31,7 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'  " sugar for UNIX shell commands
+Plug 'tpope/vim-flagship'  " API for plugins to set statusline
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
@@ -341,6 +342,7 @@ endif
 
 " Always show status line
 set laststatus=2
+set showtabline=2
 
 " Encoding and file format
 scriptencoding utf-8
