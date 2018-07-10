@@ -137,16 +137,16 @@ endif
 " Grepper ============================================================
 Plug 'mhinz/vim-grepper'
 let g:grepper = {}
-let g:grepper.tools = ['git', 'ripgrep', 'grep']
+let g:grepper.tools = ['git', 'rg', 'grep']
 let g:grepper_jump = 1
 
 nmap gs <Plug>(GrepperOperator)
 xmap gs <Plug>(GrepperOperator)
 
 nnoremap <leader>gg :Grepper -tool git<cr>
-nnoremap <leader>gr :Grepper -tool ripgrep<cr>
-nnoremap <leader>gs :Grepper -tool ripgrep -side<cr>
-nnoremap <leader>*  :Grepper -tool ripgrep -cword -noprompt<cr>
+nnoremap <leader>gr :Grepper -tool rg<cr>
+nnoremap <leader>gv :Grepper -tool rg -side<cr>
+nnoremap <leader>*  :Grepper -tool rg -cword -noprompt<cr>
 
 " DelimitMate ========================================================
 Plug 'Raimondi/delimitMate'
