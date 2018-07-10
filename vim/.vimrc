@@ -88,12 +88,16 @@ let g:projectionist_heuristics = {
    \    }
    \  }
    \}
+
 noremap <leader>ec :Econtroller<Space>
 noremap <leader>em :Emodel<Space>
 noremap <leader>et :Etemplate<Space>
 noremap <leader>eT :Etest<Space>
 noremap <leader>ev :Eview<Space>
-noremap <leader>A  :A<CR>
+noremap <leader>aa :A<CR>
+noremap <leader>av :AV<CR>
+noremap <leader>as :AS<CR>
+noremap <leader>at :AT<CR>
 
 " Ctrlp ==============================================================
 Plug 'ctrlpvim/ctrlp.vim'
@@ -383,9 +387,6 @@ nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
 nmap <leader>ms :1,7s/<.*@niklaas.eu/<stdin@niklaas.eu<CR><C-o>
 nmap <leader>mm :1,7s/<.*@niklaas.eu/<me@niklaas.eu<CR><C-o>
 nmap <leader>mp :1,1s/<.*@\(.*\)>/<postmaster@\1><CR><C-o>
-
-" Switch between files easily
-nmap <leader>a <C-^>
 
 " type w!! to save as root
 if has("unix")
