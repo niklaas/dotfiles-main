@@ -22,7 +22,13 @@ export LC_COLLATE=C
 # Simplifies prompt symbole for pure prompt
 export PURE_PROMPT_SYMBOL='>'
 
+if test -d /usr/local/go/bin
+then
+    # Looks like golang was installed from upstream directly.
+    path=(/usr/local/go/bin $path)
+fi
 export GOPATH=$HOME/go
+
 export N_PREFIX=$HOME/n
 
 export ANSIBLE_NOCOWS=1
