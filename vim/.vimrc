@@ -213,10 +213,8 @@ if !exists('g:gui_oni')
                     \ 'branch': 'next',
                     \ 'do': 'bash install.sh',
                     \ }
-        let g:LanguageClient_serverCommands = {
-                    \ 'typescript': ['typescript-language-server --stdio']
-                    \ }
 
+        Plug 'mhartington/nvim-typescript'
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     else
         Plug 'Shougo/deoplete.nvim'
