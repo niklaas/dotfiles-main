@@ -212,6 +212,8 @@ Plug 'pangloss/vim-javascript'
 " Completion =========================================================
 
 if !exists('g:gui_oni')
+    " Deoplete completion isn't needed in Oni because it ships with it's own
+    " completion.
     if has('nvim')
         Plug 'autozimu/LanguageClient-neovim', {
                     \ 'branch': 'next',
@@ -231,10 +233,12 @@ if !exists('g:gui_oni')
     let g:deoplete#enable_at_startup = 1
 
     set runtimepath+=$DOTVIM/plugged/deoplete.nvim
-    call deoplete#custom#option({
-            \ 'enable_buffer_path': v:true,
-            \ })
-
+    " FIXME: `enable_buffer_path` isn't set at all.
+    "
+    " call deoplete#custom#option({
+    "         \ 'enable_buffer_path': v:true,
+    "         \ })
+    call deoplete#custom#option('enable_buffer_path', v:true)
 endif
 
 Plug 'SirVer/ultisnips'
