@@ -9,7 +9,13 @@ export SHELL=$(command -v zsh)
 export HOSTNAME=$(hostname)
 
 # EDITOR setup
-export EDITOR=vim
+if command -v nvim >/dev/null 2>&1
+then
+    export EDITOR=nvim
+else
+    export EDITOR=vim
+fi
+alias e=$EDITOR
 alias v="vim"
 alias vv="vim -MR -c 'file [stdin]' -"
 alias nv="nvim"
