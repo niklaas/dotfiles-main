@@ -214,10 +214,12 @@ if !exists('g:gui_oni')
     if has('nvim')
         Plug 'autozimu/LanguageClient-neovim', {
                     \ 'branch': 'next',
-                    \ 'do': 'bash install.sh',
+                    \ 'do': 'sh install.sh',
                     \ }
 
-        Plug 'mhartington/nvim-typescript'
+        Plug 'mhartington/nvim-typescript', {'do': 'sh install.sh'}
+        let g:nvim_typescript#default_mappings = 1
+
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     else
         Plug 'Shougo/deoplete.nvim'
