@@ -1,14 +1,16 @@
 set nocompatible
 let mapleader = ","
 
+if has("win32")
+    let $DOTVIM = expand('$HOME/vimfiles')
+else
+    let $DOTVIM = expand('$HOME/.vim')
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM-PlUG
 
-if has("win32")
-  call plug#begin('$HOME/vimfiles/plugged')
-else
-  call plug#begin('$HOME/.vim/plugged')
-endif
+call plug#begin('$DOTVIM/plugged')
 
 " Conditional activation for vim-plug plugins
 " https://github.com/junegunn/vim-plug/wiki/tips#conditional-activation
@@ -222,7 +224,14 @@ if !exists('g:gui_oni')
         Plug 'roxma/nvim-yarp'
         Plug 'roxma/vim-hug-neovim-rpc'
     endif
+
     let g:deoplete#enable_at_startup = 1
+
+    set runtimepath+=$DOTVIM/plugged/deoplete.nvim
+    call deoplete#custom#option({
+            \ 'enable_buffer_path': v:true,
+            \ })
+
 endif
 
 Plug 'SirVer/ultisnips'
