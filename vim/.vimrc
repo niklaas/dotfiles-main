@@ -211,9 +211,9 @@ if !exists('g:gui_oni')
 
     " Language Server Protocol (LSP) support
     Plug 'autozimu/LanguageClient-neovim', Cond(has('nvim'), {
-          \ 'branch': 'next',
-          \ 'do': 'sh install.sh',
-          \ })
+                \ 'branch': 'next',
+                \ 'do': 'sh install.sh',
+                \ })
 
     set runtimepath+=$DOTVIM/plugged/deoplete.nvim
     let g:deoplete#enable_at_startup = 1
