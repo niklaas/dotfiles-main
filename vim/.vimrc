@@ -43,10 +43,13 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'  " for better netrw
 Plug 'vim-scripts/SyntaxAttr.vim'
+
 Plug 'zhou13/vim-easyescape'
+let g:easyescape_chars = { "j": 1, "k": 1 }
+let g:easyescape_timeout = 2000
 
 " Includes *multiple* syntax/completion/etc rules
-" This should be includes first to be overridden susequently
+" This should be includes first to be overridden subsequently
 Plug 'sheerun/vim-polyglot'
 
 " Fugitive ===========================================================
@@ -125,11 +128,11 @@ endif
 
 if filereadable('web/router.ex')
     " This looks like an Elixir/Phoenix app.
-    noremap <localleader>ec :CtrlP web/controllers<CR>
-    noremap <localleader>em :CtrlP web/models<CR>
-    noremap <localleader>eT :CtrlP test<CR>
-    noremap <localleader>et :CtrlP web/templates<CR>
-    noremap <localleader>ev :CtrlP web/views<CR>
+    nnoremap <localleader>ec :CtrlP web/controllers<CR>
+    nnoremap <localleader>em :CtrlP web/models<CR>
+    nnoremap <localleader>eT :CtrlP test<CR>
+    nnoremap <localleader>et :CtrlP web/templates<CR>
+    nnoremap <localleader>ev :CtrlP web/views<CR>
 endif
 
 " Grepper ============================================================
@@ -308,7 +311,6 @@ set autowrite
 set backspace=indent,eol,start
 set cpo+=$
 set hidden
-set hlsearch
 set ignorecase
 set incsearch
 set linebreak
@@ -366,6 +368,7 @@ if (exists('+colorcolumn'))
 endif
 
 " Indenting
+set shiftround
 set expandtab autoindent
 set tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType r,rmd,vim,yaml,typescript,json,html
@@ -398,25 +401,19 @@ augroup END
 let &t_SI = "\<Esc>[6 q"
 let &t_EI = "\<Esc>[2 q"
 
-" cd to the directory of the file current file
-nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-
 " Expand %% to the current directory
 cabbr <expr> %% expand('%:p:h')
 
-" MAPS & ABBREVIATIONS ===
+" MAPPINGS ===========================================================
 
-nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
+nmap <leader>cd :cd %:p:h<CR>:pwd<CR>
+nmap <Leader>cc :set cursorline! cursorcolumn!<CR>
+nmap Y y$
+nmap <space> viw
+cmap jk <ESC>
+cmap kj <ESC>
 
-" Replace sender in emails
-nmap <leader>ms :1,7s/<.*@niklaas.eu/<stdin@niklaas.eu<CR><C-o>
-nmap <leader>mm :1,7s/<.*@niklaas.eu/<me@niklaas.eu<CR><C-o>
-nmap <leader>mp :1,1s/<.*@\(.*\)>/<postmaster@\1><CR><C-o>
-
-" type w!! to save as root
-if has("unix")
-  cmap w!! w !sudo tee >/dev/null %
-endif
+cmap w!! w !sudo tee >/dev/null %
 
 " Eases navigation between splits
 nnoremap <C-J> <C-W><C-J>
@@ -434,14 +431,6 @@ if has('nvim')
   tnoremap <C-[> <Esc>
   tnoremap <C-v><Esc> <Esc>
 endif
-
-nnoremap Y y$
-
-" Escape with jk
-let g:easyescape_chars = { "j": 1, "k": 1 }
-let g:easyescape_timeout = 2000
-cnoremap jk <ESC>
-cnoremap kj <ESC>
 
 " Inserts timestamp (ISO compliant with colon in timezone)
 ia aDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
