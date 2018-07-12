@@ -211,6 +211,9 @@ Plug 'pangloss/vim-javascript'
 if !exists('g:gui_oni')
     " Completion isn't needed in Oni because it ships with it's own.
 
+    " FIXME: `mhartington/nvim-typescript` Breaks ALE. When the linter find's
+    " an error. These errors are no longer showed permantly but only appear in
+    " the status line for a very short time.
     Plug 'mhartington/nvim-typescript', Cond(has('nvim'), {'do': 'sh install.sh'})
     let g:nvim_typescript#default_mappings = 1
 
