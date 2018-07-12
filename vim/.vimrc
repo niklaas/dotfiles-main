@@ -1,4 +1,5 @@
 set nocompatible
+
 let mapleader = ","
 
 if has("win32")
@@ -47,13 +48,6 @@ Plug 'zhou13/vim-easyescape'
 " Includes *multiple* syntax/completion/etc rules
 " This should be includes first to be overridden susequently
 Plug 'sheerun/vim-polyglot'
-
-" Note taking ========================================================
-Plug 'pedrosans/vim-misc'
-Plug 'pedrosans/vim-notes'
-
-let g:notes_directories = ['~/notes']
-let g:notes_suffix = '.txt'
 
 " Fugitive ===========================================================
 Plug 'tpope/vim-fugitive'
@@ -168,11 +162,6 @@ autocmd FileType scala nnoremap <localleader>df :EnDeclaration>CR>
 autocmd BufWritePost *.scala silent :EnTypeChec
 nnoremap <localleader>t :EnType<CR>
 let g:scala_scaladoc_indent = 1
-
-" VOom ===============================================================
-Plug 'vim-scripts/VOoM'
-let g:voom_tree_placement = "top"
-let g:voom_tree_height = 5
 
 " Airtline ===========================================================
 Plug 'vim-airline/vim-airline', Cond(!exists('g:gui_oni'))
