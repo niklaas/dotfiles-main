@@ -69,6 +69,8 @@ noremap <leader>gw :Gwrite<cr>
 noremap <leader>gb :Gblame<cr>
 
 Plug 'sodapopcan/vim-twiggy'
+noremap <leader>b :Twiggy<cr>
+
 Plug 'junegunn/gv.vim'
 
 noremap <leader>gV :GV<cr>
