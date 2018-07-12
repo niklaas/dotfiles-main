@@ -274,7 +274,7 @@ endif
 
 " Sprunge ============================================================
 Plug 'chilicuil/vim-sprunge'
-let g:sprunge_map = "<leader><leader>s"
+let g:sprunge_map = "<leader>p"
 let g:sprunge_open_browser = 1
 
 call plug#end()
