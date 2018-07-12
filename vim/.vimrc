@@ -272,9 +272,6 @@ else
   map gD <Plug>(ale_go_to_definition_in_tab)
 endif
 
-Plug 'vimoutliner/vimoutliner'
-
-
 " Prose writing ======================================================
 "Plug 'junegunn/limelight.vim'
 "Plug 'reedes/vim-pencil'
