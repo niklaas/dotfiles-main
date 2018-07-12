@@ -204,37 +204,30 @@ Plug 'pangloss/vim-javascript'
 " Completion =========================================================
 
 if !exists('g:gui_oni')
-    " Deoplete completion isn't needed in Oni because it ships with it's own
-    " completion.
-    if has('nvim')
-        Plug 'autozimu/LanguageClient-neovim', {
-                    \ 'branch': 'next',
-                    \ 'do': 'sh install.sh',
-                    \ }
+    " Completion isn't needed in Oni because it ships with it's own.
 
-        Plug 'mhartington/nvim-typescript', {'do': 'sh install.sh'}
-        let g:nvim_typescript#default_mappings = 1
+    Plug 'mhartington/nvim-typescript', Cond(has('nvim'), {'do': 'sh install.sh'})
+    let g:nvim_typescript#default_mappings = 1
 
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    else
-        Plug 'Shougo/deoplete.nvim'
-        Plug 'roxma/nvim-yarp'
-        Plug 'roxma/vim-hug-neovim-rpc'
-    endif
-
-    let g:deoplete#enable_at_startup = 1
+    " Language Server Protocol (LSP) support
+    Plug 'autozimu/LanguageClient-neovim', Cond(has('nvim'), {
+          \ 'branch': 'next',
+          \ 'do': 'sh install.sh',
+          \ })
 
     set runtimepath+=$DOTVIM/plugged/deoplete.nvim
-    " FIXME: `enable_buffer_path` isn't set at all.
-    "
-    " call deoplete#custom#option({
-    "         \ 'enable_buffer_path': v:true,
-    "         \ })
-    call deoplete#custom#option('enable_buffer_path', v:true)
-endif
+    let g:deoplete#enable_at_startup = 1
+    call deoplete#custom#var('file', 'enable_buffer_path', v:true)
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+    Plug 'Shougo/deoplete.nvim', Cond(has('nvim'), { 'do': ':UpdateRemotePlugins' })
+
+    Plug 'Shougo/neosnippet.vim'
+    Plug 'Shougo/neosnippet-snippets'
+
+    " Required for deoplete for normal vim
+    Plug 'roxma/nvim-yarp', Cond(!has('nvim'))
+    Plug 'roxma/vim-hug-neovim-rpc', Cond(!has('nvim'))
+endif
 
 " Syntax rules =======================================================
 
