@@ -272,17 +272,6 @@ else
   map gD <Plug>(ale_go_to_definition_in_tab)
 endif
 
-" Prose writing ======================================================
-"Plug 'junegunn/limelight.vim'
-"Plug 'reedes/vim-pencil'
-"Plug 'reedes/vim-thematic'
-"Plug 'tommcdo/vim-exchange'
-
-"Plug 'reedes/vim-lexical'
-"let g:lexical#spell_key = '<leader>s'
-"let g:lexical#thesaurus_key = '<leader>t'
-"let g:lexical#dictionary_key = '<leader>k'
-
 " Sprunge ============================================================
 Plug 'chilicuil/vim-sprunge'
 let g:sprunge_map = "<leader><leader>s"
