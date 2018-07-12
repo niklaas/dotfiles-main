@@ -20,6 +20,7 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
+
 Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -31,6 +32,9 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'mkitt/tabline.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'rhysd/clever-f.vim'
+Plug 'vim-scripts/SyntaxAttr.vim'
+
+" tpope plugins
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -42,7 +46,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'  " for better netrw
-Plug 'vim-scripts/SyntaxAttr.vim'
+
 
 Plug 'zhou13/vim-easyescape'
 let g:easyescape_chars = { "j": 1, "k": 1 }
@@ -96,15 +100,16 @@ let g:projectionist_heuristics = {
    \  }
    \}
 
-noremap <leader>ec :Econtroller<Space>
-noremap <leader>em :Emodel<Space>
-noremap <leader>et :Etemplate<Space>
-noremap <leader>eT :Etest<Space>
-noremap <leader>ev :Eview<Space>
-noremap <leader>aa :A<CR>
-noremap <leader>av :AV<CR>
-noremap <leader>as :AS<CR>
-noremap <leader>at :AT<CR>
+noremap <localleader>ec :Econtroller<Space>
+noremap <localleader>em :Emodel<Space>
+noremap <localleader>et :Etemplate<Space>
+noremap <localleader>eT :Etest<Space>
+noremap <localleader>ev :Eview<Space>
+
+noremap aa :A<CR>
+noremap av :AV<CR>
+noremap as :AS<CR>
+noremap at :AT<CR>
 
 " Ctrlp ==============================================================
 Plug 'ctrlpvim/ctrlp.vim'
@@ -128,11 +133,11 @@ endif
 
 if filereadable('web/router.ex')
     " This looks like an Elixir/Phoenix app.
-    nnoremap <localleader>ec :CtrlP web/controllers<CR>
-    nnoremap <localleader>em :CtrlP web/models<CR>
-    nnoremap <localleader>eT :CtrlP test<CR>
-    nnoremap <localleader>et :CtrlP web/templates<CR>
-    nnoremap <localleader>ev :CtrlP web/views<CR>
+    nnoremap pc :CtrlP web/controllers<CR>
+    nnoremap pm :CtrlP web/models<CR>
+    nnoremap pT :CtrlP test<CR>
+    nnoremap pt :CtrlP web/templates<CR>
+    nnoremap pv :CtrlP web/views<CR>
 endif
 
 " Grepper ============================================================
@@ -389,9 +394,9 @@ nmap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>cc :set cursorline! cursorcolumn!<CR>
 nmap Y y$
 nmap <space> viw
+
 cmap jk <ESC>
 cmap kj <ESC>
-
 cmap w!! w !sudo tee >/dev/null %
 
 " Eases navigation between splits
@@ -411,8 +416,12 @@ if has('nvim')
   tnoremap <C-v><Esc> <Esc>
 endif
 
+" ABBREVIATIONS ======================================================
+
 " Inserts timestamp (ISO compliant with colon in timezone)
 ia aDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
+
+" DISPLAY & STYLE ====================================================
 
 " Colors
 set t_Co=256
@@ -451,7 +460,7 @@ if has('gui_running')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NeoVim
+" NeoVim/Vim compatibility
 
 if !has('nvim')
   set cryptmethod=blowfish2
