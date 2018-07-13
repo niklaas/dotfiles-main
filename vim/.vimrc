@@ -394,6 +394,11 @@ augroup filetype_html
   autocmd FileType html setlocal foldmethod=syntax
 augroup END
 
+augroup filetype_typescript
+  autocmd!
+  autocmd FileType typescript nnoremap <buffer> ,ti :TSImport<cr>
+augroup END
+
 augroup filetype_vimrc
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
