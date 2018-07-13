@@ -383,6 +383,11 @@ augroup filetype_gitcommit
   autocmd FileType gitcommit setlocal comments+=fb:- fo+=c spell
 augroup END
 
+augroup filetype_html
+  autocmd!
+  autocmd FileType html setlocal foldmethod=syntax
+augroup END
+
 augroup filetype_vimrc
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
