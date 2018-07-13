@@ -68,10 +68,11 @@ augroup fugitive_clean
   autocmd BufReadPost term://.//*:git* set bufhidden=delete
 augroup END
 
+nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gb :Gblame<cr>
 
 Plug 'sodapopcan/vim-twiggy'
 nnoremap <leader>b :Twiggy<cr>
