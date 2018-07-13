@@ -60,8 +60,11 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 
 " Auto-clean fugitive buffers
-autocmd BufReadPost fugitive://* set bufhidden=delete
-autocmd BufReadPost term://.//*:git* set bufhidden=delete
+augroup fugitive_clean
+  autocmd!
+  autocmd BufReadPost fugitive://* set bufhidden=delete
+  autocmd BufReadPost term://.//*:git* set bufhidden=delete
+augroup END
 
 noremap <leader>gc :Gcommit<cr>
 noremap <leader>gs :Gstatus<cr>
@@ -168,8 +171,11 @@ nmap ga <Plug>(EasyAlign)
 " Scala ==============================================================
 Plug 'derekwyatt/vim-sbt'
 Plug 'derekwyatt/vim-scala'
-autocmd FileType scala nnoremap <localleader>df :EnDeclaration>CR>
-autocmd BufWritePost *.scala silent :EnTypeChec
+augroup filetype_scala
+  autocmd!
+  autocmd FileType scala nnoremap <localleader>df :EnDeclaration>CR>
+  autocmd BufWritePost *.scala silent :EnTypeChec
+augroup END
 nnoremap <localleader>t :EnType<CR>
 let g:scala_scaladoc_indent = 1
 
@@ -363,13 +369,15 @@ set tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType r,rmd,vim,yaml,typescript,json,html
       \ setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
-autocmd FileType gitcommit setlocal comments+=fb:- fo+=c
+augroup filetype_gitcommit
+  autocmd!
+  autocmd FileType gitcommit setlocal comments+=fb:- fo+=c
+  autocmd FileType gitcommit setlocal spell
+augroup END
 
 " Spelling
 set spelllang=en_us,de_20
 set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
-
-autocmd FileType gitcommit setlocal spell
 
 " Fix highlighting for spell checks in terminal
 function! s:base16_customize() abort
