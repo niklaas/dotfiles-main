@@ -68,17 +68,17 @@ augroup fugitive_clean
   autocmd BufReadPost term://.//*:git* set bufhidden=delete
 augroup END
 
-noremap <leader>gc :Gcommit<cr>
-noremap <leader>gs :Gstatus<cr>
-noremap <leader>gw :Gwrite<cr>
-noremap <leader>gb :Gblame<cr>
+nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gb :Gblame<cr>
 
 Plug 'sodapopcan/vim-twiggy'
-noremap <leader>b :Twiggy<cr>
+nnoremap <leader>b :Twiggy<cr>
 
 Plug 'junegunn/gv.vim'
 
-noremap <leader>gV :GV<cr>
+nnoremap <leader>gV :GV<cr>
 
 " Projectionist ======================================================
 Plug 'tpope/vim-projectionist'
@@ -107,16 +107,16 @@ let g:projectionist_heuristics = {
    \  }
    \}
 
-noremap <localleader>ec :Econtroller<Space>
-noremap <localleader>em :Emodel<Space>
-noremap <localleader>et :Etemplate<Space>
-noremap <localleader>eT :Etest<Space>
-noremap <localleader>ev :Eview<Space>
+nnoremap <localleader>ec :Econtroller<Space>
+nnoremap <localleader>em :Emodel<Space>
+nnoremap <localleader>et :Etemplate<Space>
+nnoremap <localleader>eT :Etest<Space>
+nnoremap <localleader>ev :Eview<Space>
 
-noremap aa :A<CR>
-noremap av :AV<CR>
-noremap as :AS<CR>
-noremap at :AT<CR>
+nnoremap aa :A<CR>
+nnoremap av :AV<CR>
+nnoremap as :AS<CR>
+nnoremap at :AT<CR>
 
 " Ctrlp ==============================================================
 Plug 'ctrlpvim/ctrlp.vim'
