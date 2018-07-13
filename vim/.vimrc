@@ -157,9 +157,9 @@ let g:grepper_jump = 1
 nmap gs <Plug>(GrepperOperator)
 xmap gs <Plug>(GrepperOperator)
 
-nnoremap <leader>gg :Grepper -tool git<cr>
-nnoremap <leader>gr :Grepper -tool rg<cr>
-nnoremap <leader>gv :Grepper -tool rg -side<cr>
+nnoremap <leader>Gg :Grepper -tool git<cr>
+nnoremap <leader>Gr :Grepper -tool rg<cr>
+nnoremap <leader>Gv :Grepper -tool rg -side<cr>
 nnoremap <leader>*  :Grepper -tool rg -cword -noprompt<cr>
 
 " DelimitMate ========================================================
@@ -288,7 +288,8 @@ else
   Plug 'w0rp/ale'
 
   let g:ale_fixers = {
-        \ 'typescript': ['tslint']
+        \ 'typescript': ['tslint'],
+        \ 'go': ['gofmt', 'goimports']
         \ }
 
   let g:ale_fix_on_save = 1
@@ -388,6 +389,13 @@ set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
 augroup filetype_gitcommit
   autocmd!
   autocmd FileType gitcommit setlocal comments+=fb:- fo+=c spell
+augroup END
+
+augroup filetype_go
+  autocmd!
+  autocmd FileType go nnoremap <buffer> <leader>gr :GoRun<cr>
+  autocmd FileType go nnoremap <buffer> <leader>gt :GoTest<cr>
+  autocmd FileType go nnoremap <buffer> <leader>gb :GoBuild<cr>
 augroup END
 
 augroup filetype_html
