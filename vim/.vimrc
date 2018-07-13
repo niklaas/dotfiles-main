@@ -436,7 +436,7 @@ nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
 nnoremap Y y$
 nnoremap <space> viw
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
-nnoremap <leader>vs :source $MYREALVIMRC<cr>
+nnoremap <leader>vs :source $MYVIMRC<cr>
 
 cnoremap jk <ESC>
 cnoremap kj <ESC>
