@@ -171,12 +171,15 @@ nmap ga <Plug>(EasyAlign)
 " Scala ==============================================================
 Plug 'derekwyatt/vim-sbt'
 Plug 'derekwyatt/vim-scala'
+
 augroup filetype_scala
   autocmd!
   autocmd FileType scala nnoremap <localleader>df :EnDeclaration>CR>
   autocmd BufWritePost *.scala silent :EnTypeChec
 augroup END
+
 nnoremap <localleader>t :EnType<CR>
+
 let g:scala_scaladoc_indent = 1
 
 " Airtline ===========================================================
@@ -300,7 +303,7 @@ call plug#end()
 " allows displaying of man pages with :Man <program>
 runtime! ftplugin/man.vim
 
-" GENERAL ================
+" Basic settings --------------------------------------------------{{{
 
 set autowrite
 set backspace=indent,eol,start
@@ -365,19 +368,29 @@ endif
 " Indenting
 set shiftround
 set expandtab autoindent
-set tabstop=4 shiftwidth=4 softtabstop=4
-autocmd FileType r,rmd,vim,yaml,typescript,json,html
-      \ setlocal tabstop=2 shiftwidth=2 softtabstop=2
-
-augroup filetype_gitcommit
-  autocmd!
-  autocmd FileType gitcommit setlocal comments+=fb:- fo+=c
-  autocmd FileType gitcommit setlocal spell
-augroup END
+set tabstop=2 shiftwidth=2 softtabstop=2
 
 " Spelling
 set spelllang=en_us,de_20
 set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
+
+" }}}
+
+" Filetype-specific settings --------------------------------------{{{
+
+augroup filetype_gitcommit
+  autocmd!
+  autocmd FileType gitcommit setlocal comments+=fb:- fo+=c spell
+augroup END
+
+augroup filetype_vimrc
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+" }}}
+
+" Miscellaneous settings ------------------------------------------{{{
 
 " Fix highlighting for spell checks in terminal
 function! s:base16_customize() abort
@@ -398,19 +411,18 @@ augroup END
 let &t_SI = "\<Esc>[6 q"
 let &t_EI = "\<Esc>[2 q"
 
-" Expand %% to the current directory
-cabbr <expr> %% expand('%:p:h')
+" }}}
 
-" MAPPINGS ===========================================================
+" Mappings --------------------------------------------------------{{{
 
-nmap <leader>cd :cd %:p:h<CR>:pwd<CR>
-nmap <Leader>cc :set cursorline! cursorcolumn!<CR>
-nmap Y y$
-nmap <space> viw
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
+nnoremap Y y$
+nnoremap <space> viw
 
-cmap jk <ESC>
-cmap kj <ESC>
-cmap w!! w !sudo tee >/dev/null %
+cnoremap jk <ESC>
+cnoremap kj <ESC>
+cnoremap w!! w !sudo tee >/dev/null %
 
 " Eases navigation between splits
 nnoremap <C-J> <C-W><C-J>
@@ -429,12 +441,19 @@ if has('nvim')
   tnoremap <C-v><Esc> <Esc>
 endif
 
-" ABBREVIATIONS ======================================================
+" }}}
+
+" Abbreviations ---------------------------------------------------{{{
 
 " Inserts timestamp (ISO compliant with colon in timezone)
-ia aDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
+iabbrev aDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
 
-" DISPLAY & STYLE ====================================================
+" Expand %% to the current directory
+cabbrev <expr> %% expand('%:p:h')
+
+" }}}
+
+" Display & style -------------------------------------------------{{{
 
 " Colors
 set t_Co=256
@@ -452,8 +471,9 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" GUI
+" }}}
+
+" GUI settings ----------------------------------------------------{{{
 
 if has('gui_running')
   set guioptions-=m
@@ -472,17 +492,18 @@ if has('gui_running')
   endif
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NeoVim/Vim compatibility
+" }}}
+
+" NeoVim/Vim compatibility ----------------------------------------{{{
 
 if !has('nvim')
   set cryptmethod=blowfish2
   set ttymouse=xterm2
 endif
 
+" }}}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ONI
+" ONI -------------------------------------------------------------{{{
 
 if exists('g:gui_oni')
   " Override previous configuration with these setting to suit to Oni.
@@ -503,3 +524,5 @@ if exists('g:gui_oni')
 
   set mouse=a
 endif
+
+" }}}
