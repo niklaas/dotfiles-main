@@ -245,6 +245,10 @@ if !exists('g:gui_oni')
     Plug 'Shougo/neosnippet.vim'
     Plug 'Shougo/neosnippet-snippets'
 
+    imap <C-k> <Plug>(neosnippet_expand_or_jump)
+    smap <C-k> <Plug>(neosnippet_expand_or_jump)
+    xmap <C-k> <Plug>(neosnippet_expand_or_target)
+
     " Required for deoplete for normal vim
     Plug 'roxma/nvim-yarp', Cond(!has('nvim'))
     Plug 'roxma/vim-hug-neovim-rpc', Cond(!has('nvim'))
