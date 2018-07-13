@@ -4,8 +4,10 @@ let mapleader = ","
 
 if has("win32")
     let $DOTVIM = expand('$HOME/vimfiles')
+    let $MYREALVIMRC = expand('$HOME/_vimrc')
 else
     let $DOTVIM = expand('$HOME/.vim')
+    let $MYREALVIMRC = expand('$HOME/.vimrc')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -424,6 +426,8 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
 nnoremap Y y$
 nnoremap <space> viw
+nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
+nnoremap <leader>vs :source $MYREALVIMRC<cr>
 
 cnoremap jk <ESC>
 cnoremap kj <ESC>
