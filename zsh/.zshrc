@@ -6,6 +6,18 @@ then
     source ${HOME}/.zshrc.local
 fi
 
+# Removes aliases from oh-my-zsh/common-aliases that conflict with `fd`, an
+# alternative for `find` written in Rust
+if type fd | grep alias >/dev/null 2>&1
+then
+    unalias fd
+fi
+
+if type ff | grep alias >/dev/null 2>&1
+then
+    unalias ff
+fi
+
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 

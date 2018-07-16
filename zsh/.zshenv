@@ -53,18 +53,6 @@ then
     export TERMINAL="xterm"
 fi
 
-# Removes aliases from oh-my-zsh/common-aliases that conflict with `fd`, an
-# alternative for `find` written in Rust
-if type fd | grep alias >/dev/null 2>&1
-then
-    unalias fd
-fi
-
-if type ff | grep alias >/dev/null 2>&1
-then
-    unalias ff
-fi
-
 alias a="apt"
 
 alias d="dirs -v"
