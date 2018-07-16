@@ -114,10 +114,10 @@ nnoremap <localleader>et :Etemplate<Space>
 nnoremap <localleader>eT :Etest<Space>
 nnoremap <localleader>ev :Eview<Space>
 
-nnoremap aa :A<CR>
-nnoremap av :AV<CR>
-nnoremap as :AS<CR>
-nnoremap at :AT<CR>
+nnoremap <leader>aa :A<CR>
+nnoremap <leader>av :AV<CR>
+nnoremap <leader>as :AS<CR>
+nnoremap <leader>at :AT<CR>
 
 " Ctrlp ==============================================================
 Plug 'ctrlpvim/ctrlp.vim'
