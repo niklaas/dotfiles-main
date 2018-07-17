@@ -219,6 +219,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'matthewsimo/angular-vim-snippets'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'heavenshell/vim-jsdoc'
 
 " Completion =========================================================
 
@@ -365,7 +366,7 @@ set fileformat=unix
 set fileformats=unix,dos
 
 " formatting
-set comments=b:#,:%,fb:-,n:>,n:)
+set comments=b:#,:%,fb:-,n:>,n:),sr:/*,mb:*,ex:*/
 set formatoptions=croq
 
 if (exists('+colorcolumn'))
@@ -406,6 +407,7 @@ augroup END
 augroup filetype_typescript
   autocmd!
   autocmd FileType typescript nnoremap <buffer> ,ti :TSImport<cr>
+  autocmd FileType typescript nnoremap <buffer> ,jd :JsDoc<cr>
 augroup END
 
 augroup filetype_vimrc
