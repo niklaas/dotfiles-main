@@ -302,7 +302,7 @@ endif
 
 " Sprunge ============================================================
 Plug 'chilicuil/vim-sprunge'
-let g:sprunge_map = "<leader>p"
+let g:sprunge_map = "<leader>S"
 let g:sprunge_open_browser = 1
 
 call plug#end()
@@ -453,17 +453,22 @@ let &t_EI = "\<Esc>[2 q"
 
 " Mappings --------------------------------------------------------{{{
 
-nnoremap Y y$
 cnoremap jk <ESC>
 cnoremap kj <ESC>
 cnoremap w!! w !sudo tee >/dev/null %
 
-nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
 nnoremap <space> viw
+nnoremap Y y$
+nnoremap / /\v
+
+nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <leader>n :nohlsearch<cr>
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
+" Yanks current inner paragraph and pastes below
+nnoremap <leader>p yip}o<esc>P
 
 " Eases navigation between splits
 nnoremap <C-J> <C-W><C-J>

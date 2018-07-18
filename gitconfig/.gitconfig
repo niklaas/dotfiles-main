@@ -22,6 +22,7 @@
     pl  = pull --rebase
     ps  = push
     rb  = rebase
+    sh  = stash
     st  = status
     su  = submodule update --recursive --remote
 [push]
