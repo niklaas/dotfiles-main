@@ -442,16 +442,17 @@ let &t_EI = "\<Esc>[2 q"
 
 " Mappings --------------------------------------------------------{{{
 
+nnoremap Y y$
+cnoremap jk <ESC>
+cnoremap kj <ESC>
+cnoremap w!! w !sudo tee >/dev/null %
+
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
-nnoremap Y y$
 nnoremap <space> viw
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
-cnoremap jk <ESC>
-cnoremap kj <ESC>
-cnoremap w!! w !sudo tee >/dev/null %
 
 " Eases navigation between splits
 nnoremap <C-J> <C-W><C-J>
