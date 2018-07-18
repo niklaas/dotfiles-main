@@ -39,6 +39,7 @@ Plug 'vim-scripts/SyntaxAttr.vim'
 " tpope plugins
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'  " sugar for UNIX shell commands
 Plug 'tpope/vim-ragtag'
@@ -408,6 +409,7 @@ augroup filetype_typescript
   autocmd!
   autocmd FileType typescript nnoremap <buffer> ,ti :TSImport<cr>
   autocmd FileType typescript nnoremap <buffer> ,jd :JsDoc<cr>
+  autocmd FileType typescript let b:dispatch = 'ng test %'
 augroup END
 
 augroup filetype_vimrc
@@ -463,6 +465,7 @@ nnoremap / /\v
 
 nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <leader>d :Dispatch<cr>
 nnoremap <leader>n :nohlsearch<cr>
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
