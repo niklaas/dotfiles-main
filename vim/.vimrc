@@ -419,6 +419,17 @@ augroup END
 
 " Miscellaneous settings ------------------------------------------{{{
 
+" Highlight TODOs etc
+if has('autocmd')
+  if v:version > 701
+    augroup highlight_todo
+      autocmd!
+      autocmd Syntax * call matchadd('Todo', '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
+      autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
+    augroup END
+  endif
+endif
+
 " Fix highlighting for spell checks in terminal
 function! s:base16_customize() abort
   " Colors: https://github.com/chriskempson/base16/blob/master/styling.md
