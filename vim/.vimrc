@@ -166,6 +166,7 @@ nnoremap <leader>*  :Grepper -tool rg -cword -noprompt<cr>
 " DelimitMate ========================================================
 Plug 'Raimondi/delimitMate'
 let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
 
 " Easy Align =========================================================
 Plug 'junegunn/vim-easy-align'
