@@ -50,6 +50,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'  " for better netrw
 
+nnoremap <leader>dD :Dispatch!<cr>
+nnoremap <leader>dd :Dispatch<cr>
+nnoremap <leader>dm :Make!<cr>
+nnoremap <leader>dm :Make<cr>
 
 Plug 'zhou13/vim-easyescape'
 let g:easyescape_chars = { "j": 1, "k": 1 }
@@ -467,10 +471,6 @@ nnoremap / /\v
 
 nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <leader>dD :Dispatch!<cr>
-nnoremap <leader>dd :Dispatch<cr>
-nnoremap <leader>dm :Make!<cr>
-nnoremap <leader>dm :Make<cr>
 nnoremap <leader>n :nohlsearch<cr>
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
