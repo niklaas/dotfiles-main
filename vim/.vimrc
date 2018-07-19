@@ -36,7 +36,12 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'rhysd/clever-f.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 
-" tpope plugins
+" DelimitMate ========================================================
+Plug 'Raimondi/delimitMate'
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
+
+" tpope plugins ======================================================
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -166,11 +171,6 @@ nnoremap <leader>Gg :Grepper -tool git<cr>
 nnoremap <leader>Gr :Grepper -tool rg<cr>
 nnoremap <leader>Gv :Grepper -tool rg -side<cr>
 nnoremap <leader>*  :Grepper -tool rg -cword -noprompt<cr>
-
-" DelimitMate ========================================================
-Plug 'Raimondi/delimitMate'
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
 
 " Easy Align =========================================================
 Plug 'junegunn/vim-easy-align'
