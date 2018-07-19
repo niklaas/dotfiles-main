@@ -24,7 +24,6 @@ endfunction
 
 
 Plug 'airblade/vim-gitgutter'
-Plug 'bling/vim-bufferline'
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'embear/vim-localvimrc'
@@ -36,6 +35,10 @@ Plug 'mkitt/tabline.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'rhysd/clever-f.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
+
+" bufferline =========================================================
+Plug 'bling/vim-bufferline'
+let g:bufferline_echo = 0
 
 " DelimitMate ========================================================
 Plug 'Raimondi/delimitMate'
