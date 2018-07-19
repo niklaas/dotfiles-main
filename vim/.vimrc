@@ -246,6 +246,13 @@ if !exists('g:gui_oni')
                 \ 'do': 'sh install.sh',
                 \ })
 
+    let g:LanguageClient_serverCommands = {
+          \ 'java' : [ expand('$DOTVIM/misc/java-language-server') ]
+          \ }
+
+    " For mappings for LSP see below at filetype specific settings. Since I
+    " also use ALE, I must take care that they don't conflict with each other.
+
     set runtimepath+=$DOTVIM/plugged/deoplete.nvim
     let g:deoplete#enable_at_startup = 1
     call deoplete#custom#var('file', 'enable_buffer_path', v:true)
@@ -297,6 +304,11 @@ if v:version < 800
   let g:syntastic_r_checkers = ['lintr']
 else
   Plug 'w0rp/ale'
+
+  " `java` disabled b/c of LSP client
+  let g:ale_linters = {
+        \ 'java': [],
+        \ }
 
   let g:ale_fixers = {
         \ 'typescript': ['tslint'],
@@ -412,6 +424,12 @@ augroup END
 augroup filetype_html
   autocmd!
   autocmd FileType html setlocal foldmethod=syntax
+augroup END
+
+augroup filetype_java
+  autocmd!
+  autocmd Filetype java nnoremap <silent> <buffer> K :call LanguageClient#textDocument_hover()<CR>
+  autocmd Filetype java nnoremap <silent> <buffer> gd :call LanguageClient#textDocument_definition()<CR>
 augroup END
 
 augroup filetype_typescript
