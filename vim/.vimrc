@@ -424,6 +424,7 @@ augroup END
 augroup filetype_vimrc
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
+  autocmd Filetype vim comments+=b:"
 augroup END
 
 " }}}
