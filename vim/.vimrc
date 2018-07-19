@@ -24,6 +24,7 @@ endfunction
 
 
 Plug 'airblade/vim-gitgutter'
+Plug 'bling/vim-bufferline'
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'embear/vim-localvimrc'
@@ -469,9 +470,9 @@ nnoremap <space> viw
 nnoremap Y y$
 nnoremap / /\v
 
-nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
+nnoremap <Leader>, :set cursorline! cursorcolumn!<CR>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <leader>n :nohlsearch<cr>
+nnoremap <leader>. :nohlsearch<cr>
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
