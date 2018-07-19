@@ -253,6 +253,7 @@ if !exists('g:gui_oni')
 
     Plug 'Shougo/neosnippet.vim'
     Plug 'Shougo/neosnippet-snippets'
+    Plug 'Shougo/context_filetype.vim'
 
     imap <C-k> <Plug>(neosnippet_expand_or_jump)
     smap <C-k> <Plug>(neosnippet_expand_or_jump)
