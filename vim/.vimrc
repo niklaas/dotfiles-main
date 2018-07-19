@@ -88,8 +88,7 @@ Plug 'sodapopcan/vim-twiggy'
 nnoremap <leader>b :Twiggy<cr>
 
 Plug 'junegunn/gv.vim'
-
-nnoremap <leader>gV :GV<cr>
+nnoremap <leader>gv :GV<cr>
 
 " Projectionist ======================================================
 Plug 'tpope/vim-projectionist'
