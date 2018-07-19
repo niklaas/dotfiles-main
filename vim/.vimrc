@@ -216,11 +216,12 @@ let R_assign = 0
 let r_indent_ess_compatible = 1
 
 " JavaScript/Typescript/Angular ======================================
+Plug 'burnettk/vim-angular'
+Plug 'heavenshell/vim-jsdoc'
 Plug 'leafgarland/typescript-vim', Cond(!has('nvim'))
 Plug 'matthewsimo/angular-vim-snippets'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'heavenshell/vim-jsdoc'
 
 " Completion =========================================================
 
