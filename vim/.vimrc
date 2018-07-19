@@ -466,7 +466,10 @@ nnoremap / /\v
 
 nnoremap <Leader>cc :set cursorline! cursorcolumn!<CR>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <leader>d :Dispatch<cr>
+nnoremap <leader>dD :Dispatch!<cr>
+nnoremap <leader>dd :Dispatch<cr>
+nnoremap <leader>dm :Make!<cr>
+nnoremap <leader>dm :Make<cr>
 nnoremap <leader>n :nohlsearch<cr>
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
