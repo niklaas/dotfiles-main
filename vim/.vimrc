@@ -196,11 +196,8 @@ Plug 'derekwyatt/vim-scala'
 
 augroup filetype_scala
   autocmd!
-  autocmd FileType scala nnoremap <localleader>df :EnDeclaration>CR>
   autocmd BufWritePost *.scala silent :EnTypeChec
 augroup END
-
-nnoremap <localleader>t :EnType<CR>
 
 let g:scala_scaladoc_indent = 1
 
