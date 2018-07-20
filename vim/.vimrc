@@ -69,6 +69,9 @@ nnoremap <leader>dd :Dispatch<cr>
 nnoremap <leader>dm :Make!<cr>
 nnoremap <leader>dm :Make<cr>
 
+nnoremap <leader>o :Obsession<cr>
+nnoremap <leader>O :Obsession!<cr>
+
 Plug 'zhou13/vim-easyescape'
 let g:easyescape_chars = { "j": 1, "k": 1 }
 let g:easyescape_timeout = 2000
