@@ -323,6 +323,12 @@ else
   " TODO: Add linting via LSP with ale#linter#Define(). Be careful not to
   " start an additional instance of the linter server.
   " autozimo/LanguageClient-neovim already stars one!
+  "
+  " TODO: I should further check whether to use autozimo/LanguageClient-neovim
+  " oder w0rp/ale for diagnostics. It seems the language client uses ALE (see
+  " its helpfile) but maybe it makes sense to disable it with
+  " g:LanguageClient_diagnosticsEnable and use ALE for linting as stated
+  " above.
 
   let g:ale_fixers = {
         \ 'typescript': ['tslint'],
