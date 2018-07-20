@@ -298,6 +298,25 @@ if v:version < 800
 else
   Plug 'w0rp/ale'
 
+  " At the moment, I use ALE only for linting. It does have LSP support too
+  " though. When enabled, it can also serve for completion and extended
+  " linting.
+  "
+  " This sounds quite fabulous but I decided for the combination of
+  "
+  " - w0rp/ale for linting,
+  " - shougo/deoplete for a completion interface,
+  " - autozimu/LanguageClient-neovim for LSP support
+  "
+  " because Shougo also ships Shougo/neosnippet.vim for snippets. As far as I
+  " understand, ALE does not really provide an interface for good snippet
+  " support -- deoplete does. Additionally, ALE doesn't support all of LSP and
+  " is primarily meant to be a linter.
+
+  " TODO: Add linting via LSP with ale#linter#Define(). Be careful not to
+  " start an additional instance of the linter server.
+  " autozimo/LanguageClient-neovim already stars one!
+
   let g:ale_fixers = {
         \ 'typescript': ['tslint'],
         \ 'go': ['gofmt', 'goimports']
@@ -305,9 +324,6 @@ else
 
   let g:ale_fix_on_save = 1
   let g:ale_completion_enabled = 0
-
-  map gd <Plug>(ale_go_to_definition)
-  map gD <Plug>(ale_go_to_definition_in_tab)
 endif
 
 " Sprunge ============================================================
