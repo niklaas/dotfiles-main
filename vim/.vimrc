@@ -36,6 +36,15 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'rhysd/clever-f.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 
+" tabgar =============================================================
+" Requires https://github.com/universal-ctags/ctags
+Plug 'majutsushi/tagbar'
+nnoremap <leader>tt :TagbarToggle<cr>
+nnoremap <leader>to :TagbarOpen fj<cr>
+nnoremap <leader>tO :TagbarOpenAutoClose<cr>
+nnoremap <leader>tc :TagbarClose<cr>
+nnoremap <leader>tp :TagbarPause<cr>
+
 " bufferline =========================================================
 Plug 'bling/vim-bufferline'
 let g:bufferline_echo = 0
