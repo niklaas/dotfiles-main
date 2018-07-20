@@ -447,6 +447,11 @@ augroup filetype_html
   autocmd FileType html setlocal foldmethod=syntax
 augroup END
 
+augroup filetype_netrw
+  autocmd!
+  autocmd FileType netrw setlocal bufhidden=false
+augroup END
+
 augroup filetype_typescript
   autocmd!
   autocmd FileType typescript nnoremap <buffer> ,ti :TSImport<cr>
