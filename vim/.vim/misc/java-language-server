@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+/usr/lib/jvm/default-java/bin/java \
+  -Declipse.application=org.eclipse.jdt.ls.core.id1 \
+  -Dosgi.bundles.defaultStartLevel=4 \
+  -Declipse.product=org.eclipse.jdt.ls.core.product \
+  -noverify \
+  -Xms1G \
+  -jar ~/dev/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.5.100.v20180611-1436.jar \
+  -configuration ~/dev/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux \
+  -data ~/dev/eclipse-javaee
