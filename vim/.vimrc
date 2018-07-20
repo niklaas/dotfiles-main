@@ -246,6 +246,13 @@ if !exists('g:gui_oni')
                 \ 'do': 'sh install.sh',
                 \ })
 
+    let g:LanguageClient_serverCommands = {
+          \ 'java' : [ expand('$DOTVIM/misc/java-language-server') ]
+          \ }
+
+    nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+    nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+
     set runtimepath+=$DOTVIM/plugged/deoplete.nvim
     let g:deoplete#enable_at_startup = 1
     call deoplete#custom#var('file', 'enable_buffer_path', v:true)
