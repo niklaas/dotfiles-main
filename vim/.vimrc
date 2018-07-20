@@ -506,6 +506,9 @@ nnoremap <space> viw
 nnoremap Y y$
 nnoremap / /\v
 
+" Delete the buffer, leaving the window open
+nnoremap <C-c> :bp\|bd #<cr>
+
 nnoremap <Leader>, :set cursorline! cursorcolumn!<CR>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>. :nohlsearch<cr>
