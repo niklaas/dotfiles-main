@@ -205,6 +205,7 @@ let g:scala_scaladoc_indent = 1
 Plug 'vim-airline/vim-airline', Cond(!exists('g:gui_oni'))
 Plug 'vim-airline/vim-airline-themes', Cond(!exists('g:gui_oni'))
 let g:airline_theme = 'base16_default'
+set noshowmode " because airline shows it
 
 " Pandoc =============================================================
 Plug 'vim-pandoc/vim-pandoc'
