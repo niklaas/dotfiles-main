@@ -31,7 +31,6 @@ Plug 'gregsexton/gitv'
 Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'mkitt/tabline.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'rhysd/clever-f.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
@@ -44,10 +43,6 @@ nnoremap <leader>to :TagbarOpen fj<cr>
 nnoremap <leader>tO :TagbarOpenAutoClose<cr>
 nnoremap <leader>tc :TagbarClose<cr>
 nnoremap <leader>tp :TagbarPause<cr>
-
-" bufferline =========================================================
-Plug 'bling/vim-bufferline'
-let g:bufferline_echo = 0
 
 " DelimitMate ========================================================
 Plug 'Raimondi/delimitMate'
@@ -205,6 +200,8 @@ let g:scala_scaladoc_indent = 1
 Plug 'vim-airline/vim-airline', Cond(!exists('g:gui_oni'))
 Plug 'vim-airline/vim-airline-themes', Cond(!exists('g:gui_oni'))
 let g:airline_theme = 'base16_default'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#bufferline#enabled = 1
 set noshowmode " because airline shows it
 
 " Pandoc =============================================================
