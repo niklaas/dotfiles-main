@@ -635,3 +635,11 @@ if exists('g:gui_oni')
 endif
 
 " }}}
+
+" Source .vimrc.local ---------------------------------------------{{{
+
+if filereadable(expand('$HOME/.vimrc.local'))
+  execute 'source ' . '$HOME/.vimrc.local'
+endif
+
+" }}}
