@@ -30,9 +30,15 @@ Plug 'embear/vim-localvimrc'
 Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'rhysd/clever-f.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
+
+" dbext ==============================================================
+Plug 'vim-scripts/dbext.vim'
+
+" better-whitespace ==================================================
+Plug 'ntpeters/vim-better-whitespace'
+let g:better_whitespace_operator = ''
 
 " tabgar =============================================================
 " Requires https://github.com/universal-ctags/ctags
