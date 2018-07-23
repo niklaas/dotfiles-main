@@ -238,6 +238,9 @@ Plug 'matthewsimo/angular-vim-snippets'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
 
+" Java/Eclipse/eclim ================================================
+Plug 'dansomething/vim-eclim'
+
 " Completion =========================================================
 
 if !exists('g:gui_oni')
@@ -252,9 +255,7 @@ if !exists('g:gui_oni')
                 \ 'do': 'sh install.sh',
                 \ })
 
-    let g:LanguageClient_serverCommands = {
-          \ 'java' : [ expand('$DOTVIM/misc/java-language-server') ]
-          \ }
+    let g:LanguageClient_serverCommands = {}
 
     nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
     nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
