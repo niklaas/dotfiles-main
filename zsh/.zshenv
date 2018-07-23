@@ -8,18 +8,18 @@ autoload -U compdef
 export SHELL=$(command -v zsh)
 export HOSTNAME=$(hostname)
 
-if command -v nvim > /dev/null 2>&1
+# EDITOR setup
+if command -v nvim >/dev/null 2>&1
 then
     export EDITOR=nvim
-    alias vim="nvim"
-    alias v="nvim"
-    alias vv="nvim -MR -c 'file [stdin]' -"
 else
     export EDITOR=vim
-    alias vim="vim"
-    alias v="vim"
-    alias vv="vim -MR -c 'file [stdin]' -"
 fi
+alias e=$EDITOR
+alias v="vim"
+alias vv="vim -MR -c 'file [stdin]' -"
+alias nv="nvim"
+alias nvv="nvim -MR -c 'file [stdin]' -"
 
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
@@ -28,7 +28,13 @@ export LC_COLLATE=C
 # Simplifies prompt symbole for pure prompt
 export PURE_PROMPT_SYMBOL='>'
 
+if test -d /usr/local/go/bin
+then
+    # Looks like golang was installed from upstream directly.
+    path=(/usr/local/go/bin $path)
+fi
 export GOPATH=$HOME/go
+
 export N_PREFIX=$HOME/n
 
 export ANSIBLE_NOCOWS=1
@@ -57,6 +63,11 @@ alias dts="date +%Y-%m-%d"
 
 alias g="git"
 
+if command -v gpg2 >/dev/null 2>&1
+then
+    alias gpg="gpg2"
+fi
+
 alias kcgpg="keychain -q --eval 1C62D5F3 >/dev/null"
 alias kcrn="keychain -q --eval rsync.net >/dev/null"
 
@@ -75,6 +86,11 @@ alias tssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o L
 
 alias -g S="| curl -F 'sprunge=<-' http://sprunge.us"
 
+if command -v xclip >/dev/null 2>&1
+then
+    alias -g C="| xclip -sel clip"
+fi
+
 if command -v rem >/dev/null 2>&1
 then
     alias remm="rem -c -m"
@@ -83,6 +99,11 @@ then
     alias remmn="rem -c -m $(date  +%b\ %Y --date='next month')"
     alias remtm="rem -g -q $(date  +%d\ %b\ %Y --date='tomorrow')"
     alias remtd="rem -g -q"
+fi
+
+if command -v gopass >/dev/null 2>&1
+then
+    alias pass="gopass"
 fi
 
 # FreeBSD specific ###################################################
@@ -111,6 +132,8 @@ then
     # Java environment on Windows
     export JAVA_HOME="/mnt/c/Program Files/Java/jre1.8.0_151"
     export JDK_HOME="/mnt/c/Program Files/Java/jdk1.8.0_144"
+
+    export GPG_TTY=$(tty)
 
     function pwdd() {
         pwd -P | sed 's#/mnt/\([a-zA-Z]\)#\U\1:#'
