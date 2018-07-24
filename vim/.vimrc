@@ -247,7 +247,7 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'pangloss/vim-javascript'
 
 " Java/Eclipse/eclim ================================================
-Plug 'dansomething/vim-eclim'
+Plug 'dansomething/vim-eclim', { 'for': 'java' }
 let g:EclimJavaSearchSingleResult = 'edit'
 
 " Completion =========================================================
