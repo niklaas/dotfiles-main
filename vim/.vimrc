@@ -376,7 +376,7 @@ set hidden
 set ignorecase
 set incsearch
 set linebreak
-set list
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set modelines=5
 set mouse=a
 set nobackup
