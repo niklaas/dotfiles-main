@@ -248,6 +248,7 @@ Plug 'pangloss/vim-javascript'
 
 " Java/Eclipse/eclim ================================================
 Plug 'dansomething/vim-eclim'
+let g:EclimJavaSearchSingleResult = 'edit'
 
 " Completion =========================================================
 
@@ -456,6 +457,11 @@ augroup END
 augroup filetype_html
   autocmd!
   autocmd FileType html setlocal foldmethod=syntax
+augroup END
+
+augroup filetpye_java
+  autocmd!
+  autocmd FileType java nnoremap <buffer> gd :JavaSearch -x declarations<cr>
 augroup END
 
 augroup filetype_netrw
