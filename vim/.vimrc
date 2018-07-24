@@ -537,8 +537,10 @@ nnoremap / /\v
 nnoremap <C-c> :bp\|bd #<cr>
 
 nnoremap <Leader>, :set cursorline! cursorcolumn!<CR>
-nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <Leader>- :set list!<cr>
 nnoremap <leader>. :nohlsearch<cr>
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <leader>cp :let @+ = expand("%")<cr>
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
