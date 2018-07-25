@@ -253,40 +253,9 @@ let g:EclimJavaSearchSingleResult = 'edit'
 " Completion =========================================================
 
 if !exists('g:gui_oni')
-    " Completion isn't needed in Oni because it ships with it's own.
-
-    Plug 'mhartington/nvim-typescript', Cond(has('nvim'), {'do': 'sh install.sh'})
-    let g:nvim_typescript#default_mappings = 1
-
-    " Language Server Protocol (LSP) support
-    Plug 'autozimu/LanguageClient-neovim', Cond(has('nvim'), {
-                \ 'branch': 'next',
-                \ 'do': 'sh install.sh',
-                \ })
-
-    let g:LanguageClient_serverCommands = {}
-
-    nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-    nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-
-    set runtimepath+=$DOTVIM/plugged/deoplete.nvim
-    let g:deoplete#enable_at_startup = 1
-    call deoplete#custom#var('file', 'enable_buffer_path', v:true)
-
-    Plug 'Shougo/deoplete.nvim', Cond(has('nvim'), { 'do': ':UpdateRemotePlugins' })
-
-    Plug 'Shougo/neosnippet.vim'
-    Plug 'Shougo/neosnippet-snippets'
-    Plug 'Shougo/context_filetype.vim'
-    Plug 'Shougo/echodoc.vim'
-
-    imap <C-k> <Plug>(neosnippet_expand_or_jump)
-    smap <C-k> <Plug>(neosnippet_expand_or_jump)
-    xmap <C-k> <Plug>(neosnippet_expand_or_target)
-
-    " Required for deoplete for normal vim
-    Plug 'roxma/nvim-yarp', Cond(!has('nvim'))
-    Plug 'roxma/vim-hug-neovim-rpc', Cond(!has('nvim'))
+  Plug 'prabirshrestha/asynccomplete.vim'
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 endif
 
 " Syntax rules =======================================================
