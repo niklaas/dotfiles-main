@@ -10,8 +10,7 @@ else
     let $MYREALVIMRC = expand('$HOME/.vimrc')
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM-PlUG
+" Vim-plug --------------------------------------------------------{{{
 
 call plug#begin('$DOTVIM/plugged')
 
@@ -26,35 +25,34 @@ endfunction
 Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'embear/vim-localvimrc'
 Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'rhysd/clever-f.vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 
-" dbext ==============================================================
+" Objects ---------------------------------------------------------{{{
+
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'rhysd/clever-f.vim'
+Plug 'wellle/targets.vim'
+
+" }}}
+
 Plug 'vim-scripts/dbext.vim'
 
-" better-whitespace ==================================================
-Plug 'ntpeters/vim-better-whitespace'
-let g:better_whitespace_operator = ''
-
-" tabgar =============================================================
-" Requires https://github.com/universal-ctags/ctags
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar' "{{{
 nnoremap <leader>tt :TagbarToggle<cr>
 nnoremap <leader>to :TagbarOpen fj<cr>
 nnoremap <leader>tO :TagbarOpenAutoClose<cr>
 nnoremap <leader>tc :TagbarClose<cr>
 nnoremap <leader>tp :TagbarPause<cr>
+"}}}
 
 " DelimitMate ========================================================
 Plug 'Raimondi/delimitMate'
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
-" tpope plugins ======================================================
+" tpope plugins ---------------------------------------------------{{{
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -77,12 +75,7 @@ nnoremap <leader>dm :Make<cr>
 nnoremap <leader>o :Obsession<cr>
 nnoremap <leader>O :Obsession!<cr>
 
-" Includes *multiple* syntax/completion/etc rules
-" This should be includes first to be overridden subsequently
-Plug 'sheerun/vim-polyglot'
-
-" Fugitive ===========================================================
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive' "{{{
 
 " Auto-clean fugitive buffers
 augroup fugitive_clean
@@ -96,15 +89,9 @@ nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
+"}}}
 
-Plug 'sodapopcan/vim-twiggy'
-nnoremap <leader>b :Twiggy<cr>
-
-Plug 'junegunn/gv.vim'
-nnoremap <leader>gv :GV<cr>
-
-" Projectionist ======================================================
-Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-projectionist' "{{{
 let g:projectionist_heuristics = {
    \  "config/prod.exs": {
    \    "web/controllers/*_controller.ex": {
@@ -140,6 +127,20 @@ nnoremap <leader>aa :A<CR>
 nnoremap <leader>av :AV<CR>
 nnoremap <leader>as :AS<CR>
 nnoremap <leader>at :AT<CR>
+"}}}
+"}}}
+
+" Includes *multiple* syntax/completion/etc rules
+" This should be includes first to be overridden subsequently
+Plug 'sheerun/vim-polyglot'
+
+Plug 'sodapopcan/vim-twiggy' "{{{
+nnoremap <leader>b :Twiggy<cr>
+"}}}
+
+Plug 'junegunn/gv.vim' "{{{
+nnoremap <leader>gv :GV<cr>
+"}}}
 
 " Ctrlp ==============================================================
 Plug 'ctrlpvim/ctrlp.vim'
@@ -189,6 +190,8 @@ Plug 'junegunn/vim-easy-align'
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+" Plugins for syntax {{{
+
 " Scala ==============================================================
 Plug 'derekwyatt/vim-sbt'
 Plug 'derekwyatt/vim-scala'
@@ -200,8 +203,7 @@ augroup END
 
 let g:scala_scaladoc_indent = 1
 
-" Airtline ===========================================================
-Plug 'vim-airline/vim-airline', Cond(!exists('g:gui_oni'))
+Plug 'vim-airline/vim-airline', Cond(!exists('g:gui_oni')) " {{{
 Plug 'vim-airline/vim-airline-themes', Cond(!exists('g:gui_oni'))
 let g:airline_theme = 'base16_default'
 let g:airline#extensions#tabline#enabled = 1
@@ -209,6 +211,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#bufferline#enabled = 1
 set noshowmode " because airline shows it
+"}}}
 
 " Pandoc =============================================================
 Plug 'vim-pandoc/vim-pandoc'
@@ -245,6 +248,7 @@ Plug 'pangloss/vim-javascript'
 " Java/Eclipse/eclim ================================================
 Plug 'dansomething/vim-eclim', { 'for': 'java' }
 let g:EclimJavaSearchSingleResult = 'edit'
+"}}}
 
 " Completion =========================================================
 
@@ -288,7 +292,7 @@ endif
 " Syntax rules =======================================================
 
 Plug 'baskerville/vim-sxhkdrc'
-Plug 'blindFS/vim-reveal'
+Plug 'blindFS/vim-reveal'  " reveal.js presentations
 Plug 'cespare/vim-toml'
 Plug 'fatih/vim-go'
 Plug 'hashivim/vim-terraform'
@@ -358,10 +362,14 @@ let g:sprunge_open_browser = 1
 
 call plug#end()
 
-" EXTENSIONS =============
+" }}}
+
+" Vim extensions --------------------------------------------------{{{
 
 " allows displaying of man pages with :Man <program>
 runtime! ftplugin/man.vim
+
+" }}}
 
 " Basic settings --------------------------------------------------{{{
 
