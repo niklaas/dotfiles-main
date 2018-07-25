@@ -77,10 +77,6 @@ nnoremap <leader>dm :Make<cr>
 nnoremap <leader>o :Obsession<cr>
 nnoremap <leader>O :Obsession!<cr>
 
-Plug 'zhou13/vim-easyescape'
-let g:easyescape_chars = { "j": 1, "k": 1 }
-let g:easyescape_timeout = 2000
-
 " Includes *multiple* syntax/completion/etc rules
 " This should be includes first to be overridden subsequently
 Plug 'sheerun/vim-polyglot'
@@ -527,6 +523,9 @@ let &t_EI = "\<Esc>[2 q"
 
 cnoremap jk <ESC>
 cnoremap kj <ESC>
+inoremap jk <ESC>
+inoremap kj <ESC>
+
 cnoremap w!! w !sudo tee >/dev/null %
 
 nnoremap <space> viw
