@@ -250,13 +250,18 @@ Plug 'dansomething/vim-eclim', { 'for': 'java' }
 let g:EclimJavaSearchSingleResult = 'edit'
 "}}}
 
-" Completion =========================================================
-
+" LSP / completion / related --------------------------------------{{{
 if !exists('g:gui_oni')
-  Plug 'prabirshrestha/asynccomplete.vim'
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'prabirshrestha/async.vim'
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
   autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+  let g:asyncomplete_remove_duplicates = 1
 endif
+"}}}
 
 " Syntax rules =======================================================
 
