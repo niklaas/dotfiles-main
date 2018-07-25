@@ -510,6 +510,16 @@ inoremap kj <ESC>
 
 cnoremap w!! w !sudo tee >/dev/null %
 
+" Insert mode {{{
+
+" Jump to end of line
+inoremap <C-e> <C-o>$
+
+" Jump to beginning of line (overrides!)
+inoremap <C-a> <C-o>_
+
+" }}}
+
 nnoremap <space> viw
 nnoremap Y y$
 nnoremap / /\v
