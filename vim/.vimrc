@@ -277,58 +277,6 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'othree/html5.vim'
 Plug 'othree/html5-syntax.vim'
 
-" Syntastic or ALE?
-if v:version < 800
-  Plug 'vim-syntastic/syntastic'
-
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 0
-  let g:syntastic_check_on_wq = 0
-
-  let g:syntastic_ignore_files = ['\m\c.h$', '\m\.sbt$']
-  " Only use one of `scalac` or `fsc` for checking syntax in Scala
-  let g:syntastic_scala_checkers = ['fsc']
-
-  let g:syntastic_enable_r_lintr_checker = 1
-  let g:syntastic_r_checkers = ['lintr']
-else
-  Plug 'w0rp/ale'
-
-  " At the moment, I use ALE only for linting. It does have LSP support too
-  " though. When enabled, it can also serve for completion and extended
-  " linting.
-  "
-  " This sounds quite fabulous but I decided for the combination of
-  "
-  " - w0rp/ale for linting,
-  " - shougo/deoplete for a completion interface,
-  " - autozimu/LanguageClient-neovim for LSP support
-  "
-  " because Shougo also ships Shougo/neosnippet.vim for snippets. As far as I
-  " understand, ALE does not really provide an interface for good snippet
-  " support -- deoplete does. Additionally, ALE doesn't support all of LSP and
-  " is primarily meant to be a linter.
-
-  " TODO: Add linting via LSP with ale#linter#Define(). Be careful not to
-  " start an additional instance of the linter server.
-  " autozimo/LanguageClient-neovim already stars one!
-  "
-  " TODO: I should further check whether to use autozimo/LanguageClient-neovim
-  " oder w0rp/ale for diagnostics. It seems the language client uses ALE (see
-  " its helpfile) but maybe it makes sense to disable it with
-  " g:LanguageClient_diagnosticsEnable and use ALE for linting as stated
-  " above.
-
-  let g:ale_fixers = {
-        \ 'typescript': ['tslint'],
-        \ 'go': ['gofmt', 'goimports']
-        \ }
-
-  let g:ale_fix_on_save = 1
-  let g:ale_completion_enabled = 0
-endif
-
 " Sprunge ============================================================
 Plug 'chilicuil/vim-sprunge'
 let g:sprunge_map = "<leader>S"
