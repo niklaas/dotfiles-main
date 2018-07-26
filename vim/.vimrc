@@ -456,7 +456,7 @@ augroup filetype_typescript
   autocmd FileType typescript let b:dispatch = 'ng test %'
   autocmd FileType typescript nnoremap <buffer> <leader>jd :JsDoc<cr>
   autocmd FileType typescript nnoremap <buffer> <leader>ti :TSImport<cr>
-  autocmd FileType typescript nnoremap <buffer> <leader>tr :TSRef<cr>
+  autocmd FileType typescript nnoremap <buffer> <leader>r :TSRef<cr>
   autocmd FileType typescript nnoremap <buffer> gd :TSDef<cr>
 augroup END
 
