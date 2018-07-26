@@ -434,7 +434,7 @@ augroup END
 
 augroup filetype_html
   autocmd!
-  autocmd FileType html setlocal foldmethod=syntax
+  autocmd FileType html setlocal foldmethod=indent
 augroup END
 
 augroup filetpye_java
