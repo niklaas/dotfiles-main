@@ -7,17 +7,18 @@ export const activate = (oni: Oni.Plugin.Api) => {
 }
 
 export const configuration = {
-    activate,
-    "oni.loadInitVim": true,
-    "oni.useDefaultConfig": false,
+  activate,
+  "oni.loadInitVim": true,
+  "oni.useDefaultConfig": false,
 
-    "editor.fontSize": "14px",
+  "editor.fontFamily": "Fira Code",
+  "editor.fontSize": "14px",
 
-    "ui.animations.enabled": true,
-    "ui.fontSmoothing": "auto",
-    "ui.colorscheme": "nord",
+  "ui.animations.enabled": true,
+  "ui.fontSmoothing": "auto",
+  "ui.colorscheme": "nord",
 
-    "oni.hideMenu": true,
-    "learning.enabled": false,
-    "achievements.enabled": false
+  "oni.hideMenu": true,
+  "learning.enabled": false,
+  "achievements.enabled": false,
 }
