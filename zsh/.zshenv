@@ -8,6 +8,12 @@ autoload -U compdef
 export SHELL=$(command -v zsh)
 export HOSTNAME=$(hostname)
 
+# FZF
+if command -v fd >/dev/null 2>&1
+then
+    export FZF_DEFAULT_COMMAND='fd -H -E .git -E .svn --type f'
+fi
+
 # EDITOR setup
 if command -v nvim >/dev/null 2>&1
 then

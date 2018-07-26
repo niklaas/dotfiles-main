@@ -30,6 +30,11 @@ bindkey '^e' autosuggest-execute
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-bindkey '^R' history-incremental-pattern-search-backward
-bindkey '^P' vi-up-line-or-history
-bindkey '^N' vi-down-line-or-history
+if ! command -v fzf >/dev/null 2>&1
+then
+    bindkey '^R' history-incremental-pattern-search-backward
+    bindkey '^P' vi-up-line-or-history
+    bindkey '^N' vi-down-line-or-history
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
