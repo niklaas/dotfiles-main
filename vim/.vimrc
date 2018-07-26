@@ -21,6 +21,7 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
@@ -151,7 +152,7 @@ let g:ctrlp_working_path_mode = 'a'
 if has('unix')
   if executable('fd')
     let g:ctrlp_use_caching  = 0
-    let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
+    let g:ctrlp_user_command = 'fd -H -E .git --type f --color=never "" %s'
   else
     let g:ctrlp_user_command = {
     \ 'types': {
