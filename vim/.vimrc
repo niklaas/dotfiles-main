@@ -441,6 +441,7 @@ augroup filetpye_java
   autocmd!
   autocmd FileType java nnoremap <buffer> <leader>jd :JavaDocComment<cr>
   autocmd FileType java nnoremap <buffer> <leader>ji :JavaImportOrganize<cr>
+  autocmd FileType java nnoremap <buffer> <leader>r :JavaSearch -x references<cr>
   autocmd FileType java nnoremap <buffer> K :JavaDocPreview<cr>
   autocmd FileType java nnoremap <buffer> gd :JavaSearch -x declarations<cr>
 augroup END
