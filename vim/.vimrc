@@ -252,14 +252,41 @@ let g:EclimJavaSearchSingleResult = 'edit'
 
 " LSP / completion / related --------------------------------------{{{
 if !exists('g:gui_oni')
+  " Prerequisites for completion
   Plug 'prabirshrestha/asyncomplete.vim'
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+  " Registering LSPs
+  if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+          \ 'name': 'typescript-language-server',
+          \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+          \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+          \ 'whitelist': ['typescript'],
+          \ })
+  endif
+
+  " Configuration for completion and LSPs
   autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
   let g:asyncomplete_remove_duplicates = 1
+  let g:lsp_signs_enabled = 1
+  let g:lsp_diagnostics_echo_cursor = 1
+
+  " For debugging LSPs
+  "let g:lsp_log_verbose = 1
+  "let g:lsp_log_file = expand('~/vim-lsp.log')
+  "let g:asyncomplete_log_file = expand('~/asyncomplete.log')  " for asyncomplete.vim log
+
+  " Mappings for completion and LSPs
+  nnoremap <leader>lh :LspHover<cr>
+  nnoremap <leader>ld :LspDefinition<cr>
+  nnoremap <leader>lr :LspReferences<cr>
+  nnoremap <leader>lR :LspRename<cr>
+  nnoremap <leader>lf :LspDocumentRangeFormat<cr>
+  nnoremap <leader>lF :LspDocumentFormat<cr>
+  nnoremap <leader>ll :LspDocumentDiagnostics<cr>
 endif
 "}}}
 
@@ -402,10 +429,6 @@ augroup END
 augroup filetype_typescript
   autocmd!
   autocmd FileType typescript let b:dispatch = 'ng test %'
-  autocmd FileType typescript nnoremap <buffer> <leader>jd :JsDoc<cr>
-  autocmd FileType typescript nnoremap <buffer> <leader>ti :TSImport<cr>
-  autocmd FileType typescript nnoremap <buffer> <leader>r :TSRef<cr>
-  autocmd FileType typescript nnoremap <buffer> gd :TSDef<cr>
 augroup END
 
 augroup filetype_vimrc
