@@ -290,8 +290,9 @@ if !exists('g:gui_oni')
 endif
 "}}}
 
-" Syntax rules =======================================================
+" Syntax rules ----------------------------------------------------{{{
 
+" FIXME: Move this section upwards
 Plug 'baskerville/vim-sxhkdrc'
 Plug 'blindFS/vim-reveal'  " reveal.js presentations
 Plug 'cespare/vim-toml'
@@ -303,11 +304,12 @@ Plug 'slashmili/alchemist.vim'
 Plug 'elixir-editors/vim-elixir'
 Plug 'othree/html5.vim'
 Plug 'othree/html5-syntax.vim'
+"}}}
 
-" Sprunge ============================================================
-Plug 'chilicuil/vim-sprunge'
+Plug 'chilicuil/vim-sprunge' "{{{
 let g:sprunge_map = "<leader>S"
 let g:sprunge_open_browser = 1
+"}}}
 
 call plug#end()
 
