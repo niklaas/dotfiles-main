@@ -21,8 +21,6 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
 Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -143,36 +141,52 @@ Plug 'junegunn/gv.vim' "{{{
 nnoremap <leader>gv :GV<cr>
 "}}}
 
-" Ctrlp ==============================================================
-Plug 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'a'
+" Fuzzy finding ---------------------------------------------------{{{
+
+" `fzf` is only available under Unix.
 
 if has('unix')
-  if executable('fd')
-    let g:ctrlp_use_caching  = 0
-    let g:ctrlp_user_command = 'fd -H -E .git --type f --color=never "" %s'
-  else
-    let g:ctrlp_user_command = {
-    \ 'types': {
-      \ 1: ['.git', 'cd %s && git ls-files -co --exclude-standard']
-      \ },
-    \ 'fallback': 'find %s -type f'
-    \ }
-  endif
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "{{{
+  Plug 'junegunn/fzf.vim' "
+
+  " Oni remaps C-p so the following line shouldn't be a problem
+  nnoremap <C-p> :Files<cr>
+  nnoremap <leader>ff :Files<cr>
+  nnoremap <leader>fc :Commits<cr>
+  nnoremap <leader>fC :BCommits<cr>
+  nnoremap <leader>fb :Buffers<cr>
+
+  let s:fuzzy_file_finder = 'Files'
+  "}}}
+else
+  Plug 'ctrlpvim/ctrlp.vim' "{{{
+  let g:ctrlp_map = '<c-p>'
+  let g:ctrlp_cmd = 'CtrlP'
+  let g:ctrlp_working_path_mode = 'a'
+
+  let g:ctrlp_user_command = {
+        \   'types': {
+        \     1: ['.git', 'cd %s && git ls-files -co --exclude-standard']
+        \   },
+        \ }
+
+  let s:fuzzy_file_finder = 'CtrlP'
+  "}}}
 endif
 
+" TODO: Testing
 if filereadable('web/router.ex')
-    " This looks like an Elixir/Phoenix app.
-    nnoremap pc :CtrlP web/controllers<CR>
-    nnoremap pm :CtrlP web/models<CR>
-    nnoremap pT :CtrlP test<CR>
-    nnoremap pt :CtrlP web/templates<CR>
-    nnoremap pv :CtrlP web/views<CR>
+  " This looks like an Elixir/Phoenix app.
+  nnoremap <leader>FT :execute s:fuzzy_file_finder . " test\<cr>"
+  nnoremap <leader>Fc :execute s:fuzzy_file_finder . " web/controllers\<cr>"
+  nnoremap <leader>Fm :execute s:fuzzy_file_finder . " web/models\<cr>"
+  nnoremap <leader>Ft :execute s:fuzzy_file_finder . " web/templates\<cr>"
+  nnoremap <leader>Fv :execute s:fuzzy_file_finder . " web/views\<cr>"
 endif
 
-" Grepper ============================================================
+"}}}
+
+" Grepper ---------------------------------------------------------{{{
 Plug 'mhinz/vim-grepper'
 let g:grepper = {}
 let g:grepper.tools = ['git', 'rg', 'grep']
@@ -185,6 +199,7 @@ nnoremap <leader>Gg :Grepper -tool git<cr>
 nnoremap <leader>Gr :Grepper -tool rg<cr>
 nnoremap <leader>Gv :Grepper -tool rg -side<cr>
 nnoremap <leader>*  :Grepper -tool rg -cword -noprompt<cr>
+"}}}
 
 " Easy Align =========================================================
 Plug 'junegunn/vim-easy-align'
