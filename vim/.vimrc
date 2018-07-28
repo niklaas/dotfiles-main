@@ -312,6 +312,8 @@ if !exists('g:gui_oni') && v:version >= 800
 
   " Registering LSPs {{{
 
+  " vint: -ProhibitAutocmdWithNoGroup
+
   " Provider: typescript-language-server
   if executable('typescript-language-server')
     autocmd User lsp_setup call lsp#register_server({
@@ -365,6 +367,8 @@ if !exists('g:gui_oni') && v:version >= 800
   let g:lsp_signs_enabled = 0
   let g:lsp_diagnostics_echo_cursor = 0
   "}}}
+
+  " vint: +ProhibitAutocmdWithNoGroup
 
   " Mappings for completion and LSPs {{{
   nnoremap <leader>lh :LspHover<cr>
