@@ -462,6 +462,9 @@ augroup END
 " Miscellaneous settings ------------------------------------------{{{
 
 " Highlight TODOs etc
+" TODO: Define regex for todos and notes a the beginning of this source and
+" use them to define two commands :Todo and :Note that use :Grepper to search
+" for them. Reuse the regexes below to highlight their occurences.
 if has('autocmd')
   if v:version > 701
     augroup highlight_todo
