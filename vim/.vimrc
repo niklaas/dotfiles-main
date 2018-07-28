@@ -1,8 +1,8 @@
 set nocompatible
 
-let mapleader = ","
+let mapleader = ','
 
-if has("win32")
+if has('win32')
     let $DOTVIM = expand('$HOME/vimfiles')
     let $MYREALVIMRC = expand('$HOME/_vimrc')
 else
@@ -92,26 +92,26 @@ nnoremap <leader>gw :Gwrite<cr>
 
 Plug 'tpope/vim-projectionist' "{{{
 let g:projectionist_heuristics = {
-   \  "config/prod.exs": {
-   \    "web/controllers/*_controller.ex": {
-   \      "type": "controller",
-   \      "alternate": "test/controllers/{}_controller_test.exs",
+   \  'config/prod.exs': {
+   \    'web/controllers/*_controller.ex': {
+   \      'type': 'controller',
+   \      'alternate': 'test/controllers/{}_controller_test.exs',
    \    },
-   \    "web/models/*.ex": {
-   \      "type": "model",
-   \      "alternate": "test/models/{}_test.exs",
+   \    'web/models/*.ex': {
+   \      'type': 'model',
+   \      'alternate': 'test/models/{}_test.exs',
    \    },
-   \    "web/views/*_view.ex": {
-   \      "type": "view",
-   \      "alternate": "test/views/{}_view_test.exs",
+   \    'web/views/*_view.ex': {
+   \      'type': 'view',
+   \      'alternate': 'test/views/{}_view_test.exs',
    \    },
-   \    "web/templates/*.html.eex": {
-   \      "type": "template",
-   \      "alternate": "web/views/{dirname|basename}_view.ex"
+   \    'web/templates/*.html.eex': {
+   \      'type': 'template',
+   \      'alternate': 'web/views/{dirname|basename}_view.ex'
    \    },
-   \    "test/*_test.exs": {
-   \      "type": "test",
-   \      "alternate": "web/{}.ex",
+   \    'test/*_test.exs': {
+   \      'type': 'test',
+   \      'alternate': 'web/{}.ex',
    \    }
    \  }
    \}
@@ -233,12 +233,12 @@ set noshowmode " because airline shows it
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-rmarkdown'
-let g:pandoc#modules#disabled = ["chdir"]
-"let g:pandoc#formatting#mode = "hA"
+let g:pandoc#modules#disabled = ['chdir']
+"let g:pandoc#formatting#mode = 'hA'
 
 " Vimtex =============================================================
 Plug 'lervag/vimtex'
-if has("win32")
+if has('win32')
   let g:vimtex_view_general_viewer = 'SumatraPDF'
   let g:vimtex_view_general_options
     \ = '-reuse-instance -forward-search @tex @line @pdf'
@@ -314,7 +314,7 @@ if !exists('g:gui_oni') && v:version >= 800
 
   " Provider: typescript-language-server
   if executable('typescript-language-server')
-    au User lsp_setup call lsp#register_server({
+    autocmd User lsp_setup call lsp#register_server({
           \ 'name': 'typescript-language-server',
           \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
           \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
@@ -327,8 +327,8 @@ if !exists('g:gui_oni') && v:version >= 800
 
   " Provider: ultisnips
   if has('python3')
-    let g:UltiSnipsExpandTrigger="<c-e>"
-    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+    let g:UltiSnipsExpandTrigger='<c-e>'
+    autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
           \ 'name': 'ultisnips',
           \ 'whitelist': ['*'],
           \ 'priority': 5,
@@ -340,7 +340,7 @@ if !exists('g:gui_oni') && v:version >= 800
   " Registering other completion sources {{{
 
   " Provider: files
-  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+  autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
         \ 'name': 'file',
         \ 'whitelist': ['*'],
         \ 'priority': 10,
@@ -348,7 +348,7 @@ if !exists('g:gui_oni') && v:version >= 800
         \ }))
 
   " Provider: buffer
-  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+  autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
         \ 'name': 'buffer',
         \ 'whitelist': ['*'],
         \ 'blacklist': ['go'],
@@ -408,6 +408,7 @@ if v:version >= 800
         \ }
 
   " Loclist configuration {{{
+
   let g:ale_open_list = 1
   let g:ale_list_window_size = 7
 
@@ -416,8 +417,13 @@ if v:version >= 800
     autocmd!
     autocmd QuitPre * if empty(&buftype) | lclose | endif
   augroup END
+
+  " IMHO signs in the gutter distract and clutter it.
+  let g:ale_set_signs = 0
+
   " }}}
 
+  " Disable completion b/c we use LSP support (see above)
   let g:ale_completion_enabled = 0
 
   nnoremap <leader>ef <Plug>(ale_fix)
@@ -445,7 +451,7 @@ Plug 'othree/html5-syntax.vim'
 "}}}
 
 Plug 'chilicuil/vim-sprunge' "{{{
-let g:sprunge_map = "<leader>S"
+let g:sprunge_map = '<leader>S'
 let g:sprunge_open_browser = 1
 "}}}
 
@@ -464,7 +470,7 @@ runtime! ftplugin/man.vim
 
 set autowrite
 set backspace=indent,eol,start
-set cpo+=$
+set cpoptions+=$
 set hidden
 set ignorecase
 set incsearch
@@ -494,7 +500,7 @@ set wildmenu
 set wildmode=longest,full
 
 " Set locations of important directories depending on OS
-if(has("win32"))
+if(has('win32'))
   set backupdir=~/vimfiles/backup//
   set directory=~/vimfiles/swap//,.
   set undodir=~/vimfiles/undo//
@@ -509,8 +515,8 @@ set laststatus=2
 set showtabline=2
 
 " Encoding and file format
-scriptencoding utf-8
 set encoding=utf-8
+scriptencoding utf-8
 set fileencoding=utf-8
 set fileformat=unix
 set fileformats=unix,dos
@@ -601,10 +607,10 @@ endif
 function! s:base16_customize() abort
   " Colors: https://github.com/chriskempson/base16/blob/master/styling.md
   " Arguments: group, guifg, guibg, ctermfg, ctermbg, attr, guisp
-  call Base16hi("SpellBad",   "", "", g:base16_cterm08, g:base16_cterm00, "", "")
-  call Base16hi("SpellCap",   "", "", g:base16_cterm0A, g:base16_cterm00, "", "")
-  call Base16hi("SpellLocal", "", "", g:base16_cterm0D, g:base16_cterm00, "", "")
-  call Base16hi("SpellRare",  "", "", g:base16_cterm0B, g:base16_cterm00, "", "")
+  call Base16hi('SpellBad',   '', '', g:base16_cterm08, g:base16_cterm00, '', '')
+  call Base16hi('SpellCap',   '', '', g:base16_cterm0A, g:base16_cterm00, '', '')
+  call Base16hi('SpellLocal', '', '', g:base16_cterm0D, g:base16_cterm00, '', '')
+  call Base16hi('SpellRare',  '', '', g:base16_cterm0B, g:base16_cterm00, '', '')
 endfunction
 
 augroup on_change_colorschema
@@ -689,7 +695,7 @@ cabbrev <expr> %% expand('%:p:h')
 
 " Colors
 set t_Co=256
-if filereadable(expand("~/.vimrc_background"))
+if filereadable(expand('~/.vimrc_background'))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
@@ -707,10 +713,10 @@ if has('gui_running')
   set guioptions-=L
   set lines=50
   set columns=120
-  if has("gui_gtk2")
+  if has('gui_gtk2')
     set guifont=Monospace\ 11
     set background=dark
-  elseif has("gui_win32")
+  elseif has('gui_win32')
     set guifont=Consolas:h10:cANSI
   endif
 endif
