@@ -266,15 +266,53 @@ Plug 'dansomething/vim-eclim', { 'for': 'java' }
 let g:EclimJavaSearchSingleResult = 'edit'
 "}}}
 
-" LSP / completion / related --------------------------------------{{{
-if !exists('g:gui_oni')
-  " Prerequisites for completion
+" LSP / completion / snippets -------------------------------------{{{
+
+" Language server protocol clients, completion and snippets we configure
+" different for basic (n)vim and oni since the latter provides its own
+" interface for these.
+
+if !exists('g:gui_oni') && v:version >= 800
+  " Prerequisites for completion and LSPs
   Plug 'prabirshrestha/asyncomplete.vim'
   Plug 'prabirshrestha/async.vim'
+
+  " Plugginng plugins {{{
+
+  Plug 'prabirshrestha/asyncomplete-buffer.vim'
+  Plug 'prabirshrestha/asyncomplete-file.vim'
+
+  Plug 'wellle/tmux-complete.vim' "{{{
+  let g:tmuxcomplete#asyncomplete_source_options = {
+        \ 'name':      'tmuxcomplete',
+        \ 'whitelist': ['*'],
+        \ 'config': {
+        \     'splitmode':      'words',
+        \     'filter_prefix':   1,
+        \     'show_incomplete': 1,
+        \     'sort_candidates': 0,
+        \     'scrollback':      0,
+        \     'truncate':        0
+        \     }
+        \ }
+  "}}}
+
+  " Snippets
+  if has('python3')
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
+    Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+  endif
+
+  " LSPs
   Plug 'prabirshrestha/vim-lsp'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-  " Registering LSPs
+  " }}}
+
+  " Registering LSPs {{{
+
+  " Provider: typescript-language-server
   if executable('typescript-language-server')
     au User lsp_setup call lsp#register_server({
           \ 'name': 'typescript-language-server',
@@ -283,19 +321,52 @@ if !exists('g:gui_oni')
           \ 'whitelist': ['typescript'],
           \ })
   endif
+  "}}}
 
-  " Configuration for completion and LSPs
+  " Registering Snippets {{{
+
+  " Provider: ultisnips
+  if has('python3')
+    let g:UltiSnipsExpandTrigger="<c-e>"
+    au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+          \ 'name': 'ultisnips',
+          \ 'whitelist': ['*'],
+          \ 'priority': 5,
+          \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
+          \ }))
+  endif
+  "}}}
+
+  " Registering other completion sources {{{
+
+  " Provider: files
+  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+        \ 'name': 'file',
+        \ 'whitelist': ['*'],
+        \ 'priority': 10,
+        \ 'completor': function('asyncomplete#sources#file#completor')
+        \ }))
+
+  " Provider: buffer
+  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+        \ 'name': 'buffer',
+        \ 'whitelist': ['*'],
+        \ 'blacklist': ['go'],
+        \ 'completor': function('asyncomplete#sources#buffer#completor'),
+        \ }))
+
+  " }}}
+
+  " Configuration for completion and LSPs {{{
   autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
   let g:asyncomplete_remove_duplicates = 1
-  let g:lsp_signs_enabled = 1
-  let g:lsp_diagnostics_echo_cursor = 1
 
-  " For debugging LSPs
-  "let g:lsp_log_verbose = 1
-  "let g:lsp_log_file = expand('~/vim-lsp.log')
-  "let g:asyncomplete_log_file = expand('~/asyncomplete.log')  " for asyncomplete.vim log
+  " Disable LSP diagnostics b/c it's dealt with in ALE
+  let g:lsp_signs_enabled = 0
+  let g:lsp_diagnostics_echo_cursor = 0
+  "}}}
 
-  " Mappings for completion and LSPs
+  " Mappings for completion and LSPs {{{
   nnoremap <leader>lh :LspHover<cr>
   nnoremap <leader>ld :LspDefinition<cr>
   nnoremap <leader>lr :LspReferences<cr>
@@ -303,8 +374,59 @@ if !exists('g:gui_oni')
   nnoremap <leader>lf :LspDocumentRangeFormat<cr>
   nnoremap <leader>lF :LspDocumentFormat<cr>
   nnoremap <leader>ll :LspDocumentDiagnostics<cr>
+  "}}}
+
+  " For debugging LSPs
+  "let g:lsp_log_verbose = 1
+  "let g:lsp_log_file = expand('~/vim-lsp.log')
+  "let g:asyncomplete_log_file = expand('~/asyncomplete.log')  " for asyncomplete.vim log
 endif
 "}}}
+
+" Linting ---------------------------------------------------------{{{
+
+" There are several options for linting such as vim-syntastic/syntastic,
+" neomake/neomake and others. I decided for a combination of w0rp/ale and
+" tpope/vim-dispatch.
+"
+" I assume that I code on machines that at least have vim with version > 8, so
+" in such cases using w0rp/ale is not an issue. That said, I strip it to it's
+" very basic functionality i.e., linting. (It supports other options such as
+" code completion etc. but I don't use them. There are other plugins that
+" focus on this job.)
+"
+" FIXME: I am not sure whether I need w0rp/ale in oni/omi. Most probably not
+" its linting capabilities but maybe the fixers..? IIRC oni/oni only uses LSPs
+" (except for TypeScript) so probably some linting capabilities (such as
+" prettier) are required too.
+
+if v:version >= 800
+  Plug 'w0rp/ale'
+
+  let g:ale_fixers = {
+        \ 'typescript': [ 'prettier', 'tslint' ],
+        \ }
+
+  " Loclist configuration {{{
+  let g:ale_open_list = 1
+  let g:ale_list_window_size = 7
+
+  " Close loclist automatically when buffer is closed
+  augroup CloseLoclistWindowGroup
+    autocmd!
+    autocmd QuitPre * if empty(&buftype) | lclose | endif
+  augroup END
+  " }}}
+
+  let g:ale_completion_enabled = 0
+
+  nnoremap <leader>ef <Plug>(ale_fix)
+  nnoremap <leader>el <Plug>(ale_lint)
+  nnoremap <leader>ee <Plug>(ale_toggle)
+  nnoremap <leader>ed <Plug>(ale_detail)
+endif
+
+" }}}
 
 " Syntax rules ----------------------------------------------------{{{
 
