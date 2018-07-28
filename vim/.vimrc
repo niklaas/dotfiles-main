@@ -354,7 +354,9 @@ set nobackup
 set nojoinspaces
 set nostartofline
 set nowrap
+set number
 set pastetoggle=<f11>
+set pumheight=10
 set ruler
 set shortmess=at
 set showbreak=+
@@ -524,6 +526,7 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>cp :let @+ = expand("%")<cr>
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
+nnoremap <leader>n  :set relativenumber!<cr>
 
 " Yanks current inner paragraph and pastes below
 nnoremap <leader>p yip}o<esc>P
@@ -565,15 +568,6 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
-
-" Reference: https://jeffkreeftmeijer.com/vim-number/
-set number relativenumber
-
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
 
 " }}}
 
