@@ -1,3 +1,4 @@
+" vint: next-line -ProhibitSetNoCompatible
 set nocompatible
 
 let mapleader = ','
