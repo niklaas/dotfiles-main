@@ -150,11 +150,11 @@ if has('unix')
   Plug 'junegunn/fzf.vim' "
 
   " Oni remaps C-p so the following line shouldn't be a problem
-  nnoremap <C-p> :Files<cr>
-  nnoremap <leader>ff :Files<cr>
-  nnoremap <leader>fc :Commits<cr>
-  nnoremap <leader>fC :BCommits<cr>
-  nnoremap <leader>fb :Buffers<cr>
+  nnoremap <silent> <C-p> :Files<cr>
+  nnoremap <silent> <leader>ff :Files<cr>
+  nnoremap <silent> <leader>fc :Commits<cr>
+  nnoremap <silent> <leader>fC :BCommits<cr>
+  nnoremap <silent> <leader>fb :Buffers<cr>
 
   let s:fuzzy_file_finder = 'Files'
   "}}}
@@ -177,11 +177,11 @@ endif
 " TODO: Testing
 if filereadable('web/router.ex')
   " This looks like an Elixir/Phoenix app.
-  nnoremap <leader>FT :execute s:fuzzy_file_finder . " test\<cr>"
-  nnoremap <leader>Fc :execute s:fuzzy_file_finder . " web/controllers\<cr>"
-  nnoremap <leader>Fm :execute s:fuzzy_file_finder . " web/models\<cr>"
-  nnoremap <leader>Ft :execute s:fuzzy_file_finder . " web/templates\<cr>"
-  nnoremap <leader>Fv :execute s:fuzzy_file_finder . " web/views\<cr>"
+  nnoremap <silent> <leader>FT :execute s:fuzzy_file_finder . " test\<cr>"
+  nnoremap <silent> <leader>Fc :execute s:fuzzy_file_finder . " web/controllers\<cr>"
+  nnoremap <silent> <leader>Fm :execute s:fuzzy_file_finder . " web/models\<cr>"
+  nnoremap <silent> <leader>Ft :execute s:fuzzy_file_finder . " web/templates\<cr>"
+  nnoremap <silent> <leader>Fv :execute s:fuzzy_file_finder . " web/views\<cr>"
 endif
 
 "}}}
