@@ -17,6 +17,8 @@ bindkey -v
 bindkey '^a' autosuggest-accept
 bindkey '^e' autosuggest-execute
 
+bindkey -s '^z' 'fg\n'
+
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
