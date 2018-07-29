@@ -29,7 +29,7 @@ Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 
-" Objects ---------------------------------------------------------{{{
+" Additional vim objects ------------------------------------------{{{
 
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'rhysd/clever-f.vim'
@@ -63,7 +63,6 @@ Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'  " for better netrw
 
