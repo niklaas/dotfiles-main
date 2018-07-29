@@ -1,3 +1,10 @@
+" IDEA: Move mappings together: general first and then filetype specific ones.
+" At the moment some mappings are even declared in the Vim-plug section
+" because the commands are defined by plugins.
+
+" IDEA: Reorganise settings: Basic settings first and then filetype specific
+" ones.
+
 " vint: next-line -ProhibitSetNoCompatible
 set nocompatible
 
@@ -29,7 +36,18 @@ Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 
-" Additional vim objects ------------------------------------------{{{
+
+Plug 'vim-airline/vim-airline', Cond(!exists('g:gui_oni')) "{{{
+Plug 'vim-airline/vim-airline-themes', Cond(!exists('g:gui_oni'))
+let g:airline_theme = 'base16_default'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#bufferline#enabled = 1
+set noshowmode " because airline shows it
+"}}}
+
+" Additional vim objects {{{
 
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'rhysd/clever-f.vim'
@@ -47,10 +65,15 @@ nnoremap <leader>tc :TagbarClose<cr>
 nnoremap <leader>tp :TagbarPause<cr>
 "}}}
 
-" DelimitMate ========================================================
-Plug 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate' "{{{
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
+"}}}
+
+Plug 'chilicuil/vim-sprunge' "{{{
+let g:sprunge_map = '<leader>S'
+let g:sprunge_open_browser = 1
+"}}}
 
 " tpope plugins ---------------------------------------------------{{{
 Plug 'tpope/vim-abolish'
@@ -129,10 +152,6 @@ nnoremap <leader>at :AT<CR>
 "}}}
 "}}}
 
-" Includes *multiple* syntax/completion/etc rules
-" This should be includes first to be overridden subsequently
-Plug 'sheerun/vim-polyglot'
-
 Plug 'sodapopcan/vim-twiggy' "{{{
 nnoremap <leader>b :Twiggy<cr>
 "}}}
@@ -201,69 +220,9 @@ nnoremap <leader>Gv :Grepper -tool rg -side<cr>
 nnoremap <leader>*  :Grepper -tool rg -cword -noprompt<cr>
 "}}}
 
-" Easy Align =========================================================
-Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align' "{{{
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-" Plugins for syntax {{{
-
-" Scala ==============================================================
-Plug 'derekwyatt/vim-sbt'
-Plug 'derekwyatt/vim-scala'
-
-augroup filetype_scala
-  autocmd!
-  autocmd BufWritePost *.scala silent :EnTypeChec
-augroup END
-
-let g:scala_scaladoc_indent = 1
-
-Plug 'vim-airline/vim-airline', Cond(!exists('g:gui_oni')) " {{{
-Plug 'vim-airline/vim-airline-themes', Cond(!exists('g:gui_oni'))
-let g:airline_theme = 'base16_default'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#bufferline#enabled = 1
-set noshowmode " because airline shows it
-"}}}
-
-" Pandoc =============================================================
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-pandoc/vim-rmarkdown'
-let g:pandoc#modules#disabled = ['chdir']
-"let g:pandoc#formatting#mode = 'hA'
-
-" Vimtex =============================================================
-Plug 'lervag/vimtex'
-if has('win32')
-  let g:vimtex_view_general_viewer = 'SumatraPDF'
-  let g:vimtex_view_general_options
-    \ = '-reuse-instance -forward-search @tex @line @pdf'
-  let g:vimtex_view_general_options_latexmk = '-reuse-instance'
-endif
-
-" NVim-R =============================================================
-Plug 'jalvesaq/Nvim-R'
-let R_in_buffer = 0
-let R_tmux_split = 1
-let R_nvim_wd = 1
-let R_assign = 0
-let r_indent_ess_compatible = 1
-
-" JavaScript/Typescript/Angular ======================================
-Plug 'burnettk/vim-angular'
-Plug 'heavenshell/vim-jsdoc'
-Plug 'leafgarland/typescript-vim', Cond(!has('nvim'))
-Plug 'matthewsimo/angular-vim-snippets'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'pangloss/vim-javascript'
-
-" Java/Eclipse/eclim ================================================
-Plug 'dansomething/vim-eclim', { 'for': 'java' }
-let g:EclimJavaSearchSingleResult = 'edit'
 "}}}
 
 " LSP / completion / snippets -------------------------------------{{{
@@ -373,6 +332,7 @@ if !exists('g:gui_oni') && v:version >= 800
   " Mappings for completion and LSPs {{{
   nnoremap <leader>lh :LspHover<cr>
   nnoremap <leader>ld :LspDefinition<cr>
+  nnoremap <leader>lD :LspDocumentSymbol<cr>
   nnoremap <leader>lr :LspReferences<cr>
   nnoremap <leader>lR :LspRename<cr>
   nnoremap <leader>lf :LspDocumentRangeFormat<cr>
@@ -422,10 +382,10 @@ if v:version >= 800
     autocmd QuitPre * if empty(&buftype) | lclose | endif
   augroup END
 
+  " }}}
+
   " IMHO signs in the gutter distract and clutter it.
   let g:ale_set_signs = 0
-
-  " }}}
 
   " Disable completion b/c we use LSP support (see above)
   let g:ale_completion_enabled = 0
@@ -438,30 +398,87 @@ endif
 
 " }}}
 
-" Syntax rules ----------------------------------------------------{{{
+" Syntax rules and filetype specific plugins ----------------------{{{
 
-" FIXME: Move this section upwards
-Plug 'baskerville/vim-sxhkdrc'
-Plug 'blindFS/vim-reveal'  " reveal.js presentations
-Plug 'cespare/vim-toml'
-Plug 'fatih/vim-go'
-Plug 'hashivim/vim-terraform'
-Plug 'mllg/vim-devtools-plugin'
-Plug 'mrk21/yaml-vim'
-Plug 'slashmili/alchemist.vim'
-Plug 'elixir-editors/vim-elixir'
-Plug 'othree/html5.vim'
-Plug 'othree/html5-syntax.vim'
+Plug 'sheerun/vim-polyglot' "{{{
+" Language pack loaded first to be overwritten by others below
+" TODO: Check whether I need to deactivate typescript support when using Oni.
 "}}}
 
-Plug 'chilicuil/vim-sprunge' "{{{
-let g:sprunge_map = '<leader>S'
-let g:sprunge_open_browser = 1
+
+" Pandoc {{{
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
+let g:pandoc#modules#disabled = ['chdir']
+"let g:pandoc#formatting#mode = 'hA'
+"}}}
+
+Plug 'lervag/vimtex' "{{{
+if has('win32')
+  let g:vimtex_view_general_viewer = 'SumatraPDF'
+  let g:vimtex_view_general_options
+    \ = '-reuse-instance -forward-search @tex @line @pdf'
+  let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+endif
+"}}}
+
+" R {{{
+Plug 'jalvesaq/Nvim-R'
+let R_in_buffer = 0
+let R_tmux_split = 1
+let R_nvim_wd = 1
+let R_assign = 0
+let r_indent_ess_compatible = 1
+
+Plug 'mllg/vim-devtools-plugin'
+"}}}
+
+" JavaScript/Typescript/Angular {{{
+
+
+Plug 'othree/javascript-libraries-syntax.vim' "{{{
+" Multi-purpose syntax files loaded first
+" TODO: Check whether I need all of this
+"}}}
+
+Plug 'burnettk/vim-angular' "{{{
+" TODO: Disable everything except runnings test for single spec.
+"}}}
+
+Plug 'heavenshell/vim-jsdoc'
+
+"}}}
+
+" Java {{{
+Plug 'dansomething/vim-eclim', { 'for': 'java' }
+let g:EclimJavaSearchSingleResult = 'edit'
+"}}}
+
+" Scala {{{
+Plug 'derekwyatt/vim-sbt'
+Plug 'derekwyatt/vim-scala'
+
+let g:scala_scaladoc_indent = 1
+"}}}
+
+" Elixir {{{
+Plug 'slashmili/alchemist.vim'
+Plug 'elixir-editors/vim-elixir'
+" }}}
+
+" Go {{{
+Plug 'fatih/vim-go'
+" TODO: Probably I need to deal with incompatibilities with ALE and LSP-setup
+" }}}
+
+Plug 'blindFS/vim-reveal'  " reveal.js presentations
+
 "}}}
 
 call plug#end()
 
-" }}}
+"}}}
 
 " Vim extensions --------------------------------------------------{{{
 
@@ -545,7 +562,7 @@ set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
 
 " }}}
 
-" Filetype-specific settings --------------------------------------{{{
+" Filetype-specific mappings and settings -------------------------{{{
 
 augroup filetype_gitcommit
   autocmd!
@@ -568,14 +585,19 @@ augroup filetpye_java
   autocmd!
   autocmd FileType java nnoremap <buffer> <leader>jd :JavaDocComment<cr>
   autocmd FileType java nnoremap <buffer> <leader>ji :JavaImportOrganize<cr>
-  autocmd FileType java nnoremap <buffer> <leader>r :JavaSearch -x references<cr>
-  autocmd FileType java nnoremap <buffer> K :JavaDocPreview<cr>
-  autocmd FileType java nnoremap <buffer> gd :JavaSearch -x declarations<cr>
+  autocmd FileType java nnoremap <buffer> <leader>lr :JavaSearch -x references<cr>
+  autocmd FileType java nnoremap <buffer> <leader>lD :JavaDocPreview<cr>
+  autocmd FileType java nnoremap <buffer> <leader>ld :JavaSearch -x declarations<cr>
 augroup END
 
 augroup filetype_netrw
   autocmd!
   autocmd FileType netrw setlocal bufhidden=false
+augroup END
+
+augroup filetype_scala
+  autocmd!
+  autocmd BufWritePost *.scala silent :EnTypeChec
 augroup END
 
 augroup filetype_typescript
@@ -586,7 +608,6 @@ augroup END
 augroup filetype_vimrc
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
-  autocmd Filetype vim setlocal comments+=b:\"
 augroup END
 
 " }}}
@@ -626,9 +647,18 @@ augroup END
 let &t_SI = "\<Esc>[6 q"
 let &t_EI = "\<Esc>[2 q"
 
-" }}}
+" NeoVim/Vim compatibility ----------------------------------------{{{
 
-" Mappings --------------------------------------------------------{{{
+if !has('nvim')
+  set cryptmethod=blowfish2
+  set ttymouse=xterm2
+endif
+
+"}}}
+
+"}}}
+
+" General Mappings ------------------------------------------------{{{
 
 cnoremap jk <ESC>
 cnoremap kj <ESC>
@@ -727,19 +757,10 @@ endif
 
 " }}}
 
-" NeoVim/Vim compatibility ----------------------------------------{{{
-
-if !has('nvim')
-  set cryptmethod=blowfish2
-  set ttymouse=xterm2
-endif
-
-" }}}
-
 " ONI -------------------------------------------------------------{{{
 
 if exists('g:gui_oni')
-  " Override previous configuration with these setting to suit to Oni.
+  " Override previous configuration with these settings to suit to Oni.
   " https://github.com/onivim/oni/wiki/How-To:-Minimal-Oni-Configuration
 
   " Force loading sensible now to override its setting in the following
