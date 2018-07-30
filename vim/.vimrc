@@ -2,9 +2,6 @@
 " At the moment some mappings are even declared in the Vim-plug section
 " because the commands are defined by plugins.
 
-" IDEA: Reorganise settings: Basic settings first and then filetype specific
-" ones.
-
 " vint: next-line -ProhibitSetNoCompatible
 set nocompatible
 
