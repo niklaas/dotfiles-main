@@ -676,10 +676,10 @@ cnoremap w!! w !sudo tee >/dev/null %
 " Insert mode {{{
 
 " Jump to end of line
-inoremap <C-e> <C-o>$
+inoremap <C-9> <C-o>$
 
-" Jump to beginning of line (overrides!)
-inoremap <C-a> <C-o>_
+" Jump to beginning of line
+inoremap <C-0> <C-o>_
 
 " }}}
 
