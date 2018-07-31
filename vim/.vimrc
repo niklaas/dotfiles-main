@@ -36,11 +36,16 @@ Plug 'vim-scripts/SyntaxAttr.vim'
 
 Plug 'vim-airline/vim-airline', Cond(!exists('g:gui_oni')) "{{{
 Plug 'vim-airline/vim-airline-themes', Cond(!exists('g:gui_oni'))
+
 let g:airline_theme = 'base16_default'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+
 let g:airline#extensions#bufferline#enabled = 1
+
+let g:airline#extensions#branch#displayed_head_limit = 20
+
 set noshowmode " because airline shows it
 "}}}
 
