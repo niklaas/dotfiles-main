@@ -613,6 +613,7 @@ augroup END
 augroup filetype_typescript
   autocmd!
   autocmd FileType typescript let b:dispatch = 'ng test %'
+  autocmd FileType typescript let b:ale_javascript_prettier_options = "--parser typescript"
 augroup END
 
 augroup filetype_vimrc
