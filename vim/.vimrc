@@ -395,10 +395,10 @@ if v:version >= 800
   " Disable completion b/c we use LSP support (see above)
   let g:ale_completion_enabled = 0
 
-  nnoremap <leader>ef <Plug>(ale_fix)
-  nnoremap <leader>el <Plug>(ale_lint)
-  nnoremap <leader>ee <Plug>(ale_toggle)
-  nnoremap <leader>ed <Plug>(ale_detail)
+  nmap <leader>ef <Plug>(ale_fix)
+  nmap <leader>el <Plug>(ale_lint)
+  nmap <leader>ee <Plug>(ale_toggle)
+  nmap <leader>ed <Plug>(ale_detail)
 endif
 
 " }}}
