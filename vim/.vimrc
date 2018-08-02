@@ -502,7 +502,6 @@ set autowrite
 set backspace=indent,eol,start
 set cpoptions+=$
 set gdefault
-set hidden
 set ignorecase
 set incsearch
 set linebreak
