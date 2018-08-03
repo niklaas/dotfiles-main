@@ -403,6 +403,7 @@ if v:version >= 800
   nmap <leader>el <Plug>(ale_lint)
   nmap <leader>ee <Plug>(ale_toggle)
   nmap <leader>ed <Plug>(ale_detail)
+  nmap <leader>er <Plug>(ale_reset)
 endif
 
 " }}}
