@@ -553,7 +553,7 @@ set fileformat=unix
 set fileformats=unix,dos
 
 " formatting
-set comments=b:#,:%,fb:-,n:>,n:),sr:/**,mb:*,ex:*/,://,:\\"
+set comments=b:#,:%,fb:-,n:>,n:),sr:/*,mb:*,ex:*/,://,:\\"
 set formatoptions=croq
 
 if (exists('+colorcolumn'))
