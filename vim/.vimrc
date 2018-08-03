@@ -382,7 +382,7 @@ if v:version >= 800
 
   " Loclist configuration {{{
 
-  let g:ale_open_list = 1
+  let g:ale_open_list = 0
   let g:ale_list_window_size = 7
 
   " Close loclist automatically when buffer is closed
