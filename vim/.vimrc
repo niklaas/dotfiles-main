@@ -589,6 +589,7 @@ augroup END
 augroup filetype_html
   autocmd!
   autocmd FileType html setlocal foldmethod=indent
+  autocmd FileType html normal zR
 augroup END
 
 augroup filetpye_java
