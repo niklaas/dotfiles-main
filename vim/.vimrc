@@ -658,15 +658,20 @@ augroup on_change_colorschema
   autocmd ColorScheme * call s:base16_customize()
 augroup END
 
-" Change cursor depending on mode in terminal
-let &t_SI = "\<Esc>[6 q"
-let &t_EI = "\<Esc>[2 q"
-
 " NeoVim/Vim compatibility ----------------------------------------{{{
 
 if !has('nvim')
   set cryptmethod=blowfish2
   set ttymouse=xterm2
+
+  " Change cursor depending on mode in terminal
+  if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+  else
+    let &t_SI = "\e[5 q"
+    let &t_EI = "\e[2 q"
+  endif
 endif
 
 "}}}
