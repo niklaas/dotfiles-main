@@ -502,6 +502,7 @@ runtime! ftplugin/man.vim
 set autowrite
 set backspace=indent,eol,start
 set cpoptions+=$
+set diffopt=filler,vertical
 set gdefault
 set ignorecase
 set incsearch
