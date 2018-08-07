@@ -1,0 +1,4 @@
+URxvt.saveLines: 10000
+URxvt.scrollBar: false
+URxvt.secondaryScroll: true
+URxvt.font: xft:Hack:pixelsize=18
