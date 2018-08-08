@@ -1,8 +1,0 @@
-URxvt.saveLines:       10000
-URxvt.scrollBar:       false
-URxvt.secondaryScroll: true
-URxvt.geometry:        110x40
-URxvt.font:            xft:Hack:pixelsize=18,\
-                       xft:DejaVu Sans Mono:pixelsize:18,\
-                       xft:Unifont:pixelsize:16,\
-                       -*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
