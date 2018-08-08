@@ -374,7 +374,7 @@ if v:version >= 800
   Plug 'w0rp/ale'
 
   let g:ale_fixers = {
-        \ 'typescript': [ 'prettier', 'tslint', 'trim_whitespace', 'remove_trailing_lines' ],
+        \ 'typescript': [ 'tslint', 'trim_whitespace', 'remove_trailing_lines' ],
         \ 'javascript': [ 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
         \ 'java': [ 'google_java_format', '%JavaFormat', 'trim_whitespace', 'remove_trailing_lines' ],
         \ 'html': [ 'tidy', 'trim_whitespace', 'remove_trailing_lines' ],
