@@ -1,4 +1,4 @@
-robbyrussell/oh-my-zsh folder:plugins/comman-aliases folder:plugins/git folder:plugins/common-aliases
+robbyrussell/oh-my-zsh  folder:plugins/git folder:plugins/common-aliases
 
 zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search
