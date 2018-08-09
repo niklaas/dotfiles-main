@@ -16,9 +16,9 @@ then
 fi
 
 # EDITOR setup
-if [ -f ~/bin/nvim.appimage ]
+if [ -f ~/bin/nvim ]
 then
-    export EDITOR=~/bin/nvim.appimage
+    export EDITOR=~/bin/nvim
 elif command -v nvim >/dev/null 2>&1
 then
     export EDITOR=nvim
