@@ -35,9 +35,6 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_COLLATE=C
 
-# Simplifies prompt symbole for pure prompt
-export PURE_PROMPT_SYMBOL='>'
-
 if test -d /usr/local/go/bin
 then
     # Looks like golang was installed from upstream directly.
