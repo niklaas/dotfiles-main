@@ -594,7 +594,7 @@ augroup filetype_html
   autocmd FileType html normal zR
 augroup END
 
-augroup filetpye_java
+augroup filetype_java
   autocmd!
   autocmd FileType java nnoremap <buffer> <leader>jd :JavaDocComment<cr>
   autocmd FileType java nnoremap <buffer> <leader>ji :JavaImportOrganize<cr>
@@ -602,6 +602,8 @@ augroup filetpye_java
   autocmd FileType java nnoremap <buffer> <leader>lR :JavaRename<space>
   autocmd FileType java nnoremap <buffer> <leader>lD :JavaDocPreview<cr>
   autocmd FileType java nnoremap <buffer> <leader>ld :JavaSearch -x declarations<cr>
+  autocmd FileType java nnoremap <buffer> <leader>lb :JavaDebugBreakpointToggle!<cr>
+  autocmd FileType java nnoremap <buffer> <leader>lB :JavaDebugBreakpointsList<cr>
 augroup END
 
 augroup filetype_netrw
