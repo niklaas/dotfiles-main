@@ -5,6 +5,9 @@ autoload -U zmv  # zsh's bulk renaming
 autoload -U is-at-least
 autoload -U compdef
 
+autoload -Uz compinit
+compinit
+
 export SHELL=$(command -v zsh)
 export HOSTNAME=$(hostname)
 
