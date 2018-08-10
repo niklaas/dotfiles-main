@@ -19,8 +19,9 @@ then
 fi
 
 # EDITOR setup
-if [ -f ~/bin/nvim ]
+if [ -f ~/bin/nvim -o -L ~/bin/nvim ]
 then
+    # Looks like nvim was built from source
     export EDITOR=~/bin/nvim
 elif command -v nvim >/dev/null 2>&1
 then
