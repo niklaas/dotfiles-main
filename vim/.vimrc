@@ -376,7 +376,7 @@ if v:version >= 800
   let g:ale_fixers = {
         \ 'typescript': [ 'tslint', 'trim_whitespace', 'remove_trailing_lines' ],
         \ 'javascript': [ 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
-        \ 'java': [ 'google_java_format', '%JavaFormat', 'trim_whitespace', 'remove_trailing_lines' ],
+        \ 'java': [ 'google_java_format', 'trim_whitespace', 'remove_trailing_lines' ],
         \ 'html': [ 'tidy', 'trim_whitespace', 'remove_trailing_lines' ],
         \ 'scss': [ 'prettier', 'trim_whitespace', 'remove_trailing_lines' ],
         \ }
