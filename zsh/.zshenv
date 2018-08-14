@@ -1,5 +1,7 @@
 typeset -U path
 path=(~/bin ~/go/bin ~/n/bin $path)
+typeset -U fpath
+fpath=(~/.local/share/zsh/functions/Completion $fpath)
 
 autoload -U zmv  # zsh's bulk renaming
 autoload -U is-at-least
