@@ -318,7 +318,7 @@ if !exists('g:gui_oni') && v:version >= 800
   autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
         \ 'name': 'buffer',
         \ 'whitelist': ['*'],
-        \ 'blacklist': ['go'],
+        \ 'blacklist': ['go', 'sql'],
         \ 'completor': function('asyncomplete#sources#buffer#completor'),
         \ }))
 
