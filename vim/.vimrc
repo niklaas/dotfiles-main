@@ -33,37 +33,64 @@ Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 
-Plug 'itchyny/lightline.vim', Cond(!exists('g:gui_oni')) "{{{
+" Lightline
+Plug 'itchyny/lightline.vim', Cond(!exists('g:gui_oni'))
 Plug 'daviesjamie/vim-base16-lightline', Cond(!exists('g:gui_oni'))
-
-" Since lightline shows the mode we don't need it in the echo line
-set noshowmode
-
-function! LightlineObsession()
-  let l:status = strpart(ObsessionStatus(), 1, 1)
-
-  if l:status != 'S'
-    return l:status
-  endif
-
-  return ''
-endfunction
 
 let g:lightline = {
       \ 'colorscheme': 'base16',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \             [ 'gitbranch', 'filename', 'modified' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
-      \              [ 'obsession', 'fileformat', 'fileencoding', 'filetype' ] ]
+      \              [ 'obsession', 'readonly', 'fileformat', 'fileencoding', 'filetype', 'linter_warnings', 'linter_errors', 'linter_ok' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
       \   'obsession': 'LightlineObsession',
       \ },
+      \ 'component_expand': {
+      \   'linter_warnings': 'LightlineLinterWarnings',
+      \   'linter_errors': 'LightlineLinterErrors',
+      \   'linter_ok': 'LightlineLinterOK'
+      \ },
+      \ 'component_type': {
+      \   'readonly': 'error',
+      \   'linter_warnings': 'warning',
+      \   'linter_errors': 'error'
+      \ },
       \ }
-"}}}
+
+" Inspired by github.com/statico/dotfiles
+function! LightlineLinterWarnings() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ⚠️', all_non_errors)
+endfunction
+function! LightlineLinterErrors() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
+endfunction
+function! LightlineLinterOK() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '✓' : ''
+endfunction
+
+function! LightlineObsession()
+  let l:status = strpart(ObsessionStatus(), 1, 1)
+  return l:status ==# '$' ? '$' : ''
+endfunction
+
+augroup _lightline
+  autocmd!
+  autocmd User ALELintPost call lightline#update()
+augroup end
 
 " Additional vim objects {{{
 
@@ -522,7 +549,7 @@ runtime! ftplugin/man.vim
 
 " }}}
 
-" Basic settings --------------------------------------------------{{{
+" Basic settings {{{
 
 set autowrite
 set backspace=indent,eol,start
@@ -537,6 +564,7 @@ set modelines=5
 set mouse=a
 set nobackup
 set nojoinspaces
+set noshowmode
 set nostartofline
 set nowrap
 set number
@@ -827,10 +855,8 @@ endif
 
 " }}}
 
-" Source .vimrc.local ---------------------------------------------{{{
+" .vimrc.local {{{1
 
 if filereadable(expand('$HOME/.vimrc.local'))
   execute 'source ' . '$HOME/.vimrc.local'
 endif
-
-" }}}
