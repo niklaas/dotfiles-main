@@ -612,7 +612,7 @@ set comments=b:#,:%,fb:-,n:>,n:),sr:/*,mb:*,ex:*/,://,:\\"
 set formatoptions=croq
 
 if (exists('+colorcolumn'))
-  set colorcolumn=80
+  let &colorcolumn='80,'.join(range(120,999),',')
   highlight ColorColumn ctermbg=18
 endif
 
