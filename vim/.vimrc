@@ -33,20 +33,36 @@ Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 
+Plug 'itchyny/lightline.vim', Cond(!exists('g:gui_oni')) "{{{
+Plug 'daviesjamie/vim-base16-lightline', Cond(!exists('g:gui_oni'))
 
-Plug 'vim-airline/vim-airline', Cond(!exists('g:gui_oni')) "{{{
-Plug 'vim-airline/vim-airline-themes', Cond(!exists('g:gui_oni'))
+" Since lightline shows the mode we don't need it in the echo line
+set noshowmode
 
-let g:airline_theme = 'base16_default'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+function! LightlineObsession()
+  let l:status = strpart(ObsessionStatus(), 1, 1)
 
-let g:airline#extensions#bufferline#enabled = 1
+  if l:status != 'S'
+    return l:status
+  endif
 
-let g:airline#extensions#branch#displayed_head_limit = 20
+  return ''
+endfunction
 
-set noshowmode " because airline shows it
+let g:lightline = {
+      \ 'colorscheme': 'base16',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'obsession', 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head',
+      \   'obsession': 'LightlineObsession',
+      \ },
+      \ }
 "}}}
 
 " Additional vim objects {{{
@@ -553,7 +569,7 @@ endif
 
 " Always show status line
 set laststatus=2
-set showtabline=2
+set showtabline=1
 
 " Encoding and file format
 set encoding=utf-8
