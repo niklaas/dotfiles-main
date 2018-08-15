@@ -742,15 +742,14 @@ inoremap kj <ESC>
 
 cnoremap w!! w !sudo tee >/dev/null %
 
-" Insert mode {{{
-
 " Jump to end of line
 inoremap <C-9> <C-o>$
 
 " Jump to beginning of line
 inoremap <C-0> <C-o>_
 
-" }}}
+" Uppercase word in insert mode
+inoremap <C-u> <esc>mzgUiw`za
 
 nnoremap <space> viw
 nnoremap Y y$
