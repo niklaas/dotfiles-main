@@ -387,6 +387,8 @@ if v:version >= 800
         \   ]
         \ }
 
+  let g:ale_fix_on_save = 1
+
   " Loclist configuration {{{
 
   let g:ale_open_list = 0
