@@ -251,6 +251,7 @@ if !exists('g:gui_oni') && v:version >= 800
   let g:tmuxcomplete#asyncomplete_source_options = {
         \ 'name':      'tmuxcomplete',
         \ 'whitelist': ['*'],
+        \ 'priority': 5,
         \ 'config': {
         \     'splitmode':      'words',
         \     'filter_prefix':   1,
