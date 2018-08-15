@@ -1,6 +1,8 @@
 " IDEA: Move mappings together: general first and then filetype specific ones.
 " At the moment some mappings are even declared in the Vim-plug section
 " because the commands are defined by plugins.
+"
+" IDEA: Move all filetype specific settings to .vim/ftplugin.
 
 " vint: next-line -ProhibitSetNoCompatible
 set nocompatible
@@ -285,12 +287,11 @@ if !exists('g:gui_oni') && v:version >= 800
   Plug 'prabirshrestha/asyncomplete.vim'
   Plug 'prabirshrestha/async.vim'
 
-  " Plugging plugins {{{
-
   Plug 'prabirshrestha/asyncomplete-buffer.vim'
   Plug 'prabirshrestha/asyncomplete-file.vim'
 
-  Plug 'wellle/tmux-complete.vim' "{{{
+  Plug 'wellle/tmux-complete.vim'
+
   let g:tmuxcomplete#asyncomplete_source_options = {
         \ 'name':      'tmuxcomplete',
         \ 'whitelist': ['*'],
@@ -304,7 +305,6 @@ if !exists('g:gui_oni') && v:version >= 800
         \     'truncate':        0
         \     }
         \ }
-  "}}}
 
   " Snippets
   if has('python3')
@@ -316,8 +316,6 @@ if !exists('g:gui_oni') && v:version >= 800
   " LSPs
   Plug 'prabirshrestha/vim-lsp'
   Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
-  " }}}
 
   " Registering LSPs {{{
 
