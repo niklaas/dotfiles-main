@@ -262,7 +262,7 @@ nmap gs <Plug>(GrepperOperator)
 xmap gs <Plug>(GrepperOperator)
 
 nnoremap <leader>Gg :Grepper -tool git<cr>
-nnoremap <leader>Gr :Grepper -tool rg<cr>
+nnoremap <leader>GG :Grepper -tool rg<cr>
 nnoremap <leader>Gv :Grepper -tool rg -side<cr>
 nnoremap <leader>*  :Grepper -tool rg -cword -noprompt<cr>
 
