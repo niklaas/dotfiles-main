@@ -94,6 +94,9 @@ augroup _lightline
   autocmd User ALELintPost call lightline#update()
 augroup end
 
+" Tmuxline
+Plug 'edkolev/tmuxline.vim'
+
 " Additional vim objects {{{
 
 Plug 'michaeljsmith/vim-indent-object'
