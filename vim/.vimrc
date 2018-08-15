@@ -286,6 +286,7 @@ if !exists('g:gui_oni') && v:version >= 800
           \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
           \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
           \ 'whitelist': ['typescript'],
+          \ 'priority': 10,
           \ })
   endif
   "}}}
@@ -529,7 +530,7 @@ set showmatch
 set smartcase
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set tags=./tags,./TAGS,tags,TAGS,../tags,../../tags,../../../tags,../../../../tags
-set updatetime=1000
+set updatetime=250
 set viminfo=%,'50,:100,<1000
 set visualbell
 set whichwrap=<,>,h,l
