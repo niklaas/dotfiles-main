@@ -423,12 +423,16 @@ if v:version >= 800
   let g:ale_fixers = {
         \   'typescript': [ 'tslint', 'trim_whitespace', 'remove_trailing_lines' ],
         \   'javascript': [ 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
-        \   'java': [ 'trim_whitespace', 'remove_trailing_lines' ],
+        \   'java': [
+        \       { buffer -> execute('%JavaFormat') },
+        \      'trim_whitespace',
+        \       'remove_trailing_lines'
+        \        ],
         \   'html': [ 'trim_whitespace', 'remove_trailing_lines' ],
         \   'scss': [
-        \     {buffer -> {'command': 'sass-convert --from scss --to scss'} },
-        \     'trim_whitespace',
-        \     'remove_trailing_lines',
+        \      { buffer -> { 'command': 'sass-convert --from scss --to scss' } },
+        \      'trim_whitespace',
+        \      'remove_trailing_lines',
         \   ]
         \ }
 
