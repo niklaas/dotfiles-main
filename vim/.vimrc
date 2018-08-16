@@ -612,11 +612,6 @@ set fileformats=unix,dos
 set comments=b:#,:%,fb:-,n:>,n:),sr:/*,mb:*,ex:*/,://,:\\"
 set formatoptions=croq
 
-if (exists('+colorcolumn'))
-  let &colorcolumn='80,'.join(range(120,999),',')
-  highlight ColorColumn ctermbg=18
-endif
-
 " Indenting
 set shiftround
 set expandtab autoindent
