@@ -96,6 +96,7 @@ augroup end
 
 " Tmuxline
 Plug 'edkolev/tmuxline.vim'
+let g:tmuxline_powerline_separators = 0
 
 " Additional vim objects {{{
 
