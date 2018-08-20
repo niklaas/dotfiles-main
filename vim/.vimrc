@@ -788,9 +788,7 @@ if has('nvim')
   tnoremap <C-v><Esc> <Esc>
 endif
 
-" }}}
-
-" Abbreviations ---------------------------------------------------{{{
+" Abbreviations {{{1
 
 " Inserts timestamp (ISO compliant with colon in timezone)
 iabbrev aDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
@@ -798,9 +796,7 @@ iabbrev aDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
 " Expand %% to the current directory
 cabbrev <expr> %% expand('%:p:h')
 
-" }}}
-
-" Display & style -------------------------------------------------{{{
+" Display & style {{{1
 
 " Colors
 set t_Co=256
@@ -809,9 +805,7 @@ if filereadable(expand('~/.vimrc_background'))
   source ~/.vimrc_background
 endif
 
-" }}}
-
-" GUI settings ----------------------------------------------------{{{
+" GUI (GVIM) {{{1
 
 if has('gui_running')
   set guioptions-=m
@@ -830,9 +824,7 @@ if has('gui_running')
   endif
 endif
 
-" }}}
-
-" ONI -------------------------------------------------------------{{{
+" ONI {{{1
 
 if exists('g:gui_oni')
   " Override previous configuration with these settings to suit to Oni.
@@ -853,8 +845,6 @@ if exists('g:gui_oni')
 
   set mouse=a
 endif
-
-" }}}
 
 " .vimrc.local {{{1
 
