@@ -759,14 +759,16 @@ nnoremap / /\v
 " Delete the buffer, leaving the window open
 nnoremap <C-c> :bp\|bd #<cr>
 
-nnoremap <Leader>,  :set cursorline! cursorcolumn!<CR>
-nnoremap <Leader>-  :set list!<cr>
-nnoremap <leader>.  :nohlsearch<cr>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>cp :let @+ = expand("%")<cr>
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
-nnoremap <leader>n  :set relativenumber!<cr>
+
+ IDEA: Interesting unused mappings are
+"
+"   <leader><leader>
+"   <leader>.
+"   <leader>-
 
 " Yanks current inner paragraph and pastes below
 nnoremap <leader>p yip}o<esc>P
