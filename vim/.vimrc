@@ -764,7 +764,7 @@ nnoremap <leader>cp :let @+ = expand("%")<cr>
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
- IDEA: Interesting unused mappings are
+" IDEA: Interesting unused mappings are
 "
 "   <leader><leader>
 "   <leader>.
