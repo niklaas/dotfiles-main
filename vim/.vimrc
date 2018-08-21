@@ -517,6 +517,7 @@ Plug 'burnettk/vim-angular' "{{{
 Plug 'heavenshell/vim-jsdoc'
 let g:jsdoc_underscore_private = 1
 let g:jsdoc_enable_es6 = 1
+let g:jsdoc_allow_input_prompt = 0
 
 "}}}
 
@@ -676,6 +677,7 @@ augroup filetype_typescript
   autocmd!
   autocmd FileType typescript let b:dispatch = 'ng test %'
   autocmd FileType typescript let b:ale_javascript_prettier_options = "--parser typescript"
+  autocmd FileType typescript nnoremap <buffer> <leader>lm :JsDoc<cr>
 augroup END
 
 augroup filetype_vimrc
