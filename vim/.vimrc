@@ -711,6 +711,7 @@ function! s:base16_customize() abort
   call Base16hi('SpellCap',   '', '', g:base16_cterm0A, g:base16_cterm00, '', '')
   call Base16hi('SpellLocal', '', '', g:base16_cterm0D, g:base16_cterm00, '', '')
   call Base16hi('SpellRare',  '', '', g:base16_cterm0B, g:base16_cterm00, '', '')
+  call Base16hi('MatchParen', '', '', g:base16_cterm0A, g:base16_cterm00, '', '')
 endfunction
 
 augroup on_change_colorschema
