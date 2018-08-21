@@ -515,6 +515,8 @@ Plug 'burnettk/vim-angular' "{{{
 "}}}
 
 Plug 'heavenshell/vim-jsdoc'
+let g:jsdoc_underscore_private = 1
+let g:jsdoc_enable_es6 = 1
 
 "}}}
 
