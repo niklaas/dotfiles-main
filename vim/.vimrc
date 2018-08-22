@@ -43,14 +43,18 @@ let g:lightline = {
       \ 'colorscheme': 'base16',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'filename', 'modified' ] ],
+      \             [ 'gitbranch', 'filename', 'gitversion', 'modified' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
       \              [ 'linter_warnings', 'linter_errors', 'linter_ok', 'obsession', 'readonly', 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
+      \ 'inactive': {
+      \   'left': [ [ 'filename', 'gitversion' ] ],
+      \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
       \   'obsession': 'LightlineObsession',
+      \   'gitversion': 'GitVersion',
       \ },
       \ 'component_expand': {
       \   'linter_warnings': 'LightlineLinterWarnings',
@@ -63,6 +67,22 @@ let g:lightline = {
       \   'linter_errors': 'error'
       \ },
       \ }
+
+" Inspired by https://github.com/aoswalt/dotfiles/commit/5c94f1e080e1269d83cfe25b95a86c78c9b8eabb
+function! GitVersion()
+  let fullname = expand('%')
+  let gitversion = ''
+  if fullname =~? 'fugitive://.*/\.git//0/.*'
+    let gitversion = 'git index'
+  elseif fullname =~? 'fugitive://.*/\.git//2/.*'
+    let gitversion = 'git target'
+  elseif fullname =~? 'fugitive://.*/\.git//3/.*'
+    let gitversion = 'git merge'
+  elseif &diff == 1
+    let gitversion = 'working copy'
+  endif
+  return gitversion
+endfunction
 
 " Inspired by github.com/statico/dotfiles
 function! LightlineLinterWarnings() abort
