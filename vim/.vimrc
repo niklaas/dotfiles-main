@@ -1,8 +1,14 @@
+" Introduction {{{1
+"
+" TODO: Provide some general introduction into the structure of the file here.
+"
 " IDEA: Move mappings together: general first and then filetype specific ones.
 " At the moment some mappings are even declared in the Vim-plug section
 " because the commands are defined by plugins.
 "
 " IDEA: Move all filetype specific settings to .vim/ftplugin.
+
+" Environment {{{1
 
 " vint: next-line -ProhibitSetNoCompatible
 set nocompatible
@@ -17,7 +23,7 @@ else
     let $MYREALVIMRC = expand('$HOME/.vimrc')
 endif
 
-" Vim-plug --------------------------------------------------------{{{
+" Plugins {{{1
 
 call plug#begin('$DOTVIM/plugged')
 
@@ -570,16 +576,12 @@ Plug 'blindFS/vim-reveal'  " reveal.js presentations
 
 call plug#end()
 
-"}}}
-
-" Vim extensions --------------------------------------------------{{{
+" Vim extensions {{{2
 
 " allows displaying of man pages with :Man <program>
 runtime! ftplugin/man.vim
 
-" }}}
-
-" Basic settings {{{
+" Basic settings {{{1
 
 set autowrite
 set backspace=indent,eol,start
@@ -644,9 +646,12 @@ set tabstop=2 shiftwidth=2 softtabstop=2
 set spelllang=en_us,de_20
 set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
 
-" }}}
-
-" Filetype-specific mappings and settings -------------------------{{{
+" Filetype-specific autocmds {{{1
+"
+" This section includes autocomds that change settings and add mappings
+" depending on the filetype of the current plugin. I decided to place these
+" here instead of $DOTVIM/ftplugin because it allows finer control:
+" Overwriting them in .vimrc.local is easier and everything is in one place.
 
 augroup filetype_gitcommit
   autocmd!
@@ -700,9 +705,7 @@ augroup filetype_vimrc
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-" }}}
-
-" Miscellaneous settings ------------------------------------------{{{
+" Miscellaneous settings {{{1
 
 " Highlight TODOs etc
 " TODO: Define regex for todos and notes a the beginning of this source and
@@ -734,7 +737,7 @@ augroup on_change_colorschema
   autocmd ColorScheme * call s:base16_customize()
 augroup END
 
-" NeoVim/Vim compatibility ----------------------------------------{{{
+" NeoVim/Vim compatibility {{{2
 
 if !has('nvim')
   set cryptmethod=blowfish2
@@ -749,10 +752,6 @@ if !has('nvim')
     let &t_EI = "\e[2 q"
   endif
 endif
-
-"}}}
-
-"}}}
 
 " General Mappings {{{1
 
