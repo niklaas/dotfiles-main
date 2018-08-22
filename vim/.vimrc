@@ -759,12 +759,15 @@ endif
 
 "}}}
 
-" General Mappings ------------------------------------------------{{{
+" General Mappings {{{1
 
 cnoremap jk <ESC>
 cnoremap kj <ESC>
 inoremap jk <ESC>
 inoremap kj <ESC>
+
+cnoremap W w
+cnoremap Q q
 
 cnoremap w!! w !sudo tee >/dev/null %
 
