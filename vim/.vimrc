@@ -242,11 +242,12 @@ if has('unix')
   Plug 'junegunn/fzf.vim' "
 
   " Oni remaps C-p so the following line shouldn't be a problem
-  nnoremap <silent> <C-p> :Files<cr>
+  nnoremap <silent> <C-p>      :Files<cr>
   nnoremap <silent> <leader>ff :Files<cr>
   nnoremap <silent> <leader>fc :Commits<cr>
   nnoremap <silent> <leader>fC :BCommits<cr>
   nnoremap <silent> <leader>fb :Buffers<cr>
+  nnoremap <silent> ;          :Buffers<cr>
 
   let s:fuzzy_file_finder = 'Files'
   "}}}
