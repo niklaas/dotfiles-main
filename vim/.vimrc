@@ -615,16 +615,10 @@ set whichwrap=<,>,h,l
 set wildmenu
 set wildmode=longest,full
 
-" Set locations of important directories depending on OS
-if(has('win32'))
-  set backupdir=~/vimfiles/backup//
-  set directory=~/vimfiles/swap//,.
-  set undodir=~/vimfiles/undo//
-else
-  set backupdir=~/.vim/backup//
-  set directory=~/.vim/swap//,/var/tmp//,/tmp//,.
-  set undodir=~/.vim/undo
-endif
+" Set locations of important directories
+set backupdir=$DOTVIM/backup/
+set directory=$DOTVIM/swap/,.
+set undodir=$DOTVIM/undo
 
 " Always show status line
 set laststatus=2
