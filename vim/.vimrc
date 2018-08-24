@@ -7,6 +7,9 @@
 " because the commands are defined by plugins.
 "
 " IDEA: Move all filetype specific settings to .vim/ftplugin.
+"
+" IDEA: Use s:fuzzy_file_finder to search through types of projections
+" (:Etest etc).
 
 " Environment {{{1
 
