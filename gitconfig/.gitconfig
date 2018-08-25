@@ -11,14 +11,15 @@
 [alias]
 	ad  = add
 	br  = branch
-	co  = commit -v
 	ch  = checkout
+	co  = commit -v
 	di  = diff
 	fe  = fetch
+	ig  = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 	la  = log -1 HEAD
 	lag = log --all --graph --oneline --decorate
-	lgn = log --stat
 	lg  = log --graph --oneline --decorate
+	lgn = log --stat
 	mg  = merge --no-ff
 	pa  = !git remote | xargs -L1 git push --all
 	pl  = pull --rebase
@@ -27,7 +28,6 @@
 	sh  = stash
 	st  = status
 	su  = submodule update --recursive --remote
-	ig  = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 [push]
 	default = current
 [http]
