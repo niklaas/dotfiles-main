@@ -27,6 +27,7 @@
 	sh  = stash
 	st  = status
 	su  = submodule update --recursive --remote
+	ig  = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 [push]
 	default = current
 [http]
