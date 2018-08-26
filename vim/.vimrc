@@ -2,6 +2,23 @@
 "
 " TODO: Provide some general introduction into the structure of the file here.
 "
+" Linting:
+"
+" There are several options for linting such as vim-syntastic/syntastic,
+" neomake/neomake and others. I decided for a combination of w0rp/ale and
+" tpope/vim-dispatch.
+"
+" I assume that I code on machines that at least have vim with version > 8, so
+" in such cases using w0rp/ale is not an issue. That said, I strip it to it's
+" very basic functionality i.e., linting. (It supports other options such as
+" code completion etc. but I don't use them. There are other plugins that
+" focus on this job.)
+"
+" FIXME: I am not sure whether I need w0rp/ale in oni/omi. Most probably not
+" its linting capabilities but maybe the fixers..? IIRC oni/oni only uses LSPs
+" (except for TypeScript) so probably some fixing capabilities (such as
+" prettier) are required too.
+
 " IDEA: Move mappings together: general first and then filetype specific ones.
 " At the moment some mappings are even declared in the Vim-plug section
 " because the commands are defined by plugins.
@@ -38,16 +55,119 @@ Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 
+Plug 'vim-scripts/dbext.vim'
+Plug 'majutsushi/tagbar'
+Plug 'Raimondi/delimitMate'
+Plug 'chilicuil/vim-sprunge'
+
 Plug 'airblade/vim-gitgutter'
-augroup _gitgutter
-  autocmd!
-  autocmd BufWritePost * GitGutter
-augroup end
 
 " Lightline
 Plug 'itchyny/lightline.vim', Cond(!exists('g:gui_oni'))
 Plug 'daviesjamie/vim-base16-lightline', Cond(!exists('g:gui_oni'))
 
+" Tmuxline
+Plug 'edkolev/tmuxline.vim'
+
+" Vim objects
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'rhysd/clever-f.vim'
+Plug 'wellle/targets.vim'
+
+" tpope plugins
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-eunuch'  " sugar for UNIX shell commands
+Plug 'tpope/vim-obsession'  " for session management
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'  " for better netrw
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-projectionist'
+
+" Git branches
+Plug 'sodapopcan/vim-twiggy'
+Plug 'junegunn/gv.vim'
+
+" Fuzzy finding
+Plug 'junegunn/fzf', Cond(has('unix'), { 'dir': '~/.fzf', 'do': './install --all' })
+Plug 'junegunn/fzf.vim', Cond(has('unix'))
+
+Plug 'mhinz/vim-grepper'
+Plug 'junegunn/vim-easy-align'
+
+" LSP / completion / snippets
+Plug 'prabirshrestha/asyncomplete.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
+Plug 'prabirshrestha/async.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
+
+Plug 'prabirshrestha/asyncomplete-buffer.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
+Plug 'prabirshrestha/asyncomplete-file.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
+
+Plug 'wellle/tmux-complete.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
+
+" Snippets
+Plug 'SirVer/ultisnips', Cond(!exists('g:gui_oni') && v:version >= 800 && has('python3'))
+Plug 'honza/vim-snippets', Cond(!exists('g:gui_oni') && v:version >= 800 && has('python3'))
+Plug 'prabirshrestha/asyncomplete-ultisnips.vim', Cond(!exists('g:gui_oni') && v:version >= 800 && has('python3'))
+
+Plug 'prabirshrestha/vim-lsp', Cond(!exists('g:gui_oni') && v:version >= 800)
+Plug 'prabirshrestha/asyncomplete-lsp.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
+
+Plug 'w0rp/ale', Cond(v:version >= 800)
+
+" Syntax rules and filetype specific plugins {{{2
+
+Plug 'sheerun/vim-polyglot'
+
+" Pandoc 
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
+
+" LaTeX
+Plug 'lervag/vimtex'
+
+" R
+Plug 'jalvesaq/Nvim-R'
+Plug 'mllg/vim-devtools-plugin'
+
+" JavaScript/Typescript/Angular
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'heavenshell/vim-jsdoc'
+
+" Java
+Plug 'dansomething/vim-eclim', { 'for': 'java' }
+
+" Scala
+Plug 'derekwyatt/vim-sbt'
+Plug 'derekwyatt/vim-scala'
+
+" Elixir
+Plug 'slashmili/alchemist.vim'
+Plug 'elixir-editors/vim-elixir'
+
+" Go
+Plug 'fatih/vim-go'
+
+" Reveal.js presentations
+Plug 'blindFS/vim-reveal'
+
+call plug#end()
+
+" Vim extensions {{{2
+
+" allows displaying of man pages with :Man <program>
+runtime! ftplugin/man.vim
+
+" Plugin Configuration {{{1
+
+" Lightline
 let g:lightline = {
       \ 'colorscheme': 'base16',
       \ 'active': {
@@ -124,26 +244,9 @@ augroup _lightline
 augroup end
 
 " Tmuxline
-Plug 'edkolev/tmuxline.vim'
 let g:tmuxline_powerline_separators = 0
 
-" Additional vim objects {{{
-
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'rhysd/clever-f.vim'
-Plug 'wellle/targets.vim'
-
-" }}}
-
-Plug 'vim-scripts/dbext.vim'
-
-Plug 'majutsushi/tagbar'
-nnoremap <leader>tt :TagbarToggle<cr>
-nnoremap <leader>to :TagbarOpen fj<cr>
-nnoremap <leader>tO :TagbarOpenAutoClose<cr>
-nnoremap <leader>tc :TagbarClose<cr>
-nnoremap <leader>tp :TagbarPause<cr>
-
+" Tagbar
 let g:tagbar_type_typescript = {                                                  
       \ 'ctagsbin' : 'tstags',                                                        
       \ 'ctagsargs' : '-f-',                                                           
@@ -162,57 +265,15 @@ let g:tagbar_type_typescript = {
       \ ],                                                                            
       \ }  
 
-Plug 'Raimondi/delimitMate' "{{{
+" DelimitMate
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
-"}}}
 
-Plug 'chilicuil/vim-sprunge' "{{{
+" Sprunge
 let g:sprunge_map = '<leader>S'
 let g:sprunge_open_browser = 1
-"}}}
 
-" tpope plugins ---------------------------------------------------{{{
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-eunuch'  " sugar for UNIX shell commands
-Plug 'tpope/vim-obsession'  " for session management
-Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'  " for better netrw
-
-nnoremap <leader>dD :Dispatch!<cr>
-nnoremap <leader>dd :Dispatch<cr>
-nnoremap <leader>dm :Make!<cr>
-nnoremap <leader>dm :Make<cr>
-
-nnoremap <leader>o :Obsession<cr>
-nnoremap <leader>O :Obsession!<cr>
-
-Plug 'tpope/vim-fugitive' "{{{
-
-" Auto-clean fugitive buffers
-augroup fugitive_clean
-  autocmd!
-  autocmd BufReadPost fugitive://* set bufhidden=delete
-  autocmd BufReadPost term://.//*:git* set bufhidden=delete
-augroup END
-
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gW :Gwq<cr>
-"}}}
-
-Plug 'tpope/vim-projectionist' "{{{
+" Projectionist
 let g:projectionist_heuristics = {
    \  'config/prod.exs': {
    \    'web/controllers/*_controller.ex': {
@@ -238,358 +299,67 @@ let g:projectionist_heuristics = {
    \  }
    \}
 
-nnoremap <localleader>ec :Econtroller<Space>
-nnoremap <localleader>em :Emodel<Space>
-nnoremap <localleader>et :Etemplate<Space>
-nnoremap <localleader>eT :Etest<Space>
-nnoremap <localleader>ev :Eview<Space>
-
-nnoremap <leader>aa :A<CR>
-nnoremap <leader>av :AV<CR>
-nnoremap <leader>as :AS<CR>
-nnoremap <leader>at :AT<CR>
-"}}}
-"}}}
-
-Plug 'sodapopcan/vim-twiggy' "{{{
-nnoremap <leader>b :Twiggy<cr>
-"}}}
-
-Plug 'junegunn/gv.vim' "{{{
-nnoremap <leader>gv :GV<cr>
-"}}}
-
-" Fuzzy finding ---------------------------------------------------{{{
-
-" `fzf` is only available under Unix.
-
-if has('unix')
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "{{{
-  Plug 'junegunn/fzf.vim' "
-
-  " Oni remaps C-p so the following line shouldn't be a problem
-  nnoremap <silent> <C-p>      :Files<cr>
-  nnoremap <silent> <leader>ff :Files<cr>
-  nnoremap <silent> <leader>fc :Commits<cr>
-  nnoremap <silent> <leader>fC :BCommits<cr>
-  nnoremap <silent> <leader>fb :Buffers<cr>
-  nnoremap <silent> ;          :Buffers<cr>
-
-  let s:fuzzy_file_finder = 'Files'
-  "}}}
-else
-  Plug 'ctrlpvim/ctrlp.vim' "{{{
-  let g:ctrlp_map = '<c-p>'
-  let g:ctrlp_cmd = 'CtrlP'
-  let g:ctrlp_working_path_mode = 'a'
-
-  let g:ctrlp_user_command = {
-        \   'types': {
-        \     1: ['.git', 'cd %s && git ls-files -co --exclude-standard']
-        \   },
-        \ }
-
-  let s:fuzzy_file_finder = 'CtrlP'
-  "}}}
-endif
-
-"}}}
-
-" Grepper ---------------------------------------------------------{{{
-Plug 'mhinz/vim-grepper'
+" Grepper
 let g:grepper = {}
 let g:grepper.tools = ['git', 'rg', 'grep']
 let g:grepper_jump = 1
 
-nmap gs <Plug>(GrepperOperator)
-xmap gs <Plug>(GrepperOperator)
-
-nnoremap <leader>Gg :Grepper -tool git<cr>
-nnoremap <leader>GG :Grepper -tool rg<cr>
-nnoremap <leader>Gv :Grepper -tool rg -side<cr>
-nnoremap <leader>*  :Grepper -tool rg -cword -noprompt<cr>
-
-" TODO: Commands for current file only
-"}}}
-
-Plug 'junegunn/vim-easy-align' "{{{
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-"}}}
-
-" LSP / completion / snippets -------------------------------------{{{
-
-" Language server protocol clients, completion and snippets we configure
-" different for basic (n)vim and oni since the latter provides its own
-" interface for these.
-
-if !exists('g:gui_oni') && v:version >= 800
-  " Prerequisites for completion and LSPs
-  Plug 'prabirshrestha/asyncomplete.vim'
-  Plug 'prabirshrestha/async.vim'
-
-  Plug 'prabirshrestha/asyncomplete-buffer.vim'
-  Plug 'prabirshrestha/asyncomplete-file.vim'
-
-  Plug 'wellle/tmux-complete.vim'
-
-  let g:tmuxcomplete#asyncomplete_source_options = {
-        \ 'name':      'tmuxcomplete',
-        \ 'whitelist': ['*'],
-        \ 'priority': 5,
-        \ 'config': {
-        \     'splitmode':      'words',
-        \     'filter_prefix':   1,
-        \     'show_incomplete': 1,
-        \     'sort_candidates': 0,
-        \     'scrollback':      0,
-        \     'truncate':        0
-        \     }
-        \ }
-
-  " Snippets
-  if has('python3')
-    Plug 'SirVer/ultisnips'
-    Plug 'honza/vim-snippets'
-    Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
-  endif
-
-  " LSPs
-  Plug 'prabirshrestha/vim-lsp'
-  Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
-  " Registering LSPs {{{
-
-  " vint: -ProhibitAutocmdWithNoGroup
-
-  " Provider: typescript-language-server
-  if executable('typescript-language-server')
-    autocmd User lsp_setup call lsp#register_server({
-          \ 'name': 'typescript-language-server',
-          \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-          \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-          \ 'whitelist': ['typescript'],
-          \ 'priority': 10,
-          \ })
-  endif
-  "}}}
-
-  " Registering Snippets {{{
-
-  " Provider: ultisnips
-  if has('python3')
-    let g:UltiSnipsExpandTrigger='<c-e>'
-    autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
-          \ 'name': 'ultisnips',
-          \ 'whitelist': ['*'],
-          \ 'priority': 5,
-          \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
-          \ }))
-  endif
-  "}}}
-
-  " Registering other completion sources {{{
-
-  " Provider: files
-  autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-        \ 'name': 'file',
-        \ 'whitelist': ['*'],
-        \ 'priority': 10,
-        \ 'completor': function('asyncomplete#sources#file#completor')
-        \ }))
-
-  " Provider: buffer
-  autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-        \ 'name': 'buffer',
-        \ 'whitelist': ['*'],
-        \ 'blacklist': ['go', 'sql'],
-        \ 'completor': function('asyncomplete#sources#buffer#completor'),
-        \ }))
-
-  " }}}
-
-  " Configuration for completion and LSPs {{{
-  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-  let g:asyncomplete_remove_duplicates = 1
-
-  " Disable LSP diagnostics b/c it's dealt with in ALE
-  let g:lsp_signs_enabled = 0
-  let g:lsp_diagnostics_echo_cursor = 0
-  "}}}
-
-  " vint: +ProhibitAutocmdWithNoGroup
-
-  " Mappings for completion and LSPs {{{
-  nnoremap <leader>lh :LspHover<cr>
-  nnoremap <leader>ld :LspDefinition<cr>
-  nnoremap <leader>lD :LspDocumentSymbol<cr>
-  nnoremap <leader>lr :LspReferences<cr>
-  nnoremap <leader>lR :LspRename<cr>
-  nnoremap <leader>lf :LspDocumentRangeFormat<cr>
-  nnoremap <leader>lF :LspDocumentFormat<cr>
-  nnoremap <leader>ll :LspDocumentDiagnostics<cr>
-  "}}}
-
-  " For debugging LSPs
-  "let g:lsp_log_verbose = 1
-  "let g:lsp_log_file = expand('~/vim-lsp.log')
-  "let g:asyncomplete_log_file = expand('~/asyncomplete.log')  " for asyncomplete.vim log
-endif
-"}}}
-
-" Linting ---------------------------------------------------------{{{
-
-" There are several options for linting such as vim-syntastic/syntastic,
-" neomake/neomake and others. I decided for a combination of w0rp/ale and
-" tpope/vim-dispatch.
-"
-" I assume that I code on machines that at least have vim with version > 8, so
-" in such cases using w0rp/ale is not an issue. That said, I strip it to it's
-" very basic functionality i.e., linting. (It supports other options such as
-" code completion etc. but I don't use them. There are other plugins that
-" focus on this job.)
-"
-" FIXME: I am not sure whether I need w0rp/ale in oni/omi. Most probably not
-" its linting capabilities but maybe the fixers..? IIRC oni/oni only uses LSPs
-" (except for TypeScript) so probably some linting capabilities (such as
-" prettier) are required too.
-
-if v:version >= 800
-  Plug 'w0rp/ale'
-
-  let g:ale_fixers = {
-        \   'typescript': [ 'tslint', 'trim_whitespace', 'remove_trailing_lines' ],
-        \   'javascript': [ 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
-        \   'java': [
-        \       { buffer -> execute('%JavaFormat') },
-        \      'trim_whitespace',
-        \       'remove_trailing_lines'
-        \        ],
-        \   'html': [ 'trim_whitespace', 'remove_trailing_lines' ],
-        \   'scss': [
-        \      { buffer -> { 'command': 'sass-convert --from scss --to scss' } },
-        \      'trim_whitespace',
-        \      'remove_trailing_lines',
-        \   ]
-        \ }
-
-  let g:ale_fix_on_save = 1
-
-  " Loclist configuration {{{
-
-  let g:ale_open_list = 0
-  let g:ale_list_window_size = 7
-
-  " Close loclist automatically when buffer is closed
-  augroup CloseLoclistWindowGroup
-    autocmd!
-    autocmd QuitPre * if empty(&buftype) | lclose | endif
-  augroup END
-
-  " }}}
-
-  " IMHO signs in the gutter distract and clutter it.
-  let g:ale_set_signs = 0
-
-  " Disable completion b/c we use LSP support (see above)
-  let g:ale_completion_enabled = 0
-
-  nmap <leader>ef <Plug>(ale_fix)
-  nmap <leader>el <Plug>(ale_lint)
-  nmap <leader>ee <Plug>(ale_toggle)
-  nmap <leader>ed <Plug>(ale_detail)
-  nmap <leader>er <Plug>(ale_reset)
-endif
-
-" }}}
-
-" Syntax rules and filetype specific plugins ----------------------{{{
-
-Plug 'sheerun/vim-polyglot' "{{{
-" Language pack loaded first to be overwritten by others below
-" TODO: Check whether I need to deactivate typescript support when using Oni.
-"}}}
-
-
-" Pandoc {{{
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-pandoc/vim-rmarkdown'
+" Pandoc
 let g:pandoc#modules#disabled = ['chdir']
-"let g:pandoc#formatting#mode = 'hA'
-"}}}
 
-Plug 'lervag/vimtex' "{{{
+" Vimtex
 if has('win32')
   let g:vimtex_view_general_viewer = 'SumatraPDF'
   let g:vimtex_view_general_options
     \ = '-reuse-instance -forward-search @tex @line @pdf'
   let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 endif
-"}}}
 
-" R {{{
-Plug 'jalvesaq/Nvim-R'
+" Nvim-R
 let R_in_buffer = 0
 let R_tmux_split = 1
 let R_nvim_wd = 1
 let R_assign = 0
 let r_indent_ess_compatible = 1
 
-Plug 'mllg/vim-devtools-plugin'
-"}}}
-
-" JavaScript/Typescript/Angular {{{
-
-
-Plug 'othree/javascript-libraries-syntax.vim' "{{{
-" Multi-purpose syntax files loaded first
-" TODO: Check whether I need all of this
-"}}}
-
-Plug 'burnettk/vim-angular' "{{{
-" TODO: Disable everything except runnings test for single spec.
-"}}}
-
-Plug 'heavenshell/vim-jsdoc'
+" JsDoc
 let g:jsdoc_underscore_private = 1
 let g:jsdoc_enable_es6 = 1
 let g:jsdoc_allow_input_prompt = 0
 
-"}}}
-
-" Java {{{
-Plug 'dansomething/vim-eclim', { 'for': 'java' }
+" Eclim / Java / Scala
 let g:EclimJavaSearchSingleResult = 'edit'
-"}}}
-
-" Scala {{{
-Plug 'derekwyatt/vim-sbt'
-Plug 'derekwyatt/vim-scala'
-
 let g:scala_scaladoc_indent = 1
-"}}}
 
-" Elixir {{{
-Plug 'slashmili/alchemist.vim'
-Plug 'elixir-editors/vim-elixir'
-" }}}
+" Asyncomplete
+let g:asyncomplete_remove_duplicates = 1
 
-" Go {{{
-Plug 'fatih/vim-go'
-" TODO: Probably I need to deal with incompatibilities with ALE and LSP-setup
-" }}}
+" Disable LSP diagnostics b/c it's dealt with in ALE
+let g:lsp_signs_enabled = 0
+let g:lsp_diagnostics_echo_cursor = 0
 
-Plug 'blindFS/vim-reveal'  " reveal.js presentations
+" ALE
+let g:ale_fixers = {
+      \   'typescript': [ 'tslint', 'trim_whitespace', 'remove_trailing_lines' ],
+      \   'javascript': [ 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
+      \   'java': [
+      \       { buffer -> execute('%JavaFormat') },
+      \      'trim_whitespace',
+      \       'remove_trailing_lines'
+      \        ],
+      \   'html': [ 'trim_whitespace', 'remove_trailing_lines' ],
+      \   'scss': [
+      \      { buffer -> { 'command': 'sass-convert --from scss --to scss' } },
+      \      'trim_whitespace',
+      \      'remove_trailing_lines',
+      \   ]
+      \ }
 
-"}}}
-
-call plug#end()
-
-" Vim extensions {{{2
-
-" allows displaying of man pages with :Man <program>
-runtime! ftplugin/man.vim
+let g:ale_fix_on_save = 1
+let g:ale_open_list = 0
+let g:ale_list_window_size = 7
+let g:ale_set_signs = 0
+let g:ale_completion_enabled = 0  " asyncomplete does this
 
 " Settings {{{1
 
@@ -697,6 +467,12 @@ endif
 
 " Mappings {{{1
 
+" IDEA: Interesting unused mappings are
+"
+"   <leader><leader>
+"   <leader>.
+"   <leader>-
+
 cnoremap jk <ESC>
 cnoremap kj <ESC>
 inoremap jk <ESC>
@@ -728,12 +504,6 @@ nnoremap <leader>cp :let @+ = expand("%")<cr>
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
-" IDEA: Interesting unused mappings are
-"
-"   <leader><leader>
-"   <leader>.
-"   <leader>-
-
 " Yanks current inner paragraph and pastes below
 nnoremap <leader>p yip}o<esc>P
 
@@ -743,6 +513,85 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Tagbar
+nnoremap <leader>tt :TagbarToggle<cr>
+nnoremap <leader>to :TagbarOpen fj<cr>
+nnoremap <leader>tO :TagbarOpenAutoClose<cr>
+nnoremap <leader>tc :TagbarClose<cr>
+nnoremap <leader>tp :TagbarPause<cr>
+
+" Dispatch
+nnoremap <leader>dD :Dispatch!<cr>
+nnoremap <leader>dd :Dispatch<cr>
+nnoremap <leader>dm :Make!<cr>
+nnoremap <leader>dm :Make<cr>
+
+" Obsession
+nnoremap <leader>o :Obsession<cr>
+nnoremap <leader>O :Obsession!<cr>
+
+" Fugitive
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gW :Gwq<cr>
+
+" Projectionist
+nnoremap <leader>ec :Econtroller<Space>
+nnoremap <leader>em :Emodel<Space>
+nnoremap <leader>et :Etemplate<Space>
+nnoremap <leader>eT :Etest<Space>
+nnoremap <leader>ev :Eview<Space>
+
+nnoremap <leader>aa :A<CR>
+nnoremap <leader>av :AV<CR>
+nnoremap <leader>as :AS<CR>
+nnoremap <leader>at :AT<CR>
+
+" Git branches
+nnoremap <leader>b  :Twiggy<cr>
+nnoremap <leader>gv :GV<cr>
+
+" FZF
+nnoremap <silent> <C-p>      :Files<cr>
+nnoremap <silent> <leader>ff :Files<cr>
+nnoremap <silent> <leader>fc :Commits<cr>
+nnoremap <silent> <leader>fC :BCommits<cr>
+nnoremap <silent> <leader>fb :Buffers<cr>
+nnoremap <silent> ;          :Buffers<cr>
+
+" Grepper
+nmap gs <Plug>(GrepperOperator)
+xmap gs <Plug>(GrepperOperator)
+nnoremap <leader>Gg :Grepper -tool git<cr>
+nnoremap <leader>GG :Grepper -tool rg<cr>
+nnoremap <leader>Gv :Grepper -tool rg -side<cr>
+nnoremap <leader>*  :Grepper -tool rg -cword -noprompt<cr>
+
+" Easy align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" Language servers
+nnoremap <leader>lh :LspHover<cr>
+nnoremap <leader>ld :LspDefinition<cr>
+nnoremap <leader>lD :LspDocumentSymbol<cr>
+nnoremap <leader>lr :LspReferences<cr>
+nnoremap <leader>lR :LspRename<cr>
+nnoremap <leader>lf :LspDocumentRangeFormat<cr>
+nnoremap <leader>lF :LspDocumentFormat<cr>
+nnoremap <leader>ll :LspDocumentDiagnostics<cr>
+
+" Linting
+nmap <leader>ef <Plug>(ale_fix)
+nmap <leader>el <Plug>(ale_lint)
+nmap <leader>ee <Plug>(ale_toggle)
+nmap <leader>ed <Plug>(ale_detail)
+nmap <leader>er <Plug>(ale_reset)
+
+" Vim terminal
 if has('nvim')
   tnoremap <C-H> <c-\><c-n><c-w>h
   tnoremap <C-J> <c-\><c-n><c-w>j
@@ -821,6 +670,63 @@ augroup filetype_vimrc
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
+" Language support {{{1
+
+" Language servers {{{2
+
+" vint: -ProhibitAutocmdWithNoGroup
+
+" Typescript:
+if executable('typescript-language-server')
+  autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'typescript-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+        \ 'whitelist': ['typescript'],
+        \ 'priority': 10,
+        \ })
+endif
+
+" Completion {{{2
+
+" Files:
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+      \ 'name': 'file',
+      \ 'whitelist': ['*'],
+      \ 'priority': 10,
+      \ 'completor': function('asyncomplete#sources#file#completor')
+      \ }))
+
+" Tmux:
+let g:tmuxcomplete#asyncomplete_source_options = {
+      \ 'name':      'tmuxcomplete',
+      \ 'whitelist': ['*'],
+      \ 'priority': 5,
+      \ 'config': {
+      \     'splitmode':      'words',
+      \     'filter_prefix':   1,
+      \     'show_incomplete': 1,
+      \     'sort_candidates': 0,
+      \     'scrollback':      0,
+      \     'truncate':        0
+      \     }
+      \ }
+
+" Snippets {{{2
+
+" Ultisnips:
+if has('python3')
+  let g:UltiSnipsExpandTrigger='<c-e>'
+  autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+        \ 'name': 'ultisnips',
+        \ 'whitelist': ['*'],
+        \ 'priority': 5,
+        \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
+        \ }))
+endif
+
+" vint: +ProhibitAutocmdWithNoGroup
+
 
 " Miscellaneous {{{1
 
@@ -860,6 +766,27 @@ if filereadable(expand('~/.vimrc_background'))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
+
+augroup _fugitive
+  autocmd!
+  autocmd BufReadPost fugitive://* set bufhidden=delete
+  autocmd BufReadPost term://.//*:git* set bufhidden=delete
+augroup END
+
+augroup _asyncomplete
+  autocmd!
+  autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup END
+
+augroup _ale_closeLoclistWithBuffer
+  autocmd!
+  autocmd QuitPre * if empty(&buftype) | lclose | endif
+augroup END
+
+augroup _gitgutter
+  autocmd!
+  autocmd BufWritePost * GitGutter
+augroup end
 
 " NeoVim/Vim compatibility {{{2
 
