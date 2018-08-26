@@ -37,12 +37,17 @@ function! Cond(cond, ...)
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
-Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
+
+Plug 'airblade/vim-gitgutter'
+augroup _gitgutter
+  autocmd!
+  autocmd BufWritePost * GitGutter
+augroup end
 
 " Lightline
 Plug 'itchyny/lightline.vim', Cond(!exists('g:gui_oni'))
