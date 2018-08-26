@@ -21,10 +21,12 @@ then
 fi
 
 # EDITOR setup
-if [ -f ~/bin/nvim -o -L ~/bin/nvim ]
+LOCAL_NVIM=~/.local/bin/neovim/bin/nvim
+if [ -f $LOCAL_NVIM ]
 then
     # Looks like nvim was built from source
-    export EDITOR=~/bin/nvim
+    export EDITOR=$LOCAL_NVIM
+    alias nvim=$LOCAL_NVIM
 elif command -v nvim >/dev/null 2>&1
 then
     export EDITOR=nvim
