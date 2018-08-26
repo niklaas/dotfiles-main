@@ -298,16 +298,6 @@ else
   "}}}
 endif
 
-" TODO: Testing
-if filereadable('web/router.ex')
-  " This looks like an Elixir/Phoenix app.
-  nnoremap <silent> <leader>FT :execute s:fuzzy_file_finder . " test\<cr>"
-  nnoremap <silent> <leader>Fc :execute s:fuzzy_file_finder . " web/controllers\<cr>"
-  nnoremap <silent> <leader>Fm :execute s:fuzzy_file_finder . " web/models\<cr>"
-  nnoremap <silent> <leader>Ft :execute s:fuzzy_file_finder . " web/templates\<cr>"
-  nnoremap <silent> <leader>Fv :execute s:fuzzy_file_finder . " web/views\<cr>"
-endif
-
 "}}}
 
 " Grepper ---------------------------------------------------------{{{
