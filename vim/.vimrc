@@ -5,11 +5,6 @@
 " IDEA: Move mappings together: general first and then filetype specific ones.
 " At the moment some mappings are even declared in the Vim-plug section
 " because the commands are defined by plugins.
-"
-" IDEA: Move all filetype specific settings to .vim/ftplugin.
-"
-" IDEA: Use s:fuzzy_file_finder to search through types of projections
-" (:Etest etc).
 
 " Environment {{{1
 
@@ -596,7 +591,7 @@ call plug#end()
 " allows displaying of man pages with :Man <program>
 runtime! ftplugin/man.vim
 
-" Basic settings {{{1
+" Settings {{{1
 
 set autowrite
 set backspace=indent,eol,start
@@ -661,114 +656,46 @@ set tabstop=2 shiftwidth=2 softtabstop=2
 set spelllang=en_us,de_20
 set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
 
-" Filetype-specific autocmds {{{1
-"
-" This section includes autocomds that change settings and add mappings
-" depending on the filetype of the current plugin. I decided to place these
-" here instead of $DOTVIM/ftplugin because it allows finer control:
-" Overwriting them in .vimrc.local is easier and everything is in one place.
+" GVIM and Oni specifics {{{2
 
-augroup filetype_gitcommit
-  autocmd!
-  autocmd FileType gitcommit setlocal comments+=fb:- fo+=c spell
-augroup END
-
-augroup filetype_go
-  autocmd!
-  autocmd FileType go nnoremap <buffer> <leader>gr :GoRun<cr>
-  autocmd FileType go nnoremap <buffer> <leader>gt :GoTest<cr>
-  autocmd FileType go nnoremap <buffer> <leader>gb :GoBuild<cr>
-augroup END
-
-augroup filetype_html
-  autocmd!
-  autocmd FileType html setlocal foldmethod=indent
-  autocmd FileType html normal zR
-augroup END
-
-augroup filetype_java
-  autocmd!
-  autocmd FileType java nnoremap <buffer> <leader>jd :JavaDocComment<cr>
-  autocmd FileType java nnoremap <buffer> <leader>ji :JavaImportOrganize<cr>
-  autocmd FileType java nnoremap <buffer> <leader>lr :JavaSearch -x references<cr>
-  autocmd FileType java nnoremap <buffer> <leader>lR :JavaRename<space>
-  autocmd FileType java nnoremap <buffer> <leader>lD :JavaDocPreview<cr>
-  autocmd FileType java nnoremap <buffer> <leader>ld :JavaSearch -x declarations<cr>
-  autocmd FileType java nnoremap <buffer> <leader>lb :JavaDebugBreakpointToggle!<cr>
-  autocmd FileType java nnoremap <buffer> <leader>lB :JavaDebugBreakpointsList<cr>
-augroup END
-
-augroup filetype_netrw
-  autocmd!
-  autocmd FileType netrw setlocal bufhidden=false
-augroup END
-
-augroup filetype_scala
-  autocmd!
-  autocmd BufWritePost *.scala silent :EnTypeChec
-augroup END
-
-augroup filetype_typescript
-  autocmd!
-  autocmd FileType typescript let b:dispatch = 'ng test %'
-  autocmd FileType typescript let b:ale_javascript_prettier_options = "--parser typescript"
-  autocmd FileType typescript nnoremap <buffer> <leader>lm :JsDoc<cr>
-augroup END
-
-augroup filetype_vimrc
-  autocmd!
-  autocmd FileType vim setlocal foldmethod=marker
-augroup END
-
-" Miscellaneous settings {{{1
-
-" Highlight TODOs etc
-" TODO: Define regex for todos and notes a the beginning of this source and
-" use them to define two commands :Todo and :Note that use :Grepper to search
-" for them. Reuse the regexes below to highlight their occurences.
-if has('autocmd')
-  if v:version > 701
-    augroup highlight_todo
-      autocmd!
-      autocmd Syntax * call matchadd('Todo', '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
-      autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
-    augroup END
+if has('gui_running')
+  set guioptions-=m
+  set guioptions-=T
+  set guioptions-=r
+  set guioptions-=R
+  set guioptions-=l
+  set guioptions-=L
+  set lines=50
+  set columns=120
+  if has('gui_gtk2')
+    set guifont=Monospace\ 11
+    set background=dark
+  elseif has('gui_win32')
+    set guifont=Consolas:h10:cANSI
   endif
 endif
 
-" Fix highlighting for spell checks in terminal
-function! s:base16_customize() abort
-  " Colors: https://github.com/chriskempson/base16/blob/master/styling.md
-  " Arguments: group, guifg, guibg, ctermfg, ctermbg, attr, guisp
-  call Base16hi('SpellBad',   '', '', g:base16_cterm08, g:base16_cterm00, '', '')
-  call Base16hi('SpellCap',   '', '', g:base16_cterm0A, g:base16_cterm00, '', '')
-  call Base16hi('SpellLocal', '', '', g:base16_cterm0D, g:base16_cterm00, '', '')
-  call Base16hi('SpellRare',  '', '', g:base16_cterm0B, g:base16_cterm00, '', '')
-  call Base16hi('MatchParen', '', '', g:base16_cterm0A, g:base16_cterm00, '', '')
-endfunction
+if exists('g:gui_oni')
+  " Override previous configuration with these settings to suit to Oni.
+  " https://github.com/onivim/oni/wiki/How-To:-Minimal-Oni-Configuration
 
-augroup on_change_colorschema
-  autocmd!
-  autocmd ColorScheme * call s:base16_customize()
-augroup END
+  " Force loading sensible now to override its setting in the following
+  " lines
+  runtime plugin/sensible.vim
 
-" NeoVim/Vim compatibility {{{2
+  set number
+  set noswapfile
+  set smartcase
 
-if !has('nvim')
-  set cryptmethod=blowfish2
-  set ttymouse=xterm2
+  set noshowmode
+  set noruler
+  set laststatus=0
+  set noshowcmd
 
-  " Change cursor depending on mode in terminal
-  if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
-  else
-    let &t_SI = "\e[5 q"
-    let &t_EI = "\e[2 q"
-  endif
+  set mouse=a
 endif
 
-" General Mappings {{{1
+" Mappings {{{1
 
 cnoremap jk <ESC>
 cnoremap kj <ESC>
@@ -835,7 +762,97 @@ iabbrev aDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
 " Expand %% to the current directory
 cabbrev <expr> %% expand('%:p:h')
 
-" Display & style {{{1
+" Filetype-specific autocmds {{{1
+"
+" This section includes autocomds that change settings and add mappings
+" depending on the filetype of the current plugin. I decided to place these
+" here instead of $DOTVIM/ftplugin because it allows finer control:
+" Overwriting them in .vimrc.local is easier and everything is in one place.
+
+augroup filetype_gitcommit
+  autocmd!
+  autocmd FileType gitcommit setlocal comments+=fb:- fo+=c spell
+augroup END
+
+augroup filetype_go
+  autocmd!
+  autocmd FileType go nnoremap <buffer> <leader>gr :GoRun<cr>
+  autocmd FileType go nnoremap <buffer> <leader>gt :GoTest<cr>
+  autocmd FileType go nnoremap <buffer> <leader>gb :GoBuild<cr>
+augroup END
+
+augroup filetype_html
+  autocmd!
+  autocmd FileType html setlocal foldmethod=indent
+  autocmd FileType html normal zR
+augroup END
+
+augroup filetype_java
+  autocmd!
+  autocmd FileType java nnoremap <buffer> <leader>jd :JavaDocComment<cr>
+  autocmd FileType java nnoremap <buffer> <leader>ji :JavaImportOrganize<cr>
+  autocmd FileType java nnoremap <buffer> <leader>lr :JavaSearch -x references<cr>
+  autocmd FileType java nnoremap <buffer> <leader>lR :JavaRename<space>
+  autocmd FileType java nnoremap <buffer> <leader>lD :JavaDocPreview<cr>
+  autocmd FileType java nnoremap <buffer> <leader>ld :JavaSearch -x declarations<cr>
+  autocmd FileType java nnoremap <buffer> <leader>lb :JavaDebugBreakpointToggle!<cr>
+  autocmd FileType java nnoremap <buffer> <leader>lB :JavaDebugBreakpointsList<cr>
+augroup END
+
+augroup filetype_netrw
+  autocmd!
+  autocmd FileType netrw setlocal bufhidden=false
+augroup END
+
+augroup filetype_scala
+  autocmd!
+  autocmd BufWritePost *.scala silent :EnTypeChec
+augroup END
+
+augroup filetype_typescript
+  autocmd!
+  autocmd FileType typescript let b:dispatch = 'ng test %'
+  autocmd FileType typescript let b:ale_javascript_prettier_options = "--parser typescript"
+  autocmd FileType typescript nnoremap <buffer> <leader>lm :JsDoc<cr>
+augroup END
+
+augroup filetype_vimrc
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+
+" Miscellaneous {{{1
+
+" Highlight TODOs etc
+" TODO: Define regex for todos and notes a the beginning of this source and
+" use them to define two commands :Todo and :Note that use :Grepper to search
+" for them. Reuse the regexes below to highlight their occurences.
+if has('autocmd')
+  if v:version > 701
+    augroup highlight_todo
+      autocmd!
+      autocmd Syntax * call matchadd('Todo', '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
+      autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
+    augroup END
+  endif
+endif
+
+" Fix highlighting for spell and other highlight groups in terminal
+function! s:base16_customize() abort
+  " Colors: https://github.com/chriskempson/base16/blob/master/styling.md
+  " Arguments: group, guifg, guibg, ctermfg, ctermbg, attr, guisp
+  call Base16hi('SpellBad',   '', '', g:base16_cterm08, g:base16_cterm00, '', '')
+  call Base16hi('SpellCap',   '', '', g:base16_cterm0A, g:base16_cterm00, '', '')
+  call Base16hi('SpellLocal', '', '', g:base16_cterm0D, g:base16_cterm00, '', '')
+  call Base16hi('SpellRare',  '', '', g:base16_cterm0B, g:base16_cterm00, '', '')
+  call Base16hi('MatchParen', '', '', g:base16_cterm0A, g:base16_cterm00, '', '')
+endfunction
+
+augroup on_change_colorschema
+  autocmd!
+  autocmd ColorScheme * call s:base16_customize()
+augroup END
 
 " Colors
 set t_Co=256
@@ -844,49 +861,25 @@ if filereadable(expand('~/.vimrc_background'))
   source ~/.vimrc_background
 endif
 
-" GUI (GVIM) {{{1
+" NeoVim/Vim compatibility {{{2
 
-if has('gui_running')
-  set guioptions-=m
-  set guioptions-=T
-  set guioptions-=r
-  set guioptions-=R
-  set guioptions-=l
-  set guioptions-=L
-  set lines=50
-  set columns=120
-  if has('gui_gtk2')
-    set guifont=Monospace\ 11
-    set background=dark
-  elseif has('gui_win32')
-    set guifont=Consolas:h10:cANSI
+if !has('nvim')
+  set cryptmethod=blowfish2
+  set ttymouse=xterm2
+
+  " Change cursor depending on mode in terminal
+  if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+  else
+    let &t_SI = "\e[5 q"
+    let &t_EI = "\e[2 q"
   endif
-endif
-
-" ONI {{{1
-
-if exists('g:gui_oni')
-  " Override previous configuration with these settings to suit to Oni.
-  " https://github.com/onivim/oni/wiki/How-To:-Minimal-Oni-Configuration
-
-  " Force loading sensible now to override its setting in the following
-  " lines
-  runtime plugin/sensible.vim
-
-  set number
-  set noswapfile
-  set smartcase
-
-  set noshowmode
-  set noruler
-  set laststatus=0
-  set noshowcmd
-
-  set mouse=a
 endif
 
 " .vimrc.local {{{1
 
+" Allows to override settings above for machine specifics
 if filereadable(expand('$HOME/.vimrc.local'))
   execute 'source ' . '$HOME/.vimrc.local'
 endif
