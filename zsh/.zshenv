@@ -21,8 +21,8 @@ then
 fi
 
 # EDITOR setup
-LOCAL_NVIM=~/.local/bin/neovim/bin/nvim
-if [ -f $LOCAL_NVIM ]
+LOCAL_NVIM=~/.local/bin/nvim
+if [ -f $LOCAL_NVIM -o -L $LOCAL_NVIM ]
 then
     # Looks like nvim was built from source
     export EDITOR=$LOCAL_NVIM
