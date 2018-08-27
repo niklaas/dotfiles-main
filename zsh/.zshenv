@@ -1,5 +1,5 @@
 typeset -U path
-path=(~/bin ~/go/bin ~/n/bin $path)
+path=(~/.local/bin ~/go/bin ~/n/bin $path)
 typeset -U fpath
 fpath=(~/.local/share/zsh/functions/Completion $fpath)
 
