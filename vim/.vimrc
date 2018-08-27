@@ -109,8 +109,6 @@ Plug 'prabirshrestha/async.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
 Plug 'prabirshrestha/asyncomplete-buffer.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
 Plug 'prabirshrestha/asyncomplete-file.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
 
-Plug 'wellle/tmux-complete.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
-
 " Snippets
 Plug 'SirVer/ultisnips', Cond(!exists('g:gui_oni') && v:version >= 800 && has('python3'))
 Plug 'honza/vim-snippets', Cond(!exists('g:gui_oni') && v:version >= 800 && has('python3'))
@@ -342,11 +340,6 @@ let g:lsp_diagnostics_echo_cursor = 0
 let g:ale_fixers = {
       \   'typescript': [ 'tslint', 'trim_whitespace', 'remove_trailing_lines' ],
       \   'javascript': [ 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
-      \   'java': [
-      \       { buffer -> execute('%JavaFormat') },
-      \      'trim_whitespace',
-      \       'remove_trailing_lines'
-      \        ],
       \   'html': [ 'trim_whitespace', 'remove_trailing_lines' ],
       \   'scss': [
       \      { buffer -> { 'command': 'sass-convert --from scss --to scss' } },
@@ -696,21 +689,6 @@ autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#s
       \ 'priority': 10,
       \ 'completor': function('asyncomplete#sources#file#completor')
       \ }))
-
-" Tmux:
-let g:tmuxcomplete#asyncomplete_source_options = {
-      \ 'name':      'tmuxcomplete',
-      \ 'whitelist': ['*'],
-      \ 'priority': 5,
-      \ 'config': {
-      \     'splitmode':      'words',
-      \     'filter_prefix':   1,
-      \     'show_incomplete': 1,
-      \     'sort_candidates': 0,
-      \     'scrollback':      0,
-      \     'truncate':        0
-      \     }
-      \ }
 
 " Snippets {{{2
 
