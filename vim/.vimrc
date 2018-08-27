@@ -272,30 +272,7 @@ let g:sprunge_map = '<leader>S'
 let g:sprunge_open_browser = 1
 
 " Projectionist
-let g:projectionist_heuristics = {
-   \  'config/prod.exs': {
-   \    'web/controllers/*_controller.ex': {
-   \      'type': 'controller',
-   \      'alternate': 'test/controllers/{}_controller_test.exs',
-   \    },
-   \    'web/models/*.ex': {
-   \      'type': 'model',
-   \      'alternate': 'test/models/{}_test.exs',
-   \    },
-   \    'web/views/*_view.ex': {
-   \      'type': 'view',
-   \      'alternate': 'test/views/{}_view_test.exs',
-   \    },
-   \    'web/templates/*.html.eex': {
-   \      'type': 'template',
-   \      'alternate': 'web/views/{dirname|basename}_view.ex'
-   \    },
-   \    'test/*_test.exs': {
-   \      'type': 'test',
-   \      'alternate': 'web/{}.ex',
-   \    }
-   \  }
-   \}
+let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/misc/projections.json'))))
 
 " Grepper
 let g:grepper = {}
@@ -676,6 +653,15 @@ if executable('typescript-language-server')
         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
         \ 'whitelist': ['typescript'],
+        \ 'priority': 10,
+        \ })
+endif
+
+if executable('elixir-language-server')
+  autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'elixir-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'elixir-language-server']},
+        \ 'whitelist': ['elixir'],
         \ 'priority': 10,
         \ })
 endif

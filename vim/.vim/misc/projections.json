@@ -1,0 +1,8 @@
+{
+  "config/prod.exs": {
+    "lib/*_controller.ex": {
+      "type": "controller",
+      "alternate": "test/{}_test.exs"
+    }
+  }
+}
