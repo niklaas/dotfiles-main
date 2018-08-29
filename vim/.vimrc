@@ -304,6 +304,9 @@ let g:jsdoc_allow_input_prompt = 0
 
 " Eclim / Java / Scala
 let g:EclimJavaSearchSingleResult = 'edit'
+let g:EclimFileTypeValidate = 0  " ALE is used for validation/linting
+let g:EclimJavaValidate =  0
+let g:EclimSignLevel = 'off'
 let g:scala_scaladoc_indent = 1
 
 " Asyncomplete
