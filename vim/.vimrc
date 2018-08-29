@@ -511,6 +511,8 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gW :Gwq<cr>
 
+nnoremap <leader>gD :Gdiff master<cr>
+
 " Projectionist
 nnoremap <leader>ec :Econtroller<Space>
 nnoremap <leader>em :Emodel<Space>
