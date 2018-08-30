@@ -526,6 +526,7 @@ nnoremap <leader>at :AT<CR>
 
 " Git branches
 nnoremap <leader>b  :Twiggy<cr>
+nnoremap <leader>B  :Twiggy<space>
 nnoremap <leader>gv :GV<cr>
 
 " FZF
