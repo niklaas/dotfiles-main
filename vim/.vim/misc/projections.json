@@ -4,5 +4,23 @@
       "type": "controller",
       "alternate": "test/{}_test.exs"
     }
+  },
+  "angular.json": {
+    "src/app/*.component.ts": {
+      "type": "component",
+      "alternate": "src/app/{}.component.spec.ts"
+    },
+    "src/app/*.model.ts": {
+      "type": "model",
+      "alternate": "src/app/{}.model.spec.ts"
+    },
+    "src/app/*.scss": {
+      "type": "style",
+      "alternate": "src/app/{}.component.html"
+    },
+    "src/app/*.component.html": {
+      "type": "template",
+      "alternate": "src/app/{}.component.scss"
+    }
   }
 }
