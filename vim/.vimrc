@@ -528,6 +528,7 @@ nnoremap <leader>at :AT<CR>
 nnoremap <leader>b  :Twiggy<cr>
 nnoremap <leader>B  :Twiggy<space>
 nnoremap <leader>gv :GV<cr>
+nnoremap <leader>gV :GV!<cr>
 
 " FZF
 nnoremap <silent> <C-p>      :Files<cr>
