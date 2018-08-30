@@ -14,6 +14,10 @@
       "type": "model",
       "alternate": "src/app/{}.model.spec.ts"
     },
+    "src/app/*.service.ts": {
+      "type": "service",
+      "alternate": "src/app/{}.service.spec.ts"
+    },
     "src/app/*.scss": {
       "type": "style",
       "alternate": "src/app/{}.component.html"
