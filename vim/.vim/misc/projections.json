@@ -21,6 +21,9 @@
     "src/app/*.component.html": {
       "type": "template",
       "alternate": "src/app/{}.component.scss"
+    },
+    "src/app/*.ts": {
+      "dispatch": "ng test %"
     }
   }
 }
