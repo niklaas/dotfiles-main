@@ -62,8 +62,6 @@ export ANSIBLE_NOCOWS=1
 export MOSH_TITLE_NOPREFIX="YES"
 export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 
-export PASSWORD_STORE_ENABLE_EXTENSIONS=true
-
 # Export default TERMINAL
 if command -v uxterm >/dev/null 2>&1
 then
@@ -109,16 +107,6 @@ alias -g S="| curl -F 'sprunge=<-' http://sprunge.us"
 if command -v xclip >/dev/null 2>&1
 then
     alias -g C="| xclip -sel clip"
-fi
-
-if command -v rem >/dev/null 2>&1
-then
-    alias remm="rem -c -m"
-    alias remw="rem -c+ -m"
-    alias remwn="rem -c+ -m $(date  +%d\ %b\ %Y --date='next week')"
-    alias remmn="rem -c -m $(date  +%b\ %Y --date='next month')"
-    alias remtm="rem -g -q $(date  +%d\ %b\ %Y --date='tomorrow')"
-    alias remtd="rem -g -q"
 fi
 
 if command -v gopass >/dev/null 2>&1
