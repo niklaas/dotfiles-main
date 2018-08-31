@@ -279,6 +279,9 @@ let g:grepper = {}
 let g:grepper.tools = ['git', 'rg', 'grep']
 let g:grepper_jump = 1
 
+" Polyglot
+let g:polyglot_disabled = ['latex']
+
 " Pandoc
 let g:pandoc#modules#disabled = ['chdir']
 
