@@ -121,6 +121,7 @@ Plug 'w0rp/ale', Cond(v:version >= 800)
 
 " Syntax rules and filetype specific plugins {{{2
 
+" Polyglot
 Plug 'sheerun/vim-polyglot'
 
 " Pandoc 
