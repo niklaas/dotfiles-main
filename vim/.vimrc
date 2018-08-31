@@ -638,7 +638,7 @@ augroup filetype_typescript
   autocmd!
   autocmd FileType typescript let b:ale_javascript_prettier_options = '--parser typescript'
   autocmd FileType typescript let b:ale_linters = 'all'
-  autocmd FileType typescript let b:ale_fixers  = [ 'prettier', 'tslint', 'trim_whitespace', 'remove_trailing_lines' ]
+  autocmd FileType typescript let b:ale_fixers  = [ 'prettier', 'tslint', 'eslint', 'trim_whitespace', 'remove_trailing_lines' ]
   autocmd FileType typescript nnoremap <buffer> <leader>lm :JsDoc<cr>
 augroup END
 
