@@ -34,10 +34,9 @@ else
     export EDITOR=vim
 fi
 alias e=$EDITOR
+alias er=$EDITOR -R
 alias v="vim"
-alias vv="vim -MR -c 'file [stdin]' -"
 alias nv="nvim"
-alias nvv="nvim -MR -c 'file [stdin]' -"
 
 # bat > cat
 if command -v bat >/dev/null 2>&1
