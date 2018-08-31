@@ -5,7 +5,7 @@
       "alternate": "test/{}_test.exs"
     }
   },
-  "angular.json": {
+  "angular.json|.angular-cli.json": {
     "src/app/*.component.ts": {
       "type": "component",
       "alternate": "src/app/{}.component.spec.ts"
