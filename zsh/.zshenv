@@ -55,6 +55,13 @@ then
 fi
 export GOPATH=$HOME/go
 
+# Texlive
+TEXLIVE_DIR=~/.local/texlive/2018
+if [ -d $TEXLIVE_DIR ]
+then
+    path=($TEXLIVE_DIR/bin/x86_64-linux $path)
+fi
+
 export N_PREFIX=$HOME/n
 
 export ANSIBLE_NOCOWS=1
