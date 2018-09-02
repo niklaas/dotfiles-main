@@ -10,15 +10,12 @@ autoload -U compdef
 autoload -Uz compinit
 compinit
 
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LC_COLLATE=C
+
 export SHELL=$(command -v zsh)
 export HOSTNAME=$(hostname)
-
-# FZF
-if command -v fd >/dev/null 2>&1
-then
-    export FZF_DEFAULT_COMMAND="fd -H -E .git -E .svn --type f"
-    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-fi
 
 # EDITOR setup
 LOCAL_NVIM=~/.local/bin/nvim
@@ -33,21 +30,8 @@ then
 else
     export EDITOR=vim
 fi
-alias e=$EDITOR
-alias er=$EDITOR -R
-alias v="vim"
-alias nv="nvim"
 
-# bat > cat
-if command -v bat >/dev/null 2>&1
-then
-    alias cat=bat
-fi
-
-export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
-export LC_COLLATE=C
-
+# Go
 if test -d /usr/local/go/bin
 then
     # Looks like golang was installed from upstream directly.
@@ -69,6 +53,13 @@ export ANSIBLE_NOCOWS=1
 export MOSH_TITLE_NOPREFIX="YES"
 export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 
+# FZF
+if command -v fd >/dev/null 2>&1
+then
+    export FZF_DEFAULT_COMMAND="fd -H -E .git -E .svn --type f"
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
+
 # Export default TERMINAL
 if command -v uxterm >/dev/null 2>&1
 then
@@ -76,6 +67,19 @@ then
 elif command -v xterm >/dev/null 2>&1
 then
     export TERMINAL="xterm"
+fi
+
+# Aliases {{{1
+
+alias e=$EDITOR
+alias er=$EDITOR -R
+alias v="vim"
+alias nv="nvim"
+
+# bat > cat
+if command -v bat >/dev/null 2>&1
+then
+    alias cat=bat
 fi
 
 alias a="apt"
@@ -121,7 +125,7 @@ then
     alias pass="gopass"
 fi
 
-# FreeBSD specific ###################################################
+# FreeBSD specific {{{1
 
 if uname -a | grep -q FreeBSD
 then
@@ -133,7 +137,7 @@ then
     alias jl="jls | cut -f 2 -w | tail +2"
 fi
 
-# WSL specific #######################################################
+# WSL specific {{{1
 
 if uname -a | grep -q Microsoft
 then
@@ -157,14 +161,14 @@ then
     alias -g C="| clip.exe"
 fi
 
-# Hostname specific ##################################################
+# Hostname specific {{{1
 
 if echo "$HOSTNAME" | grep -q 'niklaas.eu'
 then
     alias cs="sudo csync2 -N $(hostname -s).klaas"
 fi
 
-# Specials ###########################################################
+# Specials {{{1
 
 function my_sudo {
     while [[ $# > 0 ]]; do
@@ -200,3 +204,5 @@ if [ ! -f $HOME/.base16_theme ]
 then
     command -v base16_default-dark && base16_default-dark
 fi
+
+# vim:set foldmethod=marker:
