@@ -76,12 +76,6 @@ alias er=$EDITOR -R
 alias v="vim"
 alias nv="nvim"
 
-# bat > cat
-if command -v bat >/dev/null 2>&1
-then
-    alias cat=bat
-fi
-
 alias a="apt"
 
 alias d="dirs -v"
