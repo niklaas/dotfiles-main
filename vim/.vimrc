@@ -499,7 +499,7 @@ nnoremap <leader>tp :TagbarPause<cr>
 " Dispatch
 nnoremap <leader>dD :Dispatch!<cr>
 nnoremap <leader>dd :Dispatch<cr>
-nnoremap <leader>dm :Make!<cr>
+nnoremap <leader>dM :Make!<cr>
 nnoremap <leader>dm :Make<cr>
 
 " Obsession
