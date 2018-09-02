@@ -29,5 +29,10 @@
     "src/app/*.ts": {
       "dispatch": "ng test %"
     }
+  },
+  "*.tex": {
+    "*.tex": {
+      "dispatch": "latexmk -pdf %"
+    }
   }
 }
