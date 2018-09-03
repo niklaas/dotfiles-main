@@ -315,6 +315,7 @@ let g:scala_scaladoc_indent = 1
 
 " Asyncomplete
 let g:asyncomplete_remove_duplicates = 1
+let g:asyncomplete_smart_completion = 1
 
 " Disable LSP diagnostics b/c it's dealt with in ALE
 let g:lsp_signs_enabled = 0
