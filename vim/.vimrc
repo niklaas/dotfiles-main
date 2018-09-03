@@ -329,11 +329,7 @@ let g:lsp_diagnostics_echo_cursor = 0
 let g:ale_fixers = {
       \   'javascript': [ 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
       \   'html': [ 'trim_whitespace', 'remove_trailing_lines' ],
-      \   'scss': [
-      \      { buffer -> { 'command': 'sass-convert --from scss --to scss' } },
-      \      'trim_whitespace',
-      \      'remove_trailing_lines',
-      \   ]
+      \   'scss': [ 'trim_whitespace', 'remove_trailing_lines' ]
       \ }
 
 let g:ale_fix_on_save = 1
