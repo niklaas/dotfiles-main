@@ -72,6 +72,7 @@ fi
 # Aliases {{{1
 
 alias e=$EDITOR
+alias es=$EDITOR -S Session.vim
 alias er=$EDITOR -R
 alias v="vim"
 alias nv="nvim"
