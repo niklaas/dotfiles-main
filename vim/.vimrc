@@ -536,7 +536,6 @@ nnoremap <leader>gv :GV<cr>
 nnoremap <leader>gV :GV!<cr>
 
 " FZF
-nnoremap <silent> <C-p>      :Files<cr>
 nnoremap <silent> <leader>ff :Files<cr>
 nnoremap <silent> <leader>fc :Commits<cr>
 nnoremap <silent> <leader>fC :BCommits<cr>
