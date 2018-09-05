@@ -4,8 +4,14 @@ export class ${1:Person}${2: extends ${3:ParentClass}} {
 }
 endsnippet
 
-snippet m "method" b
+snippet m "Method" b
 ${1:public} ${2:name}(${3:args}) {
 	$0
 }
+endsnippet
+
+snippet tbc "TestBed.configureTestingModule" b
+TestBed.configureTestingModule({
+	providers: [$1]
+})
 endsnippet
