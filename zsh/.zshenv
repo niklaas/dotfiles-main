@@ -108,7 +108,8 @@ alias tree="tree --charset=ascii"
 
 alias tssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=QUIET"
 
-alias -g S="| curl -F 'sprunge=<-' http://sprunge.us"
+alias -g S="| sort"
+alias -g SV="| sort -V"
 
 if command -v xclip >/dev/null 2>&1
 then
