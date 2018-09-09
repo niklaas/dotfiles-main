@@ -503,6 +503,8 @@ nnoremap <leader>dd :Dispatch<cr>
 nnoremap <leader>dM :Make!<cr>
 nnoremap <leader>dm :Make<cr>
 
+nnoremap <leader>,  :Dispatch<space>
+
 " Obsession
 nnoremap <leader>o :Obsession<cr>
 nnoremap <leader>O :Obsession!<cr>
