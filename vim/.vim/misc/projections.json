@@ -26,6 +26,10 @@
       "type": "template",
       "alternate": "src/app/{}.component.scss"
     },
+    "src/app/*.spec.ts": {
+      "type": "test",
+      "alternate": "src/app/{}.ts"
+    },
     "src/app/*.ts": {
       "dispatch": "ng test %"
     }
