@@ -620,7 +620,7 @@ augroup END
 
 augroup filetype_java
   autocmd!
-  autocmd FileType java nnoremap <buffer> <leader>jd :JavaDocComment<cr>
+  autocmd FileType java nnoremap <buffer> <leader>lm :JavaDocComment<cr>
   autocmd FileType java nnoremap <buffer> <leader>ji :JavaImportOrganize<cr>
   autocmd FileType java nnoremap <buffer> <leader>lr :JavaSearch -x references<cr>
   autocmd FileType java nnoremap <buffer> <leader>lR :JavaRename<space>
