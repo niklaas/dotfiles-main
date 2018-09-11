@@ -15,3 +15,21 @@ TestBed.configureTestingModule({
 	providers: [$1]
 })
 endsnippet
+
+snippet it "it(..., () => {...})"
+it('${1:is defined}', () => {
+	$0
+})
+endsnippet
+
+snippet des "describe(..., () => {...})"
+describe('${1:method}', () => {
+	$0
+})
+endsnippet	
+
+snippet bef "beforeEach(() => {...})"
+beforeEach(() => {
+	$0
+})
+endsnippet	
