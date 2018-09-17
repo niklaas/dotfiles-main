@@ -31,7 +31,8 @@
       "alternate": "src/app/{}.ts"
     },
     "src/app/*.ts": {
-      "dispatch": "ng test %"
+      "dispatch": "ng test %",
+      "alternate": "src/app/{}.spec.ts"
     }
   },
   "*.tex": {
