@@ -25,7 +25,7 @@
 
 " Environment {{{1
 
-" vint: next-line -ProhibitSetNoCompatible
+" vint:next-line -ProhibitSetNoCompatible
 set nocompatible
 
 let mapleader = ','
@@ -572,6 +572,9 @@ nmap <leader>el <Plug>(ale_lint)
 nmap <leader>ee <Plug>(ale_toggle)
 nmap <leader>ed <Plug>(ale_detail)
 nmap <leader>er <Plug>(ale_reset)
+
+" UlitSnips
+nnoremap <leader>ue :UltiSnipsEdit<cr>
 
 " Vim terminal
 if has('nvim')
