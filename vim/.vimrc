@@ -765,7 +765,7 @@ augroup END
 
 augroup _gitgutter
   autocmd!
-  autocmd BufWritePost * GitGutter
+  autocmd BufWritePost * GitGutterAll
 augroup end
 
 " NeoVim/Vim compatibility {{{2
