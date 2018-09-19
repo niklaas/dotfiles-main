@@ -14,6 +14,7 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_COLLATE=C
 
+export DISPLAY=:0.0
 export SHELL=$(command -v zsh)
 export HOSTNAME=$(hostname)
 
