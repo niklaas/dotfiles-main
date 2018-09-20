@@ -96,6 +96,8 @@ alias ls="ls --color"
 
 alias mcssh="cssh -C .clusterssh/config_mosh"
 
+alias pc="pass -c"
+
 alias ra="rsync -a"
 
 alias rs="rsync"
