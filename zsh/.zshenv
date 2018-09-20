@@ -109,7 +109,7 @@ alias tssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o L
 alias -g S="| sort"
 alias -g SV="| sort -V"
 
-alias -g C="| xclip -sel clip"
+alias -g C="| xsel -b"
 
 # Overrides {{{2
 
