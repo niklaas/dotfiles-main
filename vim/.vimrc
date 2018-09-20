@@ -61,6 +61,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'chilicuil/vim-sprunge'
 
 Plug 'airblade/vim-gitgutter'
+Plug 'lambdalisue/suda.vim'
 
 " Lightline
 Plug 'itchyny/lightline.vim', Cond(!exists('g:gui_oni'))
