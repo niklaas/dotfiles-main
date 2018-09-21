@@ -344,7 +344,7 @@ let g:ale_completion_enabled = 0  " asyncomplete does this
 set autowrite
 set backspace=indent,eol,start
 set cpoptions+=$
-set diffopt=filler,vertical
+set diffopt=filler
 set gdefault
 set ignorecase
 set incsearch
