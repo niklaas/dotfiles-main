@@ -500,11 +500,11 @@ nnoremap <leader>tp :TagbarPause<cr>
 
 " Dispatch
 nnoremap <leader>dC :Copen!<cr>
-nnoremap <leader>dD :Dispatch<cr>
-nnoremap <leader>dM :Make<cr>
-nnoremap <leader>dc :Copen!<cr>
-nnoremap <leader>dd :Dispatch!<cr>
-nnoremap <leader>dm :Make!<cr>
+nnoremap <leader>dD :Dispatch!<cr>
+nnoremap <leader>dM :Make!<cr>
+nnoremap <leader>dc :Copen<cr>
+nnoremap <leader>dd :Dispatch<cr>
+nnoremap <leader>dm :Make<cr>
 
 nnoremap <leader>,  :Dispatch<space>
 
