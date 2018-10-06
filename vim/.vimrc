@@ -372,8 +372,16 @@ set updatetime=250
 set viminfo=%,'50,:100,<1000
 set visualbell
 set whichwrap=<,>,h,l
+
+" Finding files
+set path=.,**
+set wildignore+=*.swp,*.bak
+set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
+set wildignore+=tags,cscope.*
+set wildignore+=*.tar.*
+set wildignorecase
 set wildmenu
-set wildmode=longest,full
+set wildmode=list:full
 
 " Set locations of important directories
 set backupdir=$DOTVIM/backup/
