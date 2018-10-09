@@ -17,6 +17,7 @@ export LC_COLLATE=C
 export DISPLAY=:0.0
 export SHELL=$(command -v zsh)
 export HOSTNAME=$(hostname)
+export GPG_TTY=$(tty)
 
 # EDITOR setup
 LOCAL_NVIM=~/.local/bin/nvim
