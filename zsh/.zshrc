@@ -7,6 +7,13 @@ else
     echo 'Please install antibody.'
 fi
 
+if ! find /usr/share/terminfo -type f -name tmux-256color >/dev/null
+then
+    echo "terminfo tmux-256color probably not available"
+    echo "this will most likely result in misbehaviour"
+    echo "install ncurses-term"
+fi
+
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
