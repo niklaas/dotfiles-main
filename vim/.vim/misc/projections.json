@@ -39,5 +39,17 @@
     "*.tex": {
       "dispatch": "latexmk -pdf %"
     }
+  },
+  "Cargo.toml": {
+    "src/*.rs": {
+      "type": "source",
+      "alternate": "tests/{}.rs",
+      "dispatch": "cargo build"
+    },
+    "tests/*.rs": {
+      "type": "test",
+      "alternate": "src/{}.rs",
+      "dispatch": "cargo test"
+    }
   }
 }

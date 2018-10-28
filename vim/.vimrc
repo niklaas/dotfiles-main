@@ -641,6 +641,10 @@ augroup filetype_netrw
   autocmd FileType netrw setlocal bufhidden=false
 augroup END
 
+augroup filetype_rust
+  autocmd FileType rust let b:ale_fixers = [ 'rustfmt' ] 
+augroup end
+
 augroup filetype_scala
   autocmd!
   autocmd BufWritePost *.scala silent :EnTypeChec
@@ -676,12 +680,22 @@ if executable('typescript-language-server')
         \ })
 endif
 
+" Elixir:
 if executable('elixir-language-server')
   autocmd User lsp_setup call lsp#register_server({
         \ 'name': 'elixir-language-server',
         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'elixir-language-server']},
         \ 'whitelist': ['elixir'],
         \ 'priority': 10,
+        \ })
+endif
+
+" Rust:
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'whitelist': ['rust'],
         \ })
 endif
 
