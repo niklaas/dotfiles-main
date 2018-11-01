@@ -624,18 +624,6 @@ augroup filetype_html
   autocmd FileType html normal zR
 augroup END
 
-augroup filetype_java
-  autocmd!
-  autocmd FileType java nnoremap <buffer> <leader>lm :JavaDocComment<cr>
-  autocmd FileType java nnoremap <buffer> <leader>ji :JavaImportOrganize<cr>
-  autocmd FileType java nnoremap <buffer> <leader>lr :JavaSearch -x references<cr>
-  autocmd FileType java nnoremap <buffer> <leader>lR :JavaRename<space>
-  autocmd FileType java nnoremap <buffer> <leader>lD :JavaDocPreview<cr>
-  autocmd FileType java nnoremap <buffer> <leader>ld :JavaSearch -x declarations<cr>
-  autocmd FileType java nnoremap <buffer> <leader>lb :JavaDebugBreakpointToggle!<cr>
-  autocmd FileType java nnoremap <buffer> <leader>lB :JavaDebugBreakpointsList<cr>
-augroup END
-
 augroup filetype_netrw
   autocmd!
   autocmd FileType netrw setlocal bufhidden=false
