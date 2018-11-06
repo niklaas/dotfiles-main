@@ -456,9 +456,6 @@ cnoremap kj <ESC>
 inoremap jk <ESC>
 inoremap kj <ESC>
 
-cnoremap W w
-cnoremap Q q
-
 cnoremap w!! w !sudo tee >/dev/null %
 
 " Jump to end of line
