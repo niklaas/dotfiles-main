@@ -279,7 +279,7 @@ let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/mi
 
 " Grepper
 let g:grepper = {}
-let g:grepper.tools = ['git', 'rg', 'grep']
+let g:grepper.tools = ['rg', 'grep', 'git']
 let g:grepper_jump = 1
 
 " Polyglot
