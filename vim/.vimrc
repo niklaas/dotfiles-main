@@ -312,6 +312,7 @@ let g:EclimJavaSearchSingleResult = 'edit'
 let g:EclimFileTypeValidate = 0  " ALE is used for validation/linting
 let g:EclimJavaValidate =  0
 let g:EclimSignLevel = 'off'
+let g:EclimMakeLcd = 1
 let g:scala_scaladoc_indent = 1
 
 " UltiSnips
