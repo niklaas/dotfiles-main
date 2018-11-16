@@ -83,7 +83,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'  " sugar for UNIX shell commands
 Plug 'tpope/vim-obsession'  " for session management
-Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-ragtag'  " for HTML editing
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
@@ -379,7 +379,7 @@ set viminfo=%,'50,:100,<1000
 set visualbell
 set whichwrap=<,>,h,l
 set wildmenu
-set wildmode=longest,full
+set wildmode=longest,list,full
 
 " Set locations of important directories
 set backupdir=$DOTVIM/backup/
