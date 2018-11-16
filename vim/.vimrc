@@ -343,6 +343,10 @@ let g:ale_completion_enabled = 0  " asyncomplete does this
 
 " Settings {{{1
 
+" To load .vimrc files from current folder. To make sure that these are
+" secure, there is a `:set secure` at the of this file.
+set exrc
+
 set autowrite
 set backspace=indent,eol,start
 set cpoptions+=$
@@ -794,3 +798,7 @@ endif
 if filereadable(expand('$HOME/.vimrc.local'))
   execute 'source ' . '$HOME/.vimrc.local'
 endif
+
+" Not to trust any other .vimrc file loaded via `:set exrc` at the beginning
+" of this file.
+set secure
