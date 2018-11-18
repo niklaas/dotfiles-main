@@ -126,11 +126,6 @@ Plug 'w0rp/ale', Cond(v:version >= 800)
 " Polyglot
 Plug 'sheerun/vim-polyglot'
 
-" Pandoc 
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-pandoc/vim-rmarkdown'
-
 " LaTeX
 Plug 'lervag/vimtex'
 
