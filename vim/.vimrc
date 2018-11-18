@@ -84,7 +84,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'  " sugar for UNIX shell commands
 Plug 'tpope/vim-obsession'  " for session management
-Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-ragtag'  " for HTML editing
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'
@@ -278,7 +278,7 @@ let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/mi
 
 " Grepper
 let g:grepper = {}
-let g:grepper.tools = ['git', 'rg', 'grep']
+let g:grepper.tools = ['rg', 'grep', 'git']
 let g:grepper_jump = 1
 
 " Polyglot
@@ -312,6 +312,7 @@ let g:EclimJavaSearchSingleResult = 'edit'
 let g:EclimFileTypeValidate = 0  " ALE is used for validation/linting
 let g:EclimJavaValidate =  0
 let g:EclimSignLevel = 'off'
+let g:EclimMakeLcd = 1
 let g:scala_scaladoc_indent = 1
 
 " UltiSnips
@@ -340,6 +341,10 @@ let g:ale_set_signs = 0
 let g:ale_completion_enabled = 0  " asyncomplete does this
 
 " Settings {{{1
+
+" To load .vimrc files from current folder. To make sure that these are
+" secure, there is a `:set secure` at the of this file.
+set exrc
 
 set autowrite
 set backspace=indent,eol,start
@@ -373,7 +378,7 @@ set viminfo=%,'50,:100,<1000
 set visualbell
 set whichwrap=<,>,h,l
 set wildmenu
-set wildmode=longest,full
+set wildmode=longest,list,full
 
 " Set locations of important directories
 set backupdir=$DOTVIM/backup/
@@ -455,9 +460,6 @@ cnoremap jk <ESC>
 cnoremap kj <ESC>
 inoremap jk <ESC>
 inoremap kj <ESC>
-
-cnoremap W w
-cnoremap Q q
 
 cnoremap w!! w !sudo tee >/dev/null %
 
@@ -795,3 +797,7 @@ endif
 if filereadable(expand('$HOME/.vimrc.local'))
   execute 'source ' . '$HOME/.vimrc.local'
 endif
+
+" Not to trust any other .vimrc file loaded via `:set exrc` at the beginning
+" of this file.
+set secure
