@@ -55,6 +55,7 @@ Plug 'jamessan/vim-gnupg'
 Plug 'git-time-metric/gtm-vim-plugin'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
+Plug 'editorconfig/editorconfig-vim'
 
 Plug 'vim-scripts/dbext.vim'
 Plug 'majutsushi/tagbar'
@@ -264,6 +265,9 @@ let g:tagbar_type_typescript = {
 " DelimitMate
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
+
+" Editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Sprunge
 let g:sprunge_map = '<leader>S'
