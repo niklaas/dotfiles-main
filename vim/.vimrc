@@ -149,9 +149,6 @@ Plug 'derekwyatt/vim-scala'
 Plug 'slashmili/alchemist.vim'
 Plug 'elixir-editors/vim-elixir'
 
-" Go
-Plug 'fatih/vim-go'
-
 " Reveal.js presentations
 Plug 'blindFS/vim-reveal'
 
