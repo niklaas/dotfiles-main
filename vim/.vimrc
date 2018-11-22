@@ -527,6 +527,7 @@ nnoremap <leader>em :Emodel<Space>
 nnoremap <leader>et :Etemplate<Space>
 nnoremap <leader>eT :Etest<Space>
 nnoremap <leader>ev :Eview<Space>
+nnoremap <leader>es :Esource<Space>
 
 nnoremap <leader>aa :A<CR>
 nnoremap <leader>av :AV<CR>
