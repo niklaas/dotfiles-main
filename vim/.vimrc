@@ -87,7 +87,7 @@ Plug 'tpope/vim-obsession'  " for session management
 Plug 'tpope/vim-ragtag'  " for HTML editing
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth'  " for auto-indenting
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'  " for better netrw
