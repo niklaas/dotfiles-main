@@ -498,6 +498,7 @@ nnoremap <leader>tc :TagbarClose<cr>
 nnoremap <leader>tp :TagbarPause<cr>
 
 " Dispatch
+nnoremap <leader>DD :Dispatch<space>
 nnoremap <leader>dC :Copen!<cr>
 nnoremap <leader>dD :Dispatch!<cr>
 nnoremap <leader>dM :Make!<cr>
