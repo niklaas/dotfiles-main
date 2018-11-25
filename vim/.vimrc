@@ -259,6 +259,26 @@ let g:tagbar_type_typescript = {
       \ ],                                                                            
       \ }  
 
+let g:tagbar_type_rust = {
+      \ 'ctagstype' : 'rust',
+      \ 'kinds' : [
+      \   'T:types,type definitions',
+      \   'f:functions,function definitions',
+      \   'g:enum,enumeration names',
+      \   's:structure names',
+      \   'm:modules,module names',
+      \   'c:consts,static constants',
+      \   't:traits',
+      \   'i:impls,trait implementations',
+      \]
+      \}
+
+" Prevent lines in https://git.io/fpET0 to be run and mingle with ctags for
+" rust. This is because `vim-polyglot` loads `vim-rust` only partially.
+" Thus, `rust.ctags` is missing in the plugin folder. So, force use of custom
+" `$HOME/.ctags`.
+let g:rust_use_custom_ctags_defs = 1
+
 " DelimitMate
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
