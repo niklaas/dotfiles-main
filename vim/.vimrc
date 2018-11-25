@@ -87,7 +87,7 @@ Plug 'tpope/vim-obsession'  " for session management
 Plug 'tpope/vim-ragtag'  " for HTML editing
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth'  " for auto-indenting
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'  " for better netrw
@@ -518,6 +518,7 @@ nnoremap <leader>tc :TagbarClose<cr>
 nnoremap <leader>tp :TagbarPause<cr>
 
 " Dispatch
+nnoremap <leader>DD :Dispatch<space>
 nnoremap <leader>dC :Copen!<cr>
 nnoremap <leader>dD :Dispatch!<cr>
 nnoremap <leader>dM :Make!<cr>
@@ -542,10 +543,11 @@ nnoremap <leader>gW :Gwq<cr>
 nnoremap <leader>gD :Gdiff master<cr>
 
 " Projectionist
+nnoremap <leader>eT :Etest<Space>
 nnoremap <leader>ec :Econtroller<Space>
 nnoremap <leader>em :Emodel<Space>
+nnoremap <leader>es :Esource<Space>
 nnoremap <leader>et :Etemplate<Space>
-nnoremap <leader>eT :Etest<Space>
 nnoremap <leader>ev :Eview<Space>
 
 nnoremap <leader>aa :A<CR>
