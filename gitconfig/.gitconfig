@@ -29,7 +29,9 @@
 	pl  = pull --rebase
 	ps  = push
 	rb  = rebase
-	sh  = stash --include-untracked
+	sh  = stash
+	spu = stash push --include-untracked --keep-index
+	spo = stash pop
 	st  = status
 	su  = submodule update --recursive --remote
 [push]
