@@ -31,25 +31,25 @@
       "alternate": "src/app/{}.ts"
     },
     "src/app/*.ts": {
-      "dispatch": "ng test %",
+      "make": "ng test %",
       "alternate": "src/app/{}.spec.ts"
     }
   },
   "*.tex": {
     "*.tex": {
-      "dispatch": "latexmk -pdf %"
+      "make": "latexmk -pdf %"
     }
   },
   "Cargo.toml": {
     "src/*.rs": {
       "type": "source",
       "alternate": "tests/{}.rs",
-      "dispatch": "cargo build"
+      "make": "cargo build"
     },
     "tests/*.rs": {
       "type": "test",
       "alternate": "src/{}.rs",
-      "dispatch": "cargo test"
+      "make": "cargo test"
     }
   }
 }
