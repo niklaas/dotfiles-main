@@ -124,6 +124,9 @@ Plug 'w0rp/ale', Cond(v:version >= 800)
 
 " Syntax rules and filetype specific plugins {{{2
 
+" CSV
+Plug 'chrisbra/csv.vim'
+
 " Polyglot
 Plug 'sheerun/vim-polyglot'
 
