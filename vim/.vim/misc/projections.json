@@ -43,13 +43,15 @@
   "Cargo.toml": {
     "src/*.rs": {
       "type": "source",
-      "alternate": "tests/{}.rs",
-      "make": "cargo build"
+      "alternate": "tests/{}.rs"
     },
     "tests/*.rs": {
       "type": "test",
-      "alternate": "src/{}.rs",
-      "make": "cargo test"
+      "alternate": "src/{}.rs"
+    },
+    "*.rs": {
+      "make": "cargo build",
+      "dispatch": "cargo test"
     }
   }
 }
