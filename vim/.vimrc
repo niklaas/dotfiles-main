@@ -19,10 +19,6 @@
 " (except for TypeScript) so probably some fixing capabilities (such as
 " prettier) are required too.
 
-" IDEA: Move mappings together: general first and then filetype specific ones.
-" At the moment some mappings are even declared in the Vim-plug section
-" because the commands are defined by plugins.
-
 " Environment {{{1
 
 " vint:next-line -ProhibitSetNoCompatible
