@@ -74,7 +74,7 @@ Plug 'rhysd/clever-f.vim'
 Plug 'wellle/targets.vim'
 
 " tpope plugins
-Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-abolish'  " for better substitution
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
