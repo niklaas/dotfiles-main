@@ -31,7 +31,8 @@
       "alternate": "src/app/{}.ts"
     },
     "src/app/*.ts": {
-      "make": "ng test %",
+      "make": "ng build %",
+      "dispatch": "ng test %",
       "alternate": "src/app/{}.spec.ts"
     }
   },
