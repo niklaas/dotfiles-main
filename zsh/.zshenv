@@ -89,6 +89,8 @@ alias dt="date +%Y%m%d_%H%M%S"
 alias dti="date +%FT%T"
 alias dts="date +%Y-%m-%d"
 
+alias feh="feh -Z"
+
 alias g="git"
 
 alias kcgpg="keychain -q --eval 1C62D5F3 >/dev/null"
