@@ -21,7 +21,7 @@ export SHELL=$(command -v zsh)
 export HOSTNAME=$(hostname)
 export GPG_TTY=$(tty)
 
-# EDITOR setup
+# EDITOR setup {{{2
 LOCAL_NVIM=~/.local/bin/nvim
 if [ -f $LOCAL_NVIM -o -L $LOCAL_NVIM ]
 then
@@ -35,7 +35,7 @@ else
     export EDITOR=vim
 fi
 
-# Go
+# Go {{{2
 if test -d /usr/local/go/bin
 then
     # Looks like golang was installed from upstream directly.
@@ -43,7 +43,7 @@ then
 fi
 export GOPATH=$HOME/go
 
-# Texlive
+# Texlive {{{2
 TEXLIVE_DIR=~/.local/texlive/2018
 if [ -d $TEXLIVE_DIR ]
 then
@@ -57,7 +57,7 @@ export ANSIBLE_NOCOWS=1
 export MOSH_TITLE_NOPREFIX="YES"
 export PARINIT="rTbgqR B=.,?_A_a Q=_s>|"
 
-# FZF
+# FZF {{{2
 if command -v fd >/dev/null 2>&1
 then
     export FZF_DEFAULT_COMMAND="fd -H -E .git -E .svn --type f"
