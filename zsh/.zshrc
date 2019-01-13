@@ -34,8 +34,8 @@ bindkey -v
 
 bindkey -s '^z' 'fg\n'
 
-bindkey -v '^e' vi-beginning-of-line
-bindkey -v '^a' vi-end-of-line
+bindkey -v '^a' vi-beginning-of-line
+bindkey -v '^e' vi-end-of-line
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
