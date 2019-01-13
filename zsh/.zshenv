@@ -164,13 +164,6 @@ then
     alias -g C="| clip.exe"
 fi
 
-# Hostname specific {{{1
-
-if echo "$HOSTNAME" | grep -q 'niklaas.eu'
-then
-    alias cs="sudo csync2 -N $(hostname -s).klaas"
-fi
-
 # Specials {{{1
 
 function my_sudo {
