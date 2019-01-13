@@ -68,7 +68,7 @@ alias kcrn="keychain -q --eval rsync.net >/dev/null"
 
 alias less="less -R"
 alias ls="ls --color"
-alias l="ls -lfah"
+alias l="ls -lFah"
 
 alias mcssh="cssh -C .clusterssh/config_mosh"
 
