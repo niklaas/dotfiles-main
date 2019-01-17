@@ -18,7 +18,7 @@
       "type": "service",
       "alternate": "src/app/{}.service.spec.ts"
     },
-    "src/app/*.scss": {
+    "src/app/*.component.scss": {
       "type": "style",
       "alternate": "src/app/{}.component.html"
     },
