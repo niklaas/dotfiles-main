@@ -818,6 +818,9 @@ endif
 
 highlight Comment cterm=italic
 
+highlight Todo cterm=italic
+highlight Debug cterm=italic
+
 " .vimrc.local {{{1
 
 " Allows to override settings above for machine specifics
