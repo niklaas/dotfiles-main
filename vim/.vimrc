@@ -347,7 +347,6 @@ let g:lsp_diagnostics_echo_cursor = 0
 let g:ale_fixers = {
       \   'javascript': [ 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
       \   'html': [ 'trim_whitespace', 'remove_trailing_lines' ],
-      \   'scss': [ 'trim_whitespace', 'remove_trailing_lines' ]
       \ }
 
 let g:ale_fix_on_save = 1
@@ -657,6 +656,11 @@ augroup filetype_scala
   autocmd!
   autocmd BufWritePost *.scala silent :EnTypeChec
 augroup END
+
+augroup filetype_scss
+  autocmd!
+  autocmd FileType scss let b:ale_fixers = [ 'prettier' ]
+augroup end
 
 augroup filetype_typescript
   autocmd!
