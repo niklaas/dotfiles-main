@@ -810,6 +810,10 @@ if !has('nvim')
   endif
 endif
 
+" Appearance {{{2
+
+highlight Comment cterm=italic
+
 " .vimrc.local {{{1
 
 " Allows to override settings above for machine specifics
