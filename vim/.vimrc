@@ -194,7 +194,7 @@ let g:lightline = {
 function! GitVersion()
   let fullname = expand('%')
   let gitversion = ''
-  if fullname =~? 'fugitive://.*/\.git//0/.*'
+  if     fullname =~? 'fugitive://.*/\.git//\(0\|[\d\w]\{2,}\)/.*'
     let gitversion = 'git index'
   elseif fullname =~? 'fugitive://.*/\.git//2/.*'
     let gitversion = 'git target'
@@ -284,6 +284,12 @@ let delimitMate_expand_space = 1
 
 " Editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" Emmet
+"
+" Don't use it in normal mode because default prefix <C-y> collides with
+" mapping for scrolling the view.
+let g:user_emmet_mode = 'i'
 
 " Sprunge
 let g:sprunge_map = '<leader>S'
