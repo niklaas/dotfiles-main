@@ -824,6 +824,12 @@ endif
 
 highlight Comment cterm=italic
 
+" TODO: Probably I should rather find out why every sentence-case word at the
+" beginning of a comment followed by a colon isn't italic e.g.,
+"
+"   Foo:
+"
+" rather than overriding this behaviour for groups Todo and Debug.
 highlight Todo cterm=italic
 highlight Debug cterm=italic
 
