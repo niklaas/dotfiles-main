@@ -387,7 +387,7 @@ set number
 set pastetoggle=<f11>
 set pumheight=10
 set ruler
-set shortmess=at
+set shortmess=cat
 set showbreak=+
 set showmatch
 set smartcase
