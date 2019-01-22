@@ -789,6 +789,7 @@ augroup _fugitive
   autocmd BufReadPost term://.//*:git* set bufhidden=delete
 augroup END
 
+" Automatically close the completion window when completion is done
 augroup _asyncomplete
   autocmd!
   autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
