@@ -369,6 +369,7 @@ set exrc
 
 set autowrite
 set backspace=indent,eol,start
+set completeopt+=preview
 set cpoptions+=$
 set diffopt=filler
 set gdefault
