@@ -491,8 +491,8 @@ inoremap <C-9> <C-o>$
 " Jump to beginning of line
 inoremap <C-0> <C-o>_
 
-" Uppercase word in insert mode
-inoremap <C-u> <esc>mzgUiw`za
+" UPpercase word in insert mode
+inoremap <C-p> <esc>mzgUiw`za
 
 nnoremap <space> viw
 nnoremap Y y$
