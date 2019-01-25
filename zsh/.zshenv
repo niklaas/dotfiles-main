@@ -16,24 +16,26 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_COLLATE=C
 
-export DISPLAY=:0.0
 export SHELL=$(command -v zsh)
 export HOSTNAME=$(hostname)
 export GPG_TTY=$(tty)
 
 # EDITOR {{{1
-LOCAL_NVIM=~/.local/bin/nvim
-if [ -f $LOCAL_NVIM -o -L $LOCAL_NVIM ]
+
+# While I do have the *feeling* that neovim does offer some advantages over
+# regular vim, I figured that I should stick to traditional vim in the
+# meantime. The main reason for this is that neovim does not support signing
+# commits an the command line.
+
+if [ -f ~/.local/bin/nvim -o -L ~/.local/bin/nvim ]
 then
-    # Looks like nvim was built from source
-    export EDITOR=$LOCAL_NVIM
-    alias nvim=$LOCAL_NVIM
-elif command -v nvim >/dev/null 2>&1
-then
-    export EDITOR=nvim
+    NVIM=~/.local/bin/nvim
 else
-    export EDITOR=vim
+    NVIM=nvim
 fi
+alias nvim="${NVIM}"
+
+export EDITOR=vim
 
 # Go {{{1
 if test -d /usr/local/go/bin
