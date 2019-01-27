@@ -73,6 +73,7 @@ alias l="ls -lFah"
 alias mcssh="cssh -C .clusterssh/config_mosh"
 
 alias pc="pass -c"
+alias pg="pwgen -ys"
 
 alias ra="rsync -a"
 
