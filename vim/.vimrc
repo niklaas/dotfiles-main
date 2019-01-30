@@ -522,7 +522,7 @@ nnoremap <leader>tt :TagbarToggle<cr>
 nnoremap <leader>to :TagbarOpen fj<cr>
 nnoremap <leader>tO :TagbarOpenAutoClose<cr>
 nnoremap <leader>tc :TagbarClose<cr>
-nnoremap <leader>tp :TagbarPause<cr>
+nnoremap <leader>tp :TagbarTogglePause<cr>
 
 " Dispatch
 nnoremap <leader>DD :Dispatch<space>
