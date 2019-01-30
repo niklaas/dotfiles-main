@@ -89,6 +89,9 @@ Plug 'tpope/vim-vinegar'  " for better netrw
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 
+" fugitive integrations
+Plug 'shumphrey/fugitive-gitlab.vim'
+
 " Git branches
 Plug 'sodapopcan/vim-twiggy'
 Plug 'junegunn/gv.vim'
