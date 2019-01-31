@@ -12,9 +12,15 @@ autoload -U compdef
 autoload -Uz compinit
 compinit
 
+# Environment variables {{{2
+
+# Locale specific
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LC_COLLATE=C
+
+# E.g. to use the numbering of calendar weeks that I am used to
+export LC_TIME=de_DE.UTF-8
 
 export SHELL=$(command -v zsh)
 export HOSTNAME=$(hostname)
