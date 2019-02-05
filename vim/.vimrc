@@ -476,8 +476,6 @@ endif
 
 " IDEA: Interesting unused mappings are
 "
-"   <leader><leader>
-"   <leader>.
 "   <leader>-
 
 cnoremap jk <ESC>
@@ -562,7 +560,8 @@ nnoremap <silent> <leader>ff :Files<cr>
 nnoremap <silent> <leader>fc :Commits<cr>
 nnoremap <silent> <leader>fC :BCommits<cr>
 nnoremap <silent> <leader>fb :Buffers<cr>
-nnoremap <silent> ;          :Buffers<cr>
+nnoremap <silent> <leader>,  :Buffers<cr>
+nnoremap <silent> <leader>.  :Files<cr>
 
 " Grepper
 nmap gs <Plug>(GrepperOperator)
