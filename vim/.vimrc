@@ -524,17 +524,6 @@ nnoremap <leader>tO :TagbarOpenAutoClose<cr>
 nnoremap <leader>tc :TagbarClose<cr>
 nnoremap <leader>tp :TagbarTogglePause<cr>
 
-" Dispatch
-nnoremap <leader>DD :Dispatch<space>
-nnoremap <leader>dC :Copen!<cr>
-nnoremap <leader>dD :Dispatch!<cr>
-nnoremap <leader>dM :Make!<cr>
-nnoremap <leader>dc :Copen<cr>
-nnoremap <leader>dd :Dispatch<cr>
-nnoremap <leader>dm :Make<cr>
-
-nnoremap <leader>,  :Dispatch<space>
-
 " Obsession
 nnoremap <leader>o :Obsession<cr>
 nnoremap <leader>O :Obsession!<cr>
