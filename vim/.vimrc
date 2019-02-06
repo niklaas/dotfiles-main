@@ -659,6 +659,11 @@ augroup filetype_scss
   autocmd FileType scss let b:ale_fixers = [ 'prettier' ]
 augroup end
 
+augroup filetype_sql
+  autocmd!
+  autocmd FileType sql let &l:formatprg = 'python3 -m sqlparse -k upper -i upper -r --indent_width 2 -'
+augroup end
+
 augroup filetype_typescript
   autocmd!
   autocmd FileType typescript let b:ale_javascript_prettier_options = '--parser typescript'
