@@ -661,7 +661,7 @@ augroup end
 
 augroup filetype_sql
   autocmd!
-  autocmd FileType sql let &l:formatprg = 'python3 -m sqlparse -k upper -i upper -r --indent_width 2 -'
+  autocmd FileType sql let &l:formatprg = 'python3 -m sqlparse -k upper -r --indent_width 2 -'
 augroup end
 
 augroup filetype_typescript
