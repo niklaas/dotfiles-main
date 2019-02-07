@@ -779,12 +779,6 @@ if filereadable(expand('~/.vimrc_background'))
   source ~/.vimrc_background
 endif
 
-augroup _fugitive
-  autocmd!
-  autocmd BufReadPost fugitive://* set bufhidden=delete
-  autocmd BufReadPost term://.//*:git* set bufhidden=delete
-augroup END
-
 " Automatically close the completion window when completion is done
 augroup _asyncomplete
   autocmd!
