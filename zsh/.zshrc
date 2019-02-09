@@ -52,6 +52,7 @@ alias v="vim"
 alias nv="nvim"
 
 alias a="apt"
+alias auu="sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y"
 
 alias d="dirs -v"
 
