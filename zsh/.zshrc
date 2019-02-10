@@ -73,6 +73,8 @@ alias l="ls -lFah"
 
 alias mcssh="cssh -C .clusterssh/config_mosh"
 
+alias mmv="noglob zmv -W"
+
 alias pc="pass -c"
 alias pg="pwgen -ys"
 
