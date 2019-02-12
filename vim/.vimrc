@@ -577,8 +577,10 @@ nmap ga <Plug>(EasyAlign)
 
 " Language servers
 nnoremap <leader>lh :LspHover<cr>
-nnoremap <leader>ld :LspDefinition<cr>
-nnoremap <leader>lD :LspDocumentSymbol<cr>
+nnoremap <leader>lc :LspCodeAction<cr>
+nnoremap <leader>lD :LspDefinition<cr>
+nnoremap <leader>ld :LspTypeDefinition<cr>
+nnoremap <leader>lm :LspDocumentSymbol<cr>
 nnoremap <leader>lr :LspReferences<cr>
 nnoremap <leader>lR :LspRename<cr>
 nnoremap <leader>lf :LspDocumentRangeFormat<cr>
