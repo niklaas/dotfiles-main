@@ -360,8 +360,12 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 1
 let g:ale_open_list = 0
 let g:ale_list_window_size = 7
-let g:ale_set_signs = 0
 let g:ale_completion_enabled = 0  " asyncomplete does this
+
+let g:ale_set_signs = 1
+let g:ale_sign_warning = '?'
+let g:ale_sign_error = '!'
+let g:ale_sign_info = 'o'
 
 " Settings {{{1
 
@@ -816,6 +820,8 @@ endif
 " Appearance {{{2
 
 highlight Comment cterm=italic
+
+highlight ALEErrorSign ctermfg=1 ctermbg=18
 
 " TODO: Find out why every sentence-case word at the beginning of a comment
 " followed by a colon isn't italic e.g.,
