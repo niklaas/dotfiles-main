@@ -597,6 +597,8 @@ nmap <leader>el <Plug>(ale_lint)
 nmap <leader>ee <Plug>(ale_toggle)
 nmap <leader>ed <Plug>(ale_detail)
 nmap <leader>er <Plug>(ale_reset)
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
+nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 
 " UlitSnips
 nnoremap <leader>ue :UltiSnipsEdit<cr>
