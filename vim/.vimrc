@@ -341,7 +341,7 @@ let g:scala_scaladoc_indent = 1
 
 " UltiSnips
 let g:UltiSnipsSnippetsDir = expand($DOTVIM . '/misc/UltiSnips')
-let g:UltiSnipsSnippetDirectories = [ 'UltiSnips' ]
+let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
 
 " Asyncomplete
 let g:asyncomplete_remove_duplicates = 1
