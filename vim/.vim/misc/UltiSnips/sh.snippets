@@ -1,0 +1,17 @@
+snippet if "if ... then"
+if [ ${1:condition} ]; then
+	${0:${VISUAL}}
+fi
+endsnippet
+
+snippet iff "if file exists"
+if [ -f ${1:file} ]; then
+	${0:${VISUAL}}
+fi
+endsnippet
+
+snippet ifd "if directory exists"
+if [ -d ${1:directory} ]; then
+	${0:${VISUAL}}
+fi
+endsnippet
