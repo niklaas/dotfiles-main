@@ -93,6 +93,12 @@ alias -g SV="| sort -V"
 
 alias -g C="| xsel -b"
 
+# Functions {{{2
+
+bcp() {
+    cp -a $1{,.bak-$(dt)}
+}
+
 # Overrides {{{2
 
 if command -v gpg2 >/dev/null 2>&1
