@@ -722,6 +722,16 @@ if executable('rls')
         \ })
 endif
 
+" Java:
+if executable('java-language-server')
+  autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'java-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'java-language-server']},
+        \ 'whitelist': ['java'],
+        \ 'priority': 10,
+        \ })
+endif
+
 " Completion {{{2
 
 " Files:
