@@ -725,7 +725,7 @@ endif
 
 " Java: The language executable `java-language-server` must be a wrapper
 " around [1]. It's important to NOTE that the wrapper may not include
-" `-agentlib ...` for debugging because this will confuse up vim-lsp, see [2].
+" `-agentlib ...` for debugging because this will confuse vim-lsp, see [2].
 "
 " [1]: https://github.com/eclipse/eclipse.jdt.ls
 " [2]: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
