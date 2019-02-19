@@ -139,9 +139,6 @@ Plug 'mllg/vim-devtools-plugin'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'heavenshell/vim-jsdoc'
 
-" Java
-Plug 'dansomething/vim-eclim', { 'for': 'java' }
-
 " Scala
 Plug 'derekwyatt/vim-sbt'
 Plug 'derekwyatt/vim-scala'
@@ -331,12 +328,7 @@ let g:jsdoc_underscore_private = 1
 let g:jsdoc_enable_es6 = 1
 let g:jsdoc_allow_input_prompt = 0
 
-" Eclim / Java / Scala
-let g:EclimJavaSearchSingleResult = 'edit'
-let g:EclimFileTypeValidate = 0  " ALE is used for validation/linting
-let g:EclimJavaValidate =  0
-let g:EclimSignLevel = 'off'
-let g:EclimMakeLcd = 1
+" Scala
 let g:scala_scaladoc_indent = 1
 
 " UltiSnips
