@@ -23,6 +23,10 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 
+# Allow interactive comments to prevent an error when canceling the insertion
+# of a command with Alt-#.
+setopt interactivecomments
+
 # Local configuration available?
 test -f ${HOME}/.zshrc.local && source ${HOME}/.zshrc.local
 
