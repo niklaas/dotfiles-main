@@ -733,9 +733,16 @@ endif
 " - https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 "
 
-let g:eclipse_jdt_ls_data_path = ''
 let g:eclipse_jdt_ls_jar = ''
 let g:eclipse_jdt_ls_path = ''
+
+function s:get_eclipse_jdt_ls_data_path()
+  if exists('g:eclipse_jdt_ls_data_path')
+    return g:eclipse_jdt_ls_data_path
+  endif
+
+  return lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'pom.xml'))
+endfunction
 
 if executable('java')
   autocmd User lsp_setup call lsp#register_server({
@@ -750,7 +757,7 @@ if executable('java')
         \     '-Xmx1G',
         \     '-jar ' . g:eclipse_jdt_ls_path . '/org.eclipse.jdt.ls.product/target/repository/plugins/' . g:eclipse_jdt_ls_jar,
         \     '-configuration ' . g:eclipse_jdt_ls_path . '/org.eclipse.jdt.ls.product/target/repository/config_linux',
-        \     '-data ' . g:eclipse_jdt_ls_data_path
+        \     '-data ' . s:get_eclipse_jdt_ls_data_path()
         \   ], ' ')]},
         \ 'whitelist': ['java'],
         \ 'priority': 10,
