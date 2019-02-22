@@ -732,7 +732,7 @@ endif
 " - https://github.com/eclipse/eclipse.jdt.ls
 " - https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
 "
-if executable('java')
+if executable('java') && exists('g:eclipse_jdt_ls_data_path') && exists('g:eclipse_jdt_ls_jar') && exists('g:eclipse_jdt_ls_path') 
   autocmd User lsp_setup call lsp#register_server({
         \ 'name': 'java-language-server',
         \ 'cmd': {server_info->[&shell, &shellcmdflag,
