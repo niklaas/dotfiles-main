@@ -640,6 +640,11 @@ augroup filetype_html
   autocmd FileType html normal zR
 augroup END
 
+augroup filetype_java
+  autocmd!
+  autocmd Filetype java let b:ale_fixers = [ 'google_java_format' ]
+augroup end
+
 augroup filetype_netrw
   autocmd!
   autocmd FileType netrw setlocal bufhidden=false
