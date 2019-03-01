@@ -88,7 +88,7 @@ alias rs="rsync"
 alias srn="ssh rsync.net"
 alias tree="tree --charset=ascii"
 
-alias tssh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=QUIET"
+alias sst="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=QUIET"
 
 # Global Aliases {{{2
 
