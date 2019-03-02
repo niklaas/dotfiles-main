@@ -652,6 +652,7 @@ augroup END
 
 augroup filetype_rust
   autocmd FileType rust let b:ale_fixers = [ 'rustfmt' ] 
+  autocmd FileType rust let b:ale_linters = [ 'rls' ]
 augroup end
 
 augroup filetype_scala
