@@ -38,12 +38,16 @@ endif
 
 call plug#begin('$DOTVIM/plugged')
 
+" Prefix {{{2
+
 " Conditional activation for vim-plug plugins
 " https://github.com/junegunn/vim-plug/wiki/tips#conditional-activation
 function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
+
+" Basics {{{2
 
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
