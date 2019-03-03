@@ -30,7 +30,7 @@
 	ps  = push
 	rb  = rebase
 	sh  = stash
-	spu = stash push --include-untracked --keep-index
+	spu = stash --include-untracked --keep-index
 	spo = stash pop
 	st  = status
 	su  = submodule update --recursive --remote
