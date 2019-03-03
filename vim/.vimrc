@@ -125,6 +125,8 @@ Plug 'w0rp/ale', Cond(v:version >= 800)
 " CSV
 Plug 'chrisbra/csv.vim'
 
+Plug 'ekalinin/Dockerfile.vim'
+
 " Polyglot
 Plug 'sheerun/vim-polyglot'
 
@@ -303,7 +305,7 @@ let g:grepper.tools = ['rg', 'grep', 'git']
 let g:grepper_jump = 1
 
 " Polyglot
-let g:polyglot_disabled = ['latex']
+let g:polyglot_disabled = ['latex', 'dockerfile']
 
 " Pandoc
 let g:pandoc#modules#disabled = ['chdir']
