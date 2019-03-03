@@ -1,2 +1,0 @@
-let maplocalleader = ',,'
-let g:vo_modules_load = 'checkbox:tags:smart_past'
