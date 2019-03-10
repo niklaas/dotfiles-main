@@ -8,6 +8,7 @@ fpath=(~/.local/share/zsh/functions/Completion $fpath)
 autoload -U zmv  # zsh's bulk renaming
 autoload -U is-at-least
 autoload -U compdef
+autoload -U zcalc
 
 autoload -Uz compinit
 compinit
