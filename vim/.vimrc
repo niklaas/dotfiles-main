@@ -852,11 +852,6 @@ augroup _ale_closeLoclistWithBuffer
   autocmd QuitPre * if empty(&buftype) | lclose | endif
 augroup END
 
-augroup _gitgutter
-  autocmd!
-  autocmd BufWritePost * GitGutterAll
-augroup end
-
 " NeoVim/Vim compatibility {{{2
 
 if !has('nvim')
