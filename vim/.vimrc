@@ -343,7 +343,7 @@ let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
 
 " Asyncomplete
 let g:asyncomplete_remove_duplicates = 1
-let g:asyncomplete_smart_completion = 1
+let g:asyncomplete_smart_completion = 0
 
 " Disable LSP diagnostics b/c it's dealt with in ALE
 let g:lsp_signs_enabled = 0
