@@ -476,10 +476,8 @@ endif
 
 " Mappings {{{1
 
-cnoremap jk <ESC>
-cnoremap kj <ESC>
-inoremap jk <ESC>
-inoremap kj <ESC>
+inoremap <C-c> <ESC>
+cnoremap <C-c> <ESC>
 
 cnoremap w!! w !sudo tee >/dev/null %
 
