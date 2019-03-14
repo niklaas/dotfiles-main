@@ -476,10 +476,6 @@ endif
 
 " Mappings {{{1
 
-" IDEA: Interesting unused mappings are
-"
-"   <leader>-
-
 cnoremap jk <ESC>
 cnoremap kj <ESC>
 inoremap jk <ESC>
@@ -500,8 +496,8 @@ nnoremap <space> viw
 nnoremap Y y$
 nnoremap / /\v
 
-" Delete the buffer, leaving the window open
-nnoremap <C-c> :bp\|bd #<cr>
+" Delete the buffer, leaving the window open. This overrides 'same as <Tab>'
+nnoremap <leader>- :bp\|bd #<cr>
 
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>cp :let @+ = expand("%")<cr>
