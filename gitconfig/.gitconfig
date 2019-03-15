@@ -13,6 +13,7 @@
 	br  = branch
 	brc = rev-parse --abbrev-ref HEAD
 	ch  = checkout
+	chm = checkout master
 	co  = commit -v
 	df  = diff
 	dfc = diff --compact-summary
