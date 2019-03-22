@@ -490,6 +490,9 @@ inoremap <C-0> <C-o>_
 " UPpercase word in insert mode
 inoremap <C-p> <esc>mzgUiw`za
 
+" Substitute word under cursor
+nnoremap <leader>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
+
 nnoremap <space> viw
 nnoremap Y y$
 nnoremap / /\v
