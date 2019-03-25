@@ -239,6 +239,7 @@ endfunction
 augroup _lightline
   autocmd!
   autocmd User ALELintPost call lightline#update()
+  autocmd User ALEFixPost call lightline#update()
 augroup end
 
 " Tmuxline
