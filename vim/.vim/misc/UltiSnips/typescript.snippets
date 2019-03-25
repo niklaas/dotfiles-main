@@ -12,8 +12,14 @@ endsnippet
 
 snippet tbc "TestBed.configureTestingModule" b
 TestBed.configureTestingModule({
+	declarations: [${0:name of component}]
 	providers: [$1]
 })
+
+fixture = TestBed.createComponent($0);
+$0 = fixture.componentInstance;
+
+fixture.detectChanges();
 endsnippet
 
 snippet it "it(..., () => {...})"
