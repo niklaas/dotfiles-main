@@ -4,4 +4,7 @@ endif
 let current_compiler = 'jasmine'
 
 set makeprg=ng
-set errorformat=%E\ \ %.%#Error:%m,%-G%.%#/jasmine.js:%.%#,%C\ %#at\ %.%#\ (%f:%l:%c)
+
+" The whitespace in the last column is important
+set errorformat=%EERROR\ in\ %.%#\ ./%f:%l:%c\ 
+set errorformat+=%Z%.%#:\ %m
