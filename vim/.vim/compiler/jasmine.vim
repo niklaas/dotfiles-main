@@ -6,5 +6,9 @@ let current_compiler = 'jasmine'
 set makeprg=ng
 
 " The whitespace in the last column is important
-set errorformat=%EERROR\ in\ %.%#\ ./%f:%l:%c\ 
-set errorformat+=%Z%.%#:\ %m
+set errorformat=%E%trror\ in\ [%o]\ ./%f:%l:%c\ 
+set errorformat+=%E%\\s%\\+Type%trror:\ %m\ in\ src/test.ts\ (line\ %.%#)
+set errorformat+=%-C%\\s%\\+%.%#/node_modules/%.%#
+set errorformat+=%C%\\s%\\+webpack:///%f:%l:%c\ <-\ src/test.ts:%.%#
+set errorformat+=%-C%\\s%\\+%.%#src/test.ts%.%#
+set errorformat+=%Z%.%#TS%.%#:\ %m
