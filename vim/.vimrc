@@ -529,16 +529,6 @@ nnoremap <leader>tp :TagbarTogglePause<cr>
 nnoremap <leader>o :Obsession<cr>
 nnoremap <leader>O :Obsession!<cr>
 
-" Fugitive
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gW :Gwq<cr>
-
-nnoremap <leader>gD :Gdiff master<cr>
-
 " Projectionist
 nnoremap <leader>eT :Etest<Space>
 nnoremap <leader>ec :Econtroller<Space>
@@ -569,9 +559,8 @@ nnoremap <silent> <leader>.  :Files<cr>
 " Grepper
 nmap gs <Plug>(GrepperOperator)
 xmap gs <Plug>(GrepperOperator)
-nnoremap <leader>Gg :Grepper -tool git<cr>
-nnoremap <leader>GG :Grepper -tool rg<cr>
-nnoremap <leader>Gv :Grepper -tool rg -side<cr>
+nnoremap <leader>gg :Grepper -tool rg<cr>
+nnoremap <leader>gv :Grepper -tool rg -side<cr>
 nnoremap <leader>*  :Grepper -tool rg -cword -noprompt<cr>
 
 " Easy align
