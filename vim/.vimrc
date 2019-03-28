@@ -247,21 +247,20 @@ let g:tmuxline_powerline_separators = 0
 
 " Tagbar
 let g:tagbar_type_typescript = {                                                  
-      \ 'ctagsbin' : 'tstags',                                                        
-      \ 'ctagsargs' : '-f-',                                                           
+      \ 'ctagstype' : 'typescript',                                                           
       \ 'kinds': [                                                                     
-      \   'e:enums:0:1',                                                               
-      \   'f:function:0:1',                                                            
-      \   't:typealias:0:1',                                                           
-      \   'M:Module:0:1',                                                              
-      \   'I:import:0:1',                                                              
-      \   'i:interface:0:1',                                                           
-      \   'C:class:0:1',                                                               
-      \   'm:method:0:1',                                                              
-      \   'p:property:0:1',                                                            
-      \   'v:variable:0:1',                                                            
-      \   'c:const:0:1',                                                              
-      \ ],                                                                            
+      \   'c:classes',                                                               
+      \   'C:modules',                                                            
+      \   'n:modules',                                                           
+      \   'f:functions',                                                              
+      \   'v:variables',                                                              
+      \   'V:varlambdas',                                                           
+      \   'm:members',                                                               
+      \   'i:interfaces',                                                              
+      \   't:types',                                                            
+      \   'e:enums',                                                            
+      \   'I:imports',                                                              
+      \ ]
       \ }  
 
 let g:tagbar_type_rust = {

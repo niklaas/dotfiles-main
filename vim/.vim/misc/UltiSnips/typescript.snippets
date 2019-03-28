@@ -24,13 +24,13 @@ endsnippet
 
 snippet it "it(..., () => {...})"
 it('${1:is defined}', () => {
-	$0
+	${0:${VISUAL}}
 });
 endsnippet
 
 snippet des "describe(..., () => {...})"
 describe('${1:method}', () => {
-	$0
+	${0:${VISUAL}}
 });
 endsnippet	
 
@@ -41,7 +41,13 @@ beforeEach(() => {
 endsnippet	
 
 snippet fun "public/private function" bA
-	${1:public} ${2:name}(${3:arguments}) {
-		$0
-	}
+${1:public} ${2:name}(${3:arguments}) {
+	$0
+}
+endsnippet
+
+snippet clos "closure" bA
+(${1:argument}: ${2:type}): ${3:return type} => {
+	${0:${VISUAL}}
+}
 endsnippet
