@@ -58,9 +58,12 @@ Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'vim-scripts/dbext.vim'
-Plug 'majutsushi/tagbar'
 Plug 'Raimondi/delimitMate'
 Plug 'chilicuil/vim-sprunge'
+
+" Navigation
+Plug 'majutsushi/tagbar'
+Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'airblade/vim-gitgutter'
 
