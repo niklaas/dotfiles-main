@@ -345,8 +345,9 @@ let g:UltiSnipsSnippetsDir = expand($DOTVIM . '/misc/UltiSnips')
 let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
 
 " Asyncomplete
-let g:asyncomplete_remove_duplicates = 1
+let g:asyncomplete_remove_duplicates = 0
 let g:asyncomplete_smart_completion = 0
+let g:asyncomplete_auto_popup = 0
 
 " Disable LSP diagnostics b/c it's dealt with in ALE
 let g:lsp_signs_enabled = 0
@@ -483,6 +484,9 @@ inoremap <C-c> <ESC>
 cnoremap <C-c> <ESC>
 
 cnoremap w!! w !sudo tee >/dev/null %
+
+" asyncomplete.vim
+imap <C-l> <Plug>(asyncomplete_force_refresh)
 
 " Jump to end of line
 inoremap <C-9> <C-o>$
