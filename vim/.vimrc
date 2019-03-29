@@ -64,6 +64,7 @@ Plug 'chilicuil/vim-sprunge'
 " Navigation
 Plug 'majutsushi/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'justinmk/vim-sneak'
 
 Plug 'airblade/vim-gitgutter'
 
@@ -76,7 +77,6 @@ Plug 'edkolev/tmuxline.vim'
 
 " Vim objects
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'rhysd/clever-f.vim'
 Plug 'wellle/targets.vim'
 
 " tpope plugins
