@@ -508,7 +508,7 @@ nnoremap Y y$
 nnoremap / /\v
 
 " Delete the buffer, leaving the window open. This overrides 'same as <Tab>'
-nnoremap <leader>- :b#\|bd #<cr>
+nnoremap <leader>- :bp\|bd #<cr>
 
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>cp :let @+ = expand("%")<cr>
