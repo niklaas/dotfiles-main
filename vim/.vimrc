@@ -66,8 +66,6 @@ Plug 'majutsushi/tagbar'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'justinmk/vim-sneak'
 
-Plug 'airblade/vim-gitgutter'
-
 " Lightline
 Plug 'itchyny/lightline.vim', Cond(!exists('g:gui_oni'))
 Plug 'daviesjamie/vim-base16-lightline', Cond(!exists('g:gui_oni'))
