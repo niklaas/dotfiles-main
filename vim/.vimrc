@@ -69,6 +69,7 @@ Plug 'justinmk/vim-sneak'
 " Lightline
 Plug 'itchyny/lightline.vim', Cond(!exists('g:gui_oni'))
 Plug 'daviesjamie/vim-base16-lightline', Cond(!exists('g:gui_oni'))
+Plug 'maximbaz/lightline-ale'
 
 " Tmuxline
 Plug 'edkolev/tmuxline.vim'
@@ -171,10 +172,11 @@ let g:lightline = {
       \ 'colorscheme': 'base16',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'filename', 'gitversion', 'modified' ] ],
+      \             [ 'gitbranch', 'filename', 'gitversion', 'readonly', 'modified' ],
+      \             [ 'gitdiff' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
-      \              [ 'gitdiff', 'linter_warnings', 'linter_errors', 'linter_ok', 'obsession', 'readonly', 'fileformat', 'fileencoding', 'filetype' ] ]
+      \              [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'obsession' ] ]
       \ },
       \ 'inactive': {
       \   'left': [ [ 'filename', 'gitversion' ] ],
@@ -185,17 +187,23 @@ let g:lightline = {
       \   'gitversion': 'GitVersion',
       \ },
       \ 'component_expand': {
-      \   'linter_warnings': 'LightlineLinterWarnings',
-      \   'linter_errors': 'LightlineLinterErrors',
-      \   'linter_ok': 'LightlineLinterOK',
+      \   'linter_checking': 'lightline#ale#checking',
+      \   'linter_warnings': 'lightline#ale#warnings',
+      \   'linter_errors': 'lightline#ale#errors',
+      \   'linter_ok': 'lightline#ale#ok',
       \   'gitdiff': 'lightline#gitdiff#get',
       \ },
       \ 'component_type': {
       \   'readonly': 'error',
+      \   'linter_checking': 'middle',
       \   'linter_warnings': 'warning',
-      \   'gitdiff': 'warning',
+      \   'linter_errors': 'error',
+      \   'linter_ok': 'middle',
+      \   'gitdiff': 'middle',
       \ },
       \ }
+
+let g:lightline#ale#indicator_checking = '...'
 
 " Inspired by https://github.com/aoswalt/dotfiles/commit/5c94f1e080e1269d83cfe25b95a86c78c9b8eabb
 function! GitVersion()
@@ -213,36 +221,10 @@ function! GitVersion()
   return gitversion
 endfunction
 
-" Inspired by github.com/statico/dotfiles
-function! LightlineLinterWarnings() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d ☉', all_non_errors)
-endfunction
-function! LightlineLinterErrors() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
-endfunction
-function! LightlineLinterOK() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  return l:counts.total == 0 ? '✓' : ''
-endfunction
-
 function! LightlineObsession()
   let l:status = strpart(ObsessionStatus(), 1, 1)
   return l:status ==# '$' ? '$' : ''
 endfunction
-
-augroup _lightline
-  autocmd!
-  autocmd User ALELintPost call lightline#update()
-  autocmd User ALEFixPost call lightline#update()
-augroup end
 
 " Tmuxline
 let g:tmuxline_powerline_separators = 0
