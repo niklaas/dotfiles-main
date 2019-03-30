@@ -174,7 +174,7 @@ let g:lightline = {
       \             [ 'gitbranch', 'filename', 'gitversion', 'modified' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
-      \              [ 'linter_warnings', 'linter_errors', 'linter_ok', 'obsession', 'readonly', 'fileformat', 'fileencoding', 'filetype' ] ]
+      \              [ 'gitdiff', 'linter_warnings', 'linter_errors', 'linter_ok', 'obsession', 'readonly', 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'inactive': {
       \   'left': [ [ 'filename', 'gitversion' ] ],
@@ -187,12 +187,13 @@ let g:lightline = {
       \ 'component_expand': {
       \   'linter_warnings': 'LightlineLinterWarnings',
       \   'linter_errors': 'LightlineLinterErrors',
-      \   'linter_ok': 'LightlineLinterOK'
+      \   'linter_ok': 'LightlineLinterOK',
+      \   'gitdiff': 'lightline#gitdiff#get',
       \ },
       \ 'component_type': {
       \   'readonly': 'error',
       \   'linter_warnings': 'warning',
-      \   'linter_errors': 'error'
+      \   'gitdiff': 'warning',
       \ },
       \ }
 
