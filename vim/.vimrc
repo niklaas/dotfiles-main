@@ -488,12 +488,6 @@ inoremap <C-0> <C-o>_
 " UPpercase word in insert mode
 inoremap <C-p> <esc>mzgUiw`za
 
-" Substitute word under cursor
-nnoremap <leader>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
-
-" Search with abolish
-nnoremap S :S//<left>
-
 nnoremap <space> viw
 nnoremap Y y$
 nnoremap / /\v
@@ -515,6 +509,10 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Abolish
+nnoremap <leader>ar :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
+nnoremap <leader>as :S//<left>
+
 " Tagbar
 nnoremap <leader>tt :TagbarToggle<cr>
 nnoremap <leader>to :TagbarOpen fj<cr>
@@ -533,11 +531,6 @@ nnoremap <leader>em :Emodel<Space>
 nnoremap <leader>es :Esource<Space>
 nnoremap <leader>et :Etemplate<Space>
 nnoremap <leader>ev :Eview<Space>
-
-nnoremap <leader>aa :A<CR>
-nnoremap <leader>av :AV<CR>
-nnoremap <leader>as :AS<CR>
-nnoremap <leader>at :AT<CR>
 
 " Git branches
 nnoremap <leader>b  :Twiggy<cr>
