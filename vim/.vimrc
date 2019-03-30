@@ -158,6 +158,16 @@ Plug 'elixir-editors/vim-elixir'
 " Reveal.js presentations
 Plug 'blindFS/vim-reveal'
 
+" My own plugins {{{2
+
+" In the following lines I always load the local version of a plugin if it's
+" available. This makes developing much easier. On machines where there is no
+" local version, I get the plugin from its GitHub repository.
+
+" lightline-gitdiff
+Plug 'niklaas/lightline-gitdiff', Cond(!isdirectory(expand('$HOME/Files/git/lightline-gitdiff')))
+Plug '$HOME/Files/git/lightline-gitdiff', Cond(isdirectory(expand('$HOME/Files/git/lightline-gitdiff')))
+
 call plug#end()
 
 " Vim extensions {{{2
