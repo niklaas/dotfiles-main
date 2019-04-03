@@ -44,6 +44,11 @@ alias nvim="${NVIM}"
 
 export EDITOR=vim
 
+# The variable is used by various git aliases to provide an intuitive interface
+# for doing code reviews on the command line. This is heavily inspired by
+# https://blog.jez.io/cli-code-review/.
+export REVIEW_BASE=master
+
 # Go {{{1
 if test -d /usr/local/go/bin
 then

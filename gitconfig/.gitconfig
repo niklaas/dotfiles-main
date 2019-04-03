@@ -37,6 +37,12 @@
 	spo = stash pop
 	st  = status
 	su  = submodule update --recursive --remote
+	# Code Reviews:
+	files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
+	stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
+	reviews = !vim -p $(git files) +\"tabdo Gdiff $(git merge-base HEAD $REVIEW_BASE)\"
+	review = !vim -p +\"tabdo Gdiff $(git merge-base HEAD $REVIEW_BASE)\"
+	heatmap = !git log $(git merge-base HEAD \"$REVIEW_BASE\")..HEAD --pretty=format: --name-only | grep -v \"^$\" | sort | uniq -c | sort -rg
 [push]
 	default = current
 	followTags = true
