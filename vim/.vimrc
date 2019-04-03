@@ -182,7 +182,7 @@ let g:lightline = {
       \ 'colorscheme': 'base16',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'filename', 'gitversion', 'readonly', 'modified' ],
+      \             [ 'filename', 'gitversion', 'readonly', 'modified' ],
       \             [ 'gitdiff' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
@@ -192,7 +192,6 @@ let g:lightline = {
       \   'left': [ [ 'filename', 'gitversion' ] ],
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
       \   'obsession': 'LightlineObsession',
       \   'gitversion': 'GitVersion',
       \ },
