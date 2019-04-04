@@ -166,7 +166,7 @@ Plug 'blindFS/vim-reveal'
 
 " lightline-gitdiff
 Plug 'niklaas/lightline-gitdiff', Cond(!isdirectory(expand('$HOME/Files/git/lightline-gitdiff')))
-Plug '$HOME/Files/git/lightline-gitdiff', Cond(isdirectory(expand('$HOME/Files/git/lightline-gitdiff')))
+Plug '$HOME/Files/git/lightline-gitdiff', Cond(isdirectory(expand('$HOME/Files/git/lightline-gitdiff')), { 'as': 'lightline-gitdiff-local' })
 
 call plug#end()
 
