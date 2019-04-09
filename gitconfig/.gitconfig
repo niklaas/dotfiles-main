@@ -27,6 +27,7 @@
 	lg  = log --graph --oneline --decorate
 	lgn = log --stat
 	mg  = merge --no-ff
+	mgs = merge --squash
 	pa  = !git remote | xargs -L1 git push --all
 	pl  = pull --rebase
 	ps  = push
