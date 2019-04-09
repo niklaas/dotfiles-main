@@ -25,7 +25,7 @@
 	la  = log -1 HEAD
 	lag = log --all --graph --oneline --decorate
 	lg  = log --graph --oneline --decorate
-	lgn = log --stat
+	lgs = log --stat
 	mg  = merge --no-ff
 	mgs = merge --squash
 	pa  = !git remote | xargs -L1 git push --all
