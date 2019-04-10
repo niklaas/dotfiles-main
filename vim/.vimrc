@@ -160,6 +160,9 @@ Plug 'blindFS/vim-reveal'
 
 " My own plugins {{{2
 
+" Test framework for development
+Plug 'junegunn/vader.vim'
+
 " In the following lines I always load the local version of a plugin if it's
 " available. This makes developing much easier. On machines where there is no
 " local version, I get the plugin from its GitHub repository.
