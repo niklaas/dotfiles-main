@@ -41,6 +41,8 @@ bindkey -v '^e' vi-end-of-line
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+bindkey -M vicmd v edit-command-line
+
 bindkey -s '^z' 'fg\n'
 
 if ! command -v fzf >/dev/null 2>&1
