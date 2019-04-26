@@ -42,7 +42,7 @@ else
 fi
 alias nvim="${NVIM}"
 
-export EDITOR=vim
+export EDITOR="${NVIM}"
 
 # The variable is used by various git aliases to provide an intuitive interface
 # for doing code reviews on the command line. This is heavily inspired by
