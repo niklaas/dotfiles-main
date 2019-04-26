@@ -46,8 +46,14 @@ ${1:public} ${2:name}(${3:arguments}) {
 }
 endsnippet
 
-snippet closure "closure" bA
-(${1:argument}: ${2:type}): ${3:return type} => {
+snippet closure "closure" A
+(${1:${2:argument}: ${3:type}})${4:: ${5:return type}} => {
 	${0:${VISUAL}}
 };
+endsnippet
+
+snippet sclosure "small closure" A
+() => {
+	${0:${VISUAL}}
+}
 endsnippet
