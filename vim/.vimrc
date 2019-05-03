@@ -343,6 +343,7 @@ let g:asyncomplete_smart_completion = 0
 let g:asyncomplete_auto_popup = 0
 
 " Disable LSP diagnostics b/c it's dealt with in ALE
+let g:lsp_diagnostics_enabled = 0
 let g:lsp_signs_enabled = 0
 let g:lsp_diagnostics_echo_cursor = 0
 
