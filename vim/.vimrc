@@ -715,6 +715,11 @@ endif
 "
 "   let g:jls_launcher_dir = expand('/home/niklaas/git/java-language-server/dist/mac/bin')
 
+" for debugging
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
+" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
 " This is wrappen in a function to check for `g:jls_launcher_dir`.
 function s:register_jls()
   if exists('g:jls_launcher_dir') && isdirectory(expand(g:jls_launcher_dir))
