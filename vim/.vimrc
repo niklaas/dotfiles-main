@@ -342,6 +342,9 @@ let g:asyncomplete_remove_duplicates = 0
 let g:asyncomplete_smart_completion = 0
 let g:asyncomplete_auto_popup = 0
 
+let g:asyncomplete_auto_completeopt = 0
+set completeopt=menuone,noinsert,noselect,preview
+
 " Disable LSP diagnostics b/c it's dealt with in ALE
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_signs_enabled = 0
@@ -371,7 +374,6 @@ set exrc
 
 set autowrite
 set backspace=indent,eol,start
-set completeopt+=preview
 set cpoptions+=$
 set diffopt=filler
 set gdefault
