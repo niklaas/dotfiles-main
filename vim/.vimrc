@@ -802,12 +802,6 @@ if filereadable(expand('~/.vimrc_background'))
   source ~/.vimrc_background
 endif
 
-" Automatically close the completion window when completion is done
-augroup _asyncomplete
-  autocmd!
-  autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
-augroup END
-
 augroup _ale_closeLoclistWithBuffer
   autocmd!
   autocmd QuitPre * if empty(&buftype) | lclose | endif
