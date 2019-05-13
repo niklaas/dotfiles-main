@@ -1,7 +1,7 @@
 # General {{{1
 
 typeset -U path
-path=(~/.local/bin ~/go/bin ~/n/bin ~/.cargo/bin $path)
+path=(~/.local/bin ~/go/bin ~/n/bin ~/.cargo/bin /snap/bin $path)
 typeset -U fpath
 fpath=(~/.local/share/zsh/functions/Completion $fpath)
 
