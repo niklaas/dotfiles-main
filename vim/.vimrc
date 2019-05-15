@@ -293,7 +293,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:user_emmet_mode = 'i'
 
 " Sprunge
-let g:sprunge_map = '<leader>S'
 let g:sprunge_open_browser = 1
 
 " Projectionist
@@ -580,6 +579,10 @@ nmap <leader>ed <Plug>(ale_detail)
 nmap <leader>er <Plug>(ale_reset)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
+
+" Sprunge (disable mapping)
+nmap <Plug>DisableSprungeMapping <Plug>Sprunge
+xmap <Plug>DisableSprungeMapping <Plug>Sprunge
 
 " UlitSnips
 nnoremap <leader>ue :UltiSnipsEdit<cr>
