@@ -360,6 +360,7 @@ let g:ale_open_list = 0
 let g:ale_list_window_size = 7
 let g:ale_completion_enabled = 0  " asyncomplete does this
 
+let g:ale_set_highlights = 0
 let g:ale_set_signs = 1
 let g:ale_sign_warning = '?'
 let g:ale_sign_error = '!'
