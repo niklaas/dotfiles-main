@@ -385,7 +385,7 @@ set fileformats=unix,dos
 
 " Indenting
 set shiftround
-set expandtab autoindent
+set expandtab smarttab autoindent smartindent
 set tabstop=2 shiftwidth=2 softtabstop=2
 
 " Spelling
