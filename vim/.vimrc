@@ -596,11 +596,6 @@ augroup filetype_rust
   autocmd FileType rust let b:ale_fixers = [ 'rustfmt' ] 
 augroup end
 
-augroup filetype_scala
-  autocmd!
-  autocmd BufWritePost *.scala silent :EnTypeChec
-augroup END
-
 augroup filetype_scss
   autocmd!
   autocmd FileType scss let b:ale_fixers = [ 'prettier' ]
