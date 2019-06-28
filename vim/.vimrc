@@ -469,8 +469,9 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " Abolish
+nnoremap <leader>ac :cdo S/
 nnoremap <leader>ar :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
-nnoremap <leader>as :S//<left>
+nnoremap <leader>as :S/
 
 " Tagbar
 nnoremap <leader>tt :TagbarToggle<cr>
