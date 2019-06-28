@@ -499,10 +499,11 @@ nnoremap <leader>gv :GV<cr>
 nnoremap <leader>gV :GV!<cr>
 
 " FZF
-nnoremap <silent> <leader>ff :Files<cr>
-nnoremap <silent> <leader>fc :Commits<cr>
 nnoremap <silent> <leader>fC :BCommits<cr>
 nnoremap <silent> <leader>fb :Buffers<cr>
+nnoremap <silent> <leader>fc :Commits<cr>
+nnoremap <silent> <leader>ff :Files<cr>
+nnoremap <silent> <leader>fh :History<cr>
 
 " Grepper
 nmap gs <Plug>(GrepperOperator)
