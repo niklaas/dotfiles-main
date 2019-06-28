@@ -383,9 +383,6 @@ set fileencoding=utf-8
 set fileformat=unix
 set fileformats=unix,dos
 
-" formatting
-set formatoptions=croq
-
 " Indenting
 set shiftround
 set expandtab autoindent
