@@ -139,10 +139,6 @@ Plug 'sheerun/vim-polyglot'
 " LaTeX
 Plug 'lervag/vimtex'
 
-" R
-Plug 'jalvesaq/Nvim-R'
-Plug 'mllg/vim-devtools-plugin'
-
 " JavaScript/Typescript/Angular
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'heavenshell/vim-jsdoc'
