@@ -136,9 +136,6 @@ Plug 'ekalinin/Dockerfile.vim'
 " Polyglot
 Plug 'sheerun/vim-polyglot'
 
-" LaTeX
-Plug 'lervag/vimtex'
-
 " Scala
 Plug 'derekwyatt/vim-sbt'
 Plug 'derekwyatt/vim-scala'
@@ -297,14 +294,6 @@ let g:polyglot_disabled = ['latex', 'dockerfile']
 
 " Pandoc
 let g:pandoc#modules#disabled = ['chdir']
-
-" Vimtex
-if has('win32')
-  let g:vimtex_view_general_viewer = 'SumatraPDF'
-  let g:vimtex_view_general_options
-    \ = '-reuse-instance -forward-search @tex @line @pdf'
-  let g:vimtex_view_general_options_latexmk = '-reuse-instance'
-endif
 
 " Nvim-R
 let R_in_buffer = 0
