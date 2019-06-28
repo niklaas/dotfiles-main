@@ -351,7 +351,6 @@ set nojoinspaces
 set noshowmode
 set nowrap
 set number
-set pastetoggle=<f11>
 set pumheight=10
 set ruler
 set shortmess=cat
