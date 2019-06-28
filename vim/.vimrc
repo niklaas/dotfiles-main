@@ -360,7 +360,7 @@ set smartcase
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set tags=./tags,./TAGS,tags,TAGS,../tags,../../tags,../../../tags,../../../../tags
 set undofile
-set updatetime=250
+set updatetime=1000
 set viminfo=%,'50,:100,<1000
 set visualbell
 set whichwrap=<,>,h,l
