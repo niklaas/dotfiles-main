@@ -353,7 +353,7 @@ set nowrap
 set number
 set pumheight=10
 set ruler
-set shortmess=cat
+set shortmess=catOT
 set showbreak=+
 set showmatch
 set smartcase
