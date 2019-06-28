@@ -576,13 +576,6 @@ augroup filetype_gitcommit
   autocmd FileType gitcommit setlocal comments+=fb:- fo+=nrabl spell
 augroup END
 
-augroup filetype_go
-  autocmd!
-  autocmd FileType go nnoremap <buffer> <leader>gr :GoRun<cr>
-  autocmd FileType go nnoremap <buffer> <leader>gt :GoTest<cr>
-  autocmd FileType go nnoremap <buffer> <leader>gb :GoBuild<cr>
-augroup END
-
 augroup filetype_html
   autocmd!
   autocmd FileType html setlocal foldmethod=indent
