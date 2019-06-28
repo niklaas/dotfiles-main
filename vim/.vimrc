@@ -295,21 +295,6 @@ let g:polyglot_disabled = ['latex', 'dockerfile']
 " Pandoc
 let g:pandoc#modules#disabled = ['chdir']
 
-" Nvim-R
-let R_in_buffer = 0
-let R_tmux_split = 1
-let R_nvim_wd = 1
-let R_assign = 0
-let r_indent_ess_compatible = 1
-
-" JsDoc
-let g:jsdoc_underscore_private = 1
-let g:jsdoc_enable_es6 = 1
-let g:jsdoc_allow_input_prompt = 0
-
-" Scala
-let g:scala_scaladoc_indent = 1
-
 " UltiSnips
 let g:UltiSnipsSnippetsDir = expand($DOTVIM . '/misc/UltiSnips')
 let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
