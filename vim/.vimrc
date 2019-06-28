@@ -147,9 +147,6 @@ Plug 'derekwyatt/vim-scala'
 Plug 'slashmili/alchemist.vim'
 Plug 'elixir-editors/vim-elixir'
 
-" Reveal.js presentations
-Plug 'blindFS/vim-reveal'
-
 " My own plugins {{{2
 
 " Test framework for development
