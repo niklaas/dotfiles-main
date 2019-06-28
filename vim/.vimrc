@@ -349,7 +349,6 @@ set mouse=a
 set nobackup
 set nojoinspaces
 set noshowmode
-set nostartofline
 set nowrap
 set number
 set pastetoggle=<f11>
