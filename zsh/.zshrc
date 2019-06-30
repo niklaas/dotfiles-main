@@ -58,6 +58,7 @@ fi
 alias e=$EDITOR
 alias es="$EDITOR -S Session.vim"
 alias er="$EDITOR -R"
+alias se="sudo -e"
 alias v="vim"
 alias nv="nvim"
 
