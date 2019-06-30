@@ -124,6 +124,10 @@ Plug 'prabirshrestha/asyncomplete-ultisnips.vim', Cond(!exists('g:gui_oni') && v
 Plug 'prabirshrestha/vim-lsp', Cond(!exists('g:gui_oni') && v:version >= 800)
 Plug 'prabirshrestha/asyncomplete-lsp.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
 
+" Snippet integration with language servers
+Plug 'thomasfaingnaert/vim-lsp-snippets'
+Plug 'thomasfaingnaert/vim-lsp-ultisnips'
+
 Plug 'w0rp/ale', Cond(v:version >= 800)
 
 " Syntax rules and filetype specific plugins {{{2
