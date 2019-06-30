@@ -569,7 +569,7 @@ cabbrev <expr> %% expand('%:p:h')
 
 augroup filetype_gitcommit
   autocmd!
-  autocmd FileType gitcommit setlocal comments+=fb:- fo+=nrabl spell
+  autocmd FileType gitcommit setlocal comments+=fb:- fo+=nrbl spell
 augroup END
 
 augroup filetype_html
