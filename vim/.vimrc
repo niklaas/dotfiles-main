@@ -136,10 +136,6 @@ Plug 'ekalinin/Dockerfile.vim'
 " Polyglot
 Plug 'sheerun/vim-polyglot'
 
-" Scala
-Plug 'derekwyatt/vim-sbt'
-Plug 'derekwyatt/vim-scala'
-
 " Elixir
 Plug 'slashmili/alchemist.vim'
 Plug 'elixir-editors/vim-elixir'
