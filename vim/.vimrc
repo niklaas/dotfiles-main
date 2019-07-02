@@ -512,6 +512,7 @@ xmap gs <Plug>(GrepperOperator)
 nnoremap <leader>gg :Grepper -tool rg<cr>
 nnoremap <leader>gv :Grepper -tool rg -side<cr>
 nnoremap <leader>gw :Grepper -tool rg -cword<cr>
+nnoremap <leader>*  :Grepper -tool rg -cword -noprompt -highlight<cr>
 
 " Easy align
 xmap ga <Plug>(EasyAlign)
