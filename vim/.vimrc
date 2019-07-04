@@ -165,6 +165,12 @@ runtime! ftplugin/man.vim
 
 " Plugin Configuration {{{1
 
+" Gutentags
+
+if executable('universal-ctags')
+  let g:gutentags_ctags_executable = 'universal-ctags'
+endif
+
 " Lightline
 let g:lightline = {
       \ 'colorscheme': 'base16',
