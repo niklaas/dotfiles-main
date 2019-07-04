@@ -438,6 +438,8 @@ endif
 
 " Mappings {{{1
 
+" General {{{2
+
 inoremap <C-c> <ESC>
 cnoremap <C-c> <ESC>
 
@@ -475,6 +477,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Plugin related {{{2
 
 " Abolish
 nnoremap <leader>ac :cdo S/
