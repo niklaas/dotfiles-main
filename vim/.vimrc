@@ -102,6 +102,8 @@ Plug 'sodapopcan/vim-twiggy'
 Plug 'junegunn/gv.vim'
 
 " Fuzzy finding
+" TODO: try to get rid of this b/c I should navigate through files as
+" described at https://vimways.org/2018/death-by-a-thousand-files/
 Plug 'junegunn/fzf', Cond(has('unix'), { 'dir': '~/.fzf', 'do': './install --all' })
 Plug 'junegunn/fzf.vim', Cond(has('unix'))
 
@@ -478,6 +480,14 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+nnoremap <leader>ee :edit **/
+nnoremap <leader>es :split **/
+nnoremap <leader>ev :vsplit **/
+
+nnoremap <leader>ff :find **/
+nnoremap <leader>fs :sfind **/
+nnoremap <leader>fv :vertical sfind **/
+
 " Plugin related {{{2
 
 " Abolish
@@ -496,26 +506,11 @@ nnoremap <leader>tp :TagbarTogglePause<cr>
 nnoremap <leader>o :Obsession<cr>
 nnoremap <leader>O :Obsession!<cr>
 
-" Projectionist
-nnoremap <leader>eT :Etest<Space>
-nnoremap <leader>ec :Econtroller<Space>
-nnoremap <leader>em :Emodel<Space>
-nnoremap <leader>es :Esource<Space>
-nnoremap <leader>et :Etemplate<Space>
-nnoremap <leader>ev :Eview<Space>
-
 " Git branches
 nnoremap <leader>b  :Twiggy<cr>
 nnoremap <leader>B  :Twiggy<space>
 nnoremap <leader>gv :GV<cr>
 nnoremap <leader>gV :GV!<cr>
-
-" FZF
-nnoremap <silent> <leader>fC :BCommits<cr>
-nnoremap <silent> <leader>fb :Buffers<cr>
-nnoremap <silent> <leader>fc :Commits<cr>
-nnoremap <silent> <leader>ff :Files<cr>
-nnoremap <silent> <leader>fh :History<cr>
 
 " Grepper
 nmap gs <Plug>(GrepperOperator)
@@ -544,7 +539,6 @@ nnoremap <leader>ll :LspDocumentDiagnostics<cr>
 " Linting
 nmap <leader>ef <Plug>(ale_fix)
 nmap <leader>el <Plug>(ale_lint)
-nmap <leader>ee <Plug>(ale_toggle)
 nmap <leader>ed <Plug>(ale_detail)
 nmap <leader>er <Plug>(ale_reset)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
