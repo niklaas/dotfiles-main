@@ -3,5 +3,5 @@ if exists('did_load_filetypes')
 endif
 
 augroup filetypedetect
-  au BufNewFile,BufRead justfile setf make
+  au BufNewFile,BufRead justfile setfiletype make
 augroup END
