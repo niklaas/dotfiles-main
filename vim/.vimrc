@@ -52,7 +52,6 @@ endfunction
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jamessan/vim-gnupg'
-Plug 'git-time-metric/gtm-vim-plugin'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'editorconfig/editorconfig-vim'
