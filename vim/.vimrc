@@ -371,7 +371,6 @@ set viminfo=%,'50,:100,<1000
 set visualbell
 set whichwrap=b,s
 set wildmenu
-set wildmode=longest,list,full
 
 " Set locations of important directories
 set backupdir=$DOTVIM/backup/
