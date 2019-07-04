@@ -133,6 +133,11 @@ then
     alias pass="gopass"
 fi
 
+if command -v universal-ctags >/dev/null 2>&1
+then
+    alias ctags="universal-ctags"
+fi
+
 # Removes aliases from oh-my-zsh/common-aliases that conflict with `fd`, an
 # alternative for `find` written in Rust
 type fd | grep alias >/dev/null 2>&1 && unalias fd
