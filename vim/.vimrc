@@ -321,7 +321,7 @@ let g:lsp_diagnostics_echo_cursor = 0
 
 " ALE
 let g:ale_fixers = {
-      \   'javascript': [ 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
+      \   'javascript': [ 'prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
       \   'html': [ 'trim_whitespace', 'remove_trailing_lines' ],
       \ }
 
