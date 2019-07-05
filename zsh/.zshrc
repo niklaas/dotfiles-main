@@ -25,7 +25,9 @@ fi
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt appendhistory
+unsetopt append_history
+unsetopt share_history
+setopt inc_append_history_time
 
 # Allow interactive comments to prevent an error when canceling the insertion
 # of a command with Alt-#.
