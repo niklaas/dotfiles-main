@@ -10,8 +10,12 @@ autoload -U is-at-least
 autoload -U compdef
 autoload -U zcalc
 
+# Completion {{{1
+
 autoload -Uz compinit
 compinit
+
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 # Environment variables {{{2
 
