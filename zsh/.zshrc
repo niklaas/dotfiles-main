@@ -105,16 +105,14 @@ alias sst="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o Lo
 
 # Global Aliases {{{2
 
+alias -g C="| xsel -b"
+alias -g F="| fzf"
 alias -g G="| grep -i"
-
 alias -g H="| head"
-alias -g T="| tail"
-
+alias -g L="| less"
 alias -g S="| sort"
 alias -g SV="| sort -V"
-
-alias -g C="| xsel -b"
-
+alias -g T="| tail"
 alias -g X="| xargs"
 
 # Functions {{{2
