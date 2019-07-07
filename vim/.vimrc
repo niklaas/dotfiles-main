@@ -682,7 +682,7 @@ endif
 " let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
 " This is wrappen in a function to check for `g:jls_launcher_dir`.
-function s:register_jls()
+function! s:register_jls()
   if exists('g:jls_launcher_dir') && isdirectory(expand(g:jls_launcher_dir))
     call lsp#register_server({
           \ 'name': 'java-language-server',
