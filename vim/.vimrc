@@ -490,6 +490,12 @@ nnoremap <leader>fv :vertical sfind **/
 
 " Plugin related {{{2
 
+" Fuzzy searching
+
+nnoremap <leader><leader> :FZF<cr>
+nnoremap <leader>. :Buffers<cr>
+nnoremap <leader>m :Lines<cr>
+
 " Abolish
 nnoremap <leader>ac :cdo S/
 nnoremap <leader>ar :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
