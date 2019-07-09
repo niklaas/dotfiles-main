@@ -458,7 +458,6 @@ inoremap <C-0> <C-o>_
 
 nnoremap <space> viw
 nnoremap Y y$
-nnoremap / /\v
 
 " Delete the buffer, leaving the window open. This overrides 'same as <Tab>'
 nnoremap <leader>- :bp\|bd #<cr>
