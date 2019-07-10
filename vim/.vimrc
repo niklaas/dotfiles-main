@@ -443,8 +443,6 @@ endif
 inoremap <C-c> <ESC>
 cnoremap <C-c> <ESC>
 
-cnoremap w!! w !sudo tee >/dev/null %
-
 " asyncomplete.vim
 imap <C-l> <Plug>(asyncomplete_force_refresh)
 
