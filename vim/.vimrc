@@ -307,7 +307,10 @@ let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
 
 set omnifunc=lsp#complete
 
-" Disable vim-lsp diagnostics b/c ALE does this
+" While vim-lsp is very powerful for providing LSP related features
+" such as 'go to definition', ALE offers a more comprehensive feature
+" set in regard of linting/diagnostics. Thus, we disable these
+" features for vim-lsp.
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_signs_enabled = 0
 let g:lsp_diagnostics_echo_cursor = 0
@@ -331,9 +334,9 @@ let g:ale_fix_on_save = 1
 let g:ale_open_list = 0
 let g:ale_list_window_size = 7
 
-" Since vim-lsp takes care of LSP-related features, the following can
-" be disabled.
-let g:ale_disable_lsp = 1
+" While ALE needs LSPs for linting, it should not use them for
+" anything else. So, in the following we disable those features
+" vim-lsp is responsible for.
 let g:ale_completion_enabled = 0
 
 let g:ale_set_highlights = 0
