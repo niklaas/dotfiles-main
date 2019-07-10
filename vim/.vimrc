@@ -299,9 +299,6 @@ let g:grepper_jump = 1
 " Polyglot
 let g:polyglot_disabled = ['latex', 'dockerfile']
 
-" Pandoc
-let g:pandoc#modules#disabled = ['chdir']
-
 " UltiSnips
 let g:UltiSnipsSnippetsDir = expand($DOTVIM . '/misc/UltiSnips')
 let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
