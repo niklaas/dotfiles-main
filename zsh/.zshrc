@@ -115,6 +115,8 @@ alias -g SV="| sort -V"
 alias -g T="| tail"
 alias -g X="| xargs"
 
+alias -g V="\$(xclip -out -selection primary)"
+
 # Functions {{{2
 
 bcp() {
