@@ -341,6 +341,7 @@ set exrc
 
 set autowrite
 set backspace=indent,eol,start
+set clipboard^=unnamed
 set cpoptions+=$
 set diffopt=filler
 set gdefault
