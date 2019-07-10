@@ -12,7 +12,7 @@
 " in such cases using w0rp/ale is not an issue. That said, I strip it to it's
 " very basic functionality i.e., linting. (It supports other options such as
 " code completion etc. but I don't use them. There are other plugins that
-" focus on this job.)
+" focus on job.)
 "
 " FIXME: I am not sure whether I need w0rp/ale in oni/omi. Most probably not
 " its linting capabilities but maybe the fixers..? IIRC oni/oni only uses LSPs
@@ -267,7 +267,7 @@ let g:tagbar_type_rust = {
       \}
 
 " Prevent lines in https://git.io/fpET0 to be run and mingle with ctags for
-" rust. This is because `vim-polyglot` loads `vim-rust` only partially.
+" rust. is because `vim-polyglot` loads `vim-rust` only partially.
 " Thus, `rust.ctags` is missing in the plugin folder. So, force use of custom
 " `$HOME/.ctags`.
 let g:rust_use_custom_ctags_defs = 1
@@ -303,6 +303,15 @@ let g:polyglot_disabled = ['latex', 'dockerfile']
 let g:UltiSnipsSnippetsDir = expand($DOTVIM . '/misc/UltiSnips')
 let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
 
+" Language aware plugins {{{2
+
+set omnifunc=lsp#complete
+
+" Disable vim-lsp diagnostics b/c ALE does this
+let g:lsp_diagnostics_enabled = 0
+let g:lsp_signs_enabled = 0
+let g:lsp_diagnostics_echo_cursor = 0
+
 " Asyncomplete
 let g:asyncomplete_remove_duplicates = 0
 let g:asyncomplete_smart_completion = 0
@@ -311,12 +320,8 @@ let g:asyncomplete_auto_popup = 0
 let g:asyncomplete_auto_completeopt = 0
 set completeopt=menuone,noinsert,noselect,preview
 
-" Disable LSP diagnostics b/c it's dealt with in ALE
-let g:lsp_diagnostics_enabled = 0
-let g:lsp_signs_enabled = 0
-let g:lsp_diagnostics_echo_cursor = 0
-
 " ALE
+let g:ale_linters_explicit = 1
 let g:ale_fixers = {
       \   'javascript': [ 'prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
       \   'html': [ 'trim_whitespace', 'remove_trailing_lines' ],
@@ -325,7 +330,11 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 1
 let g:ale_open_list = 0
 let g:ale_list_window_size = 7
-let g:ale_completion_enabled = 0  " asyncomplete does this
+
+" Since vim-lsp takes care of LSP-related features, the following can
+" be disabled.
+let g:ale_disable_lsp = 1
+let g:ale_completion_enabled = 0
 
 let g:ale_set_highlights = 0
 let g:ale_set_signs = 1
