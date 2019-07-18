@@ -57,6 +57,7 @@
 	enabled = true
 [diff]
 	tool = vimdiff
+	algorithm = histogram
 [difftool]
 	prompt = false
 [pull]
