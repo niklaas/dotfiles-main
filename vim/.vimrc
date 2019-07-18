@@ -311,9 +311,14 @@ set omnifunc=lsp#complete
 " such as 'go to definition', ALE offers a more comprehensive feature
 " set in regard of linting/diagnostics. Thus, we disable these
 " features for vim-lsp.
-let g:lsp_diagnostics_enabled = 0
 let g:lsp_signs_enabled = 0
 let g:lsp_diagnostics_echo_cursor = 0
+let g:lsp_virtual_text_enabled = 0
+let g:lsp_highlights_enabled = 0
+
+" That said, the following must be enabled for Code Actions to work.
+" Otherwise vim-lsp complains that no diagnostics could be found.
+let g:lsp_diagnostics_enabled = 1
 
 " Asyncomplete
 let g:asyncomplete_remove_duplicates = 0
