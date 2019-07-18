@@ -116,6 +116,7 @@ alias -g T="| tail"
 alias -g X="| xargs"
 
 alias -g V="\$(xclip -out -selection primary)"
+alias -g P="\$(xclip -out -selection clipboard)"
 
 # Functions {{{2
 
