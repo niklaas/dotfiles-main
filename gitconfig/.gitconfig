@@ -36,6 +36,7 @@
 	rb  = rebase
 	rbi = rebase --interactive
 	sh  = stash
+	spa = stash --include-untracked
 	spu = stash --include-untracked --keep-index
 	spo = stash pop
 	st  = status
