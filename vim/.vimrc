@@ -414,7 +414,13 @@ set tabstop=2 shiftwidth=2 softtabstop=2
 set spelllang=en_us,de_20
 set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
 
-" GVIM and Oni specifics {{{2
+if !exists('g:gui_oni')
+  augroup responsive_cursorline
+    autocmd!
+    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
+  augroup end
+endif
 
 if has('gui_running')
   set guioptions-=m
