@@ -53,7 +53,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jamessan/vim-gnupg'
 Plug 'mattn/emmet-vim'
-Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'vim-scripts/dbext.vim'
@@ -86,6 +85,7 @@ Plug 'tpope/vim-eunuch'  " sugar for UNIX shell commands
 Plug 'tpope/vim-obsession'  " for session management
 Plug 'tpope/vim-ragtag'  " for HTML editing
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-scriptease'  " e.g. map zS for showing sytax group
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'  " for auto-indenting
 Plug 'tpope/vim-surround'
