@@ -11,9 +11,6 @@ augroup ft_typescript_relative_imports
   autocmd InsertLeave * setlocal noautochdir | execute 'cd' fnameescape(save_cwd)
 augroup END
 
-augroup ft_typescript_ultisnips_add_filetypes
-  autocmd * UltiSnipsAddFiletypes javascript-jasmine-arrow
-augroup end
+UltiSnipsAddFiletypes javascript-jasmine-arrow
 
 let b:undo_ftplugin .= '|autocmd! ft_typescript_relative_imports'
-let b:undo_ftplugin .= '|autocmd! ft_typescript_ultisnips_add_filetypes'
