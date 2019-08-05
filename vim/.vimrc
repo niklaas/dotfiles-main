@@ -768,6 +768,12 @@ function! s:base16_customize() abort
   call Base16hi('SpellLocal', '', '', g:base16_cterm0D, 'NONE', '', '')
   call Base16hi('SpellRare',  '', '', g:base16_cterm0B, 'NONE', '', '')
   call Base16hi('MatchParen', '', '', g:base16_cterm0E, 'NONE', '', '')
+
+  " Fix subordinate role of `CursorLine` in nvim
+  "
+  " refs neovim/neovim#9019
+  " refs neovim/neovim#7383
+  call Base16hi('Normal',     '', '', '',               'NONE', '', '')
 endfunction
 
 augroup on_change_colorschema
