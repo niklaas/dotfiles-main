@@ -583,6 +583,7 @@ if has('nvim')
   tnoremap <C-L> <c-\><c-n><c-w>l
 
   tnoremap <Esc> <C-\><C-n>
+  tnoremap <C-c> <C-\><C-n>
   tnoremap <C-[> <Esc>
   tnoremap <C-v><Esc> <Esc>
 endif
