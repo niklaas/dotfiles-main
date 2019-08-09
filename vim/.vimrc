@@ -480,6 +480,7 @@ nnoremap Y y$
 
 " Delete the buffer, leaving the window open. This overrides 'same as <Tab>'
 nnoremap <leader>- :bp\|bd #<cr>
+nnoremap gb :ls<CR>:b 
 
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
