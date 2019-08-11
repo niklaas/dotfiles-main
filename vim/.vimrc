@@ -305,6 +305,7 @@ let g:grepper_jump = 1
 let g:polyglot_disabled = ['latex', 'dockerfile']
 
 " UltiSnips
+let g:UltiSnipsExpandTrigger='<c-e>'
 let g:UltiSnipsSnippetsDir = expand($DOTVIM . '/misc/UltiSnips')
 let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
 
