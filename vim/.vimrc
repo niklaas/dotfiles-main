@@ -116,9 +116,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'prabirshrestha/asyncomplete.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
 Plug 'prabirshrestha/async.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
 
-Plug 'prabirshrestha/asyncomplete-buffer.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
-Plug 'prabirshrestha/asyncomplete-file.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
-
 " Snippets
 Plug 'SirVer/ultisnips', Cond(!exists('g:gui_oni') && v:version >= 800 && has('python3'))
 Plug 'honza/vim-snippets', Cond(!exists('g:gui_oni') && v:version >= 800 && has('python3'))
@@ -702,21 +699,6 @@ endfunction
 if executable('java')
   autocmd User lsp_setup call s:register_jls()
 endif
-
-" Completion {{{2
-
-" Files:
-autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-      \ 'name': 'file',
-      \ 'whitelist': ['*'],
-      \ 'priority': 10,
-      \ 'completor': function('asyncomplete#sources#file#completor')
-      \ }))
-
-" Snippets {{{2
-
-" vint: +ProhibitAutocmdWithNoGroup
-
 
 " Miscellaneous {{{1
 
