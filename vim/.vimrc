@@ -740,17 +740,6 @@ autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#s
 
 " Snippets {{{2
 
-" Ultisnips:
-if has('python3')
-  let g:UltiSnipsExpandTrigger='<c-e>'
-  autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
-        \ 'name': 'ultisnips',
-        \ 'whitelist': ['*'],
-        \ 'priority': 5,
-        \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
-        \ }))
-endif
-
 " vint: +ProhibitAutocmdWithNoGroup
 
 
