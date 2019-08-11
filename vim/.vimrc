@@ -280,10 +280,15 @@ let delimitMate_expand_space = 1
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Emmet
-"
+
 " Don't use it in normal mode because default prefix <C-y> collides with
 " mapping for scrolling the view.
 let g:user_emmet_mode = 'i'
+
+" Overrides vim's default mapping <C-j> which is the same as <NL> in
+" insert mode though. I have not found out what <NL> is for yet, but I
+" have the feeling I never use it.
+let g:user_emmet_leader_key = '<C-j>'
 
 " Sprunge
 let g:sprunge_open_browser = 1
