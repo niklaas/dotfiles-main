@@ -185,7 +185,7 @@ let g:lightline = {
       \              [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'obsession' ] ]
       \ },
       \ 'inactive': {
-      \   'left': [ [ 'filename', 'gitversion' ] ],
+      \   'left': [ [ 'filename', 'gitversion', 'modified' ] ],
       \ },
       \ 'component_function': {
       \   'obsession': 'LightlineObsession',
