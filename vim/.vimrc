@@ -110,7 +110,6 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/fzf', Cond(has('unix'), { 'dir': '~/.fzf', 'do': './install --all' })
 Plug 'junegunn/fzf.vim', Cond(has('unix'))
 
-Plug 'mhinz/vim-grepper'
 Plug 'junegunn/vim-easy-align'
 
 " LSP / completion / snippets
@@ -294,11 +293,6 @@ let g:sprunge_open_browser = 1
 " Projectionist
 let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/misc/projections.json'))))
 
-" Grepper
-let g:grepper = {}
-let g:grepper.tools = ['rg', 'grep', 'git']
-let g:grepper_jump = 1
-
 " Polyglot
 let g:polyglot_disabled = ['latex', 'dockerfile']
 
@@ -417,6 +411,10 @@ set tabstop=2 shiftwidth=2 softtabstop=2
 " Spelling
 set spelllang=en_us,de_20
 set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
+
+if executable('rg')
+  set grepprg=rg\ --hidden\ --vimgrep
+endif
 
 if !exists('g:gui_oni')
   augroup responsive_cursorline
@@ -540,14 +538,6 @@ nnoremap <leader>b  :Twiggy<cr>
 nnoremap <leader>B  :Twiggy<space>
 nnoremap <leader>gv :GV<cr>
 nnoremap <leader>gV :GV!<cr>
-
-" Grepper
-nmap gs <Plug>(GrepperOperator)
-xmap gs <Plug>(GrepperOperator)
-nnoremap <leader>gg :Grepper -tool rg<cr>
-nnoremap <leader>gv :Grepper -tool rg -side<cr>
-nnoremap <leader>gw :Grepper -tool rg -cword<cr>
-nnoremap <leader>*  :Grepper -tool rg -cword -noprompt -highlight<cr>
 
 " Easy align
 xmap ga <Plug>(EasyAlign)
@@ -744,9 +734,10 @@ autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#s
 " Miscellaneous {{{1
 
 " Highlight TODOs etc
-" TODO: Define regex for todos and notes a the beginning of this source and
-" use them to define two commands :Todo and :Note that use :Grepper to search
-" for them. Reuse the regexes below to highlight their occurences.
+" TODO: Define regex for todos and notes a the beginning of this
+" source and use them to define two commands :Todo and :Note that use
+" :grep to search for them. Reuse the regexes below to highlight their
+" occurences.
 if has('autocmd')
   if v:version > 701
     augroup highlight_todo
