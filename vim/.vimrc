@@ -49,15 +49,16 @@ endfunction
 
 " Basics {{{2
 
-Plug 'chriskempson/base16-vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'jamessan/vim-gnupg'
-Plug 'mattn/emmet-vim'
-Plug 'editorconfig/editorconfig-vim'
-
-Plug 'vim-scripts/dbext.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'chilicuil/vim-sprunge'
+Plug 'chriskempson/base16-vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'jamessan/vim-gnupg'
+Plug 'janko/vim-test'
+Plug 'mattn/emmet-vim'
+Plug 'sjl/gundo.vim'
+Plug 'vim-scripts/dbext.vim'
 
 " Navigation
 Plug 'majutsushi/tagbar'
