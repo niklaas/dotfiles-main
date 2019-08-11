@@ -36,9 +36,9 @@ endif
 
 " Plugins {{{1
 
-call plug#begin('$DOTVIM/plugged')
-
 " Prefix {{{2
+
+call plug#begin('$DOTVIM/plugged')
 
 " Conditional activation for vim-plug plugins
 " https://github.com/junegunn/vim-plug/wiki/tips#conditional-activation
@@ -55,9 +55,9 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jamessan/vim-gnupg'
 Plug 'janko/vim-test'
-Plug 'mattn/emmet-vim'
 Plug 'sjl/gundo.vim'
 Plug 'vim-scripts/dbext.vim'
+Plug 'mattn/emmet-vim'
 
 " close brackets et al automagically
 Plug 'jiangmiao/auto-pairs'
@@ -100,7 +100,7 @@ Plug 'tpope/vim-projectionist'
 " fugitive integrations
 Plug 'shumphrey/fugitive-gitlab.vim'
 
-" Git branches
+" Git integration
 Plug 'sodapopcan/vim-twiggy'
 Plug 'junegunn/gv.vim'
 
@@ -142,10 +142,6 @@ Plug 'ekalinin/Dockerfile.vim'
 " Polyglot
 Plug 'sheerun/vim-polyglot'
 
-" Elixir
-Plug 'slashmili/alchemist.vim'
-Plug 'elixir-editors/vim-elixir'
-
 " My own plugins {{{2
 
 " Test framework for development
@@ -168,13 +164,13 @@ runtime! ftplugin/man.vim
 
 " Plugin Configuration {{{1
 
-" Gutentags
+" Gutentags {{{2
 
 if executable('universal-ctags')
   let g:gutentags_ctags_executable = 'universal-ctags'
 endif
 
-" Lightline
+" Lightline {{{2
 let g:lightline = {
       \ 'colorscheme': 'base16',
       \ 'active': {
@@ -232,10 +228,10 @@ function! LightlineObsession()
   return l:status ==# '$' ? '$' : ''
 endfunction
 
-" Tmuxline
+" Tmuxline {{{2
 let g:tmuxline_powerline_separators = 0
 
-" Tagbar
+" Tagbar {{{2
 let g:tagbar_type_typescript = {                                                  
       \ 'ctagstype' : 'typescript',                                                           
       \ 'kinds': [                                                                     
@@ -267,16 +263,10 @@ let g:tagbar_type_rust = {
       \]
       \}
 
-" Prevent lines in https://git.io/fpET0 to be run and mingle with ctags for
-" rust. is because `vim-polyglot` loads `vim-rust` only partially.
-" Thus, `rust.ctags` is missing in the plugin folder. So, force use of custom
-" `$HOME/.ctags`.
-let g:rust_use_custom_ctags_defs = 1
-
-" Editorconfig
+" Editorconfig {{{2
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-" Emmet
+" Emmet {{{2
 
 " Don't use it in normal mode because default prefix <C-y> collides with
 " mapping for scrolling the view.
@@ -287,23 +277,27 @@ let g:user_emmet_mode = 'i'
 " have the feeling I never use it.
 let g:user_emmet_leader_key = '<C-j>'
 
-" Sprunge
+" Sprunge {{{2
 let g:sprunge_open_browser = 1
 
-" Projectionist
+" Projectionist {{{2
 let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/misc/projections.json'))))
 
-" Polyglot
+" Polyglot {{{2
 let g:polyglot_disabled = ['latex', 'dockerfile']
 
-" UltiSnips
+" Prevent lines in https://git.io/fpET0 to be run and mingle with ctags for
+" rust. is because `vim-polyglot` loads `vim-rust` only partially.
+" Thus, `rust.ctags` is missing in the plugin folder. So, force use of custom
+" `$HOME/.ctags`.
+let g:rust_use_custom_ctags_defs = 1
+
+" UltiSnips {{{2
 let g:UltiSnipsExpandTrigger='<c-e>'
 let g:UltiSnipsSnippetsDir = expand($DOTVIM . '/misc/UltiSnips')
 let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
 
-" Language aware plugins {{{2
-
-set omnifunc=lsp#complete
+" Language awareness (vim-ale and vim-lsp) {{{2
 
 " While vim-lsp is very powerful for providing LSP related features
 " such as 'go to definition', ALE offers a more comprehensive feature
@@ -352,7 +346,7 @@ let g:ale_sign_warning = '?'
 let g:ale_sign_error = '!'
 let g:ale_sign_info = 'o'
 
-" Settings {{{1
+" Vim settings {{{1
 
 " To load .vimrc files from current folder. To make sure that these are
 " secure, there is a `:set secure` at the of this file.
@@ -369,7 +363,6 @@ set incsearch
 set linebreak
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set modelines=5
-set mouse=a
 set nobackup
 set nojoinspaces
 set noshowmode
@@ -416,10 +409,12 @@ set tabstop=2 shiftwidth=2 softtabstop=2
 set spelllang=en_us,de_20
 set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
 
+" Grepping
 if executable('rg')
   set grepprg=rg\ --hidden\ --vimgrep
 endif
 
+" Oni specifics
 if !exists('g:gui_oni')
   augroup responsive_cursorline
     autocmd!
@@ -475,17 +470,11 @@ cnoremap <C-c> <ESC>
 " asyncomplete.vim
 imap <C-l> <Plug>(asyncomplete_force_refresh)
 
-" Jump to end of line
-inoremap <C-9> <C-o>$
-
-" Jump to beginning of line
-inoremap <C-0> <C-o>_
-
-nnoremap <space> viw
+nnoremap <space> @q
 nnoremap Y y$
 
 " Delete the buffer, leaving the window open. This overrides 'same as <Tab>'
-nnoremap <leader>- :bp\|bd #<cr>
+nnoremap <leader>/ :bp\|bd #<cr>
 nnoremap gb :ls<CR>:b 
 
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
@@ -496,7 +485,7 @@ nnoremap <leader>cf :let @+ = expand("%:t")<cr>
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
-" Yanks current inner paragraph and pastes below
+" Yanks current outer paragraph and pastes below
 nnoremap <leader>p yap}o<esc>P
 
 " Eases navigation between splits
@@ -537,29 +526,23 @@ nnoremap <leader>tp :TagbarTogglePause<cr>
 nnoremap <leader>o :Obsession<cr>
 nnoremap <leader>O :Obsession!<cr>
 
-" Git branches
-nnoremap <leader>b  :Twiggy<cr>
-nnoremap <leader>B  :Twiggy<space>
-nnoremap <leader>gv :GV<cr>
-nnoremap <leader>gV :GV!<cr>
-
 " Easy align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" Language servers
-nnoremap <leader>lh :LspHover<cr>
+" vim-lsp
+nnoremap <leader>lD :LspTypeDefinition<cr>
+nnoremap <leader>lF :LspDocumentFormat<cr>
+nnoremap <leader>lR :LspRename<cr>
 nnoremap <leader>lc :LspCodeAction<cr>
 nnoremap <leader>ld :LspDefinition<cr>
-nnoremap <leader>lD :LspTypeDefinition<cr>
+nnoremap <leader>lf :LspDocumentRangeFormat<cr>
+nnoremap <leader>lh :LspHover<cr>
+nnoremap <leader>ll :LspDocumentDiagnostics<cr>
 nnoremap <leader>lm :LspDocumentSymbol<cr>
 nnoremap <leader>lr :LspReferences<cr>
-nnoremap <leader>lR :LspRename<cr>
-nnoremap <leader>lf :LspDocumentRangeFormat<cr>
-nnoremap <leader>lF :LspDocumentFormat<cr>
-nnoremap <leader>ll :LspDocumentDiagnostics<cr>
 
-" Linting
+" vim-ale
 nmap <leader>ef <Plug>(ale_fix)
 nmap <leader>el <Plug>(ale_lint)
 nmap <leader>ed <Plug>(ale_detail)
@@ -590,7 +573,7 @@ endif
 " Abbreviations {{{1
 
 " Inserts timestamp (ISO compliant with colon in timezone)
-iabbrev aDT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
+iabbrev aDTZ <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
 
 " Expand %% to the current directory
 cabbrev <expr> %% expand('%:p:h')
