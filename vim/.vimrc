@@ -121,7 +121,6 @@ Plug 'prabirshrestha/asyncomplete-file.vim', Cond(!exists('g:gui_oni') && v:vers
 " Snippets
 Plug 'SirVer/ultisnips', Cond(!exists('g:gui_oni') && v:version >= 800 && has('python3'))
 Plug 'honza/vim-snippets', Cond(!exists('g:gui_oni') && v:version >= 800 && has('python3'))
-Plug 'prabirshrestha/asyncomplete-ultisnips.vim', Cond(!exists('g:gui_oni') && v:version >= 800 && has('python3'))
 
 Plug 'prabirshrestha/vim-lsp', Cond(!exists('g:gui_oni') && v:version >= 800)
 Plug 'prabirshrestha/asyncomplete-lsp.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
