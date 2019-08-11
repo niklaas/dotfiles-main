@@ -520,7 +520,6 @@ nnoremap <leader>fv :vertical sfind **/
 
 nnoremap <leader><leader> :FZF<cr>
 nnoremap <leader>. :Buffers<cr>
-nnoremap <leader>m :Lines<cr>
 
 " Abolish
 nnoremap <leader>ac :cdo S/
