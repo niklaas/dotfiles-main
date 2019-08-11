@@ -493,7 +493,7 @@ nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
 " Yanks current inner paragraph and pastes below
-nnoremap <leader>p yip}o<esc>P
+nnoremap <leader>p yap}o<esc>P
 
 " Eases navigation between splits
 nnoremap <C-J> <C-W><C-J>
