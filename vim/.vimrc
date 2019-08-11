@@ -49,7 +49,6 @@ endfunction
 
 " Basics {{{2
 
-Plug 'Raimondi/delimitMate'
 Plug 'chilicuil/vim-sprunge'
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -59,6 +58,9 @@ Plug 'janko/vim-test'
 Plug 'mattn/emmet-vim'
 Plug 'sjl/gundo.vim'
 Plug 'vim-scripts/dbext.vim'
+
+" close brackets et al automagically
+Plug 'jiangmiao/auto-pairs'
 
 " Navigation
 Plug 'majutsushi/tagbar'
@@ -271,10 +273,6 @@ let g:tagbar_type_rust = {
 " Thus, `rust.ctags` is missing in the plugin folder. So, force use of custom
 " `$HOME/.ctags`.
 let g:rust_use_custom_ctags_defs = 1
-
-" DelimitMate
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
 
 " Editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
