@@ -495,6 +495,7 @@ nnoremap <leader>ee :edit **/
 nnoremap <leader>es :split **/
 nnoremap <leader>ev :vsplit **/
 nnoremap <leader>en :next **/
+nnoremap <leader>et :edit %<.
 
 nnoremap <leader>ff :find **/
 nnoremap <leader>fs :sfind **/
