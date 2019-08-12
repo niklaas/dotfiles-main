@@ -366,6 +366,7 @@ set noshowmode
 set nowrap
 set number
 set pumheight=10
+set relativenumber
 set ruler
 set shortmess=catOT
 set showbreak=+
