@@ -482,8 +482,8 @@ nnoremap <leader>cf :let @+ = expand("%:t")<cr>
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
 
-" Yanks current outer paragraph and pastes below
-nnoremap <leader>p yap}o<esc>P
+" Yanks current outer paragraph and pastes above
+nnoremap <leader>p yapP
 
 " Eases navigation between splits
 nnoremap <C-J> <C-W><C-J>
