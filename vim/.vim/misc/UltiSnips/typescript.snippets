@@ -16,11 +16,9 @@ endsnippet
 
 snippet fgs "Field w/ getter and setter" mb
 private _${1:name}: ${2:type};
-
 public get $1(): $2 {
 	return this._$1;
 }
-
 public set $1(val: $2) {
 	this._$1 = val;
 }
