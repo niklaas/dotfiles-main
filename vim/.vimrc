@@ -379,6 +379,7 @@ set updatetime=1000
 set viminfo=%,'50,:100,<1000
 set visualbell
 set whichwrap=b,s
+set wildignorecase
 set wildmenu
 
 " Set locations of important directories
