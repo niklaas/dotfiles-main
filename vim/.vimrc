@@ -578,7 +578,18 @@ iabbrev aDTZ <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
 " Expand %% to the current directory
 cabbrev <expr> %% expand('%:p:h')
 
-" Filetype-specific autocmds {{{1
+" autocmds {{{1
+
+" automagic marks {{{2
+
+augroup automagic_marks
+  autocmd!
+  autocmd BufLeave *.css,*.scss normal! mC
+  autocmd BufLeave *.html       normal! mH
+  autocmd BufLeave *.ts         normal! mT
+augroup END
+
+" Filetype-specific autocmds {{{2
 "
 " This section includes autocomds that change settings and add mappings
 " depending on the filetype of the current plugin. I decided to place these
