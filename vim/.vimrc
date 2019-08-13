@@ -361,6 +361,7 @@ set linebreak
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set modelines=5
 set nobackup
+set nohlsearch
 set nojoinspaces
 set noshowmode
 set nowrap
