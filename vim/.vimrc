@@ -466,6 +466,17 @@ endif
 inoremap <C-c> <ESC>
 cnoremap <C-c> <ESC>
 
+" Allows incsearch highlighting for range commands
+"
+" For example, search for 'foo' upwards from cursor and move it to the
+" current position of the cursor:
+"
+"   ?foo$m
+"
+cnoremap $t <CR>:t''<CR>
+cnoremap $m <CR>:m''<CR>
+cnoremap $d <CR>:d<CR>``
+
 " asyncomplete.vim
 imap <C-l> <Plug>(asyncomplete_force_refresh)
 
