@@ -482,9 +482,6 @@ imap <C-l> <Plug>(asyncomplete_force_refresh)
 
 nnoremap <space> @q
 nnoremap Y y$
-
-" Delete the buffer, leaving the window open. This overrides 'same as <Tab>'
-nnoremap <leader>/ :bp\|bd #<cr>
 nnoremap gb :ls<CR>:b 
 
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
@@ -580,6 +577,10 @@ if has('nvim')
   tnoremap <C-[> <Esc>
   tnoremap <C-v><Esc> <Esc>
 endif
+
+" Commands {{{1
+
+command BD :bp\|bd #<cr>
 
 " Abbreviations {{{1
 
