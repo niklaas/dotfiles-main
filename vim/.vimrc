@@ -410,7 +410,7 @@ set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
 
 " Grepping
 if executable('rg')
-  set grepprg=rg\ --hidden\ --vimgrep
+  set grepprg=rg\ --vimgrep
 endif
 
 " Oni specifics
