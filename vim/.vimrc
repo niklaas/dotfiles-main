@@ -225,6 +225,10 @@ function! LightlineObsession()
   return l:status ==# '$' ? '$' : ''
 endfunction
 
+" Test {{{2
+
+let test#strategy='dispatch'
+
 " Tmuxline {{{2
 let g:tmuxline_powerline_separators = 0
 
