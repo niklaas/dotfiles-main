@@ -357,7 +357,7 @@ set autowrite
 set backspace=indent,eol,start
 set clipboard^=unnamed
 set cpoptions+=$
-set diffopt=internal,filler,algorithm:histogram
+set diffopt=internal,filler
 set gdefault
 set ignorecase
 set incsearch
