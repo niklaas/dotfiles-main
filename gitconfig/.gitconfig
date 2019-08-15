@@ -8,6 +8,8 @@
 	excludesfile = ~/.gitignore_global
 [merge]
 	tool = vimdiff
+[mergetool "vimdiff"]
+	cmd = $EDITOR -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [alias]
 	ad  = add
 	ap  = add --patch
@@ -47,8 +49,6 @@
 	review = !$EDITOR -p $(git files) +\"tabdo Gdiff $(git merge-base HEAD $REVIEW_BASE)\" +tabfirst
 	reviews = !$EDITOR -p +\"tabdo Gdiff $(git merge-base HEAD $REVIEW_BASE)\" +tabfirst
 	heatmap = !git log $(git merge-base HEAD \"$REVIEW_BASE\")..HEAD --pretty=format: --name-only | grep -v \"^$\" | sort | uniq -c | sort -rg
-	# Merge conflict resolution
-	solve = !$EDITOR $(git diff --name-status --diff-filter U | cut -f 2)
 [push]
 	default = current
 	followTags = true
