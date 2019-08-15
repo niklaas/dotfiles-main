@@ -10,6 +10,8 @@
 	tool = vimdiff
 [mergetool "vimdiff"]
 	cmd = $EDITOR -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[mergetool "fugitive"]
+	cmd = $EDITOR -f -c Gdiff! "$MERGED"
 [alias]
 	ad  = add
 	ap  = add --patch
