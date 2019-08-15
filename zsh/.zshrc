@@ -148,6 +148,21 @@ type ff | grep alias >/dev/null 2>&1 && unalias ff
 
 # Specials {{{1
 
+# Update $DISPLAY automagically
+if [ -n "$TMUX" ]; then
+    function refresh {
+        export DISPLAY="$(tmux show-environment | sed -n 's/^DISPLAY=//p')"
+    }
+else
+    function refresh {}
+fi
+
+function preexec {
+    refresh
+}
+
+# Others {{{2
+
 function my_sudo {
     while [[ $# > 0 ]]; do
         case "$1" in
