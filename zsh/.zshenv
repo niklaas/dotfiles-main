@@ -35,11 +35,6 @@ export GPG_TTY=$(tty)
 
 # EDITOR {{{1
 
-# While I do have the *feeling* that neovim does offer some advantages over
-# regular vim, I figured that I should stick to traditional vim in the
-# meantime. The main reason for this is that neovim does not support signing
-# commits an the command line.
-
 if [ -f ~/.local/bin/nvim -o -L ~/.local/bin/nvim ]
 then
     NVIM=~/.local/bin/nvim
