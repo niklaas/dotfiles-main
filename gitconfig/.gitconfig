@@ -34,6 +34,7 @@
 	lgs = log --stat
 	mg  = merge --no-ff
 	mgs = merge --squash
+	mt  = mergetool
 	pa  = !git remote | xargs -L1 git push --all
 	pl  = pull --rebase
 	ps  = push
