@@ -43,7 +43,10 @@ else
 fi
 alias nvim="${NVIM}"
 
-export EDITOR="${NVIM}"
+if [ "${NVIM}" != "" ]; then
+    alias vimdiff=nvim\ -d
+    export EDITOR="${NVIM}"
+fi
 
 # The variable is used by various git aliases to provide an intuitive interface
 # for doing code reviews on the command line. This is heavily inspired by
