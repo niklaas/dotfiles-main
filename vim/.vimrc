@@ -719,7 +719,7 @@ function! s:register_jls()
   if exists('g:jls_launcher_dir') && isdirectory(expand(g:jls_launcher_dir))
     call lsp#register_server({
           \ 'name': 'java-language-server',
-          \ 'cmd': {server_info->[&shell, &shellcmdflag, expand(g:jls_launcher_dir) . '/launcher --quiet']},
+          \ 'cmd': {server_info->[&shell, &shellcmdflag, expand(g:jls_launcher_dir) . '/lang_server_linux.sh --quiet']},
           \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'pom.xml'))},
           \ 'whitelist': ['java'],
           \ 'priority': 10,
