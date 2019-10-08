@@ -329,7 +329,7 @@ let g:ale_linters = {
       \ }
 let g:ale_fixers = {
       \   'javascript': [ 'prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
-      \   'html': [ 'trim_whitespace', 'remove_trailing_lines' ],
+      \   'html': [ 'prettier', 'trim_whitespace', 'remove_trailing_lines' ],
       \ }
 
 let g:ale_fix_on_save = 1
