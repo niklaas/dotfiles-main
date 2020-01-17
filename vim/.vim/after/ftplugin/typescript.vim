@@ -7,10 +7,8 @@ setlocal define=class\\s
 " applied.
 augroup ft_typescript_relative_imports
   au!
-  autocmd InsertEnter * let save_cwd = getcwd() | setlocal autochdir
-  autocmd InsertLeave * setlocal noautochdir | execute 'cd' fnameescape(save_cwd)
+  autocmd InsertEnter <buffer> let save_cwd = getcwd() | setlocal autochdir
+  autocmd InsertLeave <buffer> setlocal noautochdir | execute 'cd' fnameescape(save_cwd)
 augroup END
 
 UltiSnipsAddFiletypes javascript-jasmine-arrow
-
-let b:undo_ftplugin .= '|autocmd! ft_typescript_relative_imports'
