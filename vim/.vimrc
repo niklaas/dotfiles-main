@@ -545,16 +545,17 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " vim-lsp
-nnoremap <leader>lD :LspTypeDefinition<cr>
-nnoremap <leader>lF :LspDocumentFormat<cr>
-nnoremap <leader>lR :LspRename<cr>
-nnoremap <leader>lc :LspCodeAction<cr>
-nnoremap <leader>ld :LspDefinition<cr>
-nnoremap <leader>lf :LspDocumentRangeFormat<cr>
-nnoremap <leader>lh :LspHover<cr>
-nnoremap <leader>ll :LspDocumentDiagnostics<cr>
-nnoremap <leader>lm :LspDocumentSymbol<cr>
-nnoremap <leader>lr :LspReferences<cr>
+nnoremap <leader>lD  :LspTypeDefinition<cr>
+nnoremap <leader>lF  :LspDocumentFormat<cr>
+nnoremap <leader>lR  :LspRename<cr>
+nnoremap <leader>lc  :LspCodeAction<cr>
+nnoremap <leader>ld  :LspDefinition<cr>
+nnoremap <leader>lf  :LspDocumentRangeFormat<cr>
+nnoremap <leader>lh  :LspHover<cr>
+nnoremap <leader>ll  :LspDocumentDiagnostics<cr>
+nnoremap <leader>lm  :LspDocumentSymbol<cr>
+nnoremap <leader>lpd :LspPeekDefinition<cr>
+nnoremap <leader>lr  :LspReferences<cr>
 
 " vim-ale
 nmap <leader>ef <Plug>(ale_fix)
