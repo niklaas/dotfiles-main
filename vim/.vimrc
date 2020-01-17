@@ -492,6 +492,8 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 nnoremap <leader>cp :let @+ = expand("%")<cr>
 nnoremap <leader>cf :let @+ = expand("%:t")<cr>
+nnoremap <leader>cP :let @+ = expand("%")   . ':' . line('.') . ':' . col('.')<cr>
+nnoremap <leader>cF :let @+ = expand("%:t") . ':' . line('.') . ':' . col('.')<cr>
 
 nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
 nnoremap <leader>vs :source $MYVIMRC<cr>
