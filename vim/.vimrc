@@ -709,19 +709,19 @@ endif
 " This only works with georgewfraser/java-language-server and requires you to
 " specify the full path to its `dist/mac/bin` dir, e.g.:
 "
-"   let g:jls_launcher_dir = expand('/home/niklaas/git/java-language-server/dist/mac/bin')
+"   let g:jls_javac_launcher_dir = expand('/home/niklaas/git/java-language-server/dist/mac/bin')
 
 " for debugging
 " let g:lsp_log_verbose = 1
 " let g:lsp_log_file = expand('~/vim-lsp.log')
 " let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
-" This is wrappen in a function to check for `g:jls_launcher_dir`.
-function! s:register_jls()
-  if exists('g:jls_launcher_dir') && isdirectory(expand(g:jls_launcher_dir))
+" This is wrappened in a function to check for `g:jls_javac_launcher_dir`.
+function! s:register_java_ls_javac()
+  if exists('g:jls_javac_launcher_dir') && isdirectory(expand(g:jls_javac_launcher_dir))
     call lsp#register_server({
-          \ 'name': 'java-language-server',
-          \ 'cmd': {server_info->[&shell, &shellcmdflag, expand(g:jls_launcher_dir) . '/lang_server_linux.sh --quiet']},
+          \ 'name': 'java-ls-javac',
+          \ 'cmd': {server_info->[&shell, &shellcmdflag, expand(g:jls_javac_launcher_dir) . '/lang_server_linux.sh --quiet']},
           \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'pom.xml'))},
           \ 'whitelist': ['java'],
           \ 'priority': 10,
@@ -729,8 +729,35 @@ function! s:register_jls()
   endif
 endfunction
 
+function! s:register_java_ls_eclipse()
+  if exists('g:jls_eclipse_launcher') && exists('g:jls_eclipse_config') && isdirectory(expand(g:jls_eclipse_config)) && filereadable(expand(g:jls_eclipse_launcher))
+    call lsp#register_server({
+          \ 'name': 'java-ls-eclipse',
+          \ 'cmd': {server_info->[
+          \     'java',
+          \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+          \     '-Dosgi.bundles.defaultStartLevel=4',
+          \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
+          \     '-Dlog.level=ALL',
+          \     '-noverify',
+          \     '-Dfile.encoding=UTF-8',
+          \     '-Xmx1G',
+          \     '-jar',
+          \     expand(g:jls_eclipse_launcher),
+          \     '-configuration',
+          \     expand(g:jls_eclipse_config),
+          \     '-data',
+          \     getcwd()
+          \ ]},
+          \ 'whitelist': ['java'],
+          \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'pom.xml'))},
+          \ 'priority': 10,
+          \ })
+  endif
+endfunction
+
 if executable('java')
-  autocmd User lsp_setup call s:register_jls()
+  autocmd User lsp_setup call s:register_java_ls_eclipse()
 endif
 
 " Miscellaneous {{{1
