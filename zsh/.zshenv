@@ -53,8 +53,6 @@ fi
 # https://blog.jez.io/cli-code-review/.
 export REVIEW_BASE=master
 
-export MANPAGER="$EDITOR -c 'set filetype=man'"
-
 # Go {{{1
 if test -d /usr/local/go/bin
 then

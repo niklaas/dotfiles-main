@@ -163,6 +163,11 @@ function preexec {
 
 # Others {{{2
 
+function my_man {
+    $EDITOR +"Man $1|on"
+}
+alias man="my_man"
+
 function my_sudo {
     while [[ $# > 0 ]]; do
         case "$1" in
