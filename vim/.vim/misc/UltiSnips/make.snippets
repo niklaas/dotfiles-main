@@ -1,0 +1,5 @@
+snippet phony "phony target" b
+.PHONY : ${1:name}
+$1 :
+	$0
+endsnippet
