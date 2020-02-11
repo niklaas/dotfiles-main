@@ -21,6 +21,7 @@
 	chm = checkout master
 	co  = commit -v
 	coa = commit -v --amend
+	con = commit -v --no-verify
 	df  = diff
 	dfc = diff --compact-summary
 	dfw = diff --ignore-all-space
