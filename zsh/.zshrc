@@ -148,7 +148,7 @@ type ff | grep alias >/dev/null 2>&1 && unalias ff
 
 # Specials {{{1
 
-# Update $DISPLAY automagically
+# Update $DISPLAY automagically {{{2
 if [ -n "$TMUX" ]; then
     function refresh {
         export DISPLAY="$(tmux show-environment | sed -n 's/^DISPLAY=//p')"
