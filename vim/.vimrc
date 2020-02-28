@@ -388,6 +388,7 @@ set visualbell
 set whichwrap=b,s
 set wildignorecase
 set wildmenu
+set winheight=10
 
 " Set locations of important directories
 set backupdir=$DOTVIM/backup/
