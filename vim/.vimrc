@@ -326,6 +326,7 @@ let g:ale_linters_explicit = 1
 let g:ale_linters = {
       \   'scss': ['sasslint'],
       \   'vim': ['vint'],
+      \   'javascript': ['flow'],
       \ }
 let g:ale_fixers = {
       \   'javascript': [ 'prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
@@ -682,6 +683,21 @@ if executable('typescript-language-server')
           \ })
     autocmd FileType typescript setlocal omnifunc=lsp#complete
   augroup END
+endif
+
+" Flow:
+if executable('flow')
+  augroup vim_lsp_flow
+    " this one is which you're most likely to use?
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+          \ 'name': 'flow',
+          \ 'cmd': {server_info->['flow', 'lsp', '--from', 'vim-lsp']},
+          \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
+          \ 'whitelist': ['javascript', 'javascript.jsx'],
+          \ })
+    autocmd FileType javascript,javascript.jsx setlocal omnifunc=lsp#complete
+  augroup end
 endif
 
 " Elixir:
