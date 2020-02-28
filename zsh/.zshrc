@@ -161,6 +161,35 @@ function preexec {
     refresh
 }
 
+# did.md for taking notes {{{2
+
+function did() {
+    DIDDIR=~/notes
+    DIDFILE=$DIDDIR/$(date +%Y-%V).md
+
+    if [ ! -d "$DIDIR" ]; then
+        mkdir -p "$DIDDIR"
+    fi
+
+    if [ ! -f "$DIDFILE" ]; then
+        date +'# %F (%V-%u)' > $DIDFILE
+        echo "\n" >> $DIDFILE
+        $EDITOR +'normal G' +startinsert $DIDFILE
+
+        exit 0
+    fi
+
+    LAST_MODIFIED=$(stat -c %y "$DIDFILE")
+
+    if [ "${LAST_MODIFIED:0:10}" != "$(date +%F)" ]; then
+        echo >> $DIDFILE
+        date +'# %F (%V-%u)' > $DIDFILE
+    fi
+
+    echo "\n" >> $DIDFILE
+    $EDITOR +'normal G' +startinsert $DIDFILE
+}
+
 # Others {{{2
 
 function my_man {
