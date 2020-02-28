@@ -324,13 +324,16 @@ set completeopt=menuone,noinsert,noselect,preview
 " ALE
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
+      \   'javascript': ['flow'],
       \   'scss': ['sasslint'],
       \   'vim': ['vint'],
-      \   'javascript': ['flow'],
+      \   'zsh': ['shell', 'shellcheck'],
       \ }
 let g:ale_fixers = {
-      \   'javascript': [ 'prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
       \   'html': [ 'prettier', 'trim_whitespace', 'remove_trailing_lines' ],
+      \   'javascript': [ 'prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
+      \   'markdown': [ 'remove_trailing_lines' ],
+      \   'zsh': [ 'trim_whitespace', 'remove_trailing_lines' ],
       \ }
 
 let g:ale_fix_on_save = 1
