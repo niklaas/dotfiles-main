@@ -639,7 +639,7 @@ augroup end
 
 augroup filetype_netrw
   autocmd!
-  autocmd FileType netrw setlocal bufhidden=false
+  autocmd FileType netrw setlocal bufhidden=delete
 augroup END
 
 augroup filetype_rust
