@@ -642,6 +642,11 @@ augroup filetype_netrw
   autocmd FileType netrw setlocal bufhidden=delete
 augroup END
 
+augroup filetype_markdown
+  autocmd!
+  autocmd FileType markdown setlocal comments=b:>,fb:-,fb:*
+augroup END
+
 augroup filetype_rust
   autocmd FileType rust let b:ale_fixers = [ 'rustfmt' ] 
 augroup end
