@@ -198,7 +198,7 @@ function did() {
 
     if [ "${LAST_MODIFIED:0:10}" != "$(date +%F)" ]; then
         echo >> $DIDFILE
-        date +'# %F (%V-%u)' > $DIDFILE
+        date +'# %F (%V-%u)' >> $DIDFILE
     fi
 
     echo "\n" >> $DIDFILE
