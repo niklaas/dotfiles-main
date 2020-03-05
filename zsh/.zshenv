@@ -56,15 +56,6 @@ then
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 
-# TERMINAL {{{1
-if command -v uxterm >/dev/null 2>&1
-then
-    export TERMINAL="uxterm"
-elif command -v xterm >/dev/null 2>&1
-then
-    export TERMINAL="xterm"
-fi
-
 # Others {{{1
 export N_PREFIX=$HOME/n
 export ANSIBLE_NOCOWS=1
