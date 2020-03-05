@@ -254,4 +254,7 @@ fi
 # Source nvm installed by Macports on Mac OS
 test -f /opt/local/share/nvm/init-nvm.sh | source /opt/local/share/nvm/init-nvm.sh
 
+# Local configuration available?
+test -f ${HOME}/.zshrc.local && source ${HOME}/.zshrc.local
+
 # vim:set foldmethod=marker:
