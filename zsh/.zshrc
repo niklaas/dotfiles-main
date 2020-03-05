@@ -81,6 +81,9 @@ alias nv="nvim"
 alias a="apt"
 alias auu="sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y"
 
+command -v uctags >/dev/null && \
+    alias ctags=uctags
+
 alias d="dirs -v"
 
 alias dt="date +%Y%m%d_%H%M%S"
