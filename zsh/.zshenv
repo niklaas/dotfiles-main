@@ -14,8 +14,6 @@ export SHELL=$(command -v zsh)
 export HOSTNAME=$(hostname)
 export GPG_TTY=$(tty)
 
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-
 # EDITOR {{{1
 
 if [ -f ~/.local/bin/nvim -o -L ~/.local/bin/nvim ]

@@ -69,6 +69,8 @@ then
     bindkey '^N' vi-down-line-or-history
 fi
 
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
 # Aliases {{{1
 
 # Normal Aliases {{{2
