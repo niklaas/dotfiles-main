@@ -48,9 +48,6 @@ setopt inc_append_history_time
 # of a command with Alt-#.
 setopt interactivecomments
 
-# Local configuration available?
-test -f ${HOME}/.zshrc.local && source ${HOME}/.zshrc.local
-
 bindkey -v
 bindkey -v '^a' vi-beginning-of-line
 bindkey -v '^e' vi-end-of-line
@@ -253,5 +250,8 @@ then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Source nvm installed by Macports on Mac OS
+test -f /opt/local/share/nvm/init-nvm.sh | source /opt/local/share/nvm/init-nvm.sh
 
 # vim:set foldmethod=marker:
