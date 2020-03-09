@@ -48,6 +48,11 @@ setopt inc_append_history_time
 # of a command with Alt-#.
 setopt interactivecomments
 
+# Configuring the directory stack
+# See http://zsh.sourceforge.net/Intro/intro_6.html
+DIRSTACKSIZE=10
+setopt autopushd pushdminus pushdsilent pushdtohome
+
 bindkey -v
 bindkey -v '^a' vi-beginning-of-line
 bindkey -v '^e' vi-end-of-line
