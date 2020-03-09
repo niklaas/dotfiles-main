@@ -257,6 +257,9 @@ fi
 # Source nvm installed by Macports on Mac OS
 test -f /opt/local/share/nvm/init-nvm.sh | source /opt/local/share/nvm/init-nvm.sh
 
+# Source rbenv
+command -v rbenv >/dev/null && eval "$(rbenv init -)"
+
 # Local configuration available?
 test -f ${HOME}/.zshrc.local && source ${HOME}/.zshrc.local
 
