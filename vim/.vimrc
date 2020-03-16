@@ -112,22 +112,12 @@ Plug 'junegunn/fzf.vim', Cond(has('unix'))
 
 Plug 'junegunn/vim-easy-align'
 
-" LSP / completion / snippets
-Plug 'prabirshrestha/asyncomplete.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
-Plug 'prabirshrestha/async.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
-
 " Snippets
 Plug 'SirVer/ultisnips', Cond(!exists('g:gui_oni') && v:version >= 800 && has('python3'))
 Plug 'honza/vim-snippets', Cond(!exists('g:gui_oni') && v:version >= 800 && has('python3'))
 
-Plug 'prabirshrestha/vim-lsp', Cond(!exists('g:gui_oni') && v:version >= 800)
-Plug 'prabirshrestha/asyncomplete-lsp.vim', Cond(!exists('g:gui_oni') && v:version >= 800)
-
-" Snippet integration with language servers
-Plug 'thomasfaingnaert/vim-lsp-snippets'
-Plug 'thomasfaingnaert/vim-lsp-ultisnips'
-
 Plug 'w0rp/ale', Cond(v:version >= 800)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Syntax rules and filetype specific plugins {{{2
 
@@ -298,30 +288,8 @@ let g:UltiSnipsExpandTrigger='<c-e>'
 let g:UltiSnipsSnippetsDir = expand($DOTVIM . '/misc/UltiSnips')
 let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
 
-" Language awareness (vim-ale and vim-lsp) {{{2
 
-" While vim-lsp is very powerful for providing LSP related features
-" such as 'go to definition', ALE offers a more comprehensive feature
-" set in regard of linting/diagnostics. Thus, we disable these
-" features for vim-lsp.
-let g:lsp_signs_enabled = 0
-let g:lsp_diagnostics_echo_cursor = 0
-let g:lsp_virtual_text_enabled = 0
-let g:lsp_highlights_enabled = 0
-
-" That said, the following must be enabled for Code Actions to work.
-" Otherwise vim-lsp complains that no diagnostics could be found.
-let g:lsp_diagnostics_enabled = 1
-
-" Asyncomplete
-let g:asyncomplete_remove_duplicates = 0
-let g:asyncomplete_smart_completion = 0
-let g:asyncomplete_auto_popup = 0
-
-let g:asyncomplete_auto_completeopt = 0
-set completeopt=menuone,noinsert,noselect,preview
-
-" ALE
+" ALE {{{2
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
       \   'javascript': ['flow'],
@@ -341,8 +309,7 @@ let g:ale_open_list = 0
 let g:ale_list_window_size = 7
 
 " While ALE needs LSPs for linting, it should not use them for
-" anything else. So, in the following we disable those features
-" vim-lsp is responsible for.
+" anything else. So, in the following we disable those features.
 let g:ale_completion_enabled = 0
 
 let g:ale_set_highlights = 0
@@ -363,6 +330,7 @@ set clipboard^=unnamed
 set cpoptions+=$
 set diffopt=internal,filler
 set gdefault
+set hidden
 set ignorecase
 set incsearch
 set linebreak
@@ -374,6 +342,7 @@ set nohlsearch
 set nojoinspaces
 set noshowmode
 set nowrap
+set nowritebackup
 set number
 set pumheight=10
 set relativenumber
@@ -381,11 +350,12 @@ set ruler
 set shortmess=catOT
 set showbreak=+
 set showmatch
+set signcolumn=yes
 set smartcase
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set tags=./tags,./TAGS,tags,TAGS,../tags,../../tags,../../../tags,../../../../tags
 set undofile
-set updatetime=1000
+set updatetime=300
 set viminfo=%,'50,:100,<1000
 set visualbell
 set whichwrap=b,s
@@ -487,9 +457,6 @@ cnoremap $t <CR>:t''<CR>
 cnoremap $m <CR>:m''<CR>
 cnoremap $d <CR>:d<CR>``
 
-" asyncomplete.vim
-imap <C-l> <Plug>(asyncomplete_force_refresh)
-
 nnoremap <space> @q
 nnoremap Y y$
 nnoremap gb :ls<CR>:b 
@@ -550,18 +517,27 @@ nnoremap <leader>O :Obsession!<cr>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" vim-lsp
-nnoremap <leader>lD  :LspTypeDefinition<cr>
-nnoremap <leader>lF  :LspDocumentFormat<cr>
-nnoremap <leader>lR  :LspRename<cr>
-nnoremap <leader>lc  :LspCodeAction<cr>
-nnoremap <leader>ld  :LspDefinition<cr>
-nnoremap <leader>lf  :LspDocumentRangeFormat<cr>
-nnoremap <leader>lh  :LspHover<cr>
-nnoremap <leader>ll  :LspDocumentDiagnostics<cr>
-nnoremap <leader>lm  :LspDocumentSymbol<cr>
-nnoremap <leader>lpd :LspPeekDefinition<cr>
-nnoremap <leader>lr  :LspReferences<cr>
+" Coc.nvim
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+nmap <silent> <leader>ld <Plug>(coc-definition)
+nmap <silent> <leader>lt <Plug>(coc-type-definition)
+nmap <silent> <leader>li <Plug>(coc-implementation)
+nmap <silent> <leader>lr <Plug>(coc-references)
+nmap <silent> <leader>ln <Plug>(coc-rename)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+inoremap <silent><expr> <C-l> coc#refresh()
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " vim-ale
 nmap <leader>ef <Plug>(ale_fix)
@@ -672,119 +648,6 @@ augroup filetype_vimrc
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
-
-" Language support {{{1
-
-" Language servers {{{2
-
-" vint: -ProhibitAutocmdWithNoGroup
-
-" Typescript:
-if executable('typescript-language-server')
-  augroup vim_lsp_typescript
-    autocmd!
-    autocmd User lsp_setup call lsp#register_server({
-          \ 'name': 'typescript-language-server',
-          \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-          \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-          \ 'whitelist': ['typescript'],
-          \ 'priority': 10,
-          \ })
-    autocmd FileType typescript setlocal omnifunc=lsp#complete
-  augroup END
-endif
-
-" Flow:
-if executable('flow')
-  augroup vim_lsp_flow
-    " this one is which you're most likely to use?
-    autocmd!
-    autocmd User lsp_setup call lsp#register_server({
-          \ 'name': 'flow',
-          \ 'cmd': {server_info->['flow', 'lsp', '--from', 'vim-lsp']},
-          \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), '.flowconfig'))},
-          \ 'whitelist': ['javascript', 'javascript.jsx'],
-          \ })
-    autocmd FileType javascript,javascript.jsx setlocal omnifunc=lsp#complete
-  augroup end
-endif
-
-" Elixir:
-if executable('elixir-language-server')
-  autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'elixir-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'elixir-language-server']},
-        \ 'whitelist': ['elixir'],
-        \ 'priority': 10,
-        \ })
-endif
-
-" Rust:
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rls']},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'Cargo.toml'))},
-        \ 'whitelist': ['rust'],
-        \ 'priority': 10,
-        \ })
-endif
-
-" Java:
-"
-" This only works with georgewfraser/java-language-server and requires you to
-" specify the full path to its `dist/mac/bin` dir, e.g.:
-"
-"   let g:jls_javac_launcher_dir = expand('/home/niklaas/git/java-language-server/dist/mac/bin')
-
-" for debugging
-" let g:lsp_log_verbose = 1
-" let g:lsp_log_file = expand('~/vim-lsp.log')
-" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
-
-" This is wrappened in a function to check for `g:jls_javac_launcher_dir`.
-function! s:register_java_ls_javac()
-  if exists('g:jls_javac_launcher_dir') && isdirectory(expand(g:jls_javac_launcher_dir))
-    call lsp#register_server({
-          \ 'name': 'java-ls-javac',
-          \ 'cmd': {server_info->[&shell, &shellcmdflag, expand(g:jls_javac_launcher_dir) . '/lang_server_linux.sh --quiet']},
-          \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'pom.xml'))},
-          \ 'whitelist': ['java'],
-          \ 'priority': 10,
-          \ })
-  endif
-endfunction
-
-function! s:register_java_ls_eclipse()
-  if exists('g:jls_eclipse_launcher') && exists('g:jls_eclipse_config') && isdirectory(expand(g:jls_eclipse_config)) && filereadable(expand(g:jls_eclipse_launcher))
-    call lsp#register_server({
-          \ 'name': 'java-ls-eclipse',
-          \ 'cmd': {server_info->[
-          \     'java',
-          \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-          \     '-Dosgi.bundles.defaultStartLevel=4',
-          \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
-          \     '-Dlog.level=ALL',
-          \     '-noverify',
-          \     '-Dfile.encoding=UTF-8',
-          \     '-Xmx1G',
-          \     '-jar',
-          \     expand(g:jls_eclipse_launcher),
-          \     '-configuration',
-          \     expand(g:jls_eclipse_config),
-          \     '-data',
-          \     getcwd()
-          \ ]},
-          \ 'whitelist': ['java'],
-          \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'pom.xml'))},
-          \ 'priority': 10,
-          \ })
-  endif
-endfunction
-
-if executable('java')
-  autocmd User lsp_setup call s:register_java_ls_eclipse()
-endif
 
 " Miscellaneous {{{1
 
