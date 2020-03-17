@@ -195,8 +195,7 @@ function did() {
 
     if [ ! -f "$DIDFILE" ]; then
         date +'# %F (%V-%u)' > $DIDFILE
-        echo "\n" >> $DIDFILE
-        $EDITOR +'normal G' +startinsert $DIDFILE
+        $EDITOR +'normal G' $DIDFILE
 
         exit 0
     fi
@@ -208,8 +207,7 @@ function did() {
         date +'# %F (%V-%u)' >> $DIDFILE
     fi
 
-    echo "\n" >> $DIDFILE
-    $EDITOR +'normal G' +startinsert $DIDFILE
+    $EDITOR +'normal G' $DIDFILE
 }
 
 # Others {{{2
