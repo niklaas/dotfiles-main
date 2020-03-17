@@ -1,3 +1,4 @@
 {
-  "coc.preferences.diagnostic.displayByAle": true
+  "diagnostic.displayByAle": true,
+  "suggest.autoTrigger": "trigger"
 }
