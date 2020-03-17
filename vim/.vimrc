@@ -64,7 +64,6 @@ Plug 'jiangmiao/auto-pairs'
 
 " Navigation
 Plug 'majutsushi/tagbar'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'justinmk/vim-sneak'
 
 " Lightline
@@ -150,12 +149,6 @@ call plug#end()
 runtime! ftplugin/man.vim
 
 " Plugin Configuration {{{1
-
-" Gutentags {{{2
-
-if executable('universal-ctags')
-  let g:gutentags_ctags_executable = 'universal-ctags'
-endif
 
 " Lightline {{{2
 let g:lightline = {
