@@ -513,11 +513,15 @@ nmap ga <Plug>(EasyAlign)
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+nmap <silent> <leader>la <Plug>(coc-codeaction)
 nmap <silent> <leader>ld <Plug>(coc-definition)
-nmap <silent> <leader>lt <Plug>(coc-type-definition)
+nmap <silent> <leader>lf <Plug>(coc-fix-current)
 nmap <silent> <leader>li <Plug>(coc-implementation)
-nmap <silent> <leader>lr <Plug>(coc-references)
 nmap <silent> <leader>ln <Plug>(coc-rename)
+nmap <silent> <leader>lr <Plug>(coc-references)
+nmap <silent> <leader>lt <Plug>(coc-type-definition)
+
+nnoremap <silent> <leader>lo :<C-u>CocList outline<cr>i
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
