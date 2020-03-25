@@ -617,6 +617,11 @@ augroup END
 augroup filetype_markdown
   autocmd!
   autocmd FileType markdown setlocal comments=b:>,fb:-,fb:* textwidth=80
+  " The following fixes additional indentation in the subsequent lines of
+  " lists
+  "
+  " https://github.com/plasticboy/vim-markdown/issues/126#issuecomment-485579068
+  autocmd FileType markdown setlocal indentexpr=
 augroup END
 
 augroup filetype_rust
