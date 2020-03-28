@@ -616,7 +616,7 @@ augroup END
 
 augroup filetype_markdown
   autocmd!
-  autocmd FileType markdown setlocal comments=b:>,fb:-,fb:* textwidth=80
+  autocmd FileType markdown setlocal comments=b:>,fb:-,fb:* textwidth=80 fo+=c
   " The following fixes additional indentation in the subsequent lines of
   " lists
   "
