@@ -313,10 +313,6 @@ let g:ale_sign_info = 'o'
 
 " Vim settings {{{1
 
-" To load .vimrc files from current folder. To make sure that these are
-" secure, there is a `:set secure` at the of this file.
-set exrc
-
 set autowrite
 set backspace=indent,eol,start
 set clipboard^=unnamed
@@ -731,13 +727,16 @@ highlight ALEErrorSign ctermfg=1 ctermbg=18
 " Bar:
 "
 
+" Project-specifics {{{1
+
+augroup project_specifics
+  " this one is which you're most likely to use?
+  autocmd FileType html,*/mk-site/* let b:ale_fixers = []
+augroup end
+
 " .vimrc.local {{{1
 
 " Allows to override settings above for machine specifics
 if filereadable(expand('$HOME/.vimrc.local'))
   execute 'source ' . '$HOME/.vimrc.local'
 endif
-
-" Not to trust any other .vimrc file loaded via `:set exrc` at the beginning
-" of this file.
-set secure
