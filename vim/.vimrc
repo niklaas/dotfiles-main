@@ -99,8 +99,6 @@ Plug 'tpope/vim-projectionist'
 " fugitive integrations
 Plug 'shumphrey/fugitive-gitlab.vim'
 
-" Git integration
-Plug 'sodapopcan/vim-twiggy'
 Plug 'junegunn/gv.vim'
 
 " Fuzzy finding
