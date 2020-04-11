@@ -186,7 +186,7 @@ function preexec {
 # did.md for taking notes {{{2
 
 function did() {
-    DIDDIR=~/notes
+    DIDDIR=~/notes${1+-$1}
     DIDFILE=$DIDDIR/$(date +%Y-%V).md
 
     if [ ! -d "$DIDIR" ]; then
