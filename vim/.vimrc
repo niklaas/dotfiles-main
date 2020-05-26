@@ -519,6 +519,7 @@ nmap <silent> <leader>lr <Plug>(coc-references)
 nmap <silent> <leader>lt <Plug>(coc-type-definition)
 
 nnoremap <silent> <leader>lo :<C-u>CocList outline<cr>i
+nnoremap <silent> <leader>ls :<C-u>CocList symbols<cr>
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
