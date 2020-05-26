@@ -21,6 +21,10 @@ then
     echo "install ncurses-term"
 fi
 
+if [ ! -d ~/.local/bin ]; then
+    mkdir -p ~/.local/bin
+fi
+
 # General {{{1
 
 typeset -U path
