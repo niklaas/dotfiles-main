@@ -532,6 +532,9 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " vim-ale
 nmap <leader>ef <Plug>(ale_fix)
 nmap <leader>el <Plug>(ale_lint)
