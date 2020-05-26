@@ -7,4 +7,6 @@ zsh-users/zsh-completions
 mafredri/zsh-async
 sindresorhus/pure
 
+agkozak/zsh-z
+
 lukechilds/zsh-nvm  # Node Version Manager
