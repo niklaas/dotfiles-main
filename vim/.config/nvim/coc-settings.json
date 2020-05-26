@@ -1,5 +1,8 @@
 {
   "diagnostic.displayByAle": true,
   "suggest.autoTrigger": "trigger",
+  "suggest.enablePreview": true,
+  "suggest.enablePreselect": true,
+  "suggest.noselect": false,
   "typescript.preferences.importModuleSpecifier": "relative"
 }
