@@ -287,12 +287,14 @@ let g:ale_linters = {
       \   'scss': ['sasslint'],
       \   'vim': ['vint'],
       \   'zsh': ['shell', 'shellcheck'],
+      \   'terraform': ['terraform']
       \ }
 let g:ale_fixers = {
       \   'html': [ 'prettier', 'trim_whitespace', 'remove_trailing_lines' ],
       \   'javascript': [ 'prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
       \   'markdown': [ 'remove_trailing_lines' ],
       \   'zsh': [ 'trim_whitespace', 'remove_trailing_lines' ],
+      \   'terraform': ['terraform']
       \ }
 
 let g:ale_fix_on_save = 1
