@@ -170,6 +170,15 @@ type ff | grep alias >/dev/null 2>&1 && unalias ff
 
 # Specials {{{1
 
+# ix.io {{{2
+
+if ! command -v ix >/dev/null 2>&1
+then
+    echo 'Downloading client for ix.io...'
+    curl -sS ix.io/client > ~/.local/bin/ix
+    chmod +x ~/.local/bin/ix
+fi
+
 # Update $DISPLAY automagically {{{2
 if [ -n "$TMUX" ]; then
     function refresh {

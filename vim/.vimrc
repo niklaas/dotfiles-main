@@ -49,7 +49,6 @@ endfunction
 
 " Basics {{{2
 
-Plug 'chilicuil/vim-sprunge'
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
@@ -259,9 +258,6 @@ let g:user_emmet_mode = 'i'
 " have the feeling I never use it.
 let g:user_emmet_leader_key = '<C-j>'
 
-" Sprunge {{{2
-let g:sprunge_open_browser = 1
-
 " Projectionist {{{2
 let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/misc/projections.json'))))
 
@@ -462,6 +458,8 @@ nnoremap <leader>vs :source $MYVIMRC<cr>
 
 " Yanks current outer paragraph and pastes above
 nnoremap <leader>p yapP
+
+nnoremap <leader>i :w !xi<cr>
 
 " Eases navigation between splits
 nnoremap <C-J> <C-W><C-J>
