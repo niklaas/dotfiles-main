@@ -540,10 +540,6 @@ nmap <leader>er <Plug>(ale_reset)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 
-" Sprunge (disable mapping)
-nmap <Plug>DisableSprungeMapping <Plug>Sprunge
-xmap <Plug>DisableSprungeMapping <Plug>Sprunge
-
 " UlitSnips
 nnoremap <leader>ue :UltiSnipsEdit<cr>
 
