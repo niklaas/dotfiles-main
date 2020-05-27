@@ -582,6 +582,7 @@ augroup automagic_marks
   autocmd BufLeave *.html       normal! mH
   autocmd BufLeave *.ts         normal! mT
   autocmd BufLeave *.js         normal! mS
+  autocmd BufLeave *.java       normal! mS
 augroup END
 
 " Filetype-specific autocmds {{{2
