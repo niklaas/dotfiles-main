@@ -487,6 +487,10 @@ nnoremap <leader>ac :cdo S/
 nnoremap <leader>ar :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
 nnoremap <leader>as :S/
 
+" Sneak
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
+
 " Tagbar
 nnoremap <leader>tt :TagbarToggle<cr>
 nnoremap <leader>to :TagbarOpen fj<cr>
