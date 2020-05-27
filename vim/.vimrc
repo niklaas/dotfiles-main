@@ -306,7 +306,7 @@ let g:ale_sign_info = 'o'
 
 set autowrite
 set backspace=indent,eol,start
-set clipboard^=unnamed
+set clipboard^=unnamedplus
 set cpoptions+=$
 set diffopt=internal,filler
 set gdefault
