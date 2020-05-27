@@ -252,11 +252,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " mapping for scrolling the view.
 let g:user_emmet_mode = 'i'
 
-" Overrides vim's default mapping <C-j> which is the same as <NL> in
-" insert mode though. I have not found out what <NL> is for yet, but I
-" have the feeling I never use it.
-let g:user_emmet_leader_key = '<C-j>'
-
 " Projectionist {{{2
 let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/misc/projections.json'))))
 
