@@ -560,7 +560,9 @@ endif
 
 " Commands {{{1
 
-command BD :bp\|bd #<cr>
+if !exists(':BD')
+  command BD :bp\|bd #<cr>
+endif
 
 " Abbreviations {{{1
 
