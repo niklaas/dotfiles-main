@@ -453,7 +453,10 @@ nnoremap <leader>vs :source $MYVIMRC<cr>
 " Yanks current outer paragraph and pastes above
 nnoremap <leader>p yapP
 
-nnoremap <leader>i :w !xi<cr>
+if executable('xi')
+  nnoremap <leader>i :w !xi<cr>
+  vnoremap <leader>i :w !xi<cr>
+endif
 
 " Eases navigation between splits
 nnoremap <C-J> <C-W><C-J>
