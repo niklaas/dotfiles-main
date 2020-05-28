@@ -136,13 +136,11 @@ alias -g F="| fzf"
 alias -g G="| grep -i"
 alias -g H="| head"
 alias -g L="| less"
+alias -g P="| parallel"
 alias -g S="| sort"
-alias -g SV="| sort -V"
 alias -g T="| tail"
 alias -g X="| xargs"
-
-alias -g V="\$(xclip -out -selection primary)"
-alias -g P="\$(xclip -out -selection clipboard)"
+alias -g Y="| yank"
 
 # Functions {{{2
 
