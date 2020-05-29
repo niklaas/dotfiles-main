@@ -155,7 +155,8 @@ let g:lightline = {
       \             [ 'gitdiff' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
-      \              [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok', 'obsession' ] ]
+      \              [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
+      \              [ 'obsession', 'cwd' ] ]
       \ },
       \ 'inactive': {
       \   'left': [ [ 'filename', 'gitversion', 'modified' ] ],
@@ -163,6 +164,7 @@ let g:lightline = {
       \ 'component_function': {
       \   'obsession': 'LightlineObsession',
       \   'gitversion': 'GitVersion',
+      \   'cwd': 'Cwd',
       \ },
       \ 'component_expand': {
       \   'linter_checking': 'lightline#ale#checking',
@@ -202,6 +204,17 @@ endfunction
 function! LightlineObsession()
   let l:status = strpart(ObsessionStatus(), 1, 1)
   return l:status ==# '$' ? '$' : ''
+endfunction
+
+function! Cwd()
+  " TODO: splitting does not work on Windows with '\'
+  let root_dir_as_list = split(getcwd(), '/')[-1:]
+
+  if len(root_dir_as_list) ==# 1
+    return root_dir_as_list[0]
+  endif
+
+  return ''
 endfunction
 
 " Test {{{2
