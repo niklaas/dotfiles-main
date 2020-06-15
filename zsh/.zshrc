@@ -125,7 +125,8 @@ alias ra="rsync -a"
 
 alias rs="rsync"
 alias srn="ssh rsync.net"
-alias tree="tree --charset=ascii"
+
+alias t="tree --charset=ascii"
 
 alias sst="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=QUIET"
 
