@@ -98,6 +98,7 @@ Plug 'tpope/vim-projectionist'
 
 " fugitive integrations
 Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'tpope/vim-rhubarb'  " GitHub
 
 Plug 'junegunn/gv.vim'
 
