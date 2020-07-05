@@ -763,8 +763,7 @@ highlight ALEErrorSign ctermfg=1 ctermbg=18
 " Project-specifics {{{1
 
 augroup project_specifics
-  " this one is which you're most likely to use?
-  autocmd FileType html,*/mk-site/* let b:ale_fixers = []
+  autocmd FileType */mk-site/*.html let b:ale_fixers = []
 augroup end
 
 " .vimrc.local {{{1
