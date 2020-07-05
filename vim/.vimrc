@@ -457,7 +457,7 @@ cnoremap $t <CR>:t''<CR>
 cnoremap $m <CR>:m''<CR>
 cnoremap $d <CR>:d<CR>``
 
-nnoremap <space> @q
+nnoremap <leader><space> @q
 nnoremap Y y$
 nnoremap gb :ls<CR>:b 
 
