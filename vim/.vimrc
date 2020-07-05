@@ -56,6 +56,8 @@ Plug 'jamessan/vim-gnupg'
 Plug 'sjl/gundo.vim'
 Plug 'vim-scripts/dbext.vim'
 Plug 'mattn/emmet-vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'skywind3000/gutentags_plus'
 
 " close brackets et al automagically
 Plug 'jiangmiao/auto-pairs'
@@ -145,6 +147,10 @@ call plug#end()
 runtime! ftplugin/man.vim
 
 " Plugin Configuration {{{1
+
+" Gutentags {{{2
+let g:gutentags_plus_nomap = 1
+let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git']
 
 " Lightline {{{2
 let g:lightline = {
@@ -596,6 +602,11 @@ augroup automagic_marks
   autocmd BufLeave *.ts         normal! mT
   autocmd BufLeave *.js         normal! mS
   autocmd BufLeave *.java       normal! mS
+augroup END
+
+augroup filename_MERGEREQU_EDITMSG
+  autocmd!
+  autocmd BufEnter .git/MERGEREQ_EDITMSG set filetype=gitcommit
 augroup END
 
 " Filetype-specific autocmds {{{2
