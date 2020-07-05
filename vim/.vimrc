@@ -585,6 +585,10 @@ if !exists(':BD')
   command BD :bp\|bd #<cr>
 endif
 
+if !exists(':BW')
+  command BW :bp\|bw #<cr>
+endif
+
 " Abbreviations {{{1
 
 " Inserts timestamp (ISO compliant with colon in timezone)
