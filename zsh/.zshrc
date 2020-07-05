@@ -21,6 +21,12 @@ then
     echo "install ncurses-term"
 fi
 
+if ! command -v starship >/dev/null 2>&1; then
+    echo "starship is not installed"
+    echo "please install it otherwise you will"
+    echo "get an ugly prompt"
+fi
+
 if [ ! -d ~/.local/bin ]; then
     mkdir -p ~/.local/bin
 fi
@@ -277,5 +283,7 @@ command -v rbenv >/dev/null && eval "$(rbenv init -)"
 
 # Local configuration available?
 test -f ${HOME}/.zshrc.local && source ${HOME}/.zshrc.local
+
+eval "$(starship init zsh)"
 
 # vim:set foldmethod=marker:
