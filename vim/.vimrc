@@ -271,6 +271,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " Don't use it in normal mode because default prefix <C-y> collides with
 " mapping for scrolling the view.
 let g:user_emmet_mode = 'i'
+let g:user_emmet_leader_key = '<C-q>'
 
 " Projectionist {{{2
 let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/misc/projections.json'))))
