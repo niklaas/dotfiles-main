@@ -1,6 +1,6 @@
 # Init {{{1
 
-# Plugins {{2
+# Plugins {{{2
 if command -v antibody >/dev/null 2>&1
 then
     # Fixes for oh-my-zsh, see https://github.com/getantibody/antibody/issues/218
@@ -13,7 +13,7 @@ else
     echo 'Please install antibody.'
 fi
 
-# Checks {{2
+# Checks {{{2
 if ! find /usr/share/terminfo -type f -name tmux-256color >/dev/null
 then
     echo "terminfo tmux-256color probably not available"
