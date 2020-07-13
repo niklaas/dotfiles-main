@@ -47,6 +47,7 @@
 	spo = stash pop
 	st  = status
 	su  = submodule update --recursive --remote
+	browse = "!browse() { $EDITOR +'Gbrowse! $0 |q' ;}; browse"
 	# Code Reviews:
 	files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
 	stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
