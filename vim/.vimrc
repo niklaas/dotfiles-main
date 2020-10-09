@@ -125,6 +125,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'ekalinin/Dockerfile.vim'
 
 " Polyglot
+let g:polyglot_disabled = ['latex', 'dockerfile']
 Plug 'sheerun/vim-polyglot'
 
 " My own plugins {{{2
@@ -277,7 +278,6 @@ let g:user_emmet_leader_key = '<C-q>'
 let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/misc/projections.json'))))
 
 " Polyglot {{{2
-let g:polyglot_disabled = ['latex', 'dockerfile']
 
 " Prevent lines in https://git.io/fpET0 to be run and mingle with ctags for
 " rust. is because `vim-polyglot` loads `vim-rust` only partially.
