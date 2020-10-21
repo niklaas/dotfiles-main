@@ -592,7 +592,8 @@ endif
 " Abbreviations {{{1
 
 " Inserts timestamp (ISO compliant with colon in timezone)
-iabbrev aDTZ <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
+iabbrev aT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
+iabbrev aD <C-R>=strftime("%F (%V-%u)")<CR>
 
 " Expand %% to the current directory
 cabbrev <expr> %% expand('%:p:h')
