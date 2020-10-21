@@ -232,6 +232,17 @@ function did() {
     $EDITOR +'normal G' $DIDFILE
 }
 
+function sketch() {
+    SKETCHDIR=~/notes${1+-$1}
+    SKETCHFILE=$SKETCHDIR/sketch.md
+
+    if [ ! -d "$DIDIR" ]; then
+        mkdir -p "$DIDDIR"
+    fi
+
+    $EDITOR +'normal G' $SKETCHFILE
+}
+
 # Others {{{2
 
 function my_man {
