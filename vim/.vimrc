@@ -304,6 +304,8 @@ let g:ale_linters = {
 let g:ale_fixers = {
       \   'html': [ 'prettier', 'trim_whitespace', 'remove_trailing_lines' ],
       \   'javascript': [ 'prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
+      \   'typescriptreact': [ 'prettier' ],
+      \   'json': [ 'prettier' ],
       \   'markdown': [ 'remove_trailing_lines' ],
       \   'zsh': [ 'trim_whitespace', 'remove_trailing_lines' ],
       \   'terraform': ['terraform']
