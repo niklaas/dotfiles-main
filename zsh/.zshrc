@@ -42,6 +42,7 @@ autoload -U zmv  # zsh's bulk renaming
 autoload -U is-at-least
 autoload -U compdef
 autoload -U zcalc
+autoload -U edit-command-line
 
 autoload -Uz compinit
 compinit
