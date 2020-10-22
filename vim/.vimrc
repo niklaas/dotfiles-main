@@ -231,6 +231,8 @@ let test#strategy='dispatch'
 
 " Tmuxline {{{2
 let g:tmuxline_powerline_separators = 0
+let g:tmuxline_theme = 'lightline'
+let g:tmuxline_preset = 'minimal'
 
 " Tagbar {{{2
 let g:tagbar_type_typescript = {                                                  
