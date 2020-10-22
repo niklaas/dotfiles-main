@@ -7,11 +7,9 @@
 	filemode = false
 	excludesfile = ~/.gitignore_global
 [merge]
-	tool = fugitive
+	tool = vimdiff
 [mergetool "vimdiff"]
-	cmd = $EDITOR -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
-[mergetool "fugitive"]
-	cmd = $EDITOR -f -c 'Git mergetool' "$MERGED"
+	cmd = $EDITOR -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J' -c 'Git! mergetool' -c 'cc|cl'
 [alias]
 	ad  = add
 	ap  = add --patch
