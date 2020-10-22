@@ -616,9 +616,9 @@ augroup automagic_marks
   autocmd!
   autocmd BufLeave *.css,*.scss normal! mC
   autocmd BufLeave *.html       normal! mH
-  autocmd BufLeave *.ts         normal! mT
-  autocmd BufLeave *.js         normal! mS
-  autocmd BufLeave *.java       normal! mS
+  autocmd BufLeave *.ts,*.tsx   normal! mT
+  autocmd BufLeave *.js,*.jsx   normal! mS
+  autocmd BufLeave *.java       normal! mJ
 augroup END
 
 augroup filename_MERGEREQU_EDITMSG
