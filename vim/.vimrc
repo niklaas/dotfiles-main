@@ -316,7 +316,8 @@ let g:ale_fixers = {
       \   'json': [ 'prettier' ],
       \   'markdown': [ 'remove_trailing_lines' ],
       \   'zsh': [ 'trim_whitespace', 'remove_trailing_lines' ],
-      \   'terraform': ['terraform']
+      \   'terraform': ['terraform'],
+      \   'scss': ['prettier']
       \ }
 
 let g:ale_fix_on_save = 1
@@ -666,11 +667,6 @@ augroup END
 
 augroup filetype_rust
   autocmd FileType rust let b:ale_fixers = [ 'rustfmt' ] 
-augroup end
-
-augroup filetype_scss
-  autocmd!
-  autocmd FileType scss let b:ale_fixers = [ 'prettier' ]
 augroup end
 
 augroup filetype_sql
