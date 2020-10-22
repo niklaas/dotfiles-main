@@ -303,8 +303,8 @@ let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
       \   'java': ['javac'],
-      \   'javascript': ['flow'],
-      \   'scss': ['sasslint'],
+      \   'javascript': ['flow', 'eslint'],
+      \   'scss': ['stylelint'],
       \   'vim': ['vint'],
       \   'zsh': ['shell', 'shellcheck'],
       \   'terraform': ['terraform']
