@@ -276,6 +276,12 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:user_emmet_mode = 'i'
 let g:user_emmet_leader_key = '<C-q>'
 
+let g:user_emmet_settings = {
+\   'jsx': {
+\     'attribute_name': { 'class': 'class' }
+\   }
+\ }
+
 " Projectionist {{{2
 let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/misc/projections.json'))))
 
