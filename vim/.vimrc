@@ -753,13 +753,6 @@ if !has('nvim')
   endif
 endif
 
-" Appearance {{{2
-
-highlight Comment cterm=italic
-
-highlight ALEErrorSign ctermfg=1 ctermbg=18
-
-" TODO: Find out why every sentence-case word at the beginning of a comment
 " followed by a colon isn't italic e.g.,
 "
 "   Foo:
