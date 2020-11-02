@@ -299,4 +299,8 @@ test -f ${HOME}/.zshrc.local && source ${HOME}/.zshrc.local
 
 eval "$(starship init zsh)"
 
+# Sourcing {{{2
+
+source <(kubectl completion zsh)
+
 # vim:set foldmethod=marker:
