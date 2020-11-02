@@ -44,6 +44,7 @@
 	spo = stash pop
 	st  = status
 	su  = submodule update --recursive --remote
+  wt  = worktree
   # custom commands:
 	ig  = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 	browse = "!browse() { $EDITOR +\"Gbrowse! $@ |q\" ;}; browse"
