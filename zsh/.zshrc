@@ -33,11 +33,6 @@ fi
 
 # General {{{1
 
-typeset -U path
-path=(~/.local/bin ~/go/bin ~/n/bin ~/.cargo/bin /snap/bin /opt/local/bin /opt/local/libexec/gnubin $path)
-typeset -U fpath
-fpath=(~/.local/share/zsh/functions/Completion $fpath)
-
 autoload -U zmv  # zsh's bulk renaming
 autoload -U is-at-least
 autoload -U compdef

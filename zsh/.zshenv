@@ -1,3 +1,9 @@
+# PATH
+typeset -U path
+path=(~/.local/bin ~/go/bin ~/n/bin ~/.cargo/bin /snap/bin /opt/local/bin /opt/local/libexec/gnubin $path)
+typeset -U fpath
+fpath=(~/.local/share/zsh/functions/Completion $fpath)
+
 # Environment variables {{{2
 
 # Locale specific
