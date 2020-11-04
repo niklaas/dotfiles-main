@@ -170,6 +170,7 @@ let g:lightline = {
       \   'obsession': 'LightlineObsession',
       \   'gitversion': 'GitVersion',
       \   'cwd': 'Cwd',
+      \   'git_branch': 'FugitiveHead',
       \ },
       \ 'component_expand': {
       \   'linter_checking': 'lightline#ale#checking',
@@ -186,6 +187,9 @@ let g:lightline = {
       \   'linter_ok': 'middle',
       \   'gitdiff': 'middle',
       \ },
+      \ 'tabline': {
+      \   'right': [ [ 'git_branch' ] ]
+      \ }
       \ }
 
 let g:lightline#ale#indicator_checking = '...'
