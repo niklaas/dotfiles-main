@@ -590,7 +590,7 @@ if has('nvim')
 
   augroup term_insert
     autocmd!
-    autocmd BufEnter term://* startinsert
+    autocmd TermOpen term://* startinsert
   augroup END
 endif
 
