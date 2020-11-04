@@ -56,14 +56,11 @@ Plug 'jamessan/vim-gnupg'
 Plug 'sjl/gundo.vim'
 Plug 'vim-scripts/dbext.vim'
 Plug 'mattn/emmet-vim'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'skywind3000/gutentags_plus'
 
 " close brackets et al automagically
 Plug 'jiangmiao/auto-pairs'
 
 " Navigation
-Plug 'majutsushi/tagbar'
 Plug 'justinmk/vim-sneak'
 
 " Lightline
