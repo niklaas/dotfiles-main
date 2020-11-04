@@ -581,10 +581,17 @@ if has('nvim')
   tnoremap <C-K> <c-\><c-n><c-w>k
   tnoremap <C-L> <c-\><c-n><c-w>l
 
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <C-c> <C-\><C-n>
-  tnoremap <C-[> <Esc>
-  tnoremap <C-v><Esc> <Esc>
+  let $GIT_EDITOR = 'nvr -cc split --remote-wait'
+
+  augroup nvr_git
+    autocmd!
+    autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+  augroup END
+
+  augroup term_insert
+    autocmd!
+    autocmd BufEnter term://* startinsert
+  augroup END
 endif
 
 " Commands {{{1
