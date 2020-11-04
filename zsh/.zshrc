@@ -46,6 +46,8 @@ then
     ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
 
     source <(antibody init)
+    export NVM_LAZY_LOAD=true
+    export NVM_LAZY_LOAD_EXTRA_COMMANDS=('e' 'vim' 'nvim')
     antibody bundle < ~/.zsh_plugins.txt
 else
     echo 'Please install antibody.'
