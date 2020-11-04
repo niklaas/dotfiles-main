@@ -153,7 +153,7 @@ let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'git
 
 " Lightline {{{2
 let g:lightline = {
-      \ 'colorscheme': 'base16',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'filename', 'gitversion', 'readonly', 'modified' ],
