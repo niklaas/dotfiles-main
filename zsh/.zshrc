@@ -162,7 +162,6 @@ alias pc="pass -c"
 alias pg="pwgen -ys"
 
 alias ra="rsync -a"
-
 alias rs="rsync"
 alias srn="ssh rsync.net"
 
