@@ -218,7 +218,8 @@ function did() {
         exit 0
     fi
 
-    LAST_MODIFIED=$(stat -c %y "$DIDFILE")
+    # is `stat -c` on linux operating systems
+    LAST_MODIFIED=$(stat -f %y "$DIDFILE")
 
     if [ "${LAST_MODIFIED:0:10}" != "$(date +%F)" ]; then
         echo >> $DIDFILE
