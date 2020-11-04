@@ -32,17 +32,10 @@ fi
 
 # EDITOR {{{2
 
-if [ -f ~/.local/bin/nvim -o -L ~/.local/bin/nvim ]
-then
-    NVIM=~/.local/bin/nvim
-else
-    NVIM=nvim
-fi
-alias nvim="${NVIM}"
+export VISUAL=nvim
 
-if [ "${NVIM}" != "" ]; then
-    alias vimdiff=nvim\ -d
-    export EDITOR="${NVIM}"
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+  export VISUAL=nvr
 fi
 
 # Plugins {{{2
@@ -127,9 +120,9 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 # Aliases {{{1
 
 # Normal Aliases {{{2
-alias e=$EDITOR
-alias es="$EDITOR -S Session.vim"
-alias er="$EDITOR -R"
+alias e=$VISUAL
+alias es="$VISUAL -S Session.vim"
+alias er="$VISUAL -R"
 alias se="sudo -e"
 alias v="vim"
 alias nv="nvim"
@@ -258,7 +251,7 @@ function did() {
 
     if [ ! -f "$DIDFILE" ]; then
         date +'# %F (%V-%u)' > $DIDFILE
-        $EDITOR +'normal G' $DIDFILE
+        $VISUAL +'normal G' $DIDFILE
 
         exit 0
     fi
@@ -271,7 +264,7 @@ function did() {
         date +'# %F (%V-%u)' >> $DIDFILE
     fi
 
-    $EDITOR +'normal G' $DIDFILE
+    $VISUAL +'normal G' $DIDFILE
 }
 
 function sketch() {
@@ -282,15 +275,15 @@ function sketch() {
         mkdir -p "$DIDDIR"
     fi
 
-    $EDITOR +'normal G' $SKETCHFILE
+    $VISUAL +'normal G' $SKETCHFILE
 }
 
 # Others {{{2
 
-function my_man {
-    $EDITOR +"Man $1|on"
-}
-alias man="my_man"
+# function my_man {
+#     $VISUAL +"Man $1|on"
+# }
+# alias man="my_man"
 
 function my_sudo {
     while [[ $# > 0 ]]; do
