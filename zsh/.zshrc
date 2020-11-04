@@ -18,6 +18,11 @@ fi
 typeset -U fpath
 fpath=(~/.local/share/zsh/functions/Completion $fpath)
 
+PYTHON_BIN=~/Library/Python/3.8/bin
+if [ -d $PYTHON_BIN ]; then
+  path=($PYTHON_BIN $path)
+fi
+
 # FZF {{{2
 if command -v fd >/dev/null 2>&1
 then
