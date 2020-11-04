@@ -1,5 +1,45 @@
 # Init {{{1
 
+# PATH {{{2
+typeset -U path
+path=(~/.local/bin ~/go/bin ~/n/bin ~/.cargo/bin /snap/bin /opt/local/bin /opt/local/libexec/gnubin $path)
+if test -d /usr/local/go/bin
+then
+    # Looks like golang was installed from upstream directly.
+    path=(/usr/local/go/bin $path)
+fi
+
+TEXLIVE_DIR=~/.local/texlive/2018
+if [ -d $TEXLIVE_DIR ]
+then
+    path=($TEXLIVE_DIR/bin/x86_64-linux $path)
+fi
+
+typeset -U fpath
+fpath=(~/.local/share/zsh/functions/Completion $fpath)
+
+# FZF {{{2
+if command -v fd >/dev/null 2>&1
+then
+    export FZF_DEFAULT_COMMAND="fd -H -E .git -E .svn --type f"
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
+
+# EDITOR {{{2
+
+if [ -f ~/.local/bin/nvim -o -L ~/.local/bin/nvim ]
+then
+    NVIM=~/.local/bin/nvim
+else
+    NVIM=nvim
+fi
+alias nvim="${NVIM}"
+
+if [ "${NVIM}" != "" ]; then
+    alias vimdiff=nvim\ -d
+    export EDITOR="${NVIM}"
+fi
+
 # Plugins {{{2
 if command -v antibody >/dev/null 2>&1
 then
