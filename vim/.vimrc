@@ -156,21 +156,17 @@ let g:lightline = {
       \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'filename', 'gitversion', 'readonly', 'modified' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
       \             [ 'gitdiff' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
-      \              [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ],
-      \              [ 'obsession', 'cwd' ] ]
-      \ },
-      \ 'inactive': {
-      \   'left': [ [ 'filename', 'gitversion', 'modified' ] ],
+      \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ],
+      \              [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]
+      \            ]
       \ },
       \ 'component_function': {
       \   'obsession': 'LightlineObsession',
-      \   'gitversion': 'GitVersion',
       \   'cwd': 'Cwd',
-      \   'git_branch': 'FugitiveHead',
       \ },
       \ 'component_expand': {
       \   'linter_checking': 'lightline#ale#checking',
@@ -185,7 +181,6 @@ let g:lightline = {
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error',
       \   'linter_ok': 'middle',
-      \   'gitdiff': 'middle',
       \ },
       \ 'tabline': {
       \   'right': [ [ 'git_branch' ] ]
@@ -193,22 +188,6 @@ let g:lightline = {
       \ }
 
 let g:lightline#ale#indicator_checking = '...'
-
-" Inspired by https://github.com/aoswalt/dotfiles/commit/5c94f1e080e1269d83cfe25b95a86c78c9b8eabb
-function! GitVersion()
-  let fullname = expand('%')
-  let gitversion = ''
-  if     fullname =~? 'fugitive://.*/\.git//\(0\|[\d\w]\{2,}\)/.*'
-    let gitversion = 'git index'
-  elseif fullname =~? 'fugitive://.*/\.git//2/.*'
-    let gitversion = 'git target'
-  elseif fullname =~? 'fugitive://.*/\.git//3/.*'
-    let gitversion = 'git merge'
-  elseif &diff == 1
-    let gitversion = 'working copy'
-  endif
-  return gitversion
-endfunction
 
 function! LightlineObsession()
   let l:status = strpart(ObsessionStatus(), 1, 1)
