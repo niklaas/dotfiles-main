@@ -552,9 +552,6 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Coc.nvim
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
 nmap <silent> <leader>la <Plug>(coc-codeaction)
 nmap <silent> <leader>ld <Plug>(coc-definition)
 nmap <silent> <leader>lf <Plug>(coc-fix-current)
@@ -586,6 +583,9 @@ nmap <leader>ef <Plug>(ale_fix)
 nmap <leader>el <Plug>(ale_lint)
 nmap <leader>ed <Plug>(ale_detail)
 nmap <leader>er <Plug>(ale_reset)
+
+nmap <silent> [g <Plug>(ale_previous_wrap)
+nmap <silent> ]g <Plug>(ale_next_wrap)
 
 " UlitSnips
 nnoremap <leader>ue :UltiSnipsEdit<cr>
