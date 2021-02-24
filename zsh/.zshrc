@@ -69,6 +69,10 @@ if ! command -v starship >/dev/null 2>&1; then
     echo "get an ugly prompt"
 fi
 
+if ! command -v exa >/dev/null; then
+    echo "exa is not installed but you like it"
+fi
+
 if [ ! -d ~/.local/bin ]; then
     mkdir -p ~/.local/bin
 fi
@@ -153,8 +157,15 @@ alias kcgpg="keychain -q --eval 1C62D5F3 >/dev/null"
 alias kcrn="keychain -q --eval rsync.net >/dev/null"
 
 alias less="less -R"
+
 alias ls="ls --color"
 alias l="ls -lFah"
+
+if command -v exa >/dev/null; then
+    alias l="exa"
+    alias ll="exa -l"
+    alias lt="exa -T"
+fi
 
 alias mcssh="cssh -C .clusterssh/config_mosh"
 
