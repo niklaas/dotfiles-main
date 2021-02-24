@@ -311,7 +311,7 @@ let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
 " ALE {{{2
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
-      \   'java': ['javac'],
+      \   'java': ['pmd'],
       \   'javascript': ['flow', 'eslint'],
       \   'scss': ['stylelint'],
       \   'vim': ['vint'],
