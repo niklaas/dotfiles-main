@@ -168,6 +168,9 @@ let g:lightline = {
       \   'obsession': 'LightlineObsession',
       \   'cwd': 'Cwd',
       \   'gitbranch': 'FugitiveHead',
+      \   'fileformat': 'LightlineFileformat',
+      \   'fileencoding': 'LightlineFileencoding',
+      \   'filetype': 'LightlineFiletype',
       \ },
       \ 'component_expand': {
       \   'linter_checking': 'lightline#ale#checking',
@@ -193,6 +196,18 @@ let g:lightline#ale#indicator_checking = '...'
 function! LightlineObsession()
   let l:status = strpart(ObsessionStatus(), 1, 1)
   return l:status ==# '$' ? '$' : ''
+endfunction
+
+function! LightlineFileformat()
+  return winwidth(0) > 120 ? &fileformat : ''
+endfunction
+
+function! LightlineFileencoding()
+  return winwidth(0) > 120 ? &fileencoding : ''
+endfunction
+
+function! LightlineFiletype()
+  return winwidth(0) > 120 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
 endfunction
 
 function! Cwd()
