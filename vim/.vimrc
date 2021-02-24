@@ -660,7 +660,7 @@ augroup END
 
 augroup filename_MERGEREQU_EDITMSG
   autocmd!
-  autocmd BufEnter .git/MERGEREQ_EDITMSG set filetype=gitcommit
+  autocmd BufEnter MERGEREQ_EDITMSG set filetype=gitcommit
 augroup END
 
 " Filetype-specific autocmds {{{2
@@ -672,7 +672,7 @@ augroup END
 
 augroup filetype_gitcommit
   autocmd!
-  autocmd FileType gitcommit setlocal comments+=fb:- fo+=nrbl spell
+  autocmd FileType gitcommit startinsert | setlocal comments+=fb:- fo+=nrbl spell
 augroup END
 
 augroup filetype_html
