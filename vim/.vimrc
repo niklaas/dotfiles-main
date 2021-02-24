@@ -188,7 +188,20 @@ let g:lightline = {
       \ },
       \ 'tabline': {
       \   'right': [ [ 'cwd' ] ]
-      \ }
+      \ },
+      \ 'mode_map': {
+      \   'n' : 'N',
+      \   'i' : 'I',
+      \   'R' : 'R',
+      \   'v' : 'V',
+      \   'V' : 'VL',
+      \   "\<C-v>": 'VB',
+      \   'c' : 'C',
+      \   's' : 'S',
+      \   'S' : 'SL',
+      \   "\<C-s>": 'SB',
+      \   't': 'T',
+      \ },
       \ }
 
 let g:lightline#ale#indicator_checking = '...'
