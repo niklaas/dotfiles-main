@@ -313,6 +313,7 @@ let g:ale_linters_explicit = 1
 let g:ale_linters = {
       \   'java': ['pmd'],
       \   'javascript': ['flow', 'eslint'],
+      \   'typescript': ['eslint', 'tsserver'],
       \   'scss': ['stylelint'],
       \   'vim': ['vint'],
       \   'zsh': ['shell', 'shellcheck'],
