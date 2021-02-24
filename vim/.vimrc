@@ -156,7 +156,7 @@ let g:lightline = {
       \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+      \             [ 'readonly', 'filename', 'modified' ],
       \             [ 'gitdiff' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
