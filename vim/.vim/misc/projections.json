@@ -5,7 +5,15 @@
       "alternate": "test/{}_test.exs"
     }
   },
+  "package.json": {
+    "*": {
+      "make": "npm run"
+    }
+  },
   "angular.json|.angular-cli.json": {
+    "src/app/*.module.ts": {
+      "type": "module"
+    },
     "src/app/*.component.ts": {
       "type": "component",
       "alternate": "src/app/{}.component.spec.ts"
@@ -31,8 +39,7 @@
       "alternate": "src/app/{}.ts"
     },
     "src/app/*.ts": {
-      "make": "ng build %",
-      "dispatch": "ng test %",
+      "dispatch": "npm run test -- %",
       "alternate": "src/app/{}.spec.ts"
     }
   },
