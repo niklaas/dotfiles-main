@@ -38,6 +38,8 @@ if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
   export VISUAL=nvr
 fi
 
+export FCEDIT=$VISUAL
+
 # Plugins {{{2
 if command -v antibody >/dev/null 2>&1
 then
