@@ -733,7 +733,7 @@ if has('autocmd')
   if v:version > 701
     augroup highlight_todo
       autocmd!
-      autocmd Syntax * call matchadd('Todo', '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\)')
+      autocmd Syntax * call matchadd('Todo', '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\|BAD PRACTICE\)')
       autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
     augroup END
   endif
