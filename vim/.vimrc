@@ -167,6 +167,7 @@ let g:lightline = {
       \ 'component_function': {
       \   'obsession': 'LightlineObsession',
       \   'cwd': 'Cwd',
+      \   'gitbranch': 'FugitiveHead',
       \ },
       \ 'component_expand': {
       \   'linter_checking': 'lightline#ale#checking',
@@ -183,7 +184,7 @@ let g:lightline = {
       \   'linter_ok': 'middle',
       \ },
       \ 'tabline': {
-      \   'right': [ [ 'git_branch' ] ]
+      \   'right': [ [ 'cwd' ] ]
       \ }
       \ }
 
