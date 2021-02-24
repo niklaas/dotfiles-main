@@ -1,9 +1,12 @@
 {
   "diagnostic.displayByAle": true,
-  "suggest.autoTrigger": "trigger",
+  "suggest.autoTrigger": "always",
   "suggest.enablePreview": true,
   "suggest.enablePreselect": true,
-  "suggest.noselect": false,
+  "suggest.noselect": true,
   "typescript.preferences.importModuleSpecifier": "relative",
-  "coc.preferences.extensionUpdateCheck": "weekly"
+  "coc.preferences.extensionUpdateCheck": "weekly",
+  "coc.preferences.useQuickfixForLocations": true,
+  "list.nextKeymap": "<C-n>",
+  "list.previousKeymap": "<C-p>"
 }
