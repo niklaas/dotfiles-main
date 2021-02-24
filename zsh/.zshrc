@@ -191,7 +191,7 @@ alias sst="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o Lo
 
 alias -g C="| xsel -b"
 alias -g D="*(/)"
-alias -g F="| fzf"
+alias -g F="| fzf -m"
 alias -g G="| grep -i"
 alias -g H="| head"
 alias -g L="| less"
