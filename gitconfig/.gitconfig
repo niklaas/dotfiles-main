@@ -9,7 +9,7 @@
 [merge]
 	tool = vimdiff
 [mergetool "vimdiff"]
-	cmd = $EDITOR -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J' -c 'Git! mergetool' -c 'cc|cl'
+	cmd = $VISUAL -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J' -c 'Git! mergetool' -c 'cc|cl'
 [alias]
 	ad  = add
 	ap  = add --patch
@@ -47,12 +47,12 @@
   wt  = worktree
   # custom commands:
 	ig  = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
-	browse = "!browse() { $EDITOR +\"Gbrowse! $@ |q\" ;}; browse"
+	browse = "!browse() { $VISUAL +\"Gbrowse! $@ |q\" ;}; browse"
 	# Code Reviews:
 	files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
 	stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
-	review = !$EDITOR -p $(git files) +\"tabdo Gdiff $(git merge-base HEAD $REVIEW_BASE)\" +tabfirst
-	reviews = !$EDITOR -p +\"tabdo Gdiff $(git merge-base HEAD $REVIEW_BASE)\" +tabfirst
+	review = !$VISUAL -p $(git files) +\"tabdo Gdiff $(git merge-base HEAD $REVIEW_BASE)\" +tabfirst
+	reviews = !$VISUAL -p +\"tabdo Gdiff $(git merge-base HEAD $REVIEW_BASE)\" +tabfirst
 	heatmap = !git log $(git merge-base HEAD \"$REVIEW_BASE\")..HEAD --pretty=format: --name-only | grep -v \"^$\" | sort | uniq -c | sort -rg
 [push]
 	default = current
