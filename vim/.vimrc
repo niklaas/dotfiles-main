@@ -480,7 +480,8 @@ cnoremap $d <CR>:d<CR>``
 
 nnoremap <leader><space> @q
 nnoremap Y y$
-nnoremap gb :ls<CR>:b 
+nnoremap gb :ls<CR>:b<space>
+nnoremap gsb :ls<CR>:sb<space>
 
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
