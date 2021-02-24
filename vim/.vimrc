@@ -524,6 +524,8 @@ nnoremap <leader>fv :vertical sfind **/
 nnoremap <leader><leader> :FZF<cr>
 nnoremap <leader>. :Buffers<cr>
 nnoremap <leader>/ :FZF<space>
+nnoremap <leader>m :Rg<cr>
+nnoremap <leader>n :History<cr>
 
 " Abolish
 nnoremap <leader>ac :cdo S/
