@@ -517,6 +517,11 @@ nnoremap <leader>ff :find **/
 nnoremap <leader>fs :sfind **/
 nnoremap <leader>fv :vertical sfind **/
 
+" Navigate completion with C-j and C-k
+
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+
 " Plugin related {{{2
 
 " Fuzzy searching
