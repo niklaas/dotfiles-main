@@ -603,11 +603,6 @@ if has('nvim')
     autocmd!
     autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
   augroup END
-
-  augroup term_insert
-    autocmd!
-    autocmd TermOpen,BufEnter term://* startinsert
-  augroup END
 endif
 
 " Commands {{{1
