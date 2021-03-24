@@ -615,22 +615,6 @@ if !exists(':BW')
   command BW :bp\|bw #<cr>
 endif
 
-if !exists(':T')
-  if exists('$TMUX')
-    command! T silent execute '!tmux split-window -v -l 10'
-  else
-    command! -nargs=* T split | resize 10 | terminal <args>
-  endif
-endif
-
-if !exists(':VT')
-  if exists('$TMUX')
-    command! VT silent execute '!tmux split-window -h -l 80'
-  else
-    command! -nargs=* VT vsplit | terminal <args>
-  endif
-endif
-
 " Abbreviations {{{1
 
 " Inserts timestamp (ISO compliant with colon in timezone)
