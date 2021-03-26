@@ -1,24 +1,3 @@
-" Introduction {{{1
-"
-" TODO: Provide some general introduction into the structure of the file here.
-"
-" Linting:
-"
-" There are several options for linting such as vim-syntastic/syntastic,
-" neomake/neomake and others. I decided for a combination of w0rp/ale and
-" tpope/vim-dispatch.
-"
-" I assume that I code on machines that at least have vim with version > 8, so
-" in such cases using w0rp/ale is not an issue. That said, I strip it to it's
-" very basic functionality i.e., linting. (It supports other options such as
-" code completion etc. but I don't use them. There are other plugins that
-" focus on job.)
-"
-" FIXME: I am not sure whether I need w0rp/ale in oni/omi. Most probably not
-" its linting capabilities but maybe the fixers..? IIRC oni/oni only uses LSPs
-" (except for TypeScript) so probably some fixing capabilities (such as
-" prettier) are required too.
-
 " Environment {{{1
 
 " vint:next-line -ProhibitSetNoCompatible
@@ -50,6 +29,7 @@ endfunction
 " Basics {{{2
 
 Plug 'chriskempson/base16-vim'
+
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jamessan/vim-gnupg'
@@ -57,25 +37,17 @@ Plug 'sjl/gundo.vim'
 Plug 'vim-scripts/dbext.vim'
 Plug 'mattn/emmet-vim'
 
-" close brackets et al automagically
+Plug 'kassio/neoterm'
 Plug 'jiangmiao/auto-pairs'
-
-" Navigation
 Plug 'justinmk/vim-sneak'
-
-" Lightline
-Plug 'itchyny/lightline.vim', Cond(!exists('g:gui_oni'))
-Plug 'daviesjamie/vim-base16-lightline', Cond(!exists('g:gui_oni'))
-Plug 'maximbaz/lightline-ale'
-
-" Tmuxline
-Plug 'edkolev/tmuxline.vim'
-
-" Vim objects
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
+Plug 'junegunn/vim-easy-align'
 
-" tpope plugins
+Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
+Plug 'edkolev/tmuxline.vim'
+
 Plug 'tpope/vim-abolish'  " for better substitution
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -99,17 +71,11 @@ Plug 'tpope/vim-rhubarb'  " GitHub
 
 Plug 'junegunn/gv.vim'
 
-" Fuzzy finding
-" TODO: try to get rid of this b/c I should navigate through files as
-" described at https://vimways.org/2018/death-by-a-thousand-files/
 Plug 'junegunn/fzf', Cond(has('unix'), { 'dir': '~/.fzf', 'do': './install --all' })
 Plug 'junegunn/fzf.vim', Cond(has('unix'))
 
-Plug 'junegunn/vim-easy-align'
-
-" Snippets
-Plug 'SirVer/ultisnips', Cond(!exists('g:gui_oni') && v:version >= 800 && has('python3'))
-Plug 'honza/vim-snippets', Cond(!exists('g:gui_oni') && v:version >= 800 && has('python3'))
+Plug 'SirVer/ultisnips', Cond(v:version >= 800 && has('python3'))
+Plug 'honza/vim-snippets', Cond(v:version >= 800 && has('python3'))
 
 Plug 'w0rp/ale', Cond(v:version >= 800)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -135,8 +101,8 @@ Plug 'junegunn/vader.vim'
 " local version, I get the plugin from its GitHub repository.
 
 " lightline-gitdiff
-Plug 'niklaas/lightline-gitdiff', Cond(!isdirectory(expand('$HOME/Files/git/lightline-gitdiff')))
-Plug '$HOME/Files/git/lightline-gitdiff', Cond(isdirectory(expand('$HOME/Files/git/lightline-gitdiff')), { 'as': 'lightline-gitdiff-local' })
+Plug 'niklaas/lightline-gitdiff', Cond(!isdirectory(expand('$HOME/git/lightline-gitdiff')))
+Plug '$HOME/Files/git/lightline-gitdiff', Cond(isdirectory(expand('$HOME/git/lightline-gitdiff')), { 'as': 'lightline-gitdiff-local' })
 
 call plug#end()
 
@@ -145,15 +111,119 @@ call plug#end()
 " allows displaying of man pages with :Man <program>
 runtime! ftplugin/man.vim
 
+" Vim settings {{{1
+
+set autowrite
+set backspace=indent,eol,start
+set cpoptions+=$
+set diffopt=internal,filler,context:3
+set gdefault
+set hidden
+set ignorecase
+set incsearch
+set linebreak
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+set modelines=5
+set mouse=a
+set nobackup
+set nohlsearch
+set nojoinspaces
+set noshowmode
+set nowrap
+set nowritebackup
+set number
+set pumheight=10
+set relativenumber
+set ruler
+set shortmess=catOT
+set showbreak=+
+set showmatch
+set signcolumn=yes
+set smartcase
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+set tags=./tags,./TAGS,tags,TAGS,../tags,../../tags,../../../tags,../../../../tags
+set termguicolors
+set termguicolors
+set undofile
+set updatetime=300
+set viminfo=%,'50,:100,<1000
+set visualbell
+set whichwrap=b,s
+set wildignorecase
+set wildmenu
+
+" Set locations of important directories
+set backupdir=$DOTVIM/backup/
+set directory=$DOTVIM/swap/,.
+set undodir=$DOTVIM/undo
+
+" Always show status line
+set laststatus=2
+set showtabline=2
+
+" Encoding and file format
+set encoding=utf-8
+scriptencoding utf-8
+set fileencoding=utf-8
+set fileformat=unix
+set fileformats=unix,dos
+
+" Indenting
+set shiftround
+set expandtab smarttab autoindent smartindent
+set tabstop=2 shiftwidth=2 softtabstop=2
+
+" Spelling
+set spelllang=en_us,de_20
+set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
+
+" Grepping
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+endif
+
+augroup responsive_cursorline
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
+augroup end
+
+if has('gui_running')
+  set guioptions-=m
+  set guioptions-=T
+  set guioptions-=r
+  set guioptions-=R
+  set guioptions-=l
+  set guioptions-=L
+  set lines=50
+  set columns=120
+  if has('gui_gtk2')
+    set guifont=Monospace\ 11
+    set background=dark
+  elseif has('gui_win32')
+    set guifont=Consolas:h10:cANSI
+  endif
+endif
+
 " Plugin Configuration {{{1
 
-" Gutentags {{{2
-let g:gutentags_plus_nomap = 1
-let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git']
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+" neoterm {{{2
+
+let g:neoterm_autoscroll = 1
+let g:neoterm_autoinsert = 1
 
 " Lightline {{{2
+
+" TODO: indicate all buffers that start with fugitive://* b/c handy when
+" comparing 'real file' with git diff.
+
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'filename', 'modified' ],
@@ -243,38 +313,6 @@ let g:tmuxline_powerline_separators = 0
 let g:tmuxline_theme = 'lightline'
 let g:tmuxline_preset = 'minimal'
 
-" Tagbar {{{2
-let g:tagbar_type_typescript = {                                                  
-      \ 'ctagstype' : 'typescript',                                                           
-      \ 'kinds': [                                                                     
-      \   'c:classes',                                                               
-      \   'C:modules',                                                            
-      \   'n:modules',                                                           
-      \   'f:functions',                                                              
-      \   'v:variables',                                                              
-      \   'V:varlambdas',                                                           
-      \   'm:members',                                                               
-      \   'i:interfaces',                                                              
-      \   't:types',                                                            
-      \   'e:enums',                                                            
-      \   'I:imports',                                                              
-      \ ]
-      \ }  
-
-let g:tagbar_type_rust = {
-      \ 'ctagstype' : 'rust',
-      \ 'kinds' : [
-      \   'T:types,type definitions',
-      \   'f:functions,function definitions',
-      \   'g:enum,enumeration names',
-      \   's:structure names',
-      \   'm:modules,module names',
-      \   'c:consts,static constants',
-      \   't:traits',
-      \   'i:impls,trait implementations',
-      \]
-      \}
-
 " Editorconfig {{{2
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
@@ -288,7 +326,7 @@ let g:user_emmet_leader_key = '<C-q>'
 let g:user_emmet_settings = {
       \ 'typescript' : {
       \   'extends': 'jsx'
-      \}
+      \ }
       \}
 
 " Projectionist {{{2
@@ -312,23 +350,23 @@ let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
       \   'java': ['pmd'],
-      \   'javascript': ['flow', 'eslint'],
-      \   'typescript': ['eslint', 'tsserver'],
+      \   'javascript': ['eslint'],
+      \   'typescript': ['eslint'],
       \   'scss': ['stylelint'],
       \   'vim': ['vint'],
       \   'zsh': ['shell', 'shellcheck'],
       \   'terraform': ['terraform']
       \ }
 let g:ale_fixers = {
-      \   'html': [ 'prettier', 'trim_whitespace', 'remove_trailing_lines' ],
-      \   'javascript': [ 'prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
-      \   'typescript': [ 'prettier', 'eslint', 'trim_whitespace', 'remove_trailing_lines' ],
+      \   'html': [ 'prettier', 'trim_whitespace' ],
+      \   'javascript': [ 'prettier', 'eslint', 'trim_whitespace' ],
+      \   'typescript': [ 'prettier', 'eslint', 'trim_whitespace' ],
       \   'typescriptreact': [ 'prettier' ],
       \   'json': [ 'prettier' ],
-      \   'markdown': [ 'remove_trailing_lines' ],
-      \   'zsh': [ 'trim_whitespace', 'remove_trailing_lines' ],
+      \   'zsh': [ 'trim_whitespace' ],
       \   'terraform': ['terraform'],
-      \   'scss': ['prettier']
+      \   'scss': ['prettier'],
+      \   '*': ['remove_trailing_lines']
       \ }
 
 let g:ale_fix_on_save = 1
@@ -339,133 +377,15 @@ let g:ale_list_window_size = 7
 " anything else. So, in the following we disable those features.
 let g:ale_completion_enabled = 0
 
-let g:ale_set_highlights = 0
+let g:ale_set_highlights = 1
 let g:ale_set_signs = 1
 let g:ale_sign_warning = '?'
 let g:ale_sign_error = '!'
 let g:ale_sign_info = 'o'
 
-" Vim settings {{{1
-
-set autowrite
-set backspace=indent,eol,start
-set cpoptions+=$
-set diffopt=internal,filler,context:3
-set gdefault
-set hidden
-set ignorecase
-set incsearch
-set linebreak
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-set modelines=5
-set mouse=a
-set nobackup
-set nohlsearch
-set nojoinspaces
-set noshowmode
-set nowrap
-set nowritebackup
-set number
-set pumheight=10
-set relativenumber
-set ruler
-set shortmess=catOT
-set showbreak=+
-set showmatch
-set signcolumn=yes
-set smartcase
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-set tags=./tags,./TAGS,tags,TAGS,../tags,../../tags,../../../tags,../../../../tags
-set undofile
-set updatetime=300
-set viminfo=%,'50,:100,<1000
-set visualbell
-set whichwrap=b,s
-set wildignorecase
-set wildmenu
-
-" Set locations of important directories
-set backupdir=$DOTVIM/backup/
-set directory=$DOTVIM/swap/,.
-set undodir=$DOTVIM/undo
-
-" Always show status line
-set laststatus=2
-set showtabline=2
-
-" Encoding and file format
-set encoding=utf-8
-scriptencoding utf-8
-set fileencoding=utf-8
-set fileformat=unix
-set fileformats=unix,dos
-
-" Indenting
-set shiftround
-set expandtab smarttab autoindent smartindent
-set tabstop=2 shiftwidth=2 softtabstop=2
-
-" Spelling
-set spelllang=en_us,de_20
-set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
-
-" Grepping
-if executable('rg')
-  set grepprg=rg\ --vimgrep
-endif
-
-" Oni specifics
-if !exists('g:gui_oni')
-  augroup responsive_cursorline
-    autocmd!
-    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    autocmd WinLeave * setlocal nocursorline
-  augroup end
-endif
-
-if has('gui_running')
-  set guioptions-=m
-  set guioptions-=T
-  set guioptions-=r
-  set guioptions-=R
-  set guioptions-=l
-  set guioptions-=L
-  set lines=50
-  set columns=120
-  if has('gui_gtk2')
-    set guifont=Monospace\ 11
-    set background=dark
-  elseif has('gui_win32')
-    set guifont=Consolas:h10:cANSI
-  endif
-endif
-
-if exists('g:gui_oni')
-  " Override previous configuration with these settings to suit to Oni.
-  " https://github.com/onivim/oni/wiki/How-To:-Minimal-Oni-Configuration
-
-  " Force loading sensible now to override its setting in the following
-  " lines
-  runtime plugin/sensible.vim
-
-  set number
-  set noswapfile
-  set smartcase
-
-  set noshowmode
-  set noruler
-  set laststatus=0
-  set noshowcmd
-
-  set mouse=a
-endif
-
 " Mappings {{{1
 
 " General {{{2
-
-inoremap <C-c> <ESC>
-cnoremap <C-c> <ESC>
 
 " Allows incsearch highlighting for range commands
 "
@@ -481,25 +401,11 @@ cnoremap $d <CR>:d<CR>``
 nnoremap <leader><space> @q
 nnoremap Y y$
 nnoremap gb :ls<CR>:b<space>
-nnoremap gsb :ls<CR>:sb<space>
 
-nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-
-nnoremap <leader>cp :let @+ = expand("%")<cr>
-nnoremap <leader>cf :let @+ = expand("%:t")<cr>
-nnoremap <leader>cP :let @+ = expand("%")   . ':' . line('.') . ':' . col('.')<cr>
-nnoremap <leader>cF :let @+ = expand("%:t") . ':' . line('.') . ':' . col('.')<cr>
-
-nnoremap <leader>ve :vsplit $MYREALVIMRC<cr>
-nnoremap <leader>vs :source $MYVIMRC<cr>
+nnoremap <space>h :e $MYREALVIMRC<cr>
 
 " Yanks current outer paragraph and pastes above
-nnoremap <leader>p yapP
-
-if executable('xi')
-  nnoremap <leader>i :w !xi<cr>
-  vnoremap <leader>i :w !xi<cr>
-endif
+nnoremap <space>p yapP
 
 " Eases navigation between splits
 nnoremap <C-J> <C-W><C-J>
@@ -507,15 +413,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-nnoremap <leader>ee :edit **/
-nnoremap <leader>es :split **/
-nnoremap <leader>ev :vsplit **/
-nnoremap <leader>en :next **/
-nnoremap <leader>et :edit %<.
-
-nnoremap <leader>ff :find **/
-nnoremap <leader>fs :sfind **/
-nnoremap <leader>fv :vertical sfind **/
+nnoremap <space>a :edit %<.
 
 " Navigate completion with C-j and C-k
 
@@ -524,49 +422,38 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " Plugin related {{{2
 
+" neoterm
+
+nnoremap [s :Tprevious<cr>
+nnoremap ]s :Tnext<cr>
+nnoremap <space>; :Ttoggle<cr>
+
 " Fuzzy searching
 
-nnoremap <leader><leader> :FZF<cr>
-nnoremap <leader>. :Buffers<cr>
-nnoremap <leader>/ :FZF<space>
-nnoremap <leader>m :Rg<cr>
-nnoremap <leader>n :History<cr>
+nnoremap <c-p> :FZF<cr>
 
 " Abolish
-nnoremap <leader>ac :cdo S/
-nnoremap <leader>ar :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
-nnoremap <leader>as :S/
+nnoremap <space>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
 
 " Sneak
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
-
-" Tagbar
-nnoremap <leader>tt :TagbarToggle<cr>
-nnoremap <leader>to :TagbarOpen fj<cr>
-nnoremap <leader>tO :TagbarOpenAutoClose<cr>
-nnoremap <leader>tc :TagbarClose<cr>
-nnoremap <leader>tp :TagbarTogglePause<cr>
-
-" Obsession
-nnoremap <leader>o :Obsession<cr>
-nnoremap <leader>O :Obsession!<cr>
 
 " Easy align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Coc.nvim
-nmap <silent> <leader>la <Plug>(coc-codeaction)
-nmap <silent> <leader>ld <Plug>(coc-definition)
-nmap <silent> <leader>lf <Plug>(coc-fix-current)
-nmap <silent> <leader>li <Plug>(coc-implementation)
-nmap <silent> <leader>ln <Plug>(coc-rename)
-nmap <silent> <leader>lr <Plug>(coc-references)
-nmap <silent> <leader>lt <Plug>(coc-type-definition)
+nmap <silent> <space>f <Plug>(coc-fix-current)
+nmap <silent> <space>j <Plug>(coc-rename)
 
-nnoremap <silent> <leader>lo :<C-u>CocList outline<cr>
-nnoremap <silent> <leader>ls :<C-u>CocList -I symbols<cr>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <silent><nowait> <space>o :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <space>s :<C-u>CocList -I symbols<cr>
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -584,16 +471,8 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " vim-ale
-nmap <leader>ef <Plug>(ale_fix)
-nmap <leader>el <Plug>(ale_lint)
-nmap <leader>ed <Plug>(ale_detail)
-nmap <leader>er <Plug>(ale_reset)
-
 nmap <silent> [g <Plug>(ale_previous_wrap)
 nmap <silent> ]g <Plug>(ale_next_wrap)
-
-" UlitSnips
-nnoremap <leader>ue :UltiSnipsEdit<cr>
 
 " Vim terminal
 if has('nvim')
@@ -601,6 +480,8 @@ if has('nvim')
   tnoremap <C-J> <c-\><c-n><c-w>j
   tnoremap <C-K> <c-\><c-n><c-w>k
   tnoremap <C-L> <c-\><c-n><c-w>l
+
+  tnoremap <c-^> <c-\><c-n><c-^>
 
   let $GIT_EDITOR = 'nvr -cc split --remote-wait'
 
@@ -612,19 +493,17 @@ endif
 
 " Commands {{{1
 
-if !exists(':BD')
-  command BD :bp\|bd #<cr>
-endif
+command! BD :bp\|bd #<cr>
+command! BW :bp\|bw #<cr>
 
-if !exists(':BW')
-  command BW :bp\|bw #<cr>
-endif
+command! CD :cd %:p:h<CR>:pwd<CR>
+
+command! YankFullPath :let @+ = expand("%")<cr>
+command! YankFilename :let @+ = expand("%:t")<cr>
+command! YankFullPathLC :let @+ = expand("%")   . ':' . line('.') . ':' . col('.')<cr>
+command! YankFilenameLC :let @+ = expand("%:t") . ':' . line('.') . ':' . col('.')<cr>
 
 " Abbreviations {{{1
-
-" Inserts timestamp (ISO compliant with colon in timezone)
-iabbrev aT <C-R>=strftime("%FT%T%z")<CR><ESC>hi:<ESC>lla
-iabbrev aD <C-R>=strftime("%F (%V-%u)")<CR>
 
 " Expand %% to the current directory
 cabbrev <expr> %% expand('%:p:h')
@@ -635,24 +514,20 @@ cabbrev <expr> %% expand('%:p:h')
 
 augroup automagic_marks
   autocmd!
-  autocmd BufLeave *.css,*.scss normal! mC
-  autocmd BufLeave *.html       normal! mH
-  autocmd BufLeave *.ts,*.tsx   normal! mT
-  autocmd BufLeave *.js,*.jsx   normal! mS
-  autocmd BufLeave *.java       normal! mJ
-augroup END
-
-augroup filename_MERGEREQU_EDITMSG
-  autocmd!
-  autocmd BufEnter MERGEREQ_EDITMSG set filetype=gitcommit
+  autocmd BufLeave *.css,*.scss         normal! mC
+  autocmd BufLeave *.html               normal! mH
+  autocmd BufLeave *.ts,*.tsx,*.js,*jsx normal! mT
 augroup END
 
 " Filetype-specific autocmds {{{2
 "
 " This section includes autocomds that change settings and add mappings
-" depending on the filetype of the current plugin. I decided to place these
-" here instead of $DOTVIM/ftplugin because it allows finer control:
-" Overwriting them in .vimrc.local is easier and everything is in one place.
+" depending on the filetype of the current plugin.
+
+augroup filename_MERGEREQU_EDITMSG
+  autocmd!
+  autocmd BufEnter MERGEREQ_EDITMSG set filetype=gitcommit
+augroup END
 
 augroup filetype_gitcommit
   autocmd!
@@ -661,14 +536,8 @@ augroup END
 
 augroup filetype_html
   autocmd!
-  autocmd FileType html setlocal foldmethod=indent
-  autocmd FileType html normal zR
+  autocmd FileType html setlocal foldmethod=indent | normal zR
 augroup END
-
-augroup filetype_java
-  autocmd!
-  autocmd Filetype java let b:ale_fixers = [ 'google_java_format' ]
-augroup end
 
 augroup filetype_netrw
   autocmd!
@@ -677,7 +546,7 @@ augroup END
 
 augroup filetype_markdown
   autocmd!
-  autocmd FileType markdown setlocal comments=b:>,fb:-,fb:* textwidth=80 fo+=c
+  autocmd FileType markdown setlocal comments=b:>,fb:-,fb:*,fb:-\ [\ ],fb:-> textwidth=80 fo+=c
   " The following fixes additional indentation in the subsequent lines of
   " lists
   "
@@ -685,20 +554,14 @@ augroup filetype_markdown
   autocmd FileType markdown setlocal indentexpr=
 augroup END
 
-augroup filetype_rust
-  autocmd FileType rust let b:ale_fixers = [ 'rustfmt' ] 
-augroup end
-
 augroup filetype_sql
   autocmd!
-  autocmd FileType sql let &l:formatprg = 'python3 -m sqlparse -k upper -r --indent_width 2 -'
+  autocmd FileType sql let &l:formatprg = 'python -m sqlparse -k upper -r --indent_width 2 -'
 augroup end
 
 augroup filetype_typescript
   autocmd!
   autocmd FileType typescript let b:ale_javascript_prettier_options = '--parser typescript'
-  autocmd FileType typescript let b:ale_linters = 'all'
-  autocmd FileType typescript let b:ale_fixers  = [ 'prettier', 'tslint', 'eslint', 'trim_whitespace', 'remove_trailing_lines' ]
 augroup END
 
 augroup filetype_vimrc
@@ -709,6 +572,7 @@ augroup END
 " Miscellaneous {{{1
 
 " Highlight TODOs etc
+"
 " TODO: Define regex for todos and notes a the beginning of this
 " source and use them to define two commands :Todo and :Note that use
 " :grep to search for them. Reuse the regexes below to highlight their
@@ -721,35 +585,6 @@ if has('autocmd')
       autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
     augroup END
   endif
-endif
-
-" Fix highlighting for spell and other highlight groups in terminal
-function! s:base16_customize() abort
-  " Colors: https://github.com/chriskempson/base16/blob/master/styling.md
-  " Arguments: group, guifg, guibg, ctermfg, ctermbg, attr, guisp
-  call Base16hi('SpellBad',   '', '', g:base16_cterm08, 'NONE', '', '')
-  call Base16hi('SpellCap',   '', '', g:base16_cterm0A, 'NONE', '', '')
-  call Base16hi('SpellLocal', '', '', g:base16_cterm0D, 'NONE', '', '')
-  call Base16hi('SpellRare',  '', '', g:base16_cterm0B, 'NONE', '', '')
-  call Base16hi('MatchParen', '', '', g:base16_cterm0E, 'NONE', '', '')
-
-  " Fix subordinate role of `CursorLine` in nvim
-  "
-  " refs neovim/neovim#9019
-  " refs neovim/neovim#7383
-  call Base16hi('Normal',     '', '', '',               'NONE', '', '')
-endfunction
-
-augroup on_change_colorschema
-  autocmd!
-  autocmd ColorScheme * call s:base16_customize()
-augroup END
-
-" Colors
-set t_Co=256
-if filereadable(expand('~/.vimrc_background'))
-  let base16colorspace=256
-  source ~/.vimrc_background
 endif
 
 augroup _ale_closeLoclistWithBuffer
@@ -773,17 +608,10 @@ if !has('nvim')
   endif
 endif
 
-" followed by a colon isn't italic e.g.,
-"
-"   Foo:
-"
-" Bar:
-"
-
 " Project-specifics {{{1
 
 augroup project_specifics
-  autocmd FileType */mk-site/*.html let b:ale_fixers = []
+  autocmd! BufRead */mk-site/*.html let b:ale_fixers = []
 augroup end
 
 " .vimrc.local {{{1
