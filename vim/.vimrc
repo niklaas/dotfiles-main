@@ -318,9 +318,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Emmet {{{2
 
-" Don't use it in normal mode because default prefix <C-y> collides with
-" mapping for scrolling the view.
-let g:user_emmet_mode = 'i'
+" use ctrl-q b/c same as ctrl-v
 let g:user_emmet_leader_key = '<C-q>'
 
 let g:user_emmet_settings = {
