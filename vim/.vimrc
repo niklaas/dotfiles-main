@@ -383,6 +383,19 @@ let g:ale_sign_info = 'o'
 
 " Mappings {{{1
 
+" custom home row mappings {{{2
+
+nnoremap                    <space>a    :edit %<.
+nnoremap  <silent><nowait>  <space>s    :<C-u>CocList outline<cr>
+nnoremap  <silent><nowait>  <space>S    :<C-u>CocList -I symbols<cr>
+nmap      <silent>          <space>f    <Plug>(coc-fix-current)
+nmap                        <space>F    <Plug>(ale_fix)
+nnoremap                    <space>h    :e $MYREALVIMRC<cr>
+nmap      <silent>          <space>j    <Plug>(coc-rename)
+nnoremap                    <space>l    :Tnew<cr>
+nnoremap                    <space>L    : Tnew<left><left><left><left><left>
+nnoremap                    <space>;    :Ttoggle<cr>
+
 " General {{{2
 
 " Allows incsearch highlighting for range commands
@@ -400,8 +413,6 @@ nnoremap <leader><space> @q
 nnoremap Y y$
 nnoremap gb :ls<CR>:b<space>
 
-nnoremap <space>h :e $MYREALVIMRC<cr>
-
 " Yanks current outer paragraph and pastes above
 nnoremap <space>p yapP
 
@@ -411,52 +422,18 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-nnoremap <space>a :edit %<.
-
-" Navigate completion with C-j and C-k
-
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " Plugin related {{{2
 
-" neoterm
-
-nnoremap [s :Tprevious<cr>
-nnoremap ]s :Tnext<cr>
-nnoremap <space>; :Ttoggle<cr>
-nnoremap <space>l :Tnew<cr>
-
-" Fuzzy searching
-
-nnoremap <c-p> :FZF<cr>
-
-" Abolish
-nnoremap <space>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
-
-" Sneak
-map f <Plug>Sneak_s
-map F <Plug>Sneak_S
-
-" Easy align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-" Coc.nvim
-nmap <silent> <space>f <Plug>(coc-fix-current)
-nmap <silent> <space>j <Plug>(coc-rename)
-
+" command of conquer (coc)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-nnoremap <silent><nowait> <space>o :<C-u>CocList outline<cr>
-nnoremap <silent><nowait> <space>s :<C-u>CocList -I symbols<cr>
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-inoremap <silent><expr> <C-l> coc#refresh()
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -466,12 +443,25 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" neoterm
 
-" vim-ale
+nnoremap [s :Tprevious<cr>
+nnoremap ]s :Tnext<cr>
 nmap <silent> [g <Plug>(ale_previous_wrap)
 nmap <silent> ]g <Plug>(ale_next_wrap)
+
+nnoremap <c-p> :FZF<cr>
+nnoremap <space>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
+
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
+
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+inoremap <silent><expr> <C-l> coc#refresh()
 
 " Vim terminal
 if has('nvim')
