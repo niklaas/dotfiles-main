@@ -1,5 +1,13 @@
 # Init {{{1
 
+# colors {{2
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
 # PATH {{{2
 typeset -U path
 path=(~/.local/bin ~/go/bin ~/n/bin ~/.cargo/bin /snap/bin /opt/local/bin /opt/local/libexec/gnubin $path)
@@ -327,14 +335,6 @@ fi
 if [ -f $HOME/.dir_colors ]
 then
     command -v dircolors >/dev/null && eval $(dircolors $HOME/.dir_colors)
-fi
-
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
-if [ ! -f $HOME/.base16_theme ]
-then
-    command -v base16_default-dark && base16_default-dark
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
