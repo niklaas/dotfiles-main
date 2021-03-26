@@ -425,6 +425,7 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 nnoremap [s :Tprevious<cr>
 nnoremap ]s :Tnext<cr>
 nnoremap <space>; :Ttoggle<cr>
+nnoremap <space>l :Tnew<cr>
 
 " Fuzzy searching
 
