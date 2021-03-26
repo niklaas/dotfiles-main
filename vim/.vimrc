@@ -54,7 +54,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'  " sugar for UNIX shell commands
 Plug 'tpope/vim-obsession'  " for session management
-Plug 'tpope/vim-ragtag'  " for HTML editing
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-scriptease'  " e.g. map zS for showing sytax group
 Plug 'tpope/vim-sensible'
@@ -424,6 +423,7 @@ nnoremap <C-H> <C-W><C-H>
 
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+inoremap <c-o> <esc>O
 
 " Plugin related {{{2
 
