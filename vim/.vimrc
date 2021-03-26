@@ -569,6 +569,16 @@ augroup END
 
 " Miscellaneous {{{1
 
+function! s:ftplugin_fugitive() abort
+  nnoremap <buffer> <silent> cc :Git commit --quiet<CR>
+  nnoremap <buffer> <silent> ca :Git commit --quiet --amend<CR>
+  nnoremap <buffer> <silent> ce :Git commit --quiet --amend --no-edit<CR>
+endfunction
+augroup fugitive_quiet
+  autocmd!
+  autocmd FileType fugitive call s:ftplugin_fugitive()
+augroup END
+
 " Highlight TODOs etc
 "
 " TODO: Define regex for todos and notes a the beginning of this
