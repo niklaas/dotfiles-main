@@ -172,7 +172,9 @@ alias l="ls -lFah"
 if command -v exa >/dev/null; then
     alias l="exa"
     alias ll="exa -l"
-    alias lt="exa -T"
+    alias la="exa -al"
+    alias lt="exa -T --git"
+    alias lts="exa -aT --git"
 fi
 
 alias mcssh="cssh -C .clusterssh/config_mosh"
