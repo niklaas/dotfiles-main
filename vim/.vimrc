@@ -570,6 +570,27 @@ augroup fugitive_quiet
   autocmd FileType fugitive call s:ftplugin_fugitive()
 augroup END
 
+" Fix highlighting for spell and other highlight groups in terminal
+function! s:base16_customize() abort
+  " Colors: https://github.com/chriskempson/base16/blob/master/styling.md
+  " Arguments: group, guifg, guibg, ctermfg, ctermbg, attr, guisp
+  call Base16hi('SpellBad',   '', '', g:base16_cterm08, 'NONE', '', '')
+  call Base16hi('SpellCap',   '', '', g:base16_cterm0A, 'NONE', '', '')
+  call Base16hi('SpellLocal', '', '', g:base16_cterm0D, 'NONE', '', '')
+  call Base16hi('SpellRare',  '', '', g:base16_cterm0B, 'NONE', '', '')
+  call Base16hi('MatchParen', '', '', g:base16_cterm0E, 'NONE', '', '')
+
+  " Fix subordinate role of `CursorLine` in nvim
+  "
+  " refs neovim/neovim#9019
+  " refs neovim/neovim#7383
+  call Base16hi('Normal',     '', '', '',               'NONE', '', '')
+endfunction
+augroup on_change_colorschema
+  autocmd!
+  autocmd ColorScheme * call s:base16_customize()
+augroup END
+
 " Highlight TODOs etc
 "
 " TODO: Define regex for todos and notes a the beginning of this
