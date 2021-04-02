@@ -471,6 +471,7 @@ if has('nvim')
   tnoremap <C-L> <c-\><c-n><c-w>l
 
   tnoremap <c-^> <c-\><c-n><c-^>
+  tnoremap <c-space> <c-\><c-n>
 
   let $GIT_EDITOR = 'nvr -cc split --remote-wait'
 
