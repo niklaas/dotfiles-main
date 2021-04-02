@@ -364,6 +364,7 @@ let g:ale_fixers = {
       \   'zsh': [ 'trim_whitespace' ],
       \   'terraform': ['terraform'],
       \   'scss': ['prettier'],
+      \   'markdown': ['prettier'],
       \   '*': ['remove_trailing_lines']
       \ }
 
