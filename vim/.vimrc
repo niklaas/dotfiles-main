@@ -77,8 +77,8 @@ Plug 'junegunn/fzf.vim', Cond(has('unix'))
 Plug 'SirVer/ultisnips', Cond(v:version >= 800 && has('python3'))
 Plug 'honza/vim-snippets', Cond(v:version >= 800 && has('python3'))
 
-Plug 'w0rp/ale', Cond(v:version >= 800)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'w0rp/ale', Cond(v:version >= 800 && !exists('g:vscode'))
+Plug 'neoclide/coc.nvim', !exists('g:vscode') ? { 'branch': 'release' } : { 'on': [] }
 
 " Syntax rules and filetype specific plugins {{{2
 
