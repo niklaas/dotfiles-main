@@ -257,7 +257,7 @@ let g:lightline = {
       \   'linter_ok': 'middle',
       \ },
       \ 'tabline': {
-      \   'right': [ [ 'cwd' ] ]
+      \   'right': [  ]
       \ },
       \ 'mode_map': {
       \   'n' : 'N',
