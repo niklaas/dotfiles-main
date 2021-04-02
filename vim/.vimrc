@@ -29,6 +29,7 @@ endfunction
 " Basics {{{2
 
 Plug 'chriskempson/base16-vim'
+Plug 'daviesjamie/vim-base16-lightline'
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
@@ -222,7 +223,7 @@ let g:neoterm_autoinsert = 1
 " comparing 'real file' with git diff.
 
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'base16',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'filename', 'modified' ],
