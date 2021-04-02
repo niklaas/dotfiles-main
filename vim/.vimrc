@@ -433,7 +433,18 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+if !exists('g:vscode')
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+endif
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
