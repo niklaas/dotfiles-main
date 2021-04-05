@@ -47,6 +47,7 @@
 	st  = status
 	su  = submodule update --recursive --remote
   wt  = worktree
+  wa  = "!wa() { git worktree add ../$(basename $(pwd))--$@ ;}; wa"
   # custom commands:
 	ig  = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 	browse = "!browse() { $VISUAL +\"Gbrowse! $@ |q\" ;}; browse"
