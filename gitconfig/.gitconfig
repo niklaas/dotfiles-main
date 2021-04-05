@@ -14,6 +14,7 @@
 	ad  = add
 	ap  = add --patch
 	br  = branch
+	bl  = blame
 	brc = rev-parse --abbrev-ref HEAD
 	ch  = checkout
 	chm = checkout master
