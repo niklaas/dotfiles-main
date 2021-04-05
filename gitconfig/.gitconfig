@@ -39,7 +39,7 @@
 	pl  = pull --rebase
 	ps  = push
 	rb  = rebase
-	rbi = rebase --interactive
+	ri  = rebase --interactive
 	sh  = stash
 	spa = stash --include-untracked
 	spu = stash --include-untracked --keep-index
