@@ -22,6 +22,7 @@
 	coa = commit -v --amend
 	con = commit -v --no-verify
 	df  = diff
+	dfs = diff --staged
 	dfc = diff --compact-summary
 	dfw = diff --ignore-all-space
 	dfn = diff --name-only
