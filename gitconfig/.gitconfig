@@ -72,3 +72,5 @@
 	prompt = false
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main
