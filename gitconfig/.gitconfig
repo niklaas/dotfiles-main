@@ -72,5 +72,7 @@
 	prompt = false
 [pull]
 	rebase = true
+[github]
+	user = niklaas
 [init]
 	defaultBranch = main
