@@ -499,10 +499,10 @@ command! BW :bp\|bw #<cr>
 
 command! CD :cd %:p:h<CR>:pwd<CR>
 
-command! YankFullPath :let @+ = expand("%")<cr>
-command! YankFilename :let @+ = expand("%:t")<cr>
-command! YankFullPathLC :let @+ = expand("%")   . ':' . line('.') . ':' . col('.')<cr>
-command! YankFilenameLC :let @+ = expand("%:t") . ':' . line('.') . ':' . col('.')<cr>
+command! YankFullPath :let @+ = expand("%")
+command! YankFilename :let @+ = expand("%:t")
+command! YankFullPathLC :let @+ = expand("%")   . ':' . line('.') . ':' . col('.')
+command! YankFilenameLC :let @+ = expand("%:t") . ':' . line('.') . ':' . col('.')
 
 " Abbreviations {{{1
 
