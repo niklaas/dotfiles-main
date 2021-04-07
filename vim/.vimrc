@@ -372,6 +372,8 @@ let g:ale_fix_on_save = 1
 let g:ale_open_list = 0
 let g:ale_list_window_size = 7
 
+let g:ale_javascript_eslint_suppress_missing_config = 1
+
 " While ALE needs LSPs for linting, it should not use them for
 " anything else. So, in the following we disable those features.
 let g:ale_completion_enabled = 0
