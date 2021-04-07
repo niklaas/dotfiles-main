@@ -86,6 +86,7 @@ Plug 'neoclide/coc.nvim', !exists('g:vscode') ? { 'branch': 'release' } : { 'on'
 Plug 'chrisbra/csv.vim'
 
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 " Polyglot
 let g:polyglot_disabled = ['latex', 'dockerfile']
@@ -555,6 +556,11 @@ augroup filetype_markdown
   "
   " https://github.com/plasticboy/vim-markdown/issues/126#issuecomment-485579068
   autocmd FileType markdown setlocal indentexpr=
+augroup END
+
+augroup filetype_nunjucks
+  autocmd!
+  autocmd BufRead,BufNewFile *.njk set ft=jinja
 augroup END
 
 augroup filetype_sql
