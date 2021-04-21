@@ -171,8 +171,8 @@ alias l="ls -lFah"
 
 if command -v exa >/dev/null; then
     alias l="exa"
-    alias ll="exa -l"
-    alias la="exa -al"
+    alias ll="exa -l --git"
+    alias la="exa -al --git"
     alias lt="exa -T --git"
     alias lts="exa -aT --git"
 fi
