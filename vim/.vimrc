@@ -581,14 +581,6 @@ augroup filetype_vimrc
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-" Terminal {{{1
-
-augroup terminal_insert
-  autocmd!
-  autocmd BufWinEnter,WinEnter term://* startinsert
-  autocmd BufLeave term://* stopinsert
-augroup END
-
 " Miscellaneous {{{1
 
 function! s:ftplugin_fugitive() abort
