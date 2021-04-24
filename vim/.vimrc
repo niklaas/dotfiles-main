@@ -208,9 +208,12 @@ endif
 
 " Plugin Configuration {{{1
 
+function! s:read_background() abort
+  source ~/.vimrc_background
+endfunction
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
-  source ~/.vimrc_background
+  call s:read_background()
 endif
 
 " neoterm {{{2
@@ -224,7 +227,7 @@ let g:neoterm_autoinsert = 1
 " comparing 'real file' with git diff.
 
 let g:lightline = {
-      \ 'colorscheme': 'base16',
+      \ 'colorscheme': 'Tomorrow_Night',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'filename', 'modified' ],
@@ -618,6 +621,30 @@ augroup on_change_colorschema
   autocmd!
   autocmd ColorScheme * call s:base16_customize()
 augroup END
+
+augroup LightlineColorscheme
+  autocmd!
+  autocmd VimResume * call s:lightline_update()
+augroup END
+function! s:lightline_update()
+  if !exists('g:loaded_lightline')
+    return
+  endif
+  let g:lightline.colorscheme = 'Tomorrow'
+
+  call s:read_background()
+  try
+    if g:colors_name =~# 'night'
+      let g:lightline.colorscheme = 'Tomorrow_Night'
+    endif
+  catch
+    " do nothing
+  endtry
+
+  call lightline#init()
+  call lightline#colorscheme()
+  call lightline#update()
+endfunction
 
 " Highlight TODOs etc
 "
