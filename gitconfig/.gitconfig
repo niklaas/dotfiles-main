@@ -16,6 +16,7 @@
 	br  = branch
 	bl  = blame
 	brc = rev-parse --abbrev-ref HEAD
+	brd = !git branch | awk '{ print $1}' | grep -v '*' | xargs -L 1 -p git branch -D
 	ch  = checkout
 	chm = checkout master
 	co  = commit -v
