@@ -392,16 +392,25 @@ let g:ale_sign_info = 'o'
 
 " custom home row mappings {{{2
 
-nnoremap                    <space>a    :edit %<.
-nnoremap  <silent><nowait>  <space>s    :<C-u>CocList outline<cr>
-nnoremap  <silent><nowait>  <space>S    :<C-u>CocList -I symbols<cr>
-nmap      <silent>          <space>f    <Plug>(coc-fix-current)
-nmap                        <space>F    <Plug>(ale_fix)
-nnoremap                    <space>h    :e $MYREALVIMRC<cr>
-nmap      <silent>          <space>j    <Plug>(coc-rename)
-nnoremap                    <space>l    :Tnew<cr>
-nnoremap                    <space>L    : Tnew<left><left><left><left><left>
-nnoremap                    <space>;    :Ttoggle<cr>
+if !exists('g:vscode')
+  nnoremap                    <space>a    :edit %<.
+  nnoremap  <silent><nowait>  <space>s    :<C-u>CocList outline<cr>
+  nnoremap  <silent><nowait>  <space>S    :<C-u>CocList -I symbols<cr>
+  nmap      <silent>          <space>f    <Plug>(coc-fix-current)
+  nmap                        <space>F    <Plug>(ale_fix)
+  nnoremap                    <space>h    :e $MYREALVIMRC<cr>
+  nmap      <silent>          <space>j    <Plug>(coc-rename)
+  nnoremap                    <space>k    :Buffers<cr>
+  nnoremap                    <space>l    :Tnew<cr>
+  nnoremap                    <space>L    :<space>:Tnew<left><left><left><left><left><left>
+  nnoremap                    <space>;    :Ttoggle<cr>
+else
+  nnoremap  <silent>          <space>s    <Cmd>call VSCodeNotify('workbench.action.gotoSymbol')<cr>
+  nnoremap  <silent><nowait>  <space>S    <Cmd>call VSCodeNotify('workbench.action.showAllSymbols')<cr>
+  nmap      <silent>          <space>f    <Cmd>call VSCodeNotify('editor.action.quickFix')<cr>
+  nmap                        <space>F    <Cmd>call VSCodeNotify('editor.action.formatDocument')<cr>
+  nmap      <silent>          <space>j    <Cmd>call VSCodeNotify('editor.action.rename')<cr>
+endif
 
 " General {{{2
 
