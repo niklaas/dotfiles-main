@@ -69,10 +69,10 @@ Plug 'tpope/vim-projectionist'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tpope/vim-rhubarb'  " GitHub
 
-Plug 'junegunn/gv.vim'
+Plug 'junegunn/gv.vim', Cond(!exists('g:vscode'))
 
-Plug 'junegunn/fzf', Cond(has('unix'), { 'dir': '~/.fzf', 'do': './install --all' })
-Plug 'junegunn/fzf.vim', Cond(has('unix'))
+Plug 'junegunn/fzf', Cond(has('unix') && !exists('g:vscode'), { 'dir': '~/.fzf', 'do': './install --all' })
+Plug 'junegunn/fzf.vim', Cond(has('unix') && !exists('g:vscode'))
 
 Plug 'SirVer/ultisnips', Cond(v:version >= 800 && has('python3'))
 Plug 'honza/vim-snippets', Cond(v:version >= 800 && has('python3'))
@@ -90,7 +90,7 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 
 " Polyglot
 let g:polyglot_disabled = ['latex', 'dockerfile']
-Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot', Cond(!exists('g:vscode'))
 
 " My own plugins {{{2
 
@@ -434,21 +434,21 @@ inoremap <c-o> <esc>O
 " Plugin related {{{2
 
 " command of conquer (coc)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
-
 if !exists('g:vscode')
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+
+  xmap if <Plug>(coc-funcobj-i)
+  omap if <Plug>(coc-funcobj-i)
+  xmap af <Plug>(coc-funcobj-a)
+  omap af <Plug>(coc-funcobj-a)
+  xmap ic <Plug>(coc-classobj-i)
+  omap ic <Plug>(coc-classobj-i)
+  xmap ac <Plug>(coc-classobj-a)
+  omap ac <Plug>(coc-classobj-a)
+
   autocmd CursorHold * silent call CocActionAsync('highlight')
 endif
 
