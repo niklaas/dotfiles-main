@@ -440,11 +440,20 @@ nnoremap <C-H> <C-W><C-H>
 
 inoremap <c-o> <esc>O
 
+" Comment with vscode
 if exists('g:vscode')
   xmap gc  <Plug>VSCodeCommentary
   nmap gc  <Plug>VSCodeCommentary
   omap gc  <Plug>VSCodeCommentary
   nmap gcc <Plug>VSCodeCommentaryLine
+endif
+
+" Stage hunks/changes with vscode
+if exists('g:vscode')
+  nmap ]c             <Cmd>call VSCodeNotify('editor.action.dirtydiff.next')<cr>
+  nmap [c             <Cmd>call VSCodeNotify('editor.action.dirtydiff.previous')<cr>
+  vmap <space><space> <Cmd>call VSCodeNotifyRange('git.stageSelectedRanges', line('v'), line('.'), 0)<cr>
+  nmap <space><space> <Cmd>call VSCodeNotify('git.stageSelectedRanges')<cr>
 endif
 
 " Plugin related {{{2
