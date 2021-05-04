@@ -50,7 +50,7 @@ Plug 'maximbaz/lightline-ale'
 Plug 'edkolev/tmuxline.vim'
 
 Plug 'tpope/vim-abolish'  " for better substitution
-Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary', Cond(!exists('g:vscode'))
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'  " sugar for UNIX shell commands
@@ -430,6 +430,13 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 inoremap <c-o> <esc>O
+
+if exists('g:vscode')
+  xmap gc  <Plug>VSCodeCommentary
+  nmap gc  <Plug>VSCodeCommentary
+  omap gc  <Plug>VSCodeCommentary
+  nmap gcc <Plug>VSCodeCommentaryLine
+endif
 
 " Plugin related {{{2
 
