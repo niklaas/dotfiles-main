@@ -3,7 +3,7 @@
 " vint:next-line -ProhibitSetNoCompatible
 set nocompatible
 
-let mapleader = ','
+let mapleader = '<space>'
 
 if has('win32')
     let $DOTVIM = expand('$HOME/vimfiles')
@@ -33,14 +33,13 @@ Plug 'daviesjamie/vim-base16-lightline'
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'jamessan/vim-gnupg'
 Plug 'sjl/gundo.vim'
 Plug 'vim-scripts/dbext.vim'
 Plug 'mattn/emmet-vim'
 
 Plug 'kassio/neoterm'
-Plug 'jiangmiao/auto-pairs'
-Plug 'justinmk/vim-sneak'
+
+Plug 'easymotion/vim-easymotion'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
 Plug 'junegunn/vim-easy-align'
@@ -50,13 +49,12 @@ Plug 'maximbaz/lightline-ale'
 Plug 'edkolev/tmuxline.vim'
 
 Plug 'tpope/vim-abolish'  " for better substitution
-Plug 'tpope/vim-commentary', Cond(!exists('g:vscode'))
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'  " sugar for UNIX shell commands
 Plug 'tpope/vim-obsession'  " for session management
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-scriptease'  " e.g. map zS for showing sytax group
+Plug 'tpope/vim-scriptease'  " e.g. map zS for showing syntax group
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'  " for auto-indenting
 Plug 'tpope/vim-surround'
@@ -68,29 +66,28 @@ Plug 'tpope/vim-projectionist'
 " fugitive integrations
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tpope/vim-rhubarb'  " GitHub
+Plug 'airblade/vim-gitgutter'
 
-Plug 'junegunn/gv.vim', Cond(!exists('g:vscode'))
+Plug 'junegunn/gv.vim'
 
-Plug 'junegunn/fzf', Cond(has('unix') && !exists('g:vscode'), { 'dir': '~/.fzf', 'do': './install --all' })
-Plug 'junegunn/fzf.vim', Cond(has('unix') && !exists('g:vscode'))
+Plug 'junegunn/fzf', Cond(has('unix'), { 'dir': '~/.fzf', 'do': './install --all' })
+Plug 'junegunn/fzf.vim', Cond(has('unix'))
 
 Plug 'SirVer/ultisnips', Cond(v:version >= 800 && has('python3'))
 Plug 'honza/vim-snippets', Cond(v:version >= 800 && has('python3'))
 
-Plug 'w0rp/ale', Cond(v:version >= 800 && !exists('g:vscode'))
-Plug 'neoclide/coc.nvim', !exists('g:vscode') ? { 'branch': 'release' } : { 'on': [] }
+Plug 'w0rp/ale', Cond(v:version >= 800)
+Plug 'neoclide/coc.nvim',  { 'branch': 'release' }
 
 " Syntax rules and filetype specific plugins {{{2
 
-" CSV
 Plug 'chrisbra/csv.vim'
-
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'Glench/Vim-Jinja2-Syntax'
 
 " Polyglot
-let g:polyglot_disabled = ['latex', 'dockerfile']
-Plug 'sheerun/vim-polyglot', Cond(!exists('g:vscode'))
+let g:polyglot_disabled = ['csv', 'latex', 'dockerfile']
+Plug 'sheerun/vim-polyglot'
 
 " My own plugins {{{2
 
@@ -144,7 +141,6 @@ set smartcase
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set tags=./tags,./TAGS,tags,TAGS,../tags,../../tags,../../../tags,../../../../tags
 set termguicolors
-set termguicolors
 set undofile
 set updatetime=300
 set viminfo=%,'50,:100,<1000
@@ -189,6 +185,15 @@ augroup responsive_cursorline
   autocmd WinLeave * setlocal nocursorline
 augroup end
 
+" colorscheme
+function! s:read_background() abort
+  source ~/.vimrc_background
+endfunction
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  call s:read_background()
+endif
+
 if has('gui_running')
   set guioptions-=m
   set guioptions-=T
@@ -208,18 +213,23 @@ endif
 
 " Plugin Configuration {{{1
 
-function! s:read_background() abort
-  source ~/.vimrc_background
-endfunction
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  call s:read_background()
-endif
+" gitgutter {{{2
+let g:gitgutter_preview_win_floating = 0
+
+" coc {{{2
+let g:coc_filetype_map = {
+      \ 'jinja.html': 'html',
+      \ }
 
 " neoterm {{{2
-
 let g:neoterm_autoscroll = 1
 let g:neoterm_autoinsert = 1
+let g:neoterm_default_mod = 'botright'
+nnoremap <c-q> :Ttoggle<cr>
+inoremap <c-q> <esc>:Ttoggle<cr>
+tnoremap <c-q> <c-\><c-n>:Ttoggle<cr>
+nnoremap [s :Tprevious<cr>
+nnoremap ]s :Tnext<cr>
 
 " Lightline {{{2
 
@@ -230,7 +240,7 @@ let g:lightline = {
       \ 'colorscheme': 'Tomorrow_Night',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
       \             [ 'gitdiff' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
@@ -309,7 +319,6 @@ function! Cwd()
 endfunction
 
 " Test {{{2
-
 let test#strategy='dispatch'
 
 " Tmuxline {{{2
@@ -321,10 +330,8 @@ let g:tmuxline_preset = 'minimal'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Emmet {{{2
-
-" use ctrl-q b/c same as ctrl-v
-let g:user_emmet_leader_key = '<C-q>'
-
+" disable global mapping b/c coc-emmet used
+let g:user_emmet_install_global = 0
 let g:user_emmet_settings = {
       \ 'typescript' : {
       \   'extends': 'jsx'
@@ -346,7 +353,6 @@ let g:rust_use_custom_ctags_defs = 1
 let g:UltiSnipsExpandTrigger='<c-e>'
 let g:UltiSnipsSnippetsDir = expand($DOTVIM . '/misc/UltiSnips')
 let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
-
 
 " ALE {{{2
 let g:ale_linters_explicit = 1
@@ -390,27 +396,28 @@ let g:ale_sign_info = 'o'
 
 " Mappings {{{1
 
-" custom home row mappings {{{2
+" homerow  et al {{{2
 
-if !exists('g:vscode')
-  nnoremap                    <space>a    :edit %<.
-  nnoremap  <silent><nowait>  <space>s    :<C-u>CocList outline<cr>
-  nnoremap  <silent><nowait>  <space>S    :<C-u>CocList -I symbols<cr>
-  nmap      <silent>          <space>f    <Plug>(coc-fix-current)
-  nmap                        <space>F    <Plug>(ale_fix)
-  nnoremap                    <space>h    :e $MYREALVIMRC<cr>
-  nmap      <silent>          <space>j    <Plug>(coc-rename)
-  nnoremap                    <space>k    :Buffers<cr>
-  nnoremap                    <space>l    :Tnew<cr>
-  nnoremap                    <space>L    :<space>:Tnew<left><left><left><left><left><left>
-  nnoremap                    <space>;    :Ttoggle<cr>
-else
-  nnoremap  <silent>          <space>s    <Cmd>call VSCodeNotify('workbench.action.gotoSymbol')<cr>
-  nnoremap  <silent><nowait>  <space>S    <Cmd>call VSCodeNotify('workbench.action.showAllSymbols')<cr>
-  nmap      <silent>          <space>f    <Cmd>call VSCodeNotify('editor.action.quickFix')<cr>
-  nmap                        <space>F    <Cmd>call VSCodeNotify('editor.action.formatDocument')<cr>
-  nmap      <silent>          <space>j    <Cmd>call VSCodeNotify('editor.action.rename')<cr>
-endif
+nnoremap                    <space>a    :edit %<.
+nnoremap  <silent><nowait>  <space>s    :<C-u>CocList outline<cr>
+nnoremap  <silent><nowait>  <space>S    :<C-u>CocList -I symbols<cr>
+" d
+nmap      <silent>          <space>f    <Plug>(coc-fix-current)
+nmap                        <space>F    <Plug>(ale_fix)
+nnoremap                    <space>h    :e $MYREALVIMRC<cr>
+" j
+nnoremap                    <space>k    :Buffers<cr>
+" l
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gR <Plug>(coc-rename)
+
+nmap <silent> <leader>hs <Plug>(GitGutterStageHunk)
+nmap <silent> <leader>hu <Plug>(GitGutterUndoHunk)
+nmap <silent> <leader>hp <Plug>(GitGutterPreviewHunk)
 
 " General {{{2
 
@@ -425,7 +432,6 @@ cnoremap $t <CR>:t''<CR>
 cnoremap $m <CR>:m''<CR>
 cnoremap $d <CR>:d<CR>``
 
-nnoremap <leader><space> @q
 nnoremap Y y$
 nnoremap gb :ls<CR>:b<space>
 
@@ -440,42 +446,24 @@ nnoremap <C-H> <C-W><C-H>
 
 inoremap <c-o> <esc>O
 
-" Comment with vscode
-if exists('g:vscode')
-  xmap gc  <Plug>VSCodeCommentary
-  nmap gc  <Plug>VSCodeCommentary
-  omap gc  <Plug>VSCodeCommentary
-  nmap gcc <Plug>VSCodeCommentaryLine
-endif
-
-" Stage hunks/changes with vscode
-if exists('g:vscode')
-  nmap ]c             <Cmd>call VSCodeNotify('editor.action.dirtydiff.next')<cr>
-  nmap [c             <Cmd>call VSCodeNotify('editor.action.dirtydiff.previous')<cr>
-  vmap <space><space> <Cmd>call VSCodeNotifyRange('git.stageSelectedRanges', line('v'), line('.'), 0)<cr>
-  nmap <space><space> <Cmd>call VSCodeNotify('git.stageSelectedRanges')<cr>
-endif
-
 " Plugin related {{{2
 
 " command of conquer (coc)
-if !exists('g:vscode')
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
 
-  xmap if <Plug>(coc-funcobj-i)
-  omap if <Plug>(coc-funcobj-i)
-  xmap af <Plug>(coc-funcobj-a)
-  omap af <Plug>(coc-funcobj-a)
-  xmap ic <Plug>(coc-classobj-i)
-  omap ic <Plug>(coc-classobj-i)
-  xmap ac <Plug>(coc-classobj-a)
-  omap ac <Plug>(coc-classobj-a)
+" ALE
+nmap <silent> [g <Plug>(ale_previous_wrap)
+nmap <silent> ]g <Plug>(ale_next_wrap)
 
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-endif
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -484,26 +472,18 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-" neoterm
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
-nnoremap [s :Tprevious<cr>
-nnoremap ]s :Tnext<cr>
-nmap <silent> [g <Plug>(ale_previous_wrap)
-nmap <silent> ]g <Plug>(ale_next_wrap)
+inoremap <silent><expr> <C-space> coc#refresh()
 
 nnoremap <c-p> :FZF<cr>
 nnoremap <space>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
 
-map f <Plug>Sneak_s
-map F <Plug>Sneak_S
-
+" EasyAlign
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-inoremap <silent><expr> <C-l> coc#refresh()
 
 " Vim terminal
 if has('nvim')
@@ -546,7 +526,7 @@ cabbrev <expr> %% expand('%:p:h')
 
 augroup automagic_marks
   autocmd!
-  autocmd BufLeave *.css,*.scss         normal! mC
+  autocmd BufLeave *.css,*.scss         normal! mS
   autocmd BufLeave *.html               normal! mH
   autocmd BufLeave *.ts,*.tsx,*.js,*jsx normal! mT
 augroup END
@@ -563,7 +543,7 @@ augroup END
 
 augroup filetype_gitcommit
   autocmd!
-  autocmd FileType gitcommit startinsert | setlocal comments+=fb:- fo+=nrbl spell
+  autocmd FileType gitcommit setlocal comments+=fb:- fo+=nrbl spell
 augroup END
 
 augroup filetype_html
@@ -641,7 +621,7 @@ augroup END
 
 augroup LightlineColorscheme
   autocmd!
-  autocmd VimResume * call s:lightline_update()
+  autocmd VimResume,VimEnter * call s:lightline_update()
 augroup END
 function! s:lightline_update()
   if !exists('g:loaded_lightline')
