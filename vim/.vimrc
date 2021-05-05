@@ -3,7 +3,8 @@
 " vint:next-line -ProhibitSetNoCompatible
 set nocompatible
 
-let mapleader = '<space>'
+nnoremap <space> <nop>
+let mapleader = ' '
 
 if has('win32')
     let $DOTVIM = expand('$HOME/vimfiles')
@@ -398,15 +399,15 @@ let g:ale_sign_info = 'o'
 
 " homerow  et al {{{2
 
-nnoremap                    <space>a    :edit %<.
-nnoremap  <silent><nowait>  <space>s    :<C-u>CocList outline<cr>
-nnoremap  <silent><nowait>  <space>S    :<C-u>CocList -I symbols<cr>
+nnoremap                    <leader>a    :edit %<.
+nnoremap  <silent><nowait>  <leader>s    :<C-u>CocList outline<cr>
+nnoremap  <silent><nowait>  <leader>S    :<C-u>CocList -I symbols<cr>
 " d
-nmap      <silent>          <space>f    <Plug>(coc-fix-current)
-nmap                        <space>F    <Plug>(ale_fix)
-nnoremap                    <space>h    :e $MYREALVIMRC<cr>
+nmap      <silent>          <leader>f    <Plug>(coc-fix-current)
+nmap                        <leader>F    <Plug>(ale_fix)
+" h is for gitgutter
 " j
-nnoremap                    <space>k    :Buffers<cr>
+nnoremap                    <leader>k    :Buffers<cr>
 " l
 
 nmap <silent> gd <Plug>(coc-definition)
@@ -415,11 +416,9 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gR <Plug>(coc-rename)
 
-nmap <silent> <leader>hs <Plug>(GitGutterStageHunk)
-nmap <silent> <leader>hu <Plug>(GitGutterUndoHunk)
-nmap <silent> <leader>hp <Plug>(GitGutterPreviewHunk)
-
 " General {{{2
+
+inoremap <bs> <nop>
 
 " Allows incsearch highlighting for range commands
 "
@@ -436,7 +435,7 @@ nnoremap Y y$
 nnoremap gb :ls<CR>:b<space>
 
 " Yanks current outer paragraph and pastes above
-nnoremap <space>p yapP
+nnoremap <leader>p yapP
 
 " Eases navigation between splits
 nnoremap <C-J> <C-W><C-J>
@@ -479,7 +478,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 inoremap <silent><expr> <C-space> coc#refresh()
 
 nnoremap <c-p> :FZF<cr>
-nnoremap <space>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
+nnoremap <leader>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
 
 " EasyAlign
 xmap ga <Plug>(EasyAlign)
