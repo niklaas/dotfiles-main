@@ -521,6 +521,12 @@ cabbrev <expr> %% expand('%:p:h')
 
 " autocmds {{{1
 
+" see https://github.com/neoclide/coc.nvim/issues/110#issuecomment-768264638
+augroup _coc_easy_motion_fix
+  autocmd User EasyMotionPromptBegin silent! CocDisable
+  autocmd User EasyMotionPromptEnd silent! CocEnable
+augroup END
+
 " automagic marks {{{2
 
 augroup automagic_marks
