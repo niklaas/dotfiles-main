@@ -137,6 +137,9 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 # Aliases {{{1
 
 # Normal Aliases {{{2
+alias dark=base16_tomorrow-night
+alias light=base16_tomorrow
+
 alias e=$VISUAL
 alias es="$VISUAL -S Session.vim"
 alias er="$VISUAL -R"
