@@ -461,8 +461,12 @@ omap ac <Plug>(coc-classobj-a)
 nmap <silent> [g <Plug>(ale_previous_wrap)
 nmap <silent> ]g <Plug>(ale_next_wrap)
 
+" accept completion with <cr>
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" accept completion with <c-j>
+inoremap <silent><expr> <c-j> pumvisible() ? coc#_select_confirm()
+      \: "\<C-g>u\<c-j>\<c-r>=coc#on_enter()\<CR>"
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
