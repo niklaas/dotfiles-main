@@ -509,11 +509,6 @@ nmap ga <Plug>(EasyAlign)
 
 " Vim terminal
 if has('nvim')
-  tnoremap <C-H> <c-\><c-n><c-w>h
-  tnoremap <C-J> <c-\><c-n><c-w>j
-  tnoremap <C-K> <c-\><c-n><c-w>k
-  tnoremap <C-L> <c-\><c-n><c-w>l
-
   tnoremap <c-^> <c-\><c-n><c-^>
   tnoremap <c-space> <c-\><c-n>
 
