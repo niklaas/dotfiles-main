@@ -467,6 +467,15 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
+" fugitive
+nnoremap <leader>gg :Git<cr>
+nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gb :Git blame<cr>
+nnoremap <leader>gc :Git commit --quiet<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gr :GBrowse<space>
+xnoremap <leader>gr :GBrowse<space>
+
 " ALE
 nmap <silent> [g <Plug>(ale_previous_wrap)
 nmap <silent> ]g <Plug>(ale_next_wrap)
