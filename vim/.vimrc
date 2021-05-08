@@ -252,7 +252,7 @@ let g:lightline = {
       \ 'component_function': {
       \   'obsession': 'LightlineObsession',
       \   'cwd': 'Cwd',
-      \   'gitbranch': 'FugitiveHead',
+      \   'gitbranch': 'GitBranch',
       \   'fileformat': 'LightlineFileformat',
       \   'fileencoding': 'LightlineFileencoding',
       \   'filetype': 'LightlineFiletype',
@@ -294,6 +294,10 @@ let g:lightline#ale#indicator_checking = '...'
 function! LightlineObsession()
   let l:status = strpart(ObsessionStatus(), 1, 1)
   return l:status ==# '$' ? '$' : ''
+endfunction
+
+function! GitBranch()
+  return ' ' . FugitiveHead()
 endfunction
 
 function! LightlineFileformat()
