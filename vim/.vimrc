@@ -428,6 +428,7 @@ nmap <silent> gR <Plug>(coc-rename)
 " General {{{2
 
 inoremap <bs> <nop>
+nnoremap <silent> <c-s> :w<cr>
 
 " Allows incsearch highlighting for range commands
 "
