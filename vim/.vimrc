@@ -310,15 +310,15 @@ function! GitBranch()
 endfunction
 
 function! LightlineFileformat()
-  return winwidth(0) > 120 ? &fileformat : ''
+  return winwidth(0) > 140 ? &fileformat : ''
 endfunction
 
 function! LightlineFileencoding()
-  return winwidth(0) > 120 ? &fileencoding : ''
+  return winwidth(0) > 140 ? &fileencoding : ''
 endfunction
 
 function! LightlineFiletype()
-  return winwidth(0) > 120 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+  return winwidth(0) > 140 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
 endfunction
 
 function! Cwd()
