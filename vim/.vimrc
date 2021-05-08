@@ -411,7 +411,7 @@ let g:ale_sign_info = 'o'
 nnoremap                    <leader>a    :edit %<.
 nnoremap  <silent><nowait>  <leader>s    :<C-u>CocList outline<cr>
 nnoremap  <silent><nowait>  <leader>S    :<C-u>CocList -I symbols<cr>
-" d
+nmap      <silent>          <leader>d    :ALEDetail<cr>
 nmap      <silent>          <leader>f    <Plug>(coc-fix-current)
 nmap                        <leader>F    <Plug>(ale_fix)
 " h is for gitgutter
