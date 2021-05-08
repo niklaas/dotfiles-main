@@ -552,6 +552,12 @@ augroup automagic_marks
   autocmd BufLeave *.ts,*.tsx,*.js,*jsx normal! mT
 augroup END
 
+" <c-j> {{{2
+augroup _c_j
+  autocmd!
+  autocmd FileType qf nmap <c-j> <cr>
+augroup END
+
 " Filetype-specific autocmds {{{2
 "
 " This section includes autocomds that change settings and add mappings
