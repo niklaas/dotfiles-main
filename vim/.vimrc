@@ -14,6 +14,10 @@ else
     let $MYREALVIMRC = expand('$HOME/.vimrc')
 endif
 
+" b/c we use command of conquer (coc) and must be set before plugins are
+" loaded, see https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
+let g:ale_disable_lsp = 1
+
 " Plugins {{{1
 
 " Prefix {{{2
@@ -393,10 +397,6 @@ let g:ale_open_list = 0
 let g:ale_list_window_size = 7
 
 let g:ale_javascript_eslint_suppress_missing_config = 1
-
-" While ALE needs LSPs for linting, it should not use them for
-" anything else. So, in the following we disable those features.
-let g:ale_completion_enabled = 0
 
 let g:ale_set_highlights = 1
 let g:ale_set_signs = 1
