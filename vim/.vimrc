@@ -33,6 +33,8 @@ endfunction
 
 " Basics {{{2
 
+Plug 'mhinz/vim-startify'
+
 Plug 'chriskempson/base16-vim'
 Plug 'daviesjamie/vim-base16-lightline'
 
