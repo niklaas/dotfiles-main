@@ -239,6 +239,11 @@ nnoremap ]s :Tnext<cr>
 
 let g:lightline = {
       \ 'colorscheme': 'Tomorrow_Night',
+      \ 'inactive': {
+      \   'left': [ [ 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \            [ 'percent' ] ]
+      \ },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
