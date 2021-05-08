@@ -119,7 +119,7 @@ runtime! ftplugin/man.vim
 set autowrite
 set backspace=indent,eol,start
 set cpoptions+=$
-set diffopt=internal,filler,context:3
+set diffopt=internal,filler,context:3,algorithm:histogram
 set gdefault
 set hidden
 set ignorecase
