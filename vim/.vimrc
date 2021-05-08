@@ -163,7 +163,7 @@ set undodir=$DOTVIM/undo
 
 " Always show status line
 set laststatus=2
-set showtabline=2
+set showtabline=1
 
 " Encoding and file format
 set encoding=utf-8
