@@ -475,6 +475,8 @@ nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Git blame<cr>
 nnoremap <leader>gc :Git commit --quiet<cr>
 nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gp :Git push<cr>
+nnoremap <leader>gP :Git pull<cr>
 nnoremap <leader>gr :GBrowse<space>
 xnoremap <leader>gr :GBrowse<space>
 
