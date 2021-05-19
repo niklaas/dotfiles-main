@@ -308,7 +308,8 @@ function! LightlineObsession()
 endfunction
 
 function! GitBranch()
-  return ' ' . FugitiveHead()
+  let l:head = FugitiveHead()
+  return len(l:head) > 0 ? ' ' . FugitiveHead() : ''
 endfunction
 
 function! LightlineFileformat()
