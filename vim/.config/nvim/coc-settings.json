@@ -1,9 +1,9 @@
 {
+  "typescript.suggestionActions.enabled": false,
+  "javascript.suggestionActions.enabled": false,
   "diagnostic.displayByAle": true,
-  "suggest.autoTrigger": "always",
   "suggest.enablePreview": true,
   "suggest.enablePreselect": true,
-  "suggest.noselect": true,
   "typescript.preferences.importModuleSpecifier": "relative",
   "coc.preferences.extensionUpdateCheck": "weekly",
   "coc.preferences.useQuickfixForLocations": true,
