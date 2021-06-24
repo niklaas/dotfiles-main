@@ -433,8 +433,8 @@ nmap      <silent>          <leader>f    <Plug>(coc-fix-current)
 nmap                        <leader>F    <Plug>(ale_fix)
 " h is for gitgutter
 " j
-nnoremap                    <leader>k    :Buffers<cr>
-" l
+nnoremap <silent>           <leader>k    :Buffers<cr>
+nnoremap <silent>           <leader>l    :Vista!!<cr>
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -444,8 +444,7 @@ nmap <silent> gR <Plug>(coc-rename)
 
 " General {{{2
 
-inoremap <bs> <nop>
-nnoremap <silent> <c-s> :w<cr>
+nnoremap <silent> <c-[> :w<cr>
 
 " Allows incsearch highlighting for range commands
 "
@@ -482,6 +481,7 @@ omap ac <Plug>(coc-classobj-a)
 nnoremap <leader>gg :Git<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Git blame<cr>
+nnoremap <leader>gB :.Git blame<cr>
 nnoremap <leader>gc :Git commit --quiet<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gp :Git pull<cr>
@@ -497,8 +497,8 @@ nmap <silent> ]g <Plug>(ale_next_wrap)
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " accept completion with <c-j>
-inoremap <silent><expr> <c-j> pumvisible() ? coc#_select_confirm()
-      \: "\<C-g>u\<c-j>\<c-r>=coc#on_enter()\<CR>"
+" inoremap <silent><expr> <c-j> pumvisible() ? coc#_select_confirm()
+"       \: "\<C-g>u\<c-j>\<c-r>=coc#on_enter()\<CR>"
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
