@@ -573,6 +573,15 @@ augroup _c_j
   autocmd FileType qf nmap <c-j> <cr>
 augroup END
 
+" vista {{{2
+augroup _vista
+  autocmd!
+  autocmd FileType vista,vista_kind nnoremap <buffer> <silent>
+        \ / :<c-u>call vista#finder#fzf#Run()<CR>
+  autocmd FileType vista,vista_kind nmap <buffer> <silent>
+        \ <c-j> <cr>
+augroup END
+
 " Filetype-specific autocmds {{{2
 "
 " This section includes autocomds that change settings and add mappings
