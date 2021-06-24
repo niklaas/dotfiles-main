@@ -86,6 +86,8 @@ Plug 'honza/vim-snippets', Cond(v:version >= 800 && has('python3'))
 Plug 'w0rp/ale', Cond(v:version >= 800)
 Plug 'neoclide/coc.nvim',  { 'branch': 'release' }
 
+Plug 'liuchengxu/vista.vim'
+
 " Syntax rules and filetype specific plugins {{{2
 
 Plug 'chrisbra/csv.vim'
@@ -220,6 +222,16 @@ endif
 
 " Plugin Configuration {{{1
 
+" vista {{{2
+let g:vista_default_executive = 'coc'
+let g:vista_close_on_jump = 1
+let g:vista_close_on_fzf_select = 1
+let g:vista#renderer#enable_icon = 0
+let g:vista_echo_cursor = 0
+
+" dbext
+let g:dbext_default_usermaps = 0
+ 
 " gitgutter {{{2
 let g:gitgutter_preview_win_floating = 0
 
