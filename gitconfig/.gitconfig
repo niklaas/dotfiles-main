@@ -14,6 +14,7 @@
 	ad  = add
 	ap  = add --patch
 	br  = branch
+	brf = !git branch --format='%(refname:short)' | fzf
 	bl  = blame
 	brc = rev-parse --abbrev-ref HEAD
 	brd = !git branch | awk '{ print $1}' | grep -v '*' | xargs -L 1 -p git branch -D
