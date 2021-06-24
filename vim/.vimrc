@@ -367,12 +367,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Emmet {{{2
 " disable global mapping b/c coc-emmet used
-let g:user_emmet_install_global = 0
-let g:user_emmet_settings = {
-      \ 'typescript' : {
-      \   'extends': 'jsx'
-      \ }
-      \}
+let g:user_emmet_leader_key = '<c-s>'
 
 " Projectionist {{{2
 let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/misc/projections.json'))))
