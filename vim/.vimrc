@@ -350,6 +350,13 @@ endfunction
 " Test {{{2
 let test#strategy='dispatch'
 
+" tmux navigator
+if !exists('$TMUX')
+  " I do not want to override <c-{h,j,k,l}> b/c e.g., <c-{h,j}> are quite
+  " handy for not having to reach <bs> and <cr>.
+  let g:tmux_navigator_no_mappings = 1
+endif
+
 " Tmuxline {{{2
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_theme = 'lightline'
