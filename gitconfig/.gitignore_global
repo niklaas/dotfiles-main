@@ -1,3 +1,4 @@
 Session.vim
 workbench.xmi
-tags*
+tags
+!tags/
