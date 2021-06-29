@@ -10,7 +10,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 
 # PATH {{{2
 typeset -U path
-path=(~/.local/bin ~/go/bin ~/n/bin ~/.cargo/bin /snap/bin /opt/local/bin /opt/local/libexec/gnubin $path)
+path=(~/.local/bin ~/go/bin ~/n/bin ~/.cargo/bin $path)
 if test -d /usr/local/go/bin
 then
     # Looks like golang was installed from upstream directly.
@@ -22,6 +22,14 @@ if [ -d $TEXLIVE_DIR ]
 then
     path=($TEXLIVE_DIR/bin/x86_64-linux $path)
 fi
+
+if [ ! -d "$HOME/.nvm" ]
+then
+    mkdir "$HOME/.nvm"
+fi
+
+# homebrew {{{3
+eval $(/opt/homebrew/bin/brew shellenv)
 
 typeset -U fpath
 fpath=(~/.local/share/zsh/functions/Completion $fpath)
