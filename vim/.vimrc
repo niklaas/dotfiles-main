@@ -77,8 +77,9 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'junegunn/gv.vim'
 
-Plug 'junegunn/fzf', Cond(has('unix'), { 'dir': '~/.fzf', 'do': './install --all' })
-Plug 'junegunn/fzf.vim', Cond(has('unix'))
+" Telescope
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'SirVer/ultisnips', Cond(v:version >= 800 && has('python3'))
 Plug 'honza/vim-snippets', Cond(v:version >= 800 && has('python3'))
@@ -224,9 +225,8 @@ endif
 
 " vista {{{2
 let g:vista_default_executive = 'coc'
-let g:vista_close_on_jump = 1
-let g:vista_close_on_fzf_select = 1
-let g:vista#renderer#enable_icon = 0
+let g:vista_close_on_jump = 0
+let g:vista#renderer#enable_icon = 1
 let g:vista_echo_cursor = 0
 
 " dbext
@@ -432,8 +432,8 @@ nmap      <silent>          <leader>d    :ALEDetail<cr>
 nmap      <silent>          <leader>f    <Plug>(coc-fix-current)
 nmap                        <leader>F    <Plug>(ale_fix)
 " h is for gitgutter
-" j
-nnoremap <silent>           <leader>k    :Buffers<cr>
+nnoremap <silent>           <leader>j    <cmd>Telescope live_grep theme=get_dropdown<cr>
+nnoremap <silent>           <leader>k    <cmd>Telescope buffers theme=get_dropdown<cr>
 nnoremap <silent>           <leader>l    :Vista!!<cr>
 
 nmap <silent> gd <Plug>(coc-definition)
@@ -466,6 +466,18 @@ nnoremap <leader>p yapP
 inoremap <c-o> <esc>O
 
 " Plugin related {{{2
+
+" Telescope
+
+lua << EOF
+require("telescope").setup{
+  defaults = {
+    path_display = {
+      "shorten",
+    },
+  }
+}
+EOF
 
 " command of conquer (coc)
 xmap if <Plug>(coc-funcobj-i)
@@ -513,7 +525,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 inoremap <silent><expr> <C-space> coc#refresh()
 
-nnoremap <c-p> :FZF<cr>
+nnoremap <c-p> <cmd>Telescope find_files theme=get_dropdown<cr>
 nnoremap <leader>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
 
 " EasyAlign
@@ -573,14 +585,6 @@ augroup _c_j
   autocmd FileType qf nmap <c-j> <cr>
 augroup END
 
-" vista {{{2
-augroup _vista
-  autocmd!
-  autocmd FileType vista,vista_kind nnoremap <buffer> <silent>
-        \ / :<c-u>call vista#finder#fzf#Run()<CR>
-  autocmd FileType vista,vista_kind nmap <buffer> <silent>
-        \ <c-j> <cr>
-augroup END
 
 " Filetype-specific autocmds {{{2
 "
