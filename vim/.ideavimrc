@@ -1,1 +1,16 @@
-imap jk <Esc>
+set ideajoin
+set ideamarks
+set ideaput
+set surround
+
+set incsearch smartcase
+set relativenumber number
+set scrolloff=3
+set clipboard+=unnamed
+
+nnoremap [<space> O<esc>j
+nnoremap ]<space> o<esc>k
+
+nmap gb <Action>(Annotate)
+
+inoremap <C-O> <esc>O
