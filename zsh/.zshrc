@@ -151,6 +151,7 @@ alias light=base16_tomorrow
 alias e=$VISUAL
 alias es="$VISUAL -S Session.vim"
 alias er="$VISUAL -R"
+alias eg="$VISUAL +G +on"
 alias se="sudo -e"
 alias v="vim"
 alias nv="nvim"
