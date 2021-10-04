@@ -4,7 +4,7 @@
 set nocompatible
 
 nnoremap <space> <nop>
-let mapleader = ' '
+let mapleader = '\'
 
 if has('win32')
     let $DOTVIM = expand('$HOME/vimfiles')
