@@ -319,10 +319,14 @@ function sketch() {
 
 # Others {{{2
 
-# function my_man {
-#     $VISUAL +"Man $1|on"
-# }
-# alias man="my_man"
+function n {
+    if [ "x$1" = "x" ]; then
+        e ~/Desktop/notes.md
+        return 0
+    fi
+
+    e "~/Desktop/$1.notes.md"
+}
 
 function my_sudo {
     while [[ $# > 0 ]]; do
