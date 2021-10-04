@@ -210,6 +210,8 @@ alias t="tree --charset=ascii"
 
 alias sst="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=QUIET"
 
+alias webstorm=open\ -na\ "WebStorm.app"\ --args\ "$@"
+
 # Global Aliases {{{2
 
 alias -g C="| xsel -b"
