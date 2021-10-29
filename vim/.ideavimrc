@@ -1,16 +1,60 @@
+" Configure iTerm > Profiles > Advanced > Semantic History
+"
+"   FILENAME="\1"; LINENUMBER="\2"; if [ "x" = "x$LINENUMBER" ]; then open -na "Webstorm.app" --args $FILENAME; else open -na "Webstorm.app" --args --line $LINENUMBER $FILENAME; fi
+
+" Intellij settings
 set ideajoin
 set ideamarks
 set ideaput
 set surround
 
+" Vim settings
 set incsearch smartcase
 set relativenumber number
 set scrolloff=3
 set clipboard+=unnamed
 
+" Vim or Intellij?
+sethandler <c-d> n-v:ide i:vim
+sethandler <c-t> n:ide i:vim
+
 nnoremap [<space> O<esc>j
 nnoremap ]<space> o<esc>k
 
-nmap gb <Action>(Annotate)
+inoremap <c-o> <esc>O
 
-inoremap <C-O> <esc>O
+" Quicklists
+
+" Language support
+nmap gh <Action>(ShowErrorDescription)
+nmap gs <Action>(RenameElement)
+nmap gr <Action>(Refactorings.QuickListPopupAction)
+
+" Editor
+nmap <leader>jp <Action>(PinActiveEditorTab)
+
+" Navigation
+nmap <c-o> <Action>(Back)
+nmap <c-i> <Action>(Forward)
+nmap <c-[> <Action>(SaveAll)
+nmap ]g <Action>(GotoNextError)
+nmap [g <Action>(GotoPreviousError)
+nmap gi <Action>(GotoImplementation)
+
+" Git related
+nmap ]c <Action>(VcsShowNextChangeMarker)
+nmap [c <Action>(VcsShowPreviousChangeMarker)
+
+nmap <leader>gg <Action>(Vcs.QuickListPopupAction)
+nmap <leader>gb <Action>(Git.Branches)
+
+nmap <leader>ga <Action>(Annotate)
+vmap <leader>ga <Action>(Annotate)
+
+nmap <leader>gh <Action>(Github.Open.In.Browser)
+vmap <leader>gh <Action>(Github.Open.In.Browser)
+
+" Bookmarks
+nmap mm <Action>(ToggleBookmark)
+nmap mi <Action>(EditBookmark)
+nmap ma <Action>(ShowBookmarks)
