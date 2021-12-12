@@ -7,6 +7,11 @@
         {
           "type": "basic",
           "from": {
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            },
             "key_code": "caps_lock"
           },
           "to": [
