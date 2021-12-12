@@ -492,7 +492,7 @@ omap ac <Plug>(coc-classobj-a)
 " fugitive
 nnoremap <leader>gg :Git<cr>
 nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gb :Git blame<cr>
+nnoremap <leader>ga :Git blame<cr>
 nnoremap <leader>gB :.Git blame<cr>
 nnoremap <leader>gc :Git commit --quiet<cr>
 nnoremap <leader>gw :Gwrite<cr>
