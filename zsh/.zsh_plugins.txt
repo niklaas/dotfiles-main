@@ -4,6 +4,8 @@ zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-completions
 
+jeffreytse/zsh-vi-mode
+
 agkozak/zsh-z
 
 lukechilds/zsh-nvm  # Node Version Manager
