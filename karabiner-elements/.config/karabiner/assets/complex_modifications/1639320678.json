@@ -1,8 +1,31 @@
 {
-  "title": "Escape to Hyper Key",
+  "title": "Caps lock to control",
   "rules": [
     {
-      "description": "Caps lock to escape",
+      "description": "Caps lock alone is Escape",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "simultaneous": [
+              {
+                "key_code": "caps_lock"
+              },
+              {
+                "key_code": "spacebar"
+              }
+            ]
+          },
+          "to": [
+            {
+              "key_code": "escape"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Caps lock to control",
       "manipulators": [
         {
           "type": "basic",
@@ -16,19 +39,19 @@
           },
           "to": [
             {
-              "key_code": "escape"
+              "key_code": "left_control"
             }
           ]
         }
       ]
     },
     {
-      "description": "Escape to Hyper Key",
+      "description": "Left control to Hyper Key",
       "manipulators": [
         {
           "type": "basic",
           "from": {
-            "key_code": "escape"
+            "key_code": "left_control"
           },
           "to": [
             {
