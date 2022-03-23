@@ -1,31 +1,7 @@
 {
-  "title": "Caps lock to control",
   "rules": [
     {
-      "description": "Caps lock alone is Escape",
-      "manipulators": [
-        {
-          "type": "basic",
-          "from": {
-            "simultaneous": [
-              {
-                "key_code": "caps_lock"
-              },
-              {
-                "key_code": "spacebar"
-              }
-            ]
-          },
-          "to": [
-            {
-              "key_code": "escape"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "description": "Caps lock to control",
+      "description": "Caps lock to escape, if pressed with other keys to control",
       "manipulators": [
         {
           "type": "basic",
@@ -41,17 +17,22 @@
             {
               "key_code": "left_control"
             }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "escape"
+            }
           ]
         }
       ]
     },
     {
-      "description": "Left control to Hyper Key",
+      "description": "Escape to Hyper Key",
       "manipulators": [
         {
           "type": "basic",
           "from": {
-            "key_code": "left_control"
+            "key_code": "escape"
           },
           "to": [
             {
