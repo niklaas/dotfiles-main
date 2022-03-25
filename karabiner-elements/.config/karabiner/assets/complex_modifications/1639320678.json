@@ -15,7 +15,7 @@
           },
           "to": [
             {
-              "key_code": "left_control"
+              "key_code": "right_control"
             }
           ],
           "to_if_alone": [
@@ -35,7 +35,10 @@
             "key_code": "escape",
             "modifiers": {
               "optional": [
-                "any"
+                "left_control",
+                "left_command",
+                "left_shift",
+                "left_option"
               ]
             }
           },
