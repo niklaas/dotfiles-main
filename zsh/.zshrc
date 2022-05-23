@@ -369,6 +369,10 @@ test -f ${HOME}/.zshrc.local && source ${HOME}/.zshrc.local
 eval "$(starship init zsh)"
 
 # jeffreytse/zsh-vi-mode
+function zvm_config() {
+    ZVM_VI_EDITOR=$VISUAL
+}
+
 function zvm_after_init() {
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 }
