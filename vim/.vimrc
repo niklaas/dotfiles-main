@@ -50,6 +50,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'MattesGroeger/vim-bookmarks'
 
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
@@ -123,6 +124,7 @@ runtime! ftplugin/man.vim
 
 set autowrite
 set backspace=indent,eol,start
+set clipboard+=unnamed
 set cpoptions+=$
 set diffopt=internal,filler,context:3,algorithm:histogram
 set gdefault
@@ -245,7 +247,6 @@ let g:neoterm_autoscroll = 1
 let g:neoterm_autoinsert = 1
 let g:neoterm_default_mod = 'botright'
 nnoremap <c-q> :Ttoggle<cr>
-inoremap <c-q> <esc>:Ttoggle<cr>
 tnoremap <c-q> <c-\><c-n>:Ttoggle<cr>
 nnoremap [s :Tprevious<cr>
 nnoremap ]s :Tnext<cr>
@@ -397,7 +398,7 @@ let g:ale_linters = {
       \   'terraform': ['terraform']
       \ }
 let g:ale_fixers = {
-      \   'html': [ 'prettier', 'trim_whitespace' ],
+      \   'html': [ 'prettier'],
       \   'javascript': [ 'prettier', 'eslint', 'trim_whitespace' ],
       \   'typescript': [ 'prettier', 'eslint', 'trim_whitespace' ],
       \   'typescriptreact': [ 'prettier' ],
@@ -425,9 +426,7 @@ let g:ale_sign_info = 'o'
 
 " homerow  et al {{{2
 
-nnoremap                    <leader>a    :edit %<.
 nnoremap  <silent><nowait>  <leader>s    :<C-u>CocList outline<cr>
-nnoremap  <silent><nowait>  <leader>S    :<C-u>CocList -I symbols<cr>
 nmap      <silent>          <leader>d    :ALEDetail<cr>
 nmap      <silent>          <leader>f    <Plug>(coc-fix-current)
 nmap                        <leader>F    <Plug>(ale_fix)
@@ -436,11 +435,16 @@ nnoremap <silent>           <leader>j    <cmd>Telescope live_grep theme=get_drop
 nnoremap <silent>           <leader>k    <cmd>Telescope buffers theme=get_dropdown<cr>
 nnoremap <silent>           <leader>l    :Vista!!<cr>
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gR <Plug>(coc-rename)
+nnoremap                  ga :edit %<.
+nnoremap <silent><nowait> gs :<C-u>CocList -I symbols<cr>
+nmap     <silent>         gd <Plug>(coc-definition)
+nmap     <silent>         gy <Plug>(coc-type-definition)
+nmap     <silent>         gi <Plug>(coc-implementation)
+nmap     <silent>         gr <Plug>(coc-references)
+nmap     <silent>         gR <Plug>(coc-rename)
+
+nmap     <silent>         gh <Plug>(coc-codeaction-selected)
+xmap     <silent>         gh <Plug>(coc-codeaction-selected)
 
 " General {{{2
 
@@ -527,10 +531,6 @@ inoremap <silent><expr> <C-space> coc#refresh()
 
 nnoremap <c-p> <cmd>Telescope find_files theme=get_dropdown<cr>
 nnoremap <leader>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
-
-" EasyAlign
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
 
 " Vim terminal
 if has('nvim')
