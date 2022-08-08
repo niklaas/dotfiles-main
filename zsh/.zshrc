@@ -17,10 +17,10 @@ then
     path=(/usr/local/go/bin $path)
 fi
 
-TEXLIVE_DIR=~/.local/texlive/2018
+TEXLIVE_DIR=/Library/TeX/texbin
 if [ -d $TEXLIVE_DIR ]
 then
-    path=($TEXLIVE_DIR/bin/x86_64-linux $path)
+    path=($TEXLIVE_DIR $path)
 fi
 
 if [ ! -d "$HOME/.nvm" ]
@@ -126,19 +126,7 @@ bindkey -v
 bindkey -v '^a' vi-beginning-of-line
 bindkey -v '^e' vi-end-of-line
 
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
-bindkey -M vicmd v edit-command-line
-
 bindkey -s '^z' 'fg\n'
-
-if ! command -v fzf >/dev/null 2>&1
-then
-    bindkey '^R' history-incremental-pattern-search-backward
-    bindkey '^P' vi-up-line-or-history
-    bindkey '^N' vi-down-line-or-history
-fi
 
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
@@ -161,6 +149,8 @@ alias auu="sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y
 
 command -v uctags >/dev/null && \
     alias ctags=uctags
+
+alias curltime="curl -w \"@$HOME/.curl-format.txt\" -o /dev/null -s "
 
 alias d="dirs -v"
 
@@ -219,6 +209,7 @@ alias -g D="*(/)"
 alias -g F="| fzf -m"
 alias -g G="| grep -i"
 alias -g H="| head"
+alias -g HL="--help | less"
 alias -g L="| less"
 alias -g P="| parallel"
 alias -g S="| sort"
@@ -321,11 +312,11 @@ function sketch() {
 
 function n {
     if [ "x$1" = "x" ]; then
-        e ~/Desktop/notes.md
+        e $HOME/Desktop/notes.md
         return 0
     fi
 
-    e "~/Desktop/$1.notes.md"
+    e $HOME/Desktop/$1.notes.md
 }
 
 function my_sudo {
@@ -385,5 +376,7 @@ if [ -f $HOME/.zshrc_local ]
 then
     source $HOME/.zshrc_local
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # vim:set foldmethod=marker:
