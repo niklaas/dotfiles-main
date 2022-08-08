@@ -16,13 +16,23 @@
                 },
                 "rules": [
                     {
-                        "description": "Caps lock to escape",
+                        "description": "Caps lock to escape, if pressed with other keys to control",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "caps_lock"
+                                    "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
                                 },
                                 "to": [
+                                    {
+                                        "key_code": "right_control"
+                                    }
+                                ],
+                                "to_if_alone": [
                                     {
                                         "key_code": "escape"
                                     }
@@ -36,7 +46,15 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "escape"
+                                    "key_code": "escape",
+                                    "modifiers": {
+                                        "optional": [
+                                            "left_control",
+                                            "left_command",
+                                            "left_shift",
+                                            "left_option"
+                                        ]
+                                    }
                                 },
                                 "to": [
                                     {
@@ -45,8 +63,7 @@
                                             "left_command",
                                             "left_control",
                                             "left_option"
-                                        ],
-                                        "repeat": false
+                                        ]
                                     }
                                 ],
                                 "type": "basic"
@@ -134,28 +151,7 @@
                     },
                     "ignore": false,
                     "manipulate_caps_lock_led": true,
-                    "simple_modifications": [
-                        {
-                            "from": {
-                                "apple_vendor_top_case_key_code": "keyboard_fn"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "left_control"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "left_control"
-                            },
-                            "to": [
-                                {
-                                    "apple_vendor_top_case_key_code": "keyboard_fn"
-                                }
-                            ]
-                        }
-                    ]
+                    "simple_modifications": []
                 },
                 {
                     "disable_built_in_keyboard_if_exists": false,
@@ -203,6 +199,32 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 666,
+                        "vendor_id": 76
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 45915,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": true,
+                    "simple_modifications": []
                 }
             ],
             "fn_function_keys": [
@@ -262,7 +284,9 @@
                     },
                     "to": [
                         {
-                            "key_code": "f6"
+                            "software_function": {
+                                "iokit_power_management_sleep_system": {}
+                            }
                         }
                     ]
                 },
@@ -332,18 +356,7 @@
                 "delay_milliseconds_before_open_device": 1000
             },
             "selected": true,
-            "simple_modifications": [
-                {
-                    "from": {
-                        "key_code": "right_option"
-                    },
-                    "to": [
-                        {
-                            "key_code": "right_control"
-                        }
-                    ]
-                }
-            ],
+            "simple_modifications": [],
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "indicate_sticky_modifier_keys_state": true,
