@@ -41,7 +41,8 @@
 	pl  = pull --rebase
 	ps  = push
 	rb  = rebase
-	ri  = rebase --interactive
+	rbi = rebase --interactive
+	rbc = rebase --continue
 	sh  = stash
 	spa = stash --include-untracked
 	spu = stash --include-untracked --keep-index
@@ -59,6 +60,8 @@
 	review = !$VISUAL -p $(git files) +\"tabdo Gdiff $(git merge-base HEAD $REVIEW_BASE)\" +tabfirst
 	reviews = !$VISUAL -p +\"tabdo Gdiff $(git merge-base HEAD $REVIEW_BASE)\" +tabfirst
 	heatmap = !git log $(git merge-base HEAD \"$REVIEW_BASE\")..HEAD --pretty=format: --name-only | grep -v \"^$\" | sort | uniq -c | sort -rg
+	# https://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git
+	oldest-ancestor = !zsh -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
 [push]
 	default = current
 	followTags = true
