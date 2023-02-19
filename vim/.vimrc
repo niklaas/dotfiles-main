@@ -14,10 +14,6 @@ else
     let $MYREALVIMRC = expand('$HOME/.vimrc')
 endif
 
-" b/c we use command of conquer (coc) and must be set before plugins are
-" loaded, see https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
-let g:ale_disable_lsp = 1
-
 " Plugins {{{1
 
 " Prefix {{{2
@@ -86,7 +82,6 @@ Plug 'SirVer/ultisnips', Cond(v:version >= 800 && has('python3'))
 Plug 'honza/vim-snippets', Cond(v:version >= 800 && has('python3'))
 
 Plug 'w0rp/ale', Cond(v:version >= 800)
-Plug 'neoclide/coc.nvim',  { 'branch': 'release' }
 
 Plug 'liuchengxu/vista.vim'
 
@@ -226,7 +221,6 @@ endif
 " Plugin Configuration {{{1
 
 " vista {{{2
-let g:vista_default_executive = 'coc'
 let g:vista_close_on_jump = 0
 let g:vista#renderer#enable_icon = 1
 let g:vista_echo_cursor = 0
@@ -236,11 +230,6 @@ let g:dbext_default_usermaps = 0
  
 " gitgutter {{{2
 let g:gitgutter_preview_win_floating = 0
-
-" coc {{{2
-let g:coc_filetype_map = {
-      \ 'jinja.html': 'html',
-      \ }
 
 " neoterm {{{2
 let g:neoterm_autoscroll = 1
@@ -366,10 +355,6 @@ let g:tmuxline_preset = 'minimal'
 " Editorconfig {{{2
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-" Emmet {{{2
-" disable global mapping b/c coc-emmet used
-let g:user_emmet_leader_key = '<c-s>'
-
 " Projectionist {{{2
 let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/misc/projections.json'))))
 
@@ -426,9 +411,7 @@ let g:ale_sign_info = 'o'
 
 " homerow  et al {{{2
 
-nnoremap  <silent><nowait>  <leader>s    :<C-u>CocList outline<cr>
 nmap      <silent>          <leader>d    :ALEDetail<cr>
-nmap      <silent>          <leader>f    <Plug>(coc-fix-current)
 nmap                        <leader>F    <Plug>(ale_fix)
 " h is for gitgutter
 nnoremap <silent>           <leader>j    <cmd>Telescope live_grep theme=get_dropdown<cr>
@@ -436,15 +419,6 @@ nnoremap <silent>           <leader>k    <cmd>Telescope buffers theme=get_dropdo
 nnoremap <silent>           <leader>l    :Vista!!<cr>
 
 nnoremap                  ga :edit %<.
-nnoremap <silent><nowait> gs :<C-u>CocList -I symbols<cr>
-nmap     <silent>         gd <Plug>(coc-definition)
-nmap     <silent>         gy <Plug>(coc-type-definition)
-nmap     <silent>         gi <Plug>(coc-implementation)
-nmap     <silent>         gr <Plug>(coc-references)
-nmap     <silent>         gR <Plug>(coc-rename)
-
-nmap     <silent>         gh <Plug>(coc-codeaction-selected)
-xmap     <silent>         gh <Plug>(coc-codeaction-selected)
 
 " General {{{2
 
@@ -483,16 +457,6 @@ require("telescope").setup{
 }
 EOF
 
-" command of conquer (coc)
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
-
 " fugitive
 nnoremap <leader>gg :Git<cr>
 nnoremap <leader>gd :Gdiff<cr>
@@ -508,26 +472,6 @@ xnoremap <leader>gr :GBrowse<space>
 " ALE
 nmap <silent> [g <Plug>(ale_previous_wrap)
 nmap <silent> ]g <Plug>(ale_next_wrap)
-
-" accept completion with <cr>
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" accept completion with <c-j>
-" inoremap <silent><expr> <c-j> pumvisible() ? coc#_select_confirm()
-"       \: "\<C-g>u\<c-j>\<c-r>=coc#on_enter()\<CR>"
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-inoremap <silent><expr> <C-space> coc#refresh()
 
 nnoremap <c-p> <cmd>Telescope find_files theme=get_dropdown<cr>
 nnoremap <leader>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
@@ -563,12 +507,6 @@ command! YankFilenameLC :let @+ = expand("%:t") . ':' . line('.') . ':' . col('.
 cabbrev <expr> %% expand('%:p:h')
 
 " autocmds {{{1
-
-" see https://github.com/neoclide/coc.nvim/issues/110#issuecomment-768264638
-augroup _coc_easy_motion_fix
-  autocmd User EasyMotionPromptBegin silent! CocDisable
-  autocmd User EasyMotionPromptEnd silent! CocEnable
-augroup END
 
 " automagic marks {{{2
 
