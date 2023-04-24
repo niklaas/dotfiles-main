@@ -39,6 +39,10 @@ if [ -d $PYTHON_BIN ]; then
   path=($PYTHON_BIN $path)
 fi
 
+# pnpm {{{3
+export PNPM_HOME="$HOME/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
 # FZF {{{2
 if command -v fd >/dev/null 2>&1
 then
