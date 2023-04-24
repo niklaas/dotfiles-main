@@ -2,13 +2,7 @@
 "
 "   FILENAME="\1"; LINENUMBER="\2"; if [ "x" = "x$LINENUMBER" ]; then open -na "Webstorm.app" --args $FILENAME; else open -na "Webstorm.app" --args --line $LINENUMBER $FILENAME; fi
 
-" Spacemacs / Intellimacs
-" @see https://github.com/MarcoIeni/intellimacs#installation
-source ~/.intellimacs/spacemacs.vim
-source ~/.intellimacs/extra.vim
-source ~/.intellimacs/major.vim
-
-source ~/.intellimacs/which-key.vim
+let mapleader = "\\"
 
 " Comma for major mode
 nmap , <leader>m
