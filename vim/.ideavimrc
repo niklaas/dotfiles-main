@@ -4,10 +4,6 @@
 
 let mapleader = "\\"
 
-" Comma for major mode
-nmap , <leader>m
-vmap , <leader>m
-
 " from original spacemacs
 " SPC j i - helm jump in buffer / SPC j e
 " , g s - jump to symbol in project / SPC j s
@@ -33,6 +29,7 @@ sethandler <c-q> n:ide i:vim " select in...
 sethandler <c-c> n:ide i:vim " vcs actions
 sethandler <c-u> n:ide i:vim " find usages
 sethandler <c-s> n:ide i:vim " refactor this
+sethandler <c-m> ide " commit history
 
 " Custom keybindings
 nnoremap [<space> O<esc>j
@@ -46,6 +43,3 @@ nmap ma <Action>(ShowBookmarks)
 
 nmap <c-o> <Action>(Back)
 nmap <c-i> <Action>(Forward)
-
-" Create image of code
-vmap <leader>f <Action>(dev.trubitsyn.carbonnowsh.open)
