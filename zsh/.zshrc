@@ -58,18 +58,13 @@ fi
 export FCEDIT=$VISUAL
 
 # Plugins {{{2
-if command -v antibody >/dev/null 2>&1
+ANTIDOTE=/opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+if [ -f $ANTIDOTE ]
 then
-    # Fixes for oh-my-zsh, see https://github.com/getantibody/antibody/issues/218
-    DISABLE_AUTO_UPDATE=true
-    ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
-
-    source <(antibody init)
-    export NVM_LAZY_LOAD=false
-    export NVM_LAZY_LOAD_EXTRA_COMMANDS=('e' 'vim' 'nvim')
-    antibody bundle < ~/.zsh_plugins.txt
+    source $ANTIDOTE
+    antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
 else
-    echo 'Please install antibody.'
+    echo 'Please install antidote.'
 fi
 
 # Checks {{{2
