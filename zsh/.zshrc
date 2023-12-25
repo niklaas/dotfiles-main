@@ -365,7 +365,10 @@ function zvm_after_init() {
 
 # Sourcing {{{2
 
-source <(kubectl completion zsh)
+if command -v kubectl >/dev/null
+then
+    source <(kubectl completion zsh)
+fi
 
 if [ -f $HOME/.zshrc_local ]
 then
