@@ -81,7 +81,7 @@ if ! command -v starship >/dev/null 2>&1; then
     echo "get an ugly prompt"
 fi
 
-if ! command -v exa >/dev/null; then
+if ! command -v eza >/dev/null; then
     echo "exa is not installed but you like it"
 fi
 
@@ -167,12 +167,12 @@ alias less="less -R"
 alias ls="ls --color"
 alias l="ls -lFah"
 
-if command -v exa >/dev/null; then
-    alias l="exa"
-    alias ll="exa -l --git"
-    alias la="exa -al --git"
-    alias lt="exa -T --git"
-    alias lts="exa -aT --git"
+if command -v eza >/dev/null; then
+    alias l="eza"
+    alias ll="eza -l --git"
+    alias la="eza -al --git"
+    alias lt="eza -T --git"
+    alias lts="eza -aT --git"
 fi
 
 alias mcssh="cssh -C .clusterssh/config_mosh"
