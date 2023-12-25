@@ -676,7 +676,7 @@ endif
 " Project-specifics {{{1
 
 augroup project_specifics
-  autocmd! BufRead */mk-site/*.html let b:ale_fixers = []
+  autocmd! BufRead */some-project/*.html let b:ale_fixers = []
 augroup end
 
 " .vimrc.local {{{1
