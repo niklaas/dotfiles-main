@@ -4,10 +4,6 @@
 
 let mapleader = "\\"
 
-" from original spacemacs
-" SPC j i - helm jump in buffer / SPC j e
-" , g s - jump to symbol in project / SPC j s
-
 " Intellij settings
 set ideajoin
 set ideamarks
