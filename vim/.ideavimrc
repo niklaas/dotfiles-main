@@ -11,7 +11,8 @@ set ideaput
 set surround
 
 " Vim settings
-set incsearch smartcase
+set incsearch
+set ignorecase smartcase
 set relativenumber number
 set scrolloff=3
 set clipboard+=unnamed
