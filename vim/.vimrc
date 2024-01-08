@@ -116,7 +116,6 @@ set autowrite
 set backspace=indent,eol,start
 set clipboard+=unnamed
 set cpoptions+=$
-set diffopt=internal,filler,context:3,algorithm:histogram
 set gdefault
 set hidden
 set ignorecase
@@ -150,6 +149,10 @@ set visualbell
 set whichwrap=b,s
 set wildignorecase
 set wildmenu
+
+if has('nvim')
+  set diffopt=internal,filler,context:3,algorithm:histogram
+endif
 
 " Set locations of important directories
 set backupdir=$DOTVIM/backup/
