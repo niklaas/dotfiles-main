@@ -52,6 +52,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
 Plug 'edkolev/tmuxline.vim'
 
+Plug 'niklaas/lightline-gitdiff', Cond(!isdirectory(expand('$HOME/git/lightline-gitdiff')))
+Plug '$HOME/git/lightline-gitdiff', Cond(isdirectory(expand('$HOME/git/lightline-gitdiff')), { 'as': 'lightline-gitdiff-local' })
+
 Plug 'tpope/vim-abolish'  " for better substitution
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -99,14 +102,6 @@ Plug 'sheerun/vim-polyglot'
 
 " Test framework for development
 Plug 'junegunn/vader.vim'
-
-" In the following lines I always load the local version of a plugin if it's
-" available. This makes developing much easier. On machines where there is no
-" local version, I get the plugin from its GitHub repository.
-
-" lightline-gitdiff
-Plug 'niklaas/lightline-gitdiff', Cond(!isdirectory(expand('$HOME/git/lightline-gitdiff')))
-Plug '$HOME/Files/git/lightline-gitdiff', Cond(isdirectory(expand('$HOME/git/lightline-gitdiff')), { 'as': 'lightline-gitdiff-local' })
 
 call plug#end()
 
