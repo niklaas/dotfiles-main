@@ -156,6 +156,7 @@ alias dts="date +%Y-%m-%d"
 alias feh="feh -Z"
 
 alias g="git"
+alias h="history | grep"
 
 alias j="just"
 
