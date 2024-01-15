@@ -384,4 +384,7 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# Disable pausing terminal output to make Ctrl-S available
+stty -ixon
+
 # vim:set foldmethod=marker:
