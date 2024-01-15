@@ -350,6 +350,12 @@ fi
 # Source rbenv
 command -v rbenv >/dev/null && eval "$(rbenv init -)"
 
+# Source pyenv
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # Local configuration available?
 test -f ${HOME}/.zshrc.local && source ${HOME}/.zshrc.local
 
