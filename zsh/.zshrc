@@ -104,8 +104,8 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
+setopt share_history
 unsetopt append_history
-unsetopt share_history
 setopt inc_append_history_time
 
 # Allow interactive comments to prevent an error when canceling the insertion
