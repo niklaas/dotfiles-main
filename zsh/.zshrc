@@ -156,7 +156,7 @@ alias dts="date +%Y-%m-%d"
 alias feh="feh -Z"
 
 alias g="git"
-alias h="history | grep"
+alias h="history | tac | awk '!seen[\$2]++' | sort -n | grep"
 
 alias j="just"
 
