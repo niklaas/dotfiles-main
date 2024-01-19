@@ -99,6 +99,8 @@ autoload -U edit-command-line
 
 autoload -Uz compinit
 compinit
+
+# Use insensitive tab completion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
 HISTFILE=${HOME}/.zsh_history
