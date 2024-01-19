@@ -140,6 +140,10 @@ alias se="sudo -e"
 alias v="vim"
 alias nv="nvim"
 
+ef() {
+    e $(fzf) $*
+}
+
 # Debian
 alias a="apt"
 alias auu="sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y"
