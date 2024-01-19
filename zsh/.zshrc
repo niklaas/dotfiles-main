@@ -129,6 +129,7 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 alias dark=base16_tomorrow-night
 alias light=base16_tomorrow
 
+# Editor
 alias e=$VISUAL
 alias es="$VISUAL -S Session.vim"
 alias er="$VISUAL -R"
@@ -137,6 +138,7 @@ alias se="sudo -e"
 alias v="vim"
 alias nv="nvim"
 
+# Debian
 alias a="apt"
 alias auu="sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y"
 
@@ -145,17 +147,16 @@ command -v uctags >/dev/null && \
 
 alias curltime="curl -w \"@$HOME/.curl-format.txt\" -o /dev/null -s "
 
-alias d="dirs -v"
+# History
+alias dh="dirs -v"
+alias h="history | tac | awk '!seen[\$2]++' | sort -n | grep"
 
 alias dt="date +%Y%m%d_%H%M%S"
 alias dti="date +%FT%T"
 alias dts="date +%Y-%m-%d"
 
 alias feh="feh -Z"
-
 alias g="git"
-alias h="history | tac | awk '!seen[\$2]++' | sort -n | grep"
-
 alias j="just"
 
 alias kcgpg="keychain -q --eval 1C62D5F3 >/dev/null"
@@ -193,8 +194,6 @@ command -v gsed >/dev/null && \
 alias t="tree --charset=ascii"
 
 alias sst="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=QUIET"
-
-alias webstorm=open\ -na\ "WebStorm.app"\ --args\ "$@"
 
 # Global Aliases {{{2
 
