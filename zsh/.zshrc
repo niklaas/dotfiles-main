@@ -119,6 +119,8 @@ setopt autopushd pushdminus pushdsilent pushdtohome
 bindkey -v
 bindkey -v '^a' vi-beginning-of-line
 bindkey -v '^e' vi-end-of-line
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 bindkey -s '^z' 'fg\n'
 
