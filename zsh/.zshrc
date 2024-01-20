@@ -1,6 +1,6 @@
 # Init {{{1
 
-# colors {{2
+# Colors {{2
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -28,7 +28,7 @@ then
     mkdir "$HOME/.nvm"
 fi
 
-# homebrew {{{3
+# Homebrew {{{3
 eval $(/opt/homebrew/bin/brew shellenv)
 
 typeset -U fpath
@@ -52,7 +52,7 @@ fi
 
 export FCEDIT=$VISUAL
 
-# Plugins {{{2
+## Plugins {{{2
 ANTIDOTE=/opt/homebrew/opt/antidote/share/antidote/antidote.zsh
 if [ -f $ANTIDOTE ]
 then
@@ -62,7 +62,7 @@ else
     echo 'Please install antidote.'
 fi
 
-# Checks {{{2
+## Checks {{{2
 if ! find /usr/share/terminfo -type f -name tmux-256color >/dev/null
 then
     echo "terminfo tmux-256color probably not available"
@@ -87,7 +87,7 @@ fi
 # General {{{1
 
 autoload -U zmv  # zsh's bulk renaming
-autoload -U is-at-least
+autoload -U is-at-least # for checking the zsh version
 autoload -U compdef
 autoload -U zcalc
 autoload -U edit-command-line
@@ -98,6 +98,9 @@ compinit
 # Use insensitive tab completion
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
+# Use a menu for tab completion
+zstyle ':completion:*' menu select
+
 HISTFILE=${HOME}/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -105,7 +108,7 @@ setopt share_history
 setopt inc_append_history
 
 # Allow interactive comments to prevent an error when canceling the insertion
-# of a command with Alt-#.
+# of a command with Alt-# or Escape-# on Mac OS.
 setopt interactivecomments
 
 # Configuring the directory stack
@@ -199,9 +202,8 @@ alias sst="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o Lo
 
 # Global Aliases {{{2
 
-alias -g C="| xsel -b"
 alias -g D="*(/)"
-alias -g F="| fzf -m"
+alias -g F="| fzf -m" # -m for multi-selection
 alias -g G="| grep -i"
 alias -g H="| head"
 alias -g HL="--help | less"
@@ -210,6 +212,9 @@ alias -g P="| parallel"
 alias -g S="| sort"
 alias -g T="| tail"
 alias -g X="| xargs"
+
+# TODO: Linux only, probably removable:
+alias -g C="| xsel -b"
 alias -g Y="| yank"
 
 # Functions {{{2
@@ -305,15 +310,6 @@ function sketch() {
 
 # Others {{{2
 
-function n {
-    if [ "x$1" = "x" ]; then
-        e $HOME/Desktop/notes.md
-        return 0
-    fi
-
-    e $HOME/Desktop/$1.notes.md
-}
-
 function my_sudo {
     while [[ $# > 0 ]]; do
         case "$1" in
@@ -383,7 +379,8 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# Disable pausing terminal output to make Ctrl-S available
+# Disable pausing terminal output to make Ctrl-S available when browsing
+# through the history using Ctrl-R and Ctrl-S
 stty -ixon
 
 # vim:set foldmethod=marker:
