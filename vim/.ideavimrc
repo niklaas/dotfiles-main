@@ -39,6 +39,9 @@ nnoremap [<space> O<esc>j
 nnoremap ]<space> o<esc>k
 inoremap <c-o> <esc>O
 
+nnoremap gh _
+nnoremap gl $
+
 nmap <c-[> <Action>(SaveAll)
 
 nmap mm <Action>(ToggleBookmark)
