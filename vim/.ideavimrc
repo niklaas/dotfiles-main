@@ -37,8 +37,9 @@ sethandler <c-u> n:ide i:vim " find usages
 " Custom keybindings
 nnoremap [<space> O<esc>j
 nnoremap ]<space> o<esc>k
-nmap <c-[> <Action>(SaveAll)
 inoremap <c-o> <esc>O
+
+nmap <c-[> <Action>(SaveAll)
 
 nmap mm <Action>(ToggleBookmark)
 nmap mi <Action>(EditBookmark)
