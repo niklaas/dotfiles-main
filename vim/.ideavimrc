@@ -2,13 +2,21 @@
 "
 "   FILENAME="\1"; LINENUMBER="\2"; if [ "x" = "x$LINENUMBER" ]; then open -na "Webstorm.app" --args $FILENAME; else open -na "Webstorm.app" --args --line $LINENUMBER $FILENAME; fi
 
-let mapleader = "\\"
+let mapleader = " "
 
 " Intellij settings
 set ideajoin
 set ideamarks
 set ideaput
+set ideastatusicon=gray
+set idearefactormode=keep
+
+" IdeaVim bundled plugins
 set surround
+set commentary
+set argtextobj
+set matchit.vim
+set NERDTree
 
 " Vim settings
 set incsearch
