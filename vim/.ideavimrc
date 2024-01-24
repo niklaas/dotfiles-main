@@ -27,14 +27,11 @@ set clipboard+=unnamed
 
 " Vim or Intellij?
 sethandler <c-c> n:ide i:vim " vcs actions
-sethandler <c-d> n-v:ide i:vim
 sethandler <c-g> n-v:ide " multiple cursor
-sethandler <c-h> n:ide i:vim " for type hierarchy
-sethandler <c-k> n-i:ide " to allow navigating down
 sethandler <c-m> a:ide " commit history
 sethandler <c-q> n:ide i:vim " select in...
 sethandler <c-s> n:ide i:vim " refactor this
-sethandler <c-t> n-v:ide i:vim
+sethandler <c-t> n-v:ide i:vim " vim = inline tab indent
 sethandler <c-u> n:ide i:vim " find usages
 
 " Custom keybindings
