@@ -50,3 +50,6 @@ nmap ma <Action>(ShowBookmarks)
 
 nmap <c-o> <Action>(Back)
 nmap <c-i> <Action>(Forward)
+
+nmap <leader>z <Action>(ToggleDistractionFreeMode)
+
