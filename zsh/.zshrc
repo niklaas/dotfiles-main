@@ -273,8 +273,10 @@ function preexec {
 
 # did.md for taking notes {{{2
 
+NOTESDIR=~/Documents/Notes
+
 function did() {
-    DIDDIR=~/notes${1+-$1}
+    DIDDIR=$NOTESDIR/${1+-$1}
     DIDFILE=$DIDDIR/$(date +%Y-%V).md
 
     if [ ! -d "$DIDIR" ]; then
@@ -288,8 +290,11 @@ function did() {
         exit 0
     fi
 
-    # is `stat -c` on linux operating systems
-    LAST_MODIFIED=$(stat -f %y "$DIDFILE")
+    # For Linux:
+    #LAST_MODIFIED=$(stat -c %y "$DIDFILE")
+
+    # For Mac OS:
+    LAST_MODIFIED=$(stat -f %Sm -t "%Y-%m-%d")
 
     if [ "${LAST_MODIFIED:0:10}" != "$(date +%F)" ]; then
         echo >> $DIDFILE
@@ -300,7 +305,7 @@ function did() {
 }
 
 function sketch() {
-    SKETCHDIR=~/notes${1+-$1}
+    SKETCHDIR=$NOTESDIR/${1+-$1}
     SKETCHFILE=$SKETCHDIR/sketch.md
 
     if [ ! -d "$DIDIR" ]; then
