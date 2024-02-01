@@ -13,36 +13,42 @@ set idearefactormode=keep
 
 " IdeaVim bundled plugins
 set surround
+set highlightedyank
 set commentary
 set argtextobj
 set matchit.vim
 set NERDTree
 
+" IdeaVim plugin extensions
+set which-key
+
 " Vim settings
-set incsearch
+set incsearch hlsearch
 set ignorecase smartcase
 set relativenumber number
-set scrolloff=3
+set scrolloff=10
 set clipboard+=unnamed
+set visualbell
+set showmode
 
 " Vim or Intellij?
 sethandler <c-c> n:ide i:vim " vcs actions
 sethandler <c-g> n-v:ide " multiple cursor
 sethandler <c-m> a:ide " commit history
 sethandler <c-q> n:ide i:vim " select in...
-sethandler <c-s> n:ide i:vim " refactor this
 sethandler <c-t> n-v:ide i:vim " vim = inline tab indent
 sethandler <c-u> n:ide i:vim " find usages
 
-" Custom keybindings
-nnoremap [<space> O<esc>j
+" Keymaps
 nnoremap ]<space> o<esc>k
+nnoremap [<space> O<esc>j
 inoremap <c-o> <esc>O
 
 nnoremap gh _
 nnoremap gl $
 
-nmap <c-[> <Action>(SaveAll)
+sethandler <c-s> a:vim " normally used for `Refactor this...`
+nmap <c-s> <Action>(SaveAll)
 
 nmap mm <Action>(ToggleBookmark)
 nmap mi <Action>(EditBookmark)
@@ -51,5 +57,10 @@ nmap ma <Action>(ShowBookmarks)
 nmap <c-o> <Action>(Back)
 nmap <c-i> <Action>(Forward)
 
+nmap <leader>le <Action>(RenameElement)
+
 nmap <leader>z <Action>(ToggleDistractionFreeMode)
 
+" Jump between methods
+nmap [[ <Action>(MethodUp)
+nmap ]] <Action>(MethodDown)
