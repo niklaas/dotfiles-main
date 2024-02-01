@@ -304,6 +304,10 @@ function did() {
     $VISUAL +'normal G' $DIDFILE
 }
 
+function todo() {
+    grep -HR -- '- \[ \]' $NOTESDIR | sed 's|.*/||' | column -ts :
+}
+
 function sketch() {
     SKETCHDIR=$NOTESDIR/${1+-$1}
     SKETCHFILE=$SKETCHDIR/sketch.md
