@@ -111,6 +111,8 @@ setopt inc_append_history
 # of a command with Alt-# or Escape-# on Mac OS.
 setopt interactivecomments
 
+setopt HIST_IGNORE_SPACE
+
 # Configuring the directory stack
 # See http://zsh.sourceforge.net/Intro/intro_6.html
 DIRSTACKSIZE=10
