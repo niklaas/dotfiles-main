@@ -62,7 +62,7 @@ writeToProfile("Default", [
   homeRowSimLayer("a", "left_control", leftHomeRow),
   homeRowSimLayer("j", "right_shift", rightHomeRow),
   homeRowSimLayer("k", "right_command", rightHomeRow),
-  homeRowSimLayer("l", "right_command", rightHomeRow),
+  homeRowSimLayer("l", "right_option", rightHomeRow),
   homeRowSimLayer("semicolon", "right_control", rightHomeRow),
   simlayer("spacebar", "space-mode (code)").manipulators([
     map("a").to("open_bracket"), // [
@@ -103,6 +103,10 @@ writeToProfile("Default", [
         modifiers: ["left_option"],
       }), // like above but further
       map("i").to("return_or_enter"),
+      map("comma").to({
+        key_code: "return_or_enter",
+        modifiers: ["left_command"],
+      }),
       map("o").to("delete_forward"),
       map("h").to("left_arrow"), // vim left
       map("j").to("down_arrow"), // vim down
