@@ -61,11 +61,11 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'  " for better netrw
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'  " fugitive GitHub integration
 Plug 'tpope/vim-projectionist'
 
-" fugitive integrations
-Plug 'shumphrey/fugitive-gitlab.vim'
-Plug 'tpope/vim-rhubarb'  " GitHub
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 Plug 'w0rp/ale', Cond(v:version >= 800)
 
@@ -183,6 +183,8 @@ if has('gui_running')
   endif
 endif
 
+highlight CursorLineNr cterm=none
+
 " Plugin Configuration {{{1
 
 " vista {{{2
@@ -193,18 +195,6 @@ let g:vista_echo_cursor = 0
 " dbext
 let g:dbext_default_usermaps = 0
  
-" gitgutter {{{2
-let g:gitgutter_preview_win_floating = 0
-
-" neoterm {{{2
-let g:neoterm_autoscroll = 1
-let g:neoterm_autoinsert = 1
-let g:neoterm_default_mod = 'botright'
-nnoremap <c-q> :Ttoggle<cr>
-tnoremap <c-q> <c-\><c-n>:Ttoggle<cr>
-nnoremap [s :Tprevious<cr>
-nnoremap ]s :Tnext<cr>
-
 " Lightline {{{2
 
 " TODO: indicate all buffers that start with fugitive://* b/c handy when
@@ -323,7 +313,6 @@ let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/mi
 " ALE {{{2
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
-      \   'java': ['pmd'],
       \   'javascript': ['eslint'],
       \   'typescript': ['eslint'],
       \   'scss': ['stylelint'],
@@ -362,9 +351,6 @@ let g:ale_sign_info = 'o'
 
 nmap      <silent>          <leader>d    :ALEDetail<cr>
 nmap                        <leader>F    <Plug>(ale_fix)
-" h is for gitgutter
-nnoremap <silent>           <leader>j    <cmd>Telescope live_grep theme=get_dropdown<cr>
-nnoremap <silent>           <leader>k    <cmd>Telescope buffers theme=get_dropdown<cr>
 nnoremap <silent>           <leader>l    :Vista!!<cr>
 
 nnoremap                  ga :edit %<.
@@ -410,7 +396,6 @@ xnoremap <leader>gr :GBrowse<space>
 nmap <silent> [g <Plug>(ale_previous_wrap)
 nmap <silent> ]g <Plug>(ale_next_wrap)
 
-nnoremap <c-p> <cmd>Telescope find_files theme=get_dropdown<cr>
 nnoremap <leader>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
 
 " Commands {{{1
@@ -508,12 +493,6 @@ function! s:base16_customize() abort
   call Base16hi('SpellLocal', g:base16_gui0D, 'NONE', g:base16_cterm0D, 'NONE', '', '')
   call Base16hi('SpellRare',  g:base16_gui0B, 'NONE', g:base16_cterm0B, 'NONE', '', '')
   call Base16hi('MatchParen', g:base16_gui0E, 'NONE', g:base16_cterm0E, 'NONE', '', '')
-
-  " Fix subordinate role of `CursorLine` in nvim
-  "
-  " refs neovim/neovim#9019
-  " refs neovim/neovim#7383
-  call Base16hi('Normal', '', '', '', 'NONE', '', '')
 endfunction
 augroup on_change_colorschema
   autocmd!
