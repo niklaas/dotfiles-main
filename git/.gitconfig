@@ -86,3 +86,7 @@
 	user = niklaas
 [init]
 	defaultBranch = main
+[rebase]
+	autoSquash = true
+[fetch]
+	writeCommitGraph = true
