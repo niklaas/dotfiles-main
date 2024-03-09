@@ -9,7 +9,7 @@ set ideajoin
 set ideamarks
 set ideaput
 set ideastatusicon=gray
-set idearefactormode=keep
+set idearefactormode=select
 
 " IdeaVim bundled plugins
 set surround
@@ -30,6 +30,8 @@ set scrolloff=10
 set clipboard+=unnamed
 set visualbell
 set showmode
+set selectmode=key,ideaselection
+set keymodel=startsel,continueselect
 
 " Vim or Intellij?
 sethandler <c-c> n:ide i:vim " vcs actions
