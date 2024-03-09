@@ -29,8 +29,6 @@ endfunction
 
 " Basics {{{2
 
-Plug 'mhinz/vim-startify'
-
 Plug 'chriskempson/base16-vim'
 Plug 'daviesjamie/vim-base16-lightline'
 
@@ -38,15 +36,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sjl/gundo.vim'
 Plug 'vim-scripts/dbext.vim'
-Plug 'mattn/emmet-vim'
-
-Plug 'kassio/neoterm'
 
 Plug 'easymotion/vim-easymotion'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'MattesGroeger/vim-bookmarks'
 
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
@@ -73,32 +66,10 @@ Plug 'tpope/vim-projectionist'
 " fugitive integrations
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tpope/vim-rhubarb'  " GitHub
-Plug 'airblade/vim-gitgutter'
-
-Plug 'junegunn/gv.vim'
-
-" Telescope
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-Plug 'SirVer/ultisnips', Cond(v:version >= 800 && has('python3'))
-Plug 'honza/vim-snippets', Cond(v:version >= 800 && has('python3'))
 
 Plug 'w0rp/ale', Cond(v:version >= 800)
 
-Plug 'liuchengxu/vista.vim'
-
-" Syntax rules and filetype specific plugins {{{2
-
-Plug 'chrisbra/csv.vim'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'Glench/Vim-Jinja2-Syntax'
-
-" Polyglot
-let g:polyglot_disabled = ['csv', 'latex', 'dockerfile']
 Plug 'sheerun/vim-polyglot'
-
-" My own plugins {{{2
 
 " Test framework for development
 Plug 'junegunn/vader.vim'
@@ -149,10 +120,6 @@ set visualbell
 set whichwrap=b,s
 set wildignorecase
 set wildmenu
-
-if has('nvim')
-  set diffopt=internal,filler,context:3,algorithm:histogram
-endif
 
 " Set locations of important directories
 set backupdir=$DOTVIM/backup/
@@ -256,7 +223,7 @@ let g:lightline = {
       \             [ 'gitdiff' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ],
       \              [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]
       \            ]
       \ },
@@ -335,9 +302,6 @@ function! Cwd()
   return ''
 endfunction
 
-" Test {{{2
-let test#strategy='dispatch'
-
 " tmux navigator
 if !exists('$TMUX')
   " I do not want to override <c-{h,j,k,l}> b/c e.g., <c-{h,j}> are quite
@@ -355,19 +319,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Projectionist {{{2
 let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/misc/projections.json'))))
-
-" Polyglot {{{2
-
-" Prevent lines in https://git.io/fpET0 to be run and mingle with ctags for
-" rust. is because `vim-polyglot` loads `vim-rust` only partially.
-" Thus, `rust.ctags` is missing in the plugin folder. So, force use of custom
-" `$HOME/.ctags`.
-let g:rust_use_custom_ctags_defs = 1
-
-" UltiSnips {{{2
-let g:UltiSnipsExpandTrigger='<c-e>'
-let g:UltiSnipsSnippetsDir = expand($DOTVIM . '/misc/UltiSnips')
-let g:UltiSnipsSnippetDirectories = [ 'UltiSnips', 'misc/UltiSnips' ]
 
 " ALE {{{2
 let g:ale_linters_explicit = 1
@@ -443,18 +394,6 @@ inoremap <c-o> <esc>O
 
 " Plugin related {{{2
 
-" Telescope
-
-lua << EOF
-require("telescope").setup{
-  defaults = {
-    path_display = {
-      "shorten",
-    },
-  }
-}
-EOF
-
 " fugitive
 nnoremap <leader>gg :Git<cr>
 nnoremap <leader>gd :Gdiff<cr>
@@ -474,19 +413,6 @@ nmap <silent> ]g <Plug>(ale_next_wrap)
 nnoremap <c-p> <cmd>Telescope find_files theme=get_dropdown<cr>
 nnoremap <leader>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
 
-" Vim terminal
-if has('nvim')
-  tnoremap <c-^> <c-\><c-n><c-^>
-  tnoremap <c-space> <c-\><c-n>
-
-  let $GIT_EDITOR = 'nvr -cc split --remote-wait'
-
-  augroup nvr_git
-    autocmd!
-    autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
-  augroup END
-endif
-
 " Commands {{{1
 
 command! BD :bp\|bd #<cr>
@@ -505,22 +431,6 @@ command! YankFilenameLC :let @+ = expand("%:t") . ':' . line('.') . ':' . col('.
 cabbrev <expr> %% expand('%:p:h')
 
 " autocmds {{{1
-
-" automagic marks {{{2
-
-augroup automagic_marks
-  autocmd!
-  autocmd BufLeave *.css,*.scss         normal! mS
-  autocmd BufLeave *.html               normal! mH
-  autocmd BufLeave *.ts,*.tsx,*.js,*jsx normal! mT
-augroup END
-
-" <c-j> {{{2
-augroup _c_j
-  autocmd!
-  autocmd FileType qf nmap <c-j> <cr>
-augroup END
-
 
 " Filetype-specific autocmds {{{2
 "

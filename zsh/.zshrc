@@ -44,7 +44,7 @@ fi
 
 # EDITOR {{{2
 
-export VISUAL=nvim
+export VISUAL=vim
 
 if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
   export VISUAL=nvr
@@ -141,7 +141,6 @@ alias er="$VISUAL -R"
 alias eg="$VISUAL +G +on"
 alias se="sudo -e"
 alias v="vim"
-alias nv="nvim"
 
 ef() {
     e $(fzf) $*
@@ -363,6 +362,9 @@ command -v rbenv >/dev/null && eval "$(rbenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# Source phpbrew
+[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
 # Local configuration available?
 test -f ${HOME}/.zshrc.local && source ${HOME}/.zshrc.local
