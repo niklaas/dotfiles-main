@@ -19,9 +19,6 @@ set argtextobj
 set matchit.vim
 set NERDTree
 
-" IdeaVim plugin extensions
-set which-key
-
 " Vim settings
 set incsearch hlsearch
 set ignorecase smartcase
