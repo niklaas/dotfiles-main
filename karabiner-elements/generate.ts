@@ -50,12 +50,12 @@ const rightHomeRow = [..."jkl".split(""), "semicolon"] as (
 const homeRowSimLayer = (
   from_key: LayerKeyParam,
   to_modifier: StickyModifierKeyCode,
-  homeRowKeys: (LayerKeyParam | ToKeyParam)[],
+  excludeKeys: LayerKeyParam[],
 ) =>
   simlayer(from_key, `${from_key}-${to_modifier}-mode`).manipulators([
     withMapper(
       [...alphaNumericKeys, ...symbols, ...otherKeys].filter(
-        (key) => !homeRowKeys.includes(key),
+        (key) => !excludeKeys.includes(key),
       ),
     )((key) =>
       map(key, "optionalAny").to({ key_code: key, modifiers: [to_modifier] }),
