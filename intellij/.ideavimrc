@@ -46,6 +46,8 @@ inoremap <c-o> <esc>O
 nnoremap gh _
 nnoremap gl $
 
+nnoremap Y y$
+
 sethandler <c-s> a:vim " normally used for `Refactor this...`
 nmap <c-s> <Action>(SaveAll)
 
