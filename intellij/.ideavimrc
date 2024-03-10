@@ -23,7 +23,7 @@ set NERDTree
 set incsearch hlsearch
 set ignorecase smartcase
 set relativenumber number
-set scrolloff=10
+set scrolloff=5
 set clipboard+=unnamed
 set visualbell
 set showmode
