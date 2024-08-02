@@ -380,6 +380,13 @@ function zvm_after_init() {
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 }
 
+# IntelliJ terminal compatibility {{{2
+
+if [ "$TERMINAL_EMULATOR" = "JetBrains-JediTerm" ]
+then
+    unalias ls # --color breaks completion dialog
+fi
+
 # Sourcing {{{2
 
 if command -v kubectl >/dev/null
