@@ -30,49 +30,50 @@ endfunction
 " Basics {{{2
 
 Plug 'chriskempson/base16-vim'
-Plug 'daviesjamie/vim-base16-lightline'
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'sjl/gundo.vim'
-Plug 'vim-scripts/dbext.vim'
+Plug 'sjl/gundo.vim' " visualize undo tree
 
 Plug 'easymotion/vim-easymotion'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
+Plug 'machakann/vim-highlightedyank'
 
 Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
 Plug 'edkolev/tmuxline.vim'
+Plug 'daviesjamie/vim-base16-lightline'
 
 Plug 'niklaas/lightline-gitdiff', Cond(!isdirectory(expand('$HOME/git/lightline-gitdiff')))
 Plug '$HOME/git/lightline-gitdiff', Cond(isdirectory(expand('$HOME/git/lightline-gitdiff')), { 'as': 'lightline-gitdiff-local' })
 
-Plug 'tpope/vim-abolish'  " for better substitution
+Plug 'tpope/vim-abolish'  " for better substitution of variants of words (uppercase, lowercase etc)
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'  " sugar for UNIX shell commands
 Plug 'tpope/vim-obsession'  " for session management
-Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat' " support for repeating commands that don't support repetition natively
 Plug 'tpope/vim-scriptease'  " e.g. map zS for showing syntax group
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-sleuth'  " for auto-indenting
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'  " for better netrw
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired' " pairs of handy bracket mappings
+Plug 'tpope/vim-vinegar' " for better netrw
+Plug 'tpope/vim-fugitive' " for git integration
 Plug 'tpope/vim-rhubarb'  " fugitive GitHub integration
 Plug 'tpope/vim-projectionist'
 
+Plug 'lervag/vimtex', { 'tag': 'v2.15' }
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vader.vim' " test framework for development
 
 Plug 'w0rp/ale', Cond(v:version >= 800)
 
 Plug 'sheerun/vim-polyglot'
-
-" Test framework for development
-Plug 'junegunn/vader.vim'
 
 call plug#end()
 
@@ -187,14 +188,10 @@ highlight CursorLineNr cterm=none
 
 " Plugin Configuration {{{1
 
-" vista {{{2
-let g:vista_close_on_jump = 0
-let g:vista#renderer#enable_icon = 1
-let g:vista_echo_cursor = 0
+" EasyAlign {{{2
+vmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
-" dbext
-let g:dbext_default_usermaps = 0
- 
 " Lightline {{{2
 
 " TODO: indicate all buffers that start with fugitive://* b/c handy when
@@ -314,6 +311,7 @@ let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/mi
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
       \   'javascript': ['eslint'],
+      \   'markdown': ['marksman'],
       \   'typescript': ['eslint'],
       \   'scss': ['stylelint'],
       \   'vim': ['vint'],
@@ -351,13 +349,10 @@ let g:ale_sign_info = 'o'
 
 nmap      <silent>          <leader>d    :ALEDetail<cr>
 nmap                        <leader>F    <Plug>(ale_fix)
-nnoremap <silent>           <leader>l    :Vista!!<cr>
 
 nnoremap                  ga :edit %<.
 
 " General {{{2
-
-nnoremap <silent> <c-[> :w<cr>
 
 " Allows incsearch highlighting for range commands
 "
@@ -376,6 +371,7 @@ nnoremap gb :ls<CR>:b<space>
 " Yanks current outer paragraph and pastes above
 nnoremap <leader>p yapP
 
+" add line above in insert mode
 inoremap <c-o> <esc>O
 
 " Plugin related {{{2
@@ -396,6 +392,7 @@ xnoremap <leader>gr :GBrowse<space>
 nmap <silent> [g <Plug>(ale_previous_wrap)
 nmap <silent> ]g <Plug>(ale_next_wrap)
 
+" clever substitute in entire file
 nnoremap <leader>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
 
 " Commands {{{1
@@ -407,8 +404,8 @@ command! CD :cd %:p:h<CR>:pwd<CR>
 
 command! YankFullPath :let @+ = expand("%")
 command! YankFilename :let @+ = expand("%:t")
-command! YankFullPathLC :let @+ = expand("%")   . ':' . line('.') . ':' . col('.')
-command! YankFilenameLC :let @+ = expand("%:t") . ':' . line('.') . ':' . col('.')
+command! YankFullPathLineColumn :let @+ = expand("%")   . ':' . line('.') . ':' . col('.')
+command! YankFilenameLineColumn :let @+ = expand("%:t") . ':' . line('.') . ':' . col('.')
 
 " Abbreviations {{{1
 
@@ -488,11 +485,11 @@ augroup END
 function! s:base16_customize() abort
   " Colors: https://github.com/chriskempson/base16/blob/master/styling.md
   " Arguments: group, guifg, guibg, ctermfg, ctermbg, attr, guisp
-  call Base16hi('SpellBad',   g:base16_gui08, 'NONE', g:base16_cterm08, 'NONE', '', '')
-  call Base16hi('SpellCap',   g:base16_gui0A, 'NONE', g:base16_cterm0A, 'NONE', '', '')
-  call Base16hi('SpellLocal', g:base16_gui0D, 'NONE', g:base16_cterm0D, 'NONE', '', '')
-  call Base16hi('SpellRare',  g:base16_gui0B, 'NONE', g:base16_cterm0B, 'NONE', '', '')
-  call Base16hi('MatchParen', g:base16_gui0E, 'NONE', g:base16_cterm0E, 'NONE', '', '')
+  " call Base16hi('SpellBad',   g:base16_gui08, 'NONE', g:base16_cterm08, 'NONE', '', '')
+  " call Base16hi('SpellCap',   g:base16_gui0A, 'NONE', g:base16_cterm0A, 'NONE', '', '')
+  " call Base16hi('SpellLocal', g:base16_gui0D, 'NONE', g:base16_cterm0D, 'NONE', '', '')
+  " call Base16hi('SpellRare',  g:base16_gui0B, 'NONE', g:base16_cterm0B, 'NONE', '', '')
+  " call Base16hi('MatchParen', g:base16_gui0E, 'NONE', g:base16_cterm0E, 'NONE', '', '')
 endfunction
 augroup on_change_colorschema
   autocmd!
@@ -544,6 +541,12 @@ augroup _ale_closeLoclistWithBuffer
   autocmd QuitPre * if empty(&buftype) | lclose | endif
 augroup END
 
+augroup _ale_enforce_omnifunc
+  " Otherwise vim-polyglot will override omnifunc when loading its html
+  " features for markdown.
+  autocmd FileType * setlocal omnifunc=ale#completion#OmniFunc
+augroup END
+
 " NeoVim/Vim compatibility {{{2
 
 if !has('nvim')
@@ -563,7 +566,7 @@ endif
 " Project-specifics {{{1
 
 augroup project_specifics
-  autocmd! BufRead */some-project/*.html let b:ale_fixers = []
+  autocmd! BufRead */some-project/*.ext let b:ale_linters = []
 augroup end
 
 " .vimrc.local {{{1
