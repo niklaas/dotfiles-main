@@ -23,11 +23,6 @@ then
     path=($TEXLIVE_DIR $path)
 fi
 
-if [ ! -d "$HOME/.nvm" ]
-then
-    mkdir "$HOME/.nvm"
-fi
-
 # Homebrew {{{3
 eval $(/opt/homebrew/bin/brew shellenv)
 
@@ -111,7 +106,7 @@ setopt inc_append_history
 # of a command with Alt-# or Escape-# on Mac OS.
 setopt interactivecomments
 
-setopt HIST_IGNORE_SPACE
+setopt histignorespace
 
 # Configuring the directory stack
 # See http://zsh.sourceforge.net/Intro/intro_6.html
@@ -157,7 +152,7 @@ alias curltime="curl -w \"@$HOME/.curl-format.txt\" -o /dev/null -s "
 
 # History
 alias dh="dirs -v"
-alias h="history | tac | awk '!seen[\$2]++' | sort -n | grep"
+alias h="fc -rl 1 | awk '!seen[\$2]++' | sort -n | grep"
 
 alias dt="date +%Y%m%d_%H%M%S"
 alias dti="date +%FT%T"
@@ -354,18 +349,6 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Source rbenv
-command -v rbenv >/dev/null && eval "$(rbenv init -)"
-
-# Source pyenv
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-# Source phpbrew
-[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
-
 # Local configuration available?
 test -f ${HOME}/.zshrc.local && source ${HOME}/.zshrc.local
 
@@ -388,6 +371,9 @@ then
 fi
 
 # Sourcing {{{2
+
+# asdf
+. "$(brew --prefix asdf)/libexec/asdf.sh"
 
 if command -v kubectl >/dev/null
 then
