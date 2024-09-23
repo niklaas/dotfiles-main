@@ -162,9 +162,6 @@ alias feh="feh -Z"
 alias g="git"
 alias j="just"
 
-alias kcgpg="keychain -q --eval 1C62D5F3 >/dev/null"
-alias kcrn="keychain -q --eval rsync.net >/dev/null"
-
 alias less="less -R"
 
 alias ls="ls --color"
