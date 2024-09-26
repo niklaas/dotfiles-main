@@ -147,6 +147,7 @@ writeToProfile("Default", [
     map("m").toPaste("🤗"),
     map("t").toPaste("🤔"),
     map(",").toPaste("🙌🏼"),
+    map("f").toPaste("🤦🏼‍♂️"),
     map("p").to("spacebar", ["left_control", "left_command"]),
   ]),
   simlayer("e").condition(
