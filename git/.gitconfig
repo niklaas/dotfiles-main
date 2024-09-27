@@ -88,5 +88,6 @@
 	defaultBranch = main
 [rebase]
 	autoSquash = true
+	updateRefs = true
 [fetch]
 	writeCommitGraph = true
