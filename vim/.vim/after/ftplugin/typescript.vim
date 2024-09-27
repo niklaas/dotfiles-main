@@ -10,5 +10,3 @@ augroup ft_typescript_relative_imports
   autocmd InsertEnter <buffer> let save_cwd = getcwd() | setlocal autochdir
   autocmd InsertLeave <buffer> setlocal noautochdir | execute 'cd' fnameescape(save_cwd)
 augroup END
-
-UltiSnipsAddFiletypes javascript-jasmine-arrow
