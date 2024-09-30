@@ -18,12 +18,11 @@
 	bl  = blame
 	brc = rev-parse --abbrev-ref HEAD
 	brd = !git branch | awk '{ print $1}' | grep -v -e '*' -e '+' | xargs -L 1 -p git branch -D
-	ch  = checkout
-	chm = checkout master
+	co  = checkout
 	cp  = cherry-pick
-	co  = commit -v
-	coa = commit -v --amend
-	con = commit -v --no-verify
+	ci  = commit -v
+	cia = commit -v --amend
+	cin = commit -v --no-verify
 	df  = diff
 	dfs = diff --staged
 	dfc = diff --compact-summary
