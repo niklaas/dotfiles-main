@@ -169,7 +169,7 @@ writeToProfile("Default", [
       map("a").to("d", ["left_shift", "left_command"]),
       map("b").to("f3", ["right_command", "fn"]), // bookmarks | todo: could be removed b/c of vim binding
       map("p").to("p", ["left_shift", "left_option", "left_control"]), // recent projects
-      map("n").to("f12", ["left_command", "left_shift", "fn"]), // hide all toolbars
+      map("n").to("f12", ["fn", "left_command", "left_shift"]), // hide all toolbars
       map("comma").to("up_arrow", [
         "left_shift",
         "left_control",
