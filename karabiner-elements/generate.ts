@@ -165,11 +165,11 @@ writeToProfile("Default", [
       map("u").to("7", ["left_shift", "left_command"]), // structure modal
       map("o").to("o", ["left_shift", "left_command"]),
       map("i").to("o", ["left_option", "left_command"]),
-      map("f").to("f4"), // jump to source
+      map("f").to("f4", ["fn"]), // jump to source
       map("a").to("d", ["left_shift", "left_command"]),
-      map("b").to("f3", ["right_command"]),
+      map("b").to("f3", ["right_command", "fn"]), // bookmarks | todo: could be removed b/c of vim binding
       map("p").to("p", ["left_shift", "left_option", "left_control"]), // recent projects
-      map("n").to("f12", ["left_command", "left_shift"]), // hide all toolbars
+      map("n").to("f12", ["left_command", "left_shift", "fn"]), // hide all toolbars
       map("comma").to("up_arrow", [
         "left_shift",
         "left_control",
