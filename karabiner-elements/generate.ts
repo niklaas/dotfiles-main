@@ -11,7 +11,7 @@ import {
   StickyModifierKeyCode,
   withMapper,
   writeToProfile,
-} from "https://deno.land/x/karabinerts@1.27.0/deno.ts";
+} from "https://deno.land/x/karabinerts@1.30.0/deno.ts";
 
 const alphaNumericKeys = (
   "1234567890" +
