@@ -159,7 +159,7 @@ writeToProfile("Default", [
       map("t").to("t", ["right_control", "right_shift"]),
       map("h").to("left_arrow", ["left_command", "left_option"]), // tab left
       map("j").to("p", ["left_shift", "left_command"]),
-      map("k").to("f1", ["right_command"]),
+      map("k").to("f1", ["fn", "right_command"]),
       map("l").to("right_arrow", ["left_command", "left_option"]),
       map("y").to("semicolon", "left_control"), // ace jump
       map("u").to("7", ["left_shift", "left_command"]), // structure modal
