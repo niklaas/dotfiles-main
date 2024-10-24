@@ -39,7 +39,8 @@ fi
 
 # EDITOR {{{2
 
-export VISUAL=vim
+export NVIM_APPNAME=nvchad
+export VISUAL=nvim
 
 if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
   export VISUAL=nvr
@@ -136,7 +137,6 @@ alias es="$VISUAL -S Session.vim"
 alias er="$VISUAL -R"
 alias eg="$VISUAL +G +on"
 alias se="sudo -e"
-alias v="vim"
 
 ef() {
     e $(fzf) $*
