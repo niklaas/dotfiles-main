@@ -122,8 +122,16 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 bindkey -s '^z' 'fg\n'
 
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+# GPG agent {{{2
+
 eval $(gpg-agent --daemon --allow-preset-passphrase --quiet >/dev/null 2>&1)
+
+# Yubikey {{{2
+
+export SSH_ASKPASS=$HOME/bin/yubikey-askpass
+export DISPLAY=:0
+
+eval $(keychain --eval --agents ssh --quiet otus_sk)
 
 # Aliases {{{1
 
