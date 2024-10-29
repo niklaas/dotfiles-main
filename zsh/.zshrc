@@ -128,10 +128,14 @@ eval $(gpg-agent --daemon --allow-preset-passphrase --quiet >/dev/null 2>&1)
 
 # Yubikey {{{2
 
-export SSH_ASKPASS=$HOME/bin/yubikey-askpass
-export DISPLAY=:0
+export SSH_ASKPASS=/opt/homebrew/bin/pinentry-mac
 
-eval $(keychain --eval --agents ssh --quiet otus_sk)
+eval $(keychain --eval --agents ssh --quiet id_ed25519)
+eval $(
+  DISPLAY=:0 \
+  SSH_ASKPASS=$HOME/bin/yubikey-askpass \
+  keychain --eval --agents ssh --quiet otus_sk
+)
 
 # Aliases {{{1
 
