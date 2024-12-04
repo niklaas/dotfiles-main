@@ -390,16 +390,6 @@ then
     source <(kubectl completion zsh)
 fi
 
-function chpwd() {
-  if [[ -f .zshrc_local ]]; then
-    source .zshrc_local
-  fi
-
-  if [[ -f $OLDPWD/.zshrc_local_leave ]]; then
-    source $OLDPWD/.zshrc_local_leave
-  fi
-}
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Disable pausing terminal output to make Ctrl-S available when browsing
