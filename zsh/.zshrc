@@ -167,6 +167,8 @@ alias curltime="curl -w \"@$HOME/.curl-format.txt\" -o /dev/null -s "
 alias dh="dirs -v"
 alias h="fc -rl 1 | awk '!seen[\$2]++' | sort -n | grep"
 
+alias d=docker
+
 alias dt="date +%Y%m%d_%H%M%S"
 alias dti="date +%FT%T"
 alias dts="date +%Y-%m-%d"
