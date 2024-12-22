@@ -168,6 +168,7 @@ alias dh="dirs -v"
 alias h="fc -rl 1 | awk '!seen[\$2]++' | sort -n | grep"
 
 alias d=docker
+alias dk="docker compose"
 
 alias dt="date +%Y%m%d_%H%M%S"
 alias dti="date +%FT%T"
