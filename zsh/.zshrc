@@ -174,6 +174,8 @@ alias dt="date +%Y%m%d_%H%M%S"
 alias dti="date +%FT%T"
 alias dts="date +%Y-%m-%d"
 
+alias fda="fd --no-ignore --hidden"
+
 alias feh="feh -Z"
 alias g="git"
 alias j="just"
