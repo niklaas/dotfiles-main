@@ -14,6 +14,7 @@
 	ad  = add
 	ap  = add --patch
 	br  = branch
+  brs = "!f() { git reflog | grep checkout | cut -d ' ' -f 8 | uniq | head ${1:5} | cat -n ;}; f"
 	brf = !git branch --format='%(refname:short)' | fzf
 	bl  = blame
 	brc = rev-parse --abbrev-ref HEAD
