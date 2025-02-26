@@ -1,9 +1,11 @@
-[include]
-	path = ~/.local.gitconfig
+[user]
+	email = hello@niklaas.eu
+	name = Niklaas Baudet von Gersdorff
+	signingkey = /Users/niklaas/.ssh/id_ed25519
 [credential]
 	helper = cache
 [core]
-	autocrlf = false
+	autocrlf = input
 	filemode = false
 	excludesfile = ~/.gitignore_global
 [merge]
@@ -17,13 +19,12 @@
   brs = "!f() { git reflog | grep checkout | cut -d ' ' -f 8 | uniq | head ${1:5} | cat -n ;}; f"
 	brf = !git branch --format='%(refname:short)' | fzf
 	bl  = blame
-	brc = rev-parse --abbrev-ref HEAD
+	brc = rev-parse --abbrev-ref
 	brd = !git branch | awk '{ print $1}' | grep -v -e '*' -e '+' | xargs -L 1 -p git branch -D
 	co  = checkout
 	cp  = cherry-pick
-	ci  = commit -v
-	cia = commit -v --amend
-	cin = commit -v --no-verify
+	ci  = commit
+	cia = commit --amend
 	df  = diff
 	dfs = diff --staged
 	dfc = diff --compact-summary
@@ -34,7 +35,6 @@
 	la  = log -1 HEAD
 	lag = log --all --graph --oneline --decorate
 	lg  = log --graph --oneline --decorate
-	lgs = log --stat
 	mg  = merge --no-ff
 	mgs = merge --squash
 	mt  = mergetool
@@ -44,7 +44,10 @@
 	rb  = rebase
 	rbi = rebase --interactive
 	rbc = rebase --continue
+  re  = restore
+  res = restore --staged
 	sh  = stash
+	sha = stash --all
 	spa = stash --include-untracked
 	spu = stash --include-untracked --keep-index
 	spo = stash pop
@@ -56,16 +59,6 @@
   # custom commands:
 	ig  = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 	browse = "!browse() { $VISUAL +\"Gbrowse! $@ |q\" ;}; browse"
-	# Code Reviews:
-	files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
-	stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
-	review = !$VISUAL -p $(git files) +\"tabdo Gdiff $(git merge-base HEAD $REVIEW_BASE)\" +tabfirst
-	reviews = !$VISUAL -p +\"tabdo Gdiff $(git merge-base HEAD $REVIEW_BASE)\" +tabfirst
-	heatmap = !git log $(git merge-base HEAD \"$REVIEW_BASE\")..HEAD --pretty=format: --name-only | grep -v \"^$\" | sort | uniq -c | sort -rg
-	# https://stackoverflow.com/questions/1527234/finding-a-branch-point-with-git
-	oldest-ancestor = !zsh -c 'diff --old-line-format= --new-line-format= <(git rev-list --first-parent \"${1:-master}\") <(git rev-list --first-parent \"${2:-HEAD}\") | head -1' -
-	find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
-	show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
 [push]
 	default = current
 	followTags = true
@@ -91,3 +84,9 @@
 	updateRefs = true
 [fetch]
 	writeCommitGraph = true
+[gpg]
+	format = ssh
+[include]
+	path = ~/.local.gitconfig
+[tar "tar.xz"]
+	command = xz -c
