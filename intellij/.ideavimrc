@@ -1,7 +1,3 @@
-" Configure iTerm > Profiles > Advanced > Semantic History
-"
-"   FILENAME="\1"; LINENUMBER="\2"; if [ "x" = "x$LINENUMBER" ]; then open -na "Webstorm.app" --args $FILENAME; else open -na "Webstorm.app" --args --line $LINENUMBER $FILENAME; fi
-
 let mapleader = " "
 
 " Intellij settings
@@ -9,25 +5,27 @@ set ideajoin
 set ideamarks
 set ideaput
 set ideastatusicon=gray
-set idearefactormode=select
+set idearefactormode=visual
 
 " IdeaVim bundled plugins
-set surround
-set highlightedyank
-set commentary
-set argtextobj
-set matchit.vim
 set NERDTree
+set argtextobj
+set commentary
+set easymotion
+set highlightedyank
+set matchit.vim
+set mini-ai
+set surround
 
 " Vim settings
 set incsearch hlsearch
 set ignorecase smartcase
-set relativenumber number
+set relativenumber
 set scrolloff=5
 set clipboard+=unnamed
 set visualbell
 set showmode
-set selectmode=key,ideaselection
+set selectmode=key
 set keymodel=startsel,continueselect
 
 " Vim or Intellij?
@@ -36,11 +34,8 @@ sethandler <c-g> n-v:ide " multiple cursor
 sethandler <c-m> a:ide " commit history
 sethandler <c-q> n:ide i:vim " select in...
 sethandler <c-t> n-v:ide i:vim " vim = inline tab indent
-sethandler <c-u> n:ide i:vim " find usages
 
 " Keymaps
-nnoremap ]<space> o<esc>k
-nnoremap [<space> O<esc>j
 inoremap <c-o> <esc>O
 
 nnoremap gh _
@@ -48,20 +43,73 @@ nnoremap gl $
 
 nnoremap Y y$
 
-sethandler <c-s> a:vim " normally used for `Refactor this...`
-nmap <c-s> <Action>(SaveAll)
+nnoremap ; :
+vnoremap ; :
 
-nmap mm <Action>(ToggleBookmark)
-nmap mi <Action>(EditBookmark)
-nmap ma <Action>(ShowBookmarks)
+nmap <c-enter> <Action>(ActivateTerminalToolWindow)
 
-nmap <c-o> <Action>(Back)
-nmap <c-i> <Action>(Forward)
+" Bookmarks
+nmap ,, <Action>(ToggleBookmark)
+nmap ,. <Action>(EditBookmark)
+nmap ,/ <Action>(ShowBookmarks)
 
-nmap <leader>le <Action>(RenameElement)
+nmap ,k <Action>(ToggleLineBreakpoint)
+nmap ,l <Action>(ViewBreakpoints)
+
+" IntelliJ Actions
+nmap gr <Action>(FindUsages)
+nmap <leader>ff <Action>(FindInPath)
+
+nmap <leader>d <Action>(GotoRelated)
+nmap <leader>r <Action>(RenameElement)
+nmap <leader>a <Action>(SelectAllOccurrences)
+nmap <leader>u <Action>(FindUsagesInFile)
+nmap <leader>s <Action>(FileStructurePopup)
+
+nmap <c-w>t <Action>(EditSourceInNewWindow)
+
+nmap <leader>a <Action>(Refactorings.QuickListPopupAction)
+vmap <leader>a <Action>(Refactorings.QuickListPopupAction)
+
+" Git
+nmap <leader>gs <Action>(Git.Stage.Add.Tracked)
+nmap <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
+vmap <leader>gh <Action>(Vcs.ShowHistoryForBlock)
+
+" non-working:
+nmap <leader>gl <Action>(GitHub.Copy.Link)
+vmap <leader>gl <Action>(GitHub.Copy.Link)
+
+" Window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+
+" Window movement
+nmap <M-h> <Action>(TabShiftActions.ShiftLeft)
+nmap <M-j> <Action>(TabShiftActions.ShiftDown)
+nmap <M-k> <Action>(TabShiftActions.ShiftUp)
+nmap <M-l> <Action>(TabShiftActions.ShiftRight)
+
+" Easymotion
+nmap <leader><leader>gE <Plug>(easymotion-gE)
+nmap <leader><leader>ge <Plug>(easymotion-ge)
+nmap <leader><leader>J  <Plug>(easymotion-eol-j)
+nmap <leader><leader>K  <Plug>(easymotion-eol-k)
+
+nmap     ]d       <Action>(GotoNextError) " next diagnostic
+nmap     [d       <Action>(GotoPreviousError) " previous diagnostic
+nmap     ]c       <Action>(VcsShowNextChangeMarker) " mimicks fugitive mapping
+nmap     [c       <Action>(VcsShowPrevChangeMarker) " mimicks fugitive mapping
+nmap     ]n       <Action>(NextOccurence)
+nmap     [n       <Action>(PreviousOccurence)
+
+nnoremap ]<space> o<esc>k
+nnoremap [<space> O<esc>j
 
 nmap <leader>z <Action>(ToggleDistractionFreeMode)
 
-" Jump between methods
-nmap [[ <Action>(MethodUp)
-nmap ]] <Action>(MethodDown)
+" simulate vim-unimpaired
+nnoremap yoh :set hlsearch!<enter>
+nmap yol <Action>(EditorToggleShowWhitespaces)
