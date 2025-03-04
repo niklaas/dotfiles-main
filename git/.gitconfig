@@ -60,7 +60,7 @@
 	ig  = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
 	browse = "!browse() { $VISUAL +\"Gbrowse! $@ |q\" ;}; browse"
 [push]
-	default = simple
+	default = current
 	followTags = true
 	autoSetupRemote = true
 [grep]
@@ -69,6 +69,7 @@
 	sslverify = true
 [branch]
   sort = committerdate
+	autoSetupMerge = inherit
 [column]
   ui = auto
 [commit]
