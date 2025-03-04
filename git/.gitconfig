@@ -10,7 +10,6 @@
 	excludesfile = ~/.gitignore_global
 [merge]
 	tool = vimdiff
-  conflictstyle = zdiff3
 [mergetool "vimdiff"]
 	cmd = $VISUAL -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J' -c 'Git! mergetool' -c 'cc|cl'
 [alias]
