@@ -132,6 +132,10 @@ return {
           },
         },
       },
+      ruby_lsp = {},
+      ts_ls = {},
+      eslint = {},
+      jsonls = {},
     }
 
     local ensure_installed = vim.tbl_keys(servers or {})
