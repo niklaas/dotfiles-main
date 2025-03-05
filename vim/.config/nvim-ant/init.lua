@@ -19,7 +19,7 @@ o.ignorecase = true
 o.smartcase = true
 
 o.updatetime = 250
-o.timeoutlen = 300
+o.timeoutlen = 700
 
 vim.schedule(function()
   o.clipboard = "unnamedplus"
