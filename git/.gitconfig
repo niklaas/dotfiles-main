@@ -54,6 +54,7 @@
   st  = status
   su  = submodule update --recursive --remote
   sw  = switch
+  wk  = checkout @{upstream} -t -b
   wt  = worktree
   wa  = "!wa() { git worktree add ../$(basename $(pwd))--$@ ;}; wa"
   # custom commands:
