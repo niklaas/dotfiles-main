@@ -25,7 +25,15 @@ vim.schedule(function()
   o.clipboard = "unnamedplus"
 end)
 
-map({ "n", "v" }, ";", ":")
+map({ "n", "v" }, ";", ":") -- switch to command mode without pressing shift
+map("c", ";", function() -- double-tap ; to list the previous commands
+  if vim.fn.getcmdpos() == 1 then
+    return "<C-c>q:"
+  else
+    return ";"
+  end
+end, { expr = true })
+
 map("n", "<c-s>", "<cmd>:w<cr>")
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
