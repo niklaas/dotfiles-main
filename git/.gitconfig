@@ -1,114 +1,114 @@
 [user]
-	email = hello@niklaas.eu
-	name = Niklaas Baudet von Gersdorff
-	signingkey = /Users/niklaas/.ssh/id_ed25519
+  email = hello@niklaas.eu
+  name = Niklaas Baudet von Gersdorff
+  signingkey = /Users/niklaas/.ssh/id_ed25519
 [credential]
-	helper = cache
+  helper = cache
 [core]
-	autocrlf = input
-	filemode = false
-	excludesfile = ~/.gitignore_global
+  autocrlf = input
+  filemode = false
+  excludesfile = ~/.gitignore_global
 [merge]
-	tool = vimdiff
+  tool = vimdiff
 [mergetool "vimdiff"]
-	cmd = $VISUAL -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J' -c 'Git! mergetool' -c 'cc|cl'
+  cmd = $VISUAL -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J' -c 'Git! mergetool' -c 'cc|cl'
 [alias]
-	ad  = add
-	ap  = add --patch
-	br  = branch
+  ad  = add
+  ap  = add --patch
+  br  = branch
   brs = "!f() { git reflog | grep checkout | cut -d ' ' -f 8 | uniq | head ${1:5} | cat -n ;}; f"
-	brf = !git branch --format='%(refname:short)' | fzf
-	bl  = blame
-	brc = rev-parse --abbrev-ref
-	brd = !git branch | awk '{ print $1}' | grep -v -e '*' -e '+' | xargs -L 1 -p git branch -D
-	co  = checkout
-	cp  = cherry-pick
-	ci  = commit
-	cia = commit --amend
-	df  = diff
-	dfs = diff --staged
-	dfc = diff --compact-summary
-	dfw = diff --ignore-all-space
-	dfn = diff --name-only
-	dt  = difftool
-	fe  = fetch
-	la  = log -1 HEAD
-	lag = log --all --graph --oneline --decorate
-	lg  = log --graph --oneline --decorate
-	mg  = merge --no-ff
-	mgs = merge --squash
-	mt  = mergetool
-	pa  = !git remote | xargs -L1 git push --all
-	pl  = pull --rebase
-	ps  = push
-	rb  = rebase
-	rbi = rebase --interactive
-	rbc = rebase --continue
+  brf = !git branch --format='%(refname:short)' | fzf
+  bl  = blame
+  brc = rev-parse --abbrev-ref
+  brd = !git branch | awk '{ print $1}' | grep -v -e '*' -e '+' | xargs -L 1 -p git branch -D
+  co  = checkout
+  cp  = cherry-pick
+  ci  = commit
+  cia = commit --amend
+  df  = diff
+  dfs = diff --staged
+  dfc = diff --compact-summary
+  dfw = diff --ignore-all-space
+  dfn = diff --name-only
+  dt  = difftool
+  fe  = fetch
+  la  = log -1 HEAD
+  lag = log --all --graph --oneline --decorate
+  lg  = log --graph --oneline --decorate
+  mg  = merge --no-ff
+  mgs = merge --squash
+  mt  = mergetool
+  pa  = !git remote | xargs -L1 git push --all
+  pl  = pull --rebase
+  ps  = push
+  rb  = rebase
+  rbi = rebase --interactive
+  rbc = rebase --continue
   re  = restore
   res = restore --staged
-	sh  = stash
-	sha = stash --all
-	spa = stash --include-untracked
-	spu = stash --include-untracked --keep-index
-	spo = stash pop
-	st  = status
-	su  = submodule update --recursive --remote
-	sw  = switch
-	wt  = worktree
-	wa  = "!wa() { git worktree add ../$(basename $(pwd))--$@ ;}; wa"
+  sh  = stash
+  sha = stash --all
+  spa = stash --include-untracked
+  spu = stash --include-untracked --keep-index
+  spo = stash pop
+  st  = status
+  su  = submodule update --recursive --remote
+  sw  = switch
+  wt  = worktree
+  wa  = "!wa() { git worktree add ../$(basename $(pwd))--$@ ;}; wa"
   # custom commands:
-	ig  = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
-	browse = "!browse() { $VISUAL +\"Gbrowse! $@ |q\" ;}; browse"
+  ig  = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+  browse = "!browse() { $VISUAL +\"Gbrowse! $@ |q\" ;}; browse"
 [push]
-	default = current
-	followTags = true
-	autoSetupRemote = true
+  default = current
+  followTags = true
+  autoSetupRemote = true
 [grep]
   patternType = perl
 [http]
-	sslverify = true
+  sslverify = true
 [branch]
   sort = committerdate
-	autoSetupMerge = inherit
+  autoSetupMerge = inherit
 [column]
   ui = auto
 [commit]
-	verbose = true
-	gpgsign = true
+  verbose = true
+  gpgsign = true
 [rerere]
-	enabled = true
-	autoupdate = true
+  enabled = true
+  autoupdate = true
 [diff]
-	algorithm = histogram
-	tool = vimdiff
+  algorithm = histogram
+  tool = vimdiff
   colorMoves = true
-	colorMoved = plain
-	mnemonicPrefix = true
-	renames = true
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
 [difftool]
-	prompt = false
+  prompt = false
 [pull]
-	rebase = true
+  rebase = true
 [github]
-	user = niklaas
+  user = niklaas
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [rebase]
-	autoSquash = true
-	autoStash = true
-	updateRefs = true
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
 [fetch]
-	writeCommitGraph = true
-	prune = true
-	pruneTags = true
-	all = true
+  writeCommitGraph = true
+  prune = true
+  pruneTags = true
+  all = true
 [gpg]
-	format = ssh
+  format = ssh
 [include]
-	path = ~/.local.gitconfig
+  path = ~/.local.gitconfig
 [tar "tar.xz"]
-	command = xz -c
+  command = xz -c
 [tag]
-	sort = version:refname
+  sort = version:refname
 [help]
-	autocorrect = prompt
+  autocorrect = prompt
