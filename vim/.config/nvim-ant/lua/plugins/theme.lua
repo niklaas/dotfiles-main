@@ -1,25 +1,13 @@
 return {
-  "tinted-theming/tinted-vim",
+  "catppuccin/nvim",
   lazy = false,
+  name = "catppuccin",
   priority = 1000,
-  config = function(_, _)
-    local light = "base16-rose-pine-dawn"
-    local dark = "base16-rose-pine-moon"
-    vim.g.tinted_colorspace = 256
-    vim.cmd.colorscheme(dark)
+  config = function()
+    vim.cmd.colorscheme("catppuccin")
 
-    vim.api.nvim_create_autocmd("OptionSet", {
-      pattern = "background",
-      callback = function()
-        if vim.o.background == light then
-          vim.cmd.colorscheme(dark)
-        else
-          vim.cmd.colorscheme(light)
-        end
-      end,
-      desc = "Update colorscheme automatically",
-    })
-
+    local light = "catppuccin-latte"
+    local dark = "catppuccin-mocha"
     vim.keymap.set("n", "<leader>tt", function()
       if vim.g.colors_name == light then
         vim.cmd.colorscheme(dark)
