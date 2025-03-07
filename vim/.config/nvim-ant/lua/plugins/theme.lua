@@ -8,6 +8,18 @@ return {
     vim.g.tinted_colorspace = 256
     vim.cmd.colorscheme(dark)
 
+    vim.api.nvim_create_autocmd("OptionSet", {
+      pattern = "background",
+      callback = function()
+        if vim.o.background == light then
+          vim.cmd.colorscheme(dark)
+        else
+          vim.cmd.colorscheme(light)
+        end
+      end,
+      desc = "Update colorscheme automatically",
+    })
+
     vim.keymap.set("n", "<leader>tt", function()
       if vim.g.colors_name == light then
         vim.cmd.colorscheme(dark)
