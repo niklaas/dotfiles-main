@@ -12,6 +12,7 @@ return {
       { "<leader>gf", "<cmd>Git fetch<cr>", desc = "Git [f]etch" },
       { "<leader>gg", "<cmd>Git<cr>", desc = "Git status" },
       { "<leader>gj", "<cmd>Gwrite|Git commit<cr>", desc = "Git write and commit" },
+      { "<leader>gl", "<cmd>Git log -- %<cr>", desc = "Git file [l]og" },
       { "<leader>gw", "<cmd>Gwrite<cr>", desc = "Git write" },
     },
   },
