@@ -31,6 +31,9 @@ return {
         },
       },
     })
+
+    vim.ui.select = MiniPick.ui_select
+
     vim.keymap.set("n", "<leader>sf", MiniPick.builtin.files, { desc = "[S]earch [F]iles" })
     vim.keymap.set("n", "<leader><leader>", MiniPick.builtin.buffers, { desc = "[ ] Find existing buffers" })
     vim.keymap.set("n", "<leader>sg", MiniPick.builtin.grep_live, { desc = "[S]earch by [G]rep" })
