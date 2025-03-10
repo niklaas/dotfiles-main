@@ -14,6 +14,7 @@ o.number = true
 o.scrolloff = 3
 o.signcolumn = "yes"
 o.undofile = true
+o.grepprg = "rg --vimgrep --hidden"
 
 o.ignorecase = true
 o.smartcase = true
