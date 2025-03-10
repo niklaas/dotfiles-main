@@ -389,6 +389,12 @@ then
     unalias ls # --color breaks completion dialog
 fi
 
+# setting a the terminal title
+function set_win_title(){
+    echo -ne "\033]0; $(print -P %~) \007"
+}
+precmd_functions+="set_win_title"
+
 # Sourcing {{{2
 
 # asdf
