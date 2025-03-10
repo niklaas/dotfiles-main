@@ -37,6 +37,10 @@ then
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 
+# RIPGREP {{{2
+
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+
 # EDITOR {{{2
 
 export NVIM_APPNAME=nvchad
