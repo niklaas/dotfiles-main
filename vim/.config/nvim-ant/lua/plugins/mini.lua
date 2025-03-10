@@ -37,24 +37,21 @@ return {
     vim.keymap.set("n", "<leader>sw", '<cmd>Pick grep pattern="<cword>"<cr>', { desc = "[S]earch current [W]ord" })
     vim.keymap.set("n", "<leader>sk", MiniExtra.pickers.keymaps, { desc = "[S]earch [K]eymaps" })
     vim.keymap.set("n", "<leader>sb", function()
-      MiniExtra.pickers.git_branches(
-        { scope = "local" },
-        {
-          mappings = {
-            populate_command = {
-              char = "<c-.>",
-              func = function()
-                local current_match = MiniPick.get_picker_matches().current
-                local branch = current_match:sub(3):match("(%w+)")
+      MiniExtra.pickers.git_branches({ scope = "local" }, {
+        mappings = {
+          populate_command = {
+            char = "<c-.>",
+            func = function()
+              local current_match = MiniPick.get_picker_matches().current
+              local branch = current_match:sub(3):match("([%w%-%_/]+)")
 
-                local keys = vim.api.nvim_replace_termcodes(":" .. branch .. "<c-b>", true, true, true)
-                vim.fn.feedkeys(keys, "n")
-                return true
-              end,
-            },
+              local keys = vim.api.nvim_replace_termcodes(":" .. branch .. "<c-b>", true, true, true)
+              vim.fn.feedkeys(keys, "n")
+              return true
+            end,
           },
-        }
-      )
+        },
+      })
     end, { desc = "[S]earch [B]ranches" })
 
     -- lsp related:
