@@ -41,8 +41,8 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 map("t", "<c-enter>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-map("n", "gh", "_", { desc = "Jump to beginning of line" })
-map("n", "gl", "$", { desc = "Jump to end of line" })
+map({ "v", "n" }, "gh", "_", { desc = "Jump to beginning of line" })
+map({ "v", "n" }, "gl", "$", { desc = "Jump to end of line" })
 
 -- window movement
 map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
