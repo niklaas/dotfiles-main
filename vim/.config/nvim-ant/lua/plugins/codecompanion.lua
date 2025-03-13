@@ -68,7 +68,7 @@ return {
     },
     strategies = {
       chat = {
-        adapter = "ollama",
+        adapter = "anthropic",
       },
       inline = {
         adapter = "ollama",
