@@ -179,7 +179,7 @@ nnoremap <expr> <leader>r :%S/<cword>/<cword>/w<left><left>
 command! BD :bp\|bd #<cr>
 command! BW :bp\|bw #<cr>
 
-command! CD :cd %:p:h<CR>:pwd<CR>
+command! Cd :cd %:p:h<CR>:pwd<CR>
 
 command! YankFullPath :let @+ = expand("%")
 command! YankFilename :let @+ = expand("%:t")
