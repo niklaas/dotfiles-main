@@ -221,5 +221,5 @@ if !has('nvim')
 endif
 
 if filereadable(expand('$HOME/.vimrc.local'))
-  execute 'source ' . '$HOME/.vimrc.local'
+  source '$HOME/.vimrc.local'
 endif
