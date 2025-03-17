@@ -1,5 +1,3 @@
-" Environment {{{1
-
 " vint:next-line -ProhibitSetNoCompatible
 set nocompatible
 
@@ -14,53 +12,26 @@ else
     let $MYREALVIMRC = expand('$HOME/.vimrc')
 endif
 
-" Plugins {{{1
-
-" Prefix {{{2
-
 call plug#begin('$DOTVIM/plugged')
 
-" Conditional activation for vim-plug plugins
-" https://github.com/junegunn/vim-plug/wiki/tips#conditional-activation
-function! Cond(cond, ...)
-  let opts = get(a:000, 0, {})
-  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
-endfunction
-
-" Basics {{{2
-
-Plug 'chriskempson/base16-vim'
-
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'sjl/gundo.vim' " visualize undo tree
 
 Plug 'easymotion/vim-easymotion'
-Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
 Plug 'machakann/vim-highlightedyank'
 
-Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
-Plug 'edkolev/tmuxline.vim'
-Plug 'daviesjamie/vim-base16-lightline'
-
-Plug 'niklaas/lightline-gitdiff', Cond(!isdirectory(expand('$HOME/git/lightline-gitdiff')))
-Plug '$HOME/git/lightline-gitdiff', Cond(isdirectory(expand('$HOME/git/lightline-gitdiff')), { 'as': 'lightline-gitdiff-local' })
-
-Plug 'tpope/vim-abolish'  " for better substitution of variants of words (uppercase, lowercase etc)
+Plug 'tpope/vim-abolish'  " improved substitution
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'  " sugar for UNIX shell commands
-Plug 'tpope/vim-obsession'  " for session management
+Plug 'tpope/vim-obsession'  " session management
 Plug 'tpope/vim-repeat' " support for repeating commands that don't support repetition natively
-Plug 'tpope/vim-scriptease'  " e.g. map zS for showing syntax group
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-sleuth'  " for auto-indenting
+Plug 'tpope/vim-sleuth'  " auto-indenting
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired' " pairs of handy bracket mappings
-Plug 'tpope/vim-vinegar' " for better netrw
-Plug 'tpope/vim-fugitive' " for git integration
+Plug 'tpope/vim-vinegar' " better netrw
+Plug 'tpope/vim-fugitive' " git integration
 Plug 'tpope/vim-rhubarb'  " fugitive GitHub integration
 Plug 'tpope/vim-projectionist'
 
@@ -71,24 +42,24 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vader.vim' " test framework for development
 
-Plug 'w0rp/ale', Cond(v:version >= 800)
+Plug 'w0rp/ale'
 
 Plug 'sheerun/vim-polyglot'
 
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'vim-airline/vim-airline'
+
 call plug#end()
 
-" Vim extensions {{{2
+let g:airline_theme = 'catppuccin'
+colorscheme catppuccin-mocha
 
-" allows displaying of man pages with :Man <program>
-runtime! ftplugin/man.vim
-
-" Vim settings {{{1
+runtime! ftplugin/man.vim " :Man for manpages
 
 set autowrite
 set backspace=indent,eol,start
 set clipboard+=unnamed
 set cpoptions+=$
-set gdefault
 set hidden
 set ignorecase
 set incsearch
@@ -97,7 +68,6 @@ set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set modelines=5
 set mouse=a
 set nobackup
-set nohlsearch
 set nojoinspaces
 set noshowmode
 set nowrap
@@ -122,7 +92,6 @@ set whichwrap=b,s
 set wildignorecase
 set wildmenu
 
-" Set locations of important directories
 set backupdir=$DOTVIM/backup/
 set directory=$DOTVIM/swap/,.
 set undodir=$DOTVIM/undo
@@ -149,22 +118,7 @@ set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
 
 " Grepping
 if executable('rg')
-  set grepprg=rg\ --vimgrep
-endif
-
-augroup responsive_cursorline
-  autocmd!
-  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  autocmd WinLeave * setlocal nocursorline
-augroup end
-
-" colorscheme
-function! s:read_background() abort
-  source ~/.vimrc_background
-endfunction
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  call s:read_background()
+  set grepprg=rg\ --hidden\ --vimgrep
 endif
 
 if has('gui_running')
@@ -181,178 +135,29 @@ if has('gui_running')
     set background=dark
   elseif has('gui_win32')
     set guifont=Consolas:h10:cANSI
+  else
+    set guifont=JetBrainsMono\ Nerd\ Font:h14
   endif
 endif
 
-highlight CursorLineNr cterm=none
 
-" Plugin Configuration {{{1
-
-" EasyAlign {{{2
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" Lightline {{{2
-
-" TODO: indicate all buffers that start with fugitive://* b/c handy when
-" comparing 'real file' with git diff.
-
-let g:lightline = {
-      \ 'colorscheme': 'Tomorrow_Night',
-      \ 'inactive': {
-      \   'left': [ [ 'filename', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \            [ 'percent' ] ]
-      \ },
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
-      \             [ 'gitdiff' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype' ],
-      \              [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]
-      \            ]
-      \ },
-      \ 'component_function': {
-      \   'obsession': 'LightlineObsession',
-      \   'cwd': 'Cwd',
-      \   'gitbranch': 'GitBranch',
-      \   'fileformat': 'LightlineFileformat',
-      \   'fileencoding': 'LightlineFileencoding',
-      \   'filetype': 'LightlineFiletype',
-      \ },
-      \ 'component_expand': {
-      \   'linter_checking': 'lightline#ale#checking',
-      \   'linter_warnings': 'lightline#ale#warnings',
-      \   'linter_errors': 'lightline#ale#errors',
-      \   'linter_ok': 'lightline#ale#ok',
-      \   'gitdiff': 'lightline#gitdiff#get',
-      \ },
-      \ 'component_type': {
-      \   'readonly': 'error',
-      \   'linter_checking': 'middle',
-      \   'linter_warnings': 'warning',
-      \   'linter_errors': 'error',
-      \   'linter_ok': 'middle',
-      \ },
-      \ 'tabline': {
-      \   'right': [  ]
-      \ },
-      \ 'mode_map': {
-      \   'n' : 'N',
-      \   'i' : 'I',
-      \   'R' : 'R',
-      \   'v' : 'V',
-      \   'V' : 'VL',
-      \   "\<C-v>": 'VB',
-      \   'c' : 'C',
-      \   's' : 'S',
-      \   'S' : 'SL',
-      \   "\<C-s>": 'SB',
-      \   't': 'T',
-      \ },
-      \ }
-
-let g:lightline#ale#indicator_checking = '...'
-
-function! LightlineObsession()
-  let l:status = strpart(ObsessionStatus(), 1, 1)
-  return l:status ==# '$' ? '$' : ''
-endfunction
-
-function! GitBranch()
-  let l:head = FugitiveHead()
-  return len(l:head) > 0 ? ' ' . FugitiveHead() : ''
-endfunction
-
-function! LightlineFileformat()
-  return winwidth(0) > 140 ? &fileformat : ''
-endfunction
-
-function! LightlineFileencoding()
-  return winwidth(0) > 140 ? &fileencoding : ''
-endfunction
-
-function! LightlineFiletype()
-  return winwidth(0) > 140 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
-endfunction
-
-function! Cwd()
-  " TODO: splitting does not work on Windows with '\'
-  let root_dir_as_list = split(getcwd(), '/')[-1:]
-
-  if len(root_dir_as_list) ==# 1
-    return root_dir_as_list[0]
-  endif
-
-  return ''
-endfunction
-
-" tmux navigator
-if !exists('$TMUX')
-  " I do not want to override <c-{h,j,k,l}> b/c e.g., <c-{h,j}> are quite
-  " handy for not having to reach <bs> and <cr>.
-  let g:tmux_navigator_no_mappings = 1
-endif
-
-" Tmuxline {{{2
-let g:tmuxline_powerline_separators = 0
-let g:tmuxline_theme = 'lightline'
-let g:tmuxline_preset = 'minimal'
-
-" Editorconfig {{{2
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-" Projectionist {{{2
+" TODO: do I really need this or do I want to set this per project?
 let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/misc/projections.json'))))
 
-" ALE {{{2
-let g:ale_linters_explicit = 1
-let g:ale_linters = {
-      \   'javascript': ['eslint'],
-      \   'markdown': ['marksman'],
-      \   'typescript': ['eslint'],
-      \   'scss': ['stylelint'],
-      \   'vim': ['vint'],
-      \   'zsh': ['shell', 'shellcheck'],
-      \   'terraform': ['terraform']
-      \ }
-let g:ale_fixers = {
-      \   'html': [ 'prettier'],
-      \   'javascript': [ 'prettier', 'eslint', 'trim_whitespace' ],
-      \   'typescript': [ 'prettier', 'eslint', 'trim_whitespace' ],
-      \   'typescriptreact': [ 'prettier' ],
-      \   'json': [ 'prettier' ],
-      \   'zsh': [ 'trim_whitespace' ],
-      \   'terraform': ['terraform'],
-      \   'scss': ['prettier'],
-      \   'markdown': ['prettier'],
-      \   '*': ['remove_trailing_lines']
-      \ }
-
 let g:ale_fix_on_save = 1
-let g:ale_open_list = 0
 let g:ale_list_window_size = 7
-
 let g:ale_javascript_eslint_suppress_missing_config = 1
-
-let g:ale_set_highlights = 1
-let g:ale_set_signs = 1
 let g:ale_sign_warning = '?'
 let g:ale_sign_error = '!'
 let g:ale_sign_info = 'o'
 
-" Mappings {{{1
-
-" homerow  et al {{{2
-
-nmap      <silent>          <leader>d    :ALEDetail<cr>
-nmap                        <leader>F    <Plug>(ale_fix)
-
-nnoremap                  ga :edit %<.
-
-" General {{{2
+nnoremap ga :edit %<.
+noremap <C-s> :w<cr>
 
 " Allows incsearch highlighting for range commands
 "
@@ -368,34 +173,24 @@ cnoremap $d <CR>:d<CR>``
 nnoremap Y y$
 nnoremap gb :ls<CR>:b<space>
 
-" Yanks current outer paragraph and pastes above
-nnoremap <leader>p yapP
+noremap         ; :
+cnoremap <expr> ; getcmdpos() == 1 ? '<Esc>q:' : ';'
 
-" add line above in insert mode
-inoremap <c-o> <esc>O
-
-" Plugin related {{{2
-
-" fugitive
 nnoremap <leader>gg :Git<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>ga :Git blame<cr>
 nnoremap <leader>gB :.Git blame<cr>
-nnoremap <leader>gc :Git commit --quiet<cr>
-nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gj :Gwrite<bar>G commit<cr>
 nnoremap <leader>gp :Git pull<cr>
 nnoremap <leader>gP :Git push<cr>
-nnoremap <leader>gr :GBrowse<space>
-xnoremap <leader>gr :GBrowse<space>
 
 " ALE
-nmap <silent> [g <Plug>(ale_previous_wrap)
-nmap <silent> ]g <Plug>(ale_next_wrap)
+nmap <silent> [d <Plug>(ale_previous_wrap)
+nmap <silent> ]d <Plug>(ale_next_wrap)
 
 " clever substitute in entire file
-nnoremap <leader>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
+nnoremap <expr> <leader>r :%S/<cword>/<cword>/w<left><left>
 
-" Commands {{{1
 
 command! BD :bp\|bd #<cr>
 command! BW :bp\|bw #<cr>
@@ -407,14 +202,11 @@ command! YankFilename :let @+ = expand("%:t")
 command! YankFullPathLineColumn :let @+ = expand("%")   . ':' . line('.') . ':' . col('.')
 command! YankFilenameLineColumn :let @+ = expand("%:t") . ':' . line('.') . ':' . col('.')
 
-" Abbreviations {{{1
 
 " Expand %% to the current directory
 cabbrev <expr> %% expand('%:p:h')
 
-" autocmds {{{1
 
-" Filetype-specific autocmds {{{2
 "
 " This section includes autocomds that change settings and add mappings
 " depending on the filetype of the current plugin.
@@ -469,72 +261,6 @@ augroup filetype_vimrc
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-" Miscellaneous {{{1
-
-function! s:ftplugin_fugitive() abort
-  nnoremap <buffer> <silent> cc :Git commit --quiet<CR>
-  nnoremap <buffer> <silent> ca :Git commit --quiet --amend<CR>
-  nnoremap <buffer> <silent> ce :Git commit --quiet --amend --no-edit<CR>
-endfunction
-augroup fugitive_quiet
-  autocmd!
-  autocmd FileType fugitive call s:ftplugin_fugitive()
-augroup END
-
-" Fix highlighting for spell and other highlight groups in terminal
-function! s:base16_customize() abort
-  " Colors: https://github.com/chriskempson/base16/blob/master/styling.md
-  " Arguments: group, guifg, guibg, ctermfg, ctermbg, attr, guisp
-  " call Base16hi('SpellBad',   g:base16_gui08, 'NONE', g:base16_cterm08, 'NONE', '', '')
-  " call Base16hi('SpellCap',   g:base16_gui0A, 'NONE', g:base16_cterm0A, 'NONE', '', '')
-  " call Base16hi('SpellLocal', g:base16_gui0D, 'NONE', g:base16_cterm0D, 'NONE', '', '')
-  " call Base16hi('SpellRare',  g:base16_gui0B, 'NONE', g:base16_cterm0B, 'NONE', '', '')
-  " call Base16hi('MatchParen', g:base16_gui0E, 'NONE', g:base16_cterm0E, 'NONE', '', '')
-endfunction
-augroup on_change_colorschema
-  autocmd!
-  autocmd ColorScheme * call s:base16_customize()
-augroup END
-
-augroup LightlineColorscheme
-  autocmd!
-  autocmd VimResume,VimEnter * call s:lightline_update()
-augroup END
-function! s:lightline_update()
-  if !exists('g:loaded_lightline')
-    return
-  endif
-  let g:lightline.colorscheme = 'Tomorrow'
-
-  call s:read_background()
-  try
-    if g:colors_name =~# 'night'
-      let g:lightline.colorscheme = 'Tomorrow_Night'
-    endif
-  catch
-    " do nothing
-  endtry
-
-  call lightline#init()
-  call lightline#colorscheme()
-  call lightline#update()
-endfunction
-
-" Highlight TODOs etc
-"
-" TODO: Define regex for todos and notes a the beginning of this
-" source and use them to define two commands :Todo and :Note that use
-" :grep to search for them. Reuse the regexes below to highlight their
-" occurences.
-if has('autocmd')
-  if v:version > 701
-    augroup highlight_todo
-      autocmd!
-      autocmd Syntax * call matchadd('Todo', '\W\zs\(TODO\|FIXME\|CHANGED\|XXX\|BUG\|HACK\|BAD PRACTICE\)')
-      autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
-    augroup END
-  endif
-endif
 
 augroup _ale_closeLoclistWithBuffer
   autocmd!
@@ -547,11 +273,9 @@ augroup _ale_enforce_omnifunc
   autocmd FileType * setlocal omnifunc=ale#completion#OmniFunc
 augroup END
 
-" NeoVim/Vim compatibility {{{2
 
 if !has('nvim')
   set cryptmethod=blowfish2
-  set ttymouse=xterm2
 
   " Change cursor depending on mode in terminal
   if exists('$TMUX')
@@ -563,13 +287,6 @@ if !has('nvim')
   endif
 endif
 
-" Project-specifics {{{1
-
-augroup project_specifics
-  autocmd! BufRead */some-project/*.ext let b:ale_linters = []
-augroup end
-
-" .vimrc.local {{{1
 
 " Allows to override settings above for machine specifics
 if filereadable(expand('$HOME/.vimrc.local'))
