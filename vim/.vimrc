@@ -188,73 +188,28 @@ command! YankFilenameLineColumn :let @+ = expand("%:t") . ':' . line('.') . ':' 
 
 cabbrev <expr> %% expand('%:p:h')
 
+exe 'augroup my'
+autocmd!
 
-"
-" This section includes autocomds that change settings and add mappings
-" depending on the filetype of the current plugin.
+autocmd BufEnter MERGEREQ_EDITMSG setlocal filetype=gitcommit
+autocmd BufRead,BufNewFile *.njk  setlocal ft=jinja
+autocmd QuitPre *                 if empty(&buftype) | lclose | endif
 
-augroup filename_MERGEREQU_EDITMSG
-  autocmd!
-  autocmd BufEnter MERGEREQ_EDITMSG set filetype=gitcommit
-augroup END
+autocmd FileType gitcommit        setlocal comments+=fb:- fo+=nrbl spell
+autocmd FileType html             setlocal foldmethod=indent | normal zR
+autocmd FileType netrw            setlocal bufhidden=delete
+autocmd FileType markdown         setlocal comments=b:>,fb:-,fb:*,fb:-\ [\ ],fb:-> textwidth=80 fo+=c
+autocmd FileType sql              let &l:formatprg = 'python -m sqlparse -k upper -r --indent_width 2 -'
+autocmd FileType typescript       let b:ale_javascript_prettier_options = '--parser typescript'
+autocmd FileType vim              setlocal foldmethod=marker
 
-augroup filetype_gitcommit
-  autocmd!
-  autocmd FileType gitcommit setlocal comments+=fb:- fo+=nrbl spell
-augroup END
+" Otherwise vim-polyglot will override omnifunc when loading its html features for markdown.
+autocmd FileType *                setlocal omnifunc=ale#completion#OmniFunc
 
-augroup filetype_html
-  autocmd!
-  autocmd FileType html setlocal foldmethod=indent | normal zR
-augroup END
+" https://github.com/plasticboy/vim-markdown/issues/126#issuecomment-485579068
+autocmd FileType markdown         setlocal indentexpr=
 
-augroup filetype_netrw
-  autocmd!
-  autocmd FileType netrw setlocal bufhidden=delete
-augroup END
-
-augroup filetype_markdown
-  autocmd!
-  autocmd FileType markdown setlocal comments=b:>,fb:-,fb:*,fb:-\ [\ ],fb:-> textwidth=80 fo+=c
-  " The following fixes additional indentation in the subsequent lines of
-  " lists
-  "
-  " https://github.com/plasticboy/vim-markdown/issues/126#issuecomment-485579068
-  autocmd FileType markdown setlocal indentexpr=
-augroup END
-
-augroup filetype_nunjucks
-  autocmd!
-  autocmd BufRead,BufNewFile *.njk set ft=jinja
-augroup END
-
-augroup filetype_sql
-  autocmd!
-  autocmd FileType sql let &l:formatprg = 'python -m sqlparse -k upper -r --indent_width 2 -'
-augroup end
-
-augroup filetype_typescript
-  autocmd!
-  autocmd FileType typescript let b:ale_javascript_prettier_options = '--parser typescript'
-augroup END
-
-augroup filetype_vimrc
-  autocmd!
-  autocmd FileType vim setlocal foldmethod=marker
-augroup END
-
-
-augroup _ale_closeLoclistWithBuffer
-  autocmd!
-  autocmd QuitPre * if empty(&buftype) | lclose | endif
-augroup END
-
-augroup _ale_enforce_omnifunc
-  " Otherwise vim-polyglot will override omnifunc when loading its html
-  " features for markdown.
-  autocmd FileType * setlocal omnifunc=ale#completion#OmniFunc
-augroup END
-
+exe 'augroup END'
 
 if !has('nvim')
   set cryptmethod=blowfish2
