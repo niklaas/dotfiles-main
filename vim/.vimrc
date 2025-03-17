@@ -178,10 +178,10 @@ command! BW :bp\|bw #<cr>
 
 command! Cd :cd %:p:h<CR>:pwd<CR>
 
-command! YankFullPath :let @+ = expand("%")
-command! YankFilename :let @+ = expand("%:t")
-command! YankFullPathLineColumn :let @+ = expand("%")   . ':' . line('.') . ':' . col('.')
-command! YankFilenameLineColumn :let @+ = expand("%:t") . ':' . line('.') . ':' . col('.')
+command! YankFullPath   :let @+ = expand("%")
+command! YankFilename   :let @+ = expand("%:t")
+command! YankFullPathLC :let @+ = expand("%")   . ':' . line('.') . ':' . col('.')
+command! YankFilenameLC :let @+ = expand("%:t") . ':' . line('.') . ':' . col('.')
 
 cabbrev <expr> %% expand('%:p:h')
 
