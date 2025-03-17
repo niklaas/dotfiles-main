@@ -26,6 +26,11 @@ Plug 'tpope/vim-fugitive' " git integration
 Plug 'tpope/vim-rhubarb'  " fugitive GitHub integration
 Plug 'tpope/vim-projectionist'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vader.vim' " test framework for development
+
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'easymotion/vim-easymotion'
@@ -34,13 +39,7 @@ Plug 'machakann/vim-highlightedyank'
 
 Plug 'lervag/vimtex', { 'tag': 'v2.15' }
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/vader.vim' " test framework for development
-
 Plug 'w0rp/ale'
-
 Plug 'sheerun/vim-polyglot'
 
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
