@@ -50,81 +50,80 @@ call plug#end()
 let g:airline_theme = 'catppuccin'
 colorscheme catppuccin-mocha
 
-set autowrite
-set backspace=indent,eol,start
-set clipboard+=unnamed
-set cpoptions+=$
-set hidden
-set ignorecase
-set linebreak
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-set modelines=5
-set mouse=a
-set nobackup
-set nojoinspaces
-set noshowmode
-set nowrap
-set nowritebackup
-set number
-set pumheight=10
-set relativenumber
-set shortmess=catOT
-set showbreak=+
-set showmatch
-set signcolumn=yes
-set smartcase
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-set termguicolors
-set undofile
-set updatetime=300
-set visualbell
-set whichwrap=b,s
-set wildignorecase
+setglobal autowrite
+setglobal backspace=indent,eol,start
+setglobal clipboard+=unnamed
+setglobal cpoptions+=$
+setglobal hidden
+setglobal ignorecase
+setglobal linebreak
+setglobal listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+setglobal modelines=5
+setglobal mouse=a
+setglobal nobackup
+setglobal nojoinspaces
+setglobal noshowmode
+setglobal nowrap
+setglobal nowritebackup
+setglobal number
+setglobal pumheight=10
+setglobal relativenumber
+setglobal shortmess=catOT
+setglobal showbreak=+
+setglobal showmatch
+setglobal signcolumn=yes
+setglobal smartcase
+setglobal suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+setglobal termguicolors
+setglobal undofile
+setglobal updatetime=300
+setglobal visualbell
+setglobal whichwrap=b,s
+setglobal wildignorecase
 
-set backupdir=$DOTVIM/backup/
-set directory=$DOTVIM/swap/,.
-set undodir=$DOTVIM/undo
+setglobal backupdir=$DOTVIM/backup/
+setglobal directory=$DOTVIM/swap/,.
+setglobal undodir=$DOTVIM/undo
 
 " Encoding and file format
-set encoding=utf-8
+setglobal encoding=utf-8
 scriptencoding utf-8
-set fileencoding=utf-8
-set fileformat=unix
-set fileformats=unix,dos
+setglobal fileencoding=utf-8
+setglobal fileformat=unix
+setglobal fileformats=unix,dos
 
 " Indenting
-set shiftround
-set expandtab autoindent smartindent
-set tabstop=2 shiftwidth=2 softtabstop=2
+setglobal shiftround
+setglobal expandtab autoindent smartindent
+setglobal tabstop=2 shiftwidth=2 softtabstop=2
 
 " Spelling
-set spelllang=en_us,de_20
-set spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
+setglobal spelllang=en_us,de_20
+setglobal spellfile=~/.vim/spell/en.utf-8.add,~/.vim/spell/de.utf-8.add
 
 " Grepping
 if executable('rg')
-  set grepprg=rg\ --hidden\ --vimgrep
+  setglobal grepprg=rg\ --hidden\ --vimgrep
 endif
 
 if has('gui_running')
-  set guioptions-=m
-  set guioptions-=T
-  set guioptions-=r
-  set guioptions-=R
-  set guioptions-=l
-  set guioptions-=L
-  set lines=50
-  set columns=120
+  setglobal guioptions-=m
+  setglobal guioptions-=T
+  setglobal guioptions-=r
+  setglobal guioptions-=R
+  setglobal guioptions-=l
+  setglobal guioptions-=L
+  setglobal lines=50
+  setglobal columns=120
   if has('gui_gtk2')
-    set guifont=Monospace\ 11
-    set background=dark
+    setglobal guifont=Monospace\ 11
+    setglobal background=dark
   elseif has('gui_win32')
-    set guifont=Consolas:h10:cANSI
+    setglobal guifont=Consolas:h10:cANSI
   else
-    set guifont=JetBrainsMono\ Nerd\ Font:h14
+    setglobal guifont=JetBrainsMono\ Nerd\ Font:h14
   endif
 endif
-
 
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
