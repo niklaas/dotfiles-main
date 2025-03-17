@@ -9,7 +9,15 @@ else
     let $MYREALVIMRC = expand('$HOME/.vimrc')
 endif
 
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+let g:ale_fix_on_save = 1
+let g:ale_javascript_eslint_suppress_missing_config = 1
+let g:ale_list_window_size = 7
+let g:ale_sign_error = '!'
+let g:ale_sign_info = 'o'
+let g:ale_sign_warning = '?'
 let g:polyglot_disabled = ['sensible']
+let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/misc/projections.json')))) " TODO: remove?
 
 call plug#begin('$DOTVIM/plugged')
 
@@ -129,18 +137,6 @@ endif
 
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-" TODO: do I really need this or do I want to set this per project?
-let g:projectionist_heuristics = json_decode(join(readfile(expand($DOTVIM . '/misc/projections.json'))))
-
-let g:ale_fix_on_save = 1
-let g:ale_list_window_size = 7
-let g:ale_javascript_eslint_suppress_missing_config = 1
-let g:ale_sign_warning = '?'
-let g:ale_sign_error = '!'
-let g:ale_sign_info = 'o'
 
 nnoremap ga :edit %<.
 noremap <C-s> :w<cr>
