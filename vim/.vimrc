@@ -171,9 +171,7 @@ nnoremap <leader>gP :Git push<cr>
 nmap <silent> [d <Plug>(ale_previous_wrap)
 nmap <silent> ]d <Plug>(ale_next_wrap)
 
-" clever substitute in entire file
-nnoremap <expr> <leader>r :%S/<cword>/<cword>/w<left><left>
-
+nnoremap <leader>r :%S/<C-r><C-w>/<C-r><C-w>/w<left><left>
 
 command! BD :bp\|bd #<cr>
 command! BW :bp\|bw #<cr>
