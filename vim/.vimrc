@@ -186,8 +186,6 @@ command! YankFilename :let @+ = expand("%:t")
 command! YankFullPathLineColumn :let @+ = expand("%")   . ':' . line('.') . ':' . col('.')
 command! YankFilenameLineColumn :let @+ = expand("%:t") . ':' . line('.') . ':' . col('.')
 
-
-" Expand %% to the current directory
 cabbrev <expr> %% expand('%:p:h')
 
 
@@ -261,7 +259,6 @@ augroup END
 if !has('nvim')
   set cryptmethod=blowfish2
 
-  " Change cursor depending on mode in terminal
   if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
@@ -271,8 +268,6 @@ if !has('nvim')
   endif
 endif
 
-
-" Allows to override settings above for machine specifics
 if filereadable(expand('$HOME/.vimrc.local'))
   execute 'source ' . '$HOME/.vimrc.local'
 endif
