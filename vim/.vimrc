@@ -168,7 +168,6 @@ nnoremap <leader>gj :Gwrite<bar>G commit<cr>
 nnoremap <leader>gp :Git pull<cr>
 nnoremap <leader>gP :Git push<cr>
 
-" ALE
 nmap <silent> [d <Plug>(ale_previous_wrap)
 nmap <silent> ]d <Plug>(ale_next_wrap)
 
