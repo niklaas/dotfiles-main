@@ -9,6 +9,8 @@ else
     let $MYREALVIMRC = expand('$HOME/.vimrc')
 endif
 
+let g:polyglot_disabled = ['sensible']
+
 call plug#begin('$DOTVIM/plugged')
 
 Plug 'tpope/vim-abolish'  " improved substitution
