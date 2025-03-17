@@ -1,6 +1,3 @@
-" vint:next-line -ProhibitSetNoCompatible
-set nocompatible
-
 nnoremap <space> <nop>
 let mapleader = ' '
 
@@ -13,12 +10,6 @@ else
 endif
 
 call plug#begin('$DOTVIM/plugged')
-
-Plug 'editorconfig/editorconfig-vim'
-
-Plug 'easymotion/vim-easymotion'
-Plug 'wellle/targets.vim'
-Plug 'machakann/vim-highlightedyank'
 
 Plug 'tpope/vim-abolish'  " improved substitution
 Plug 'tpope/vim-commentary'
@@ -34,6 +25,12 @@ Plug 'tpope/vim-vinegar' " better netrw
 Plug 'tpope/vim-fugitive' " git integration
 Plug 'tpope/vim-rhubarb'  " fugitive GitHub integration
 Plug 'tpope/vim-projectionist'
+
+Plug 'editorconfig/editorconfig-vim'
+
+Plug 'easymotion/vim-easymotion'
+Plug 'wellle/targets.vim'
+Plug 'machakann/vim-highlightedyank'
 
 Plug 'lervag/vimtex', { 'tag': 'v2.15' }
 
@@ -54,15 +51,12 @@ call plug#end()
 let g:airline_theme = 'catppuccin'
 colorscheme catppuccin-mocha
 
-runtime! ftplugin/man.vim " :Man for manpages
-
 set autowrite
 set backspace=indent,eol,start
 set clipboard+=unnamed
 set cpoptions+=$
 set hidden
 set ignorecase
-set incsearch
 set linebreak
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set modelines=5
@@ -75,30 +69,22 @@ set nowritebackup
 set number
 set pumheight=10
 set relativenumber
-set ruler
 set shortmess=catOT
 set showbreak=+
 set showmatch
 set signcolumn=yes
 set smartcase
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-set tags=./tags,./TAGS,tags,TAGS,../tags,../../tags,../../../tags,../../../../tags
 set termguicolors
 set undofile
 set updatetime=300
-set viminfo=%,'50,:100,<1000
 set visualbell
 set whichwrap=b,s
 set wildignorecase
-set wildmenu
 
 set backupdir=$DOTVIM/backup/
 set directory=$DOTVIM/swap/,.
 set undodir=$DOTVIM/undo
-
-" Always show status line
-set laststatus=2
-set showtabline=1
 
 " Encoding and file format
 set encoding=utf-8
@@ -109,7 +95,7 @@ set fileformats=unix,dos
 
 " Indenting
 set shiftround
-set expandtab smarttab autoindent smartindent
+set expandtab autoindent smartindent
 set tabstop=2 shiftwidth=2 softtabstop=2
 
 " Spelling
